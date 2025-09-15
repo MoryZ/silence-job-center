@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+      com.old.silence.platform.job.log.center.CommonLogConfigure
+

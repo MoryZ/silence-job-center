@@ -1,0 +1,4 @@
+com.old.silence.job.log.dialect.slf4j.Slf4jLogFactory
+com.old.silence.job.log.dialect.log4j2.Log4j2LogFactory
+com.old.silence.job.log.dialect.log4j.Log4jLogFactory
+

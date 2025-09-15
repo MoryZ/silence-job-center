@@ -1,0 +1,17 @@
+package com.old.silence.job.server.retry.task.service;
+
+import org.mapstruct.factory.Mappers;
+import com.old.silence.platform.job.server.domain.model.RetryDeadLetter;
+import com.old.silence.platform.job.server.retry.task.dto.RetryPartitionTask;
+
+
+@Mapper
+public interface RetryDeadLetterConverter {
+
+    RetryDeadLetterConverter INSTANCE = Mappers.getMapper(RetryDeadLetterConverter.class);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdDate", ignore = true)
+    RetryDeadLetter toRetryDeadLetter(RetryPartitionTask retryTasks);
+
+}
