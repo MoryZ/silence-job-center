@@ -1,26 +1,26 @@
 package com.old.silence.job.server.job.task.support.request;
 
-import cn.hutool.core.net.url.UrlQuery;
+import cn.hutool.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.common.core.model.SilenceJobRequest;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.cache.CacheConsumerGroup;
-import com.old.silence.platform.job.server.common.cache.CacheRegisterTable;
-import com.old.silence.platform.job.server.common.handler.GetHttpRequestHandler;
-import com.old.silence.platform.job.server.common.register.ClientRegister;
-import com.old.silence.platform.job.server.domain.model.ServerNode;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.common.model.SilenceJobRequest;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.cache.CacheConsumerGroup;
+import com.old.silence.job.server.common.cache.CacheRegisterTable;
+import com.old.silence.job.server.common.handler.GetHttpRequestHandler;
+import com.old.silence.job.server.common.register.ClientRegister;
+import com.old.silence.job.server.domain.model.ServerNode;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.GET_REG_NODES_AND_REFRESH;
-import static com.old.silence.platform.job.server.common.register.ClientRegister.DELAY_TIME;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.GET_REG_NODES_AND_REFRESH;
+import static com.old.silence.job.server.common.register.ClientRegister.DELAY_TIME;
 
 /**
  * 获取服务端缓存的客户端节点 并刷新本地时间

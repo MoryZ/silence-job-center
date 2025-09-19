@@ -1,11 +1,11 @@
 
-package com.old.silence.job.client.retry.core.annotation;
+package com.old.silence.job.client.retry.annotation;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.client.core.IdempotentIdGenerate;
-import com.old.silence.platform.job.client.core.callback.complete.RetryCompleteCallback;
-import com.old.silence.platform.job.client.core.callback.complete.SimpleRetryCompleteCallback;
-import com.old.silence.platform.job.client.core.generator.SimpleIdempotentIdGenerate;
+import com.old.silence.job.client.IdempotentIdGenerate;
+import com.old.silence.job.client.callback.complete.RetryCompleteCallback;
+import com.old.silence.job.client.callback.complete.SimpleRetryCompleteCallback;
+import com.old.silence.job.client.generator.SimpleIdempotentIdGenerate;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

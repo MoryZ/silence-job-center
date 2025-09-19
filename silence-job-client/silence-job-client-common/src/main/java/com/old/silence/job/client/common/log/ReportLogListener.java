@@ -1,11 +1,11 @@
 package com.old.silence.job.client.common.log;
 
-import com.old.silence.platform.job.client.common.NettyClient;
-import com.old.silence.platform.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.common.core.window.Listener;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.model.dto.LogTaskDTO;
+import com.old.silence.job.client.common.NettyClient;
+import com.old.silence.job.client.common.rpc.client.RequestBuilder;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.window.Listener;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.model.dto.LogTaskDTO;
 
 import java.util.List;
 

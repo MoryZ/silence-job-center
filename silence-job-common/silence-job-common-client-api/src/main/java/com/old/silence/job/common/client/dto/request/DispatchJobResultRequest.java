@@ -1,8 +1,8 @@
 package com.old.silence.job.common.client.dto.request;
 
 import com.old.silence.job.client.model.ExecuteResult;
-import com.old.silence.job.common.core.enums.JobTaskStatus;
-import com.old.silence.job.common.core.enums.JobTaskType;
+import com.old.silence.job.common.enums.JobTaskStatus;
+import com.old.silence.job.common.enums.JobTaskType;
 
 import java.math.BigInteger;
 

@@ -2,8 +2,8 @@ package com.old.silence.job.server.common.dto;
 
 
 import io.grpc.stub.StreamObserver;
-import com.old.silence.job.common.core.grpc.auto.GrpcResult;
-import com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest;
+import com.old.silence.job.common.grpc.auto.GrpcResult;
+import com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest;
 
 
 

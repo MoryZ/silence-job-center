@@ -1,6 +1,6 @@
 package com.old.silence.job.common.alarm;
 
-import com.old.silence.job.common.core.enums.NotifyType;
+import com.old.silence.job.common.enums.NotifyType;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package com.old.silence.job.server.job.task.support.callback;
 
-import com.old.silence.platform.job.client.model.ExecuteResult;
-import com.old.silence.platform.job.common.core.enums.JobTaskStatus;
-import com.old.silence.platform.job.server.domain.model.Job;
-import com.old.silence.platform.job.server.domain.model.JobTask;
+import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.common.enums.JobTaskStatus;
+import com.old.silence.job.server.domain.model.Job;
+import com.old.silence.job.server.domain.model.JobTask;
 
 import java.math.BigInteger;
 

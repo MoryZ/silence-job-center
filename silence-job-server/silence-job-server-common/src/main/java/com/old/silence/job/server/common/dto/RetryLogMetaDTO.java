@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.dto;
 
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.log.center.enums.LogTypeEnum;
+import com.old.silence.job.log.enums.LogTypeEnum;
 
 import java.math.BigInteger;
 

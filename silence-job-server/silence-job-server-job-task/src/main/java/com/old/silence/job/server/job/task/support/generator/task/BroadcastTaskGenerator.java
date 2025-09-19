@@ -1,21 +1,21 @@
 package com.old.silence.job.server.job.task.support.generator.task;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson2.JSON;
 import com.google.common.collect.Lists;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.common.core.enums.JobTaskStatus;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.model.JobArgsHolder;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.cache.CacheRegisterTable;
-import com.old.silence.platform.job.server.common.dto.RegisterNodeInfo;
-import com.old.silence.platform.job.server.common.util.ClientInfoUtils;
-import com.old.silence.platform.job.server.domain.model.JobTask;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.common.enums.JobTaskStatus;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.model.JobArgsHolder;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.cache.CacheRegisterTable;
+import com.old.silence.job.server.common.dto.RegisterNodeInfo;
+import com.old.silence.job.server.common.util.ClientInfoUtils;
+import com.old.silence.job.server.domain.model.JobTask;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
 
 import java.math.BigInteger;
 import java.time.Instant;

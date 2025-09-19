@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.core.callback.complete;
+package com.old.silence.job.client.retry.callback.complete;
 
 
 import org.springframework.stereotype.Component;

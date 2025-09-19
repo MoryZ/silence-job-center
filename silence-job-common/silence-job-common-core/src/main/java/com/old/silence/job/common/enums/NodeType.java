@@ -1,5 +1,6 @@
 package com.old.silence.job.common.enums;
 
+
 import com.old.silence.core.enums.EnumValue;
 
 /**

@@ -1,7 +1,7 @@
 package com.old.silence.job.client.core;
 
 
-import com.old.silence.platform.job.common.core.model.JobContext;
+import com.old.silence.job.common.model.JobContext;
 
 /**
  * job执行者

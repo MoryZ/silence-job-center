@@ -2,9 +2,9 @@ package com.old.silence.job.server.common.dto;
 
 
 
-import com.old.silence.job.common.core.enums.JobNotifyScene;
-import com.old.silence.job.common.core.enums.NotifyType;
-import com.old.silence.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.NotifyType;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 import java.math.BigInteger;
 import java.util.List;

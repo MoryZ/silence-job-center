@@ -3,12 +3,12 @@ package com.old.silence.job.server.job.task.support.prepare.job;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus;
-import com.old.silence.platform.job.server.common.util.DateUtils;
-import com.old.silence.platform.job.server.job.task.dto.JobTaskPrepareDTO;
-import com.old.silence.platform.job.server.job.task.dto.JobTimerTaskDTO;
-import com.old.silence.platform.job.server.job.task.support.timer.JobTimerTask;
-import com.old.silence.platform.job.server.job.task.support.timer.JobTimerWheel;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
+import com.old.silence.job.server.common.util.DateUtils;
+import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;
+import com.old.silence.job.server.job.task.dto.JobTimerTaskDTO;
+import com.old.silence.job.server.job.task.support.timer.JobTimerTask;
+import com.old.silence.job.server.job.task.support.timer.JobTimerWheel;
 
 import java.text.MessageFormat;
 import java.time.Duration;

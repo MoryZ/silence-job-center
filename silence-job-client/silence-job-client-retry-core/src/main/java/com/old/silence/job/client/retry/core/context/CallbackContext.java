@@ -1,7 +1,7 @@
-package com.old.silence.job.client.retry.core.context;
+package com.old.silence.job.client.retry.context;
 
-import com.old.silence.platform.job.client.core.retryer.RetryerInfo;
-import com.old.silence.platform.job.common.core.enums.RetryStatus;
+import com.old.silence.job.client.retryer.RetryerInfo;
+import com.old.silence.job.common.enums.RetryStatus;
 
 import java.math.BigInteger;
 

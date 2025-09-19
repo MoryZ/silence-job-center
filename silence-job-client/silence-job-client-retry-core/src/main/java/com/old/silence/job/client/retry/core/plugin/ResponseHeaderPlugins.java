@@ -1,7 +1,7 @@
-package com.old.silence.job.client.retry.core.plugin;
+package com.old.silence.job.client.retry.plugin;
 
-import com.old.silence.platform.job.client.core.intercepter.RetrySiteSnapshot;
-import com.old.silence.platform.job.common.core.constant.SystemConstants;
+import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
+import com.old.silence.job.common.constant.SystemConstants;
 
 import java.util.List;
 import java.util.Map;

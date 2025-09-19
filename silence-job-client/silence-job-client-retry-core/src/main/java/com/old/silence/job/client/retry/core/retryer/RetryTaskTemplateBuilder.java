@@ -1,9 +1,9 @@
-package com.old.silence.job.client.retry.core.retryer;
+package com.old.silence.job.client.retry.retryer;
 
-import com.old.silence.platform.job.client.core.strategy.ExecutorMethod;
-import com.old.silence.platform.job.client.core.strategy.ManualRetryStrategies;
-import com.old.silence.platform.job.client.core.strategy.RetryStrategy;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
+import com.old.silence.job.client.strategy.ExecutorMethod;
+import com.old.silence.job.client.strategy.ManualRetryStrategies;
+import com.old.silence.job.client.strategy.RetryStrategy;
+import com.old.silence.job.common.context.SilenceSpringContext;
 
 /**
  * 构建重试模板对象

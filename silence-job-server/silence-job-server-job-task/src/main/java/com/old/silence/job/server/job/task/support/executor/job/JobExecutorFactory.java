@@ -1,7 +1,7 @@
 package com.old.silence.job.server.job.task.support.executor.job;
 
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.server.job.task.support.JobExecutor;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.server.job.task.support.JobExecutor;
 
 import java.util.concurrent.ConcurrentHashMap;
 

@@ -1,7 +1,7 @@
 package com.old.silence.job.log.dialect.console;
 
-import com.old.silence.job.log.center.dialect.Log;
-import com.old.silence.job.log.center.factory.LogFactory;
+import com.old.silence.job.log.dialect.Log;
+import com.old.silence.job.log.factory.LogFactory;
 
 /**
  * 利用System.out.println()打印彩色日志

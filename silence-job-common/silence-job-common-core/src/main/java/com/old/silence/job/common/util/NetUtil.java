@@ -1,6 +1,6 @@
 package com.old.silence.job.common.util;
 
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.io.IOException;
 import java.net.Inet6Address;

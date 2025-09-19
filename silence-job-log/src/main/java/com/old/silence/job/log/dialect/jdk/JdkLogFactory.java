@@ -1,11 +1,10 @@
 package com.old.silence.job.log.dialect.jdk;
 
 
-import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.io.resource.ResourceUtil;
-import cn.hutool.core.lang.Console;
-import com.old.silence.job.log.center.dialect.Log;
-import com.old.silence.job.log.center.factory.LogFactory;
+
+import com.old.silence.job.log.dialect.Log;
+import com.old.silence.job.log.factory.LogFactory;
+import com.old.silence.job.log.dialect.console.Console;
 
 import java.io.InputStream;
 import java.util.logging.LogManager;
@@ -38,13 +37,7 @@ public class JdkLogFactory extends LogFactory {
      */
     private void readConfig() {
         //避免循环引用，Log初始化的时候不使用相关工具类
-        InputStream in = ResourceUtil.getStreamSafe("logging.properties");
-        if (null == in) {
-            System.err.println("[WARN] Can not find [logging.properties], use [%JRE_HOME%/lib/logging.properties] as default!");
-            return;
-        }
-
-        try {
+        try(InputStream in = this.getClass().getClassLoader().getResourceAsStream("logging.properties")) {
             LogManager.getLogManager().readConfiguration(in);
         } catch (Exception e) {
             Console.error(e, "Read [logging.properties] from classpath error!");
@@ -53,8 +46,6 @@ public class JdkLogFactory extends LogFactory {
             } catch (Exception e1) {
                 Console.error(e, "Read [logging.properties] from [%JRE_HOME%/lib/logging.properties] error!");
             }
-        } finally {
-            IoUtil.close(in);
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.old.silence.job.server.dto;
 
 
-import com.old.silence.job.common.core.enums.JobTaskStatus;
+import com.old.silence.job.common.enums.JobTaskStatus;
 
 import java.math.BigInteger;
 import java.time.Instant;

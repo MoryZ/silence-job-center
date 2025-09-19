@@ -1,7 +1,7 @@
 package com.old.silence.job.server.dto;
 
-import com.old.silence.job.common.core.enums.JobNotifyScene;
-import com.old.silence.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;

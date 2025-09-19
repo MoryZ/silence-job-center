@@ -1,14 +1,14 @@
 
-package com.old.silence.job.client.retry.core.annotation;
+package com.old.silence.job.client.retry.annotation;
 
 
-import com.old.silence.platform.job.client.core.IdempotentIdGenerate;
-import com.old.silence.platform.job.client.core.callback.complete.RetryCompleteCallback;
-import com.old.silence.platform.job.client.core.callback.complete.SimpleRetryCompleteCallback;
-import com.old.silence.platform.job.client.core.generator.SimpleIdempotentIdGenerate;
-import com.old.silence.platform.job.client.core.retryer.RetryType;
-import com.old.silence.platform.job.client.core.strategy.ExecutorAnnotationMethod;
-import com.old.silence.platform.job.client.core.strategy.ExecutorMethod;
+import com.old.silence.job.client.IdempotentIdGenerate;
+import com.old.silence.job.client.callback.complete.RetryCompleteCallback;
+import com.old.silence.job.client.callback.complete.SimpleRetryCompleteCallback;
+import com.old.silence.job.client.generator.SimpleIdempotentIdGenerate;
+import com.old.silence.job.client.retryer.RetryType;
+import com.old.silence.job.client.strategy.ExecutorAnnotationMethod;
+import com.old.silence.job.client.strategy.ExecutorMethod;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

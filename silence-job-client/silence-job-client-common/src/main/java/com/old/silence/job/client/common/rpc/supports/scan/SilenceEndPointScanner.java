@@ -4,12 +4,12 @@ import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.core.MethodIntrospector;
-import org.springframework.core.annotation.AnnotatedElementUtils;
+import org.springframework.MethodIntrospector;
+import org.springframework.annotation.AnnotatedElementUtils;
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.client.common.annotation.Mapping;
-import com.old.silence.platform.job.client.common.annotation.SilenceEndPoint;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.common.annotation.Mapping;
+import com.old.silence.job.client.common.annotation.SilenceEndPoint;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package com.old.silence.job.client.common.annotation;
 
 
-import com.old.silence.platform.job.client.common.rpc.client.RequestMethod;
+import com.old.silence.job.client.common.rpc.client.RequestMethod;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

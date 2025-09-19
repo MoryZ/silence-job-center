@@ -1,10 +1,10 @@
 package com.old.silence.job.server.util;
 
-import cn.hutool.core.io.FileUtil;
+import cn.hutool.io.FileUtil;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.common.core.exception.SilenceJobCommonException;
+import com.old.silence.job.common.exception.SilenceJobCommonException;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.old.silence.job.client.retry.core.exception;
+package com.old.silence.job.client.retry.exception;
 
-import com.old.silence.platform.job.common.core.exception.BaseSilenceJobException;
+import com.old.silence.job.common.exception.BaseSilenceJobException;
 
 
 public class SilenceRetryClientException extends BaseSilenceJobException {

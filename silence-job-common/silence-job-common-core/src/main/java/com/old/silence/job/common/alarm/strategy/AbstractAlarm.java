@@ -1,8 +1,8 @@
 package com.old.silence.job.common.alarm.strategy;
 
 import org.springframework.beans.factory.InitializingBean;
-import com.old.silence.job.common.core.alarm.Alarm;
-import com.old.silence.job.common.core.alarm.SilenceJobAlarmFactory;
+import com.old.silence.job.common.alarm.Alarm;
+import com.old.silence.job.common.alarm.SilenceJobAlarmFactory;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

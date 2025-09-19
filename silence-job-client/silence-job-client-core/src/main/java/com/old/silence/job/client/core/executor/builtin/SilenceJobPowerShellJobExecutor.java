@@ -1,10 +1,10 @@
-package com.old.silence.job.client.core.executor.builtin;
+package com.old.silence.job.client.executor.builtin;
 
 
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.core.annotation.JobExecutor;
-import com.old.silence.platform.job.client.core.dto.JobArgs;
-import com.old.silence.platform.job.client.model.ExecuteResult;
+import com.old.silence.job.client.annotation.JobExecutor;
+import com.old.silence.job.client.dto.JobArgs;
+import com.old.silence.job.client.model.ExecuteResult;
 import org.springframework.stereotype.Component;
 
 @Component

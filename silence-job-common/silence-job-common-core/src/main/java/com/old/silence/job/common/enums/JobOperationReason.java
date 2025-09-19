@@ -1,8 +1,9 @@
 package com.old.silence.job.common.enums;
 
-import com.old.silence.core.enums.DescribedEnumValue;
 
 import java.util.List;
+
+import com.old.silence.core.enums.DescribedEnumValue;
 
 /**
  * 标识某个操作的具体原因

@@ -1,13 +1,13 @@
 package com.old.silence.job.server.common.rpc.client;
 
-import cn.hutool.core.lang.Assert;
+import cn.hutool.lang.Assert;
 import com.github.rholder.retry.RetryListener;
-import com.old.silence.job.common.core.context.SilenceSpringContext;
-import com.old.silence.job.common.core.enums.RpcType;
+import com.old.silence.context.CommonErrors;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.RpcType;
 import com.old.silence.job.server.common.config.SystemProperties;
 import com.old.silence.job.server.common.dto.RegisterNodeInfo;
 import com.old.silence.job.server.common.rpc.client.grpc.GrpcClientInvokeHandler;
-import com.old.silence.job.server.exception.SilenceJobServerException;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
@@ -49,7 +49,7 @@ public class RequestBuilder<T, R> {
             return this;
         }
 
-        Assert.isTrue(executorTimeout > 0, () -> new SilenceJobServerException("executorTimeout can not less 0"));
+        Assert.isTrue(executorTimeout > 0, () -> CommonErrors.INVALID_PARAMETER.createException("executorTimeout can not less 0"));
         this.executorTimeout = executorTimeout;
         return this;
     }
@@ -91,20 +91,20 @@ public class RequestBuilder<T, R> {
 
     public T build() {
         if (Objects.isNull(clintInterface)) {
-            throw new SilenceJobServerException("clintInterface cannot be null");
+            throw CommonErrors.INVALID_PARAMETER.createException("clintInterface cannot be null");
         }
 
-        Assert.notNull(nodeInfo, () -> new SilenceJobServerException("nodeInfo cannot be null"));
-        Assert.notBlank(nodeInfo.getNamespaceId(), () -> new SilenceJobServerException("namespaceId cannot be null"));
+        Assert.notNull(nodeInfo, () -> CommonErrors.INVALID_PARAMETER.createException("nodeInfo cannot be null"));
+        Assert.notBlank(nodeInfo.getNamespaceId(), () -> CommonErrors.INVALID_PARAMETER.createException("namespaceId cannot be null"));
 
         if (failover) {
-            Assert.isTrue(routeKey > 0, () -> new SilenceJobServerException("routeKey cannot be null"));
-            Assert.notBlank(allocKey, () -> new SilenceJobServerException("allocKey cannot be null"));
+            Assert.isTrue(routeKey > 0, () -> CommonErrors.INVALID_PARAMETER.createException("routeKey cannot be null"));
+            Assert.notBlank(allocKey, () -> CommonErrors.INVALID_PARAMETER.createException("allocKey cannot be null"));
         }
         try {
             clintInterface = (Class<T>) Class.forName(clintInterface.getName());
         } catch (Exception e) {
-            throw new SilenceJobServerException("class not found exception to: [{}]", clintInterface.getName());
+            throw CommonErrors.INVALID_PARAMETER.createException("class not found exception to: [{}]", clintInterface.getName());
         }
 
         SystemProperties properties = SilenceSpringContext.getBean(SystemProperties.class);

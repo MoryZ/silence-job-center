@@ -1,9 +1,9 @@
 package com.old.silence.job.server.job.task.support.block.job;
 
 
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.common.core.enums.JobTaskExecutorScene;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.JobTaskExecutorScene;
+import com.old.silence.job.common.enums.JobTaskType;
 
 import java.math.BigInteger;
 

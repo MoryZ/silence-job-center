@@ -1,6 +1,6 @@
 package com.old.silence.job.client.common.rpc.supports.scan;
 
-import com.old.silence.platform.job.client.common.rpc.client.RequestMethod;
+import com.old.silence.job.client.common.rpc.client.RequestMethod;
 
 import java.lang.reflect.Method;
 

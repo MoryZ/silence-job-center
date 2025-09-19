@@ -1,7 +1,7 @@
 package com.old.silence.job.server.api.assembler;
 
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

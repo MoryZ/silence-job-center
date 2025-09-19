@@ -1,15 +1,15 @@
-package com.old.silence.job.client.retry.core.strategy;
+package com.old.silence.job.client.retry.strategy;
 
 import org.springframework.stereotype.Component;
 import com.github.rholder.retry.*;
-import com.old.silence.platform.job.client.core.RetryExecutor;
-import com.old.silence.platform.job.client.core.RetryExecutorParameter;
-import com.old.silence.platform.job.client.core.intercepter.RetrySiteSnapshot;
-import com.old.silence.platform.job.client.core.retryer.RetryType;
-import com.old.silence.platform.job.client.core.retryer.RetryerInfo;
-import com.old.silence.platform.job.client.core.retryer.RetryerResultContext;
-import com.old.silence.platform.job.common.core.enums.RetryResultStatus;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.RetryExecutor;
+import com.old.silence.job.client.RetryExecutorParameter;
+import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
+import com.old.silence.job.client.retryer.RetryType;
+import com.old.silence.job.client.retryer.RetryerInfo;
+import com.old.silence.job.client.retryer.RetryerResultContext;
+import com.old.silence.job.common.enums.RetryResultStatus;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.util.Collections;
 import java.util.List;

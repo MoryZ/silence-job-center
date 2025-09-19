@@ -1,9 +1,9 @@
-package com.old.silence.job.client.retry.core.generator;
+package com.old.silence.job.client.retry.generator;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 import com.google.common.hash.Hashing;
-import com.old.silence.platform.job.client.core.IdempotentIdGenerate;
-import com.old.silence.platform.job.common.core.model.IdempotentIdContext;
+import com.old.silence.job.client.IdempotentIdGenerate;
+import com.old.silence.job.common.model.IdempotentIdContext;
 
 import java.nio.charset.StandardCharsets;
 

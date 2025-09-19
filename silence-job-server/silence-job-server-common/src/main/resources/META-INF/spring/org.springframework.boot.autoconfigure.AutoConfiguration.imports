@@ -1,1 +1,1 @@
-com.old.silence.platform.job.server.common.config.SilenceJobServerCommonAutoConfiguration
+com.old.silence.job.server.common.config.SilenceJobServerCommonAutoConfiguration

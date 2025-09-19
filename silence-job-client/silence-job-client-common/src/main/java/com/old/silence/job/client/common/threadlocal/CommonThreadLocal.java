@@ -1,8 +1,8 @@
 package com.old.silence.job.client.common.threadlocal;
 
-import cn.hutool.core.lang.Assert;
-import com.old.silence.platform.job.client.common.SilenceThreadLocal;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
+import cn.hutool.lang.Assert;
+import com.old.silence.job.client.common.SilenceThreadLocal;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
 
 /**
  * ThreadLocal实现类

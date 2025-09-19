@@ -1,10 +1,10 @@
 package com.old.silence.job.server.job.task.dto;
 
 
-import com.old.silence.platform.job.common.core.enums.ExecutorType;
-import com.old.silence.platform.job.common.core.enums.JobArgsType;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.enums.MapReduceStage;
+import com.old.silence.job.common.enums.ExecutorType;
+import com.old.silence.job.common.enums.JobArgsType;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.enums.MapReduceStage;
 
 import java.math.BigInteger;
 

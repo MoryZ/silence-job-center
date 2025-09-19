@@ -1,11 +1,11 @@
 package com.old.silence.job.server.vo;
 
 
-import com.old.silence.job.common.core.enums.FailStrategy;
-import com.old.silence.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.job.common.core.enums.JobTaskBatchStatus;
-import com.old.silence.job.common.core.enums.TriggerType;
-import com.old.silence.job.common.core.enums.WorkflowNodeType;
+import com.old.silence.job.common.enums.FailStrategy;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.TriggerType;
+import com.old.silence.job.common.enums.WorkflowNodeType;
 import com.old.silence.job.server.dto.CallbackConfig;
 import com.old.silence.job.server.dto.DecisionConfig;
 import com.old.silence.job.server.dto.JobTaskConfig;

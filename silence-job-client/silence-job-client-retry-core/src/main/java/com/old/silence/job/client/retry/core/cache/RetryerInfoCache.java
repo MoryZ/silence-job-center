@@ -1,8 +1,8 @@
-package com.old.silence.job.client.retry.core.cache;
+package com.old.silence.job.client.retry.cache;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import com.old.silence.platform.job.client.core.retryer.RetryerInfo;
+import com.old.silence.job.client.retryer.RetryerInfo;
 
 
 public class RetryerInfoCache {

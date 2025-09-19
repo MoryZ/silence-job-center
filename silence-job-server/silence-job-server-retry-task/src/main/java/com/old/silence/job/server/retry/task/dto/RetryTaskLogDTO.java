@@ -1,7 +1,7 @@
 package com.old.silence.job.server.retry.task.dto;
 
 
-import com.old.silence.platform.job.common.core.enums.RetryStatus;
+import com.old.silence.job.common.enums.RetryStatus;
 
 import java.math.BigInteger;
 import java.time.Instant;

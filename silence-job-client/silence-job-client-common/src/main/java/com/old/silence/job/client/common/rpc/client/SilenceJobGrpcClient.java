@@ -2,16 +2,16 @@ package com.old.silence.job.client.common.rpc.client;
 
 import io.grpc.*;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
+import org.springframework.Ordered;
+import org.springframework.annotation.Order;
 import org.springframework.stereotype.Component;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.old.silence.platform.job.client.common.Lifecycle;
-import com.old.silence.platform.job.client.common.config.SilenceJobProperties;
-import com.old.silence.platform.job.client.common.event.SilenceChannelReconnectEvent;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.enums.RpcType;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.common.Lifecycle;
+import com.old.silence.job.client.common.config.SilenceJobProperties;
+import com.old.silence.job.client.common.event.SilenceChannelReconnectEvent;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.RpcType;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;

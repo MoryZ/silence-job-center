@@ -1,12 +1,12 @@
-package com.old.silence.job.client.core.dto;
+package com.old.silence.job.client.dto;
 
-import com.old.silence.platform.job.common.core.enums.JobArgsType;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.TriggerType;
-import com.old.silence.platform.job.client.core.handler.add.Add;
-import com.old.silence.platform.job.client.core.handler.update.Update;
-import com.old.silence.platform.job.common.core.enums.ExecutorType;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
+import com.old.silence.job.common.enums.JobArgsType;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.TriggerType;
+import com.old.silence.job.client.handler.add.Add;
+import com.old.silence.job.client.handler.update.Update;
+import com.old.silence.job.common.enums.ExecutorType;
+import com.old.silence.job.common.enums.JobTaskType;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.retry.task.support;
 
-import com.old.silence.platform.job.server.retry.task.support.block.BlockStrategyContext;
+import com.old.silence.job.server.retry.task.support.block.BlockStrategyContext;
 
 
 public interface BlockStrategy {

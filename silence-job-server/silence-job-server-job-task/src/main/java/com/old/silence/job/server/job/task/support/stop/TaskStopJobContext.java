@@ -1,9 +1,9 @@
 package com.old.silence.job.server.job.task.support.stop;
 
 
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.server.domain.model.JobTask;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.server.domain.model.JobTask;
 
 import java.math.BigInteger;
 import java.util.List;

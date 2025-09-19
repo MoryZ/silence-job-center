@@ -1,7 +1,6 @@
 package com.old.silence.job.log.dto;
 
 
-import com.old.silence.job.log.center.constant.LogFieldConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +8,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.old.silence.job.log.constant.LogFieldConstants;
+
 
 public class LogContentDTO {
 
-    private List<TaskLogFieldDTO> fieldList;
+    private final List<TaskLogFieldDTO> fieldList;
 
     public LogContentDTO() {
         this.fieldList = new ArrayList<>();

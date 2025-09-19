@@ -1,10 +1,10 @@
 package com.old.silence.job.server.retry.task.support.generator.retry;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.RetryStatus;
-import com.old.silence.platform.job.common.core.enums.TaskGeneratorSceneEnum;
-import com.old.silence.platform.job.server.common.config.SystemProperties;
-import com.old.silence.platform.job.server.domain.service.AccessTemplate;
+import com.old.silence.job.common.enums.RetryStatus;
+import com.old.silence.job.common.enums.TaskGeneratorSceneEnum;
+import com.old.silence.job.server.common.config.SystemProperties;
+import com.old.silence.job.server.domain.service.AccessTemplate;
 
 import java.util.Optional;
 

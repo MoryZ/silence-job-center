@@ -1,7 +1,7 @@
 package com.old.silence.job.server.exception;
 
 
-import com.old.silence.job.common.core.exception.BaseSilenceJobException;
+import com.old.silence.job.common.exception.BaseSilenceJobException;
 
 /**
  * 服务端异常类

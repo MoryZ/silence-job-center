@@ -1,7 +1,7 @@
-package com.old.silence.job.client.core.util;
+package com.old.silence.job.client.util;
 
-import cn.hutool.core.lang.Pair;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
+import cn.hutool.lang.Pair;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

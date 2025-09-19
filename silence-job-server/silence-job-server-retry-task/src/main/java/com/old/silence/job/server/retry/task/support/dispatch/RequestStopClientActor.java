@@ -6,16 +6,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.client.model.request.StopRetryRequest;
-import com.old.silence.platform.job.common.core.model.ApiResult;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.cache.CacheRegisterTable;
-import com.old.silence.platform.job.server.common.dto.RegisterNodeInfo;
-import com.old.silence.platform.job.server.common.rpc.client.RequestBuilder;
-import com.old.silence.platform.job.server.pekko.ActorGenerator;
-import com.old.silence.platform.job.server.retry.task.client.RetryRpcClient;
-import com.old.silence.platform.job.server.retry.task.dto.RequestStopRetryTaskExecutorDTO;
-import com.old.silence.platform.job.server.retry.task.support.RetryTaskConverter;
+import com.old.silence.job.client.model.request.StopRetryRequest;
+import com.old.silence.job.common.model.ApiResult;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.cache.CacheRegisterTable;
+import com.old.silence.job.server.common.dto.RegisterNodeInfo;
+import com.old.silence.job.server.common.rpc.client.RequestBuilder;
+import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.server.retry.task.client.RetryRpcClient;
+import com.old.silence.job.server.retry.task.dto.RequestStopRetryTaskExecutorDTO;
+import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
 
 import java.util.Objects;
 

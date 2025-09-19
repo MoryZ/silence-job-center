@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.dto;
 
 
-import com.old.silence.job.common.core.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.JobNotifyScene;
 
 public class AlarmInfo {
 

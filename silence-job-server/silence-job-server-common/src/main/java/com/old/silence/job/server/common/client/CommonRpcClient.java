@@ -1,15 +1,14 @@
 package com.old.silence.job.server.common.client;
 
  
-import com.old.silence.job.common.core.model.ApiResult;
+import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.server.common.dto.PullRemoteNodeClientRegisterInfoDTO;
 import com.old.silence.job.server.common.rpc.client.RequestMethod;
 import com.old.silence.job.server.common.rpc.client.annotation.Body;
 import com.old.silence.job.server.common.rpc.client.annotation.Mapping;
-import com.old.silence.job.server.model.dto.ConfigDTO;
 
-import static com.old.silence.job.common.core.constant.SystemConstants.HTTP_PATH.GET_REG_NODES_AND_REFRESH;
-import static com.old.silence.job.common.core.constant.SystemConstants.HTTP_PATH.SYNC_CONFIG;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.GET_REG_NODES_AND_REFRESH;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.SYNC_CONFIG;
 
 /**
  * 调用客户端接口

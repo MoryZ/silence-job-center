@@ -1,7 +1,7 @@
 package com.old.silence.job.server.dto;
 
 
-import com.old.silence.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 public class NotifyConfigQueryVO  {
     private String groupName;

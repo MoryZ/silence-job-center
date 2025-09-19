@@ -3,7 +3,7 @@ package com.old.silence.job.server.common.dto;
 
 
 
-import com.old.silence.job.common.core.enums.JobOperationReason;
+import com.old.silence.job.common.enums.JobOperationReason;
 
 import java.math.BigInteger;
 

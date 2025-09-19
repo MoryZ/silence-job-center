@@ -1,10 +1,10 @@
-package com.old.silence.job.client.core.executor;
+package com.old.silence.job.client.executor;
 
-import cn.hutool.core.util.ServiceLoaderUtil;
-import com.old.silence.platform.job.client.common.SilenceJobLogThreadLocal;
-import com.old.silence.platform.job.client.common.SilenceThreadLocal;
-import com.old.silence.platform.job.client.common.threadlocal.CommonThreadLocal;
-import com.old.silence.platform.job.common.core.model.JobContext;
+import cn.hutool.util.ServiceLoaderUtil;
+import com.old.silence.job.client.common.SilenceJobLogThreadLocal;
+import com.old.silence.job.client.common.SilenceThreadLocal;
+import com.old.silence.job.client.common.threadlocal.CommonThreadLocal;
+import com.old.silence.job.common.model.JobContext;
 
 import java.util.Objects;
 

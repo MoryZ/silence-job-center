@@ -1,8 +1,10 @@
 package com.old.silence.job.log.lang;
 
-import cn.hutool.core.exceptions.UtilException;
 
 import java.io.Serializable;
+
+import com.old.silence.core.context.CommonErrors;
+
 
 /**
  * 通过StackTrace方式获取调用者。此方式效率最低，不推荐使用
@@ -23,7 +25,7 @@ public class StackTraceCaller implements Caller, Serializable {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
-            throw new UtilException(e, "[{}] not found!", className);
+            throw CommonErrors.INVALID_PARAMETER.createException(e, "[{}] not found!", className);
         }
     }
 

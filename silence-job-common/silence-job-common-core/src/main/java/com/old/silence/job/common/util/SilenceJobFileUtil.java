@@ -1,6 +1,5 @@
 package com.old.silence.job.common.util;
 
-import com.old.silence.job.common.core.exception.SilenceJobInnerExecutorException;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -10,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import com.old.silence.job.common.exception.SilenceJobInnerExecutorException;
 
 public class SilenceJobFileUtil {
 

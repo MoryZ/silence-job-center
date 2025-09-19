@@ -1,8 +1,8 @@
 package com.old.silence.job.log.factory;
 
-import com.old.silence.job.log.center.dialect.log4j.Log4jLogFactory;
-import com.old.silence.job.log.center.dialect.log4j2.Log4j2LogFactory;
-import com.old.silence.job.log.center.dialect.slf4j.Slf4jLogFactory;
+import com.old.silence.job.log.dialect.log4j.Log4jLogFactory;
+import com.old.silence.job.log.dialect.log4j2.Log4j2LogFactory;
+import com.old.silence.job.log.dialect.slf4j.Slf4jLogFactory;
 
 /**
  * 全局日志工厂类<br>

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.allocate.client;
 
-import cn.hutool.core.collection.CollectionUtil;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.server.common.ClientLoadBalance;
 import com.old.silence.job.server.common.allocate.client.ClientLoadBalanceManager.AllocationAlgorithmEnum;
 
@@ -56,7 +56,7 @@ public class ClientLoadBalanceLRU implements ClientLoadBalance {
                 delKeys.add(address);
             }
         }
-        if (CollectionUtil.isNotEmpty(delKeys)) {
+        if (CollectionUtils.isNotEmpty(delKeys)) {
             for (String delKey : delKeys) {
                 lruItem.remove(delKey);
             }

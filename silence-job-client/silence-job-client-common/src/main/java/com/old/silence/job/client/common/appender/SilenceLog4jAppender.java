@@ -6,11 +6,11 @@ import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.spi.ThrowableInformation;
 import org.slf4j.MDC;
-import com.old.silence.platform.job.client.common.log.LogReportFactory;
-import com.old.silence.platform.job.client.common.log.SilenceJobLogManager;
-import com.old.silence.platform.job.client.common.rpc.client.NettyChannel;
-import com.old.silence.platform.job.log.center.constant.LogFieldConstants;
-import com.old.silence.platform.job.log.center.dto.LogContentDTO;
+import com.old.silence.job.client.common.log.LogReportFactory;
+import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.common.rpc.client.NettyChannel;
+import com.old.silence.job.log.constant.LogFieldConstants;
+import com.old.silence.job.log.dto.LogContentDTO;
 
 import java.util.Objects;
 import java.util.Optional;

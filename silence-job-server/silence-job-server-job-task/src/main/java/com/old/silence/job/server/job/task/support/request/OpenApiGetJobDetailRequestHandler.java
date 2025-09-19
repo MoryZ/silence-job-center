@@ -1,21 +1,21 @@
 package com.old.silence.job.server.job.task.support.request;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.net.url.UrlQuery;
+import cn.hutool.lang.Assert;
+import cn.hutool.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH;
-import com.old.silence.platform.job.common.core.model.SilenceJobRequest;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.convert.JobResponseVOConverter;
-import com.old.silence.platform.job.server.common.handler.PostHttpRequestHandler;
-import com.old.silence.platform.job.server.common.vo.JobResponseVO;
-import com.old.silence.platform.job.server.domain.model.Job;
-import com.old.silence.platform.job.server.exception.SilenceJobServerException;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobDao;
+import com.old.silence.job.common.constant.SystemConstants.HTTP_PATH;
+import com.old.silence.job.common.model.SilenceJobRequest;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.convert.JobResponseVOConverter;
+import com.old.silence.job.server.common.handler.PostHttpRequestHandler;
+import com.old.silence.job.server.common.vo.JobResponseVO;
+import com.old.silence.job.server.domain.model.Job;
+import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
 
 /**
  * OPENAPI

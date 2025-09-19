@@ -1,9 +1,9 @@
 package com.old.silence.job.client.common.rpc.supports.scan;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.client.common.Lifecycle;
-import com.old.silence.platform.job.client.common.cache.EndPointInfoCache;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
+import com.old.silence.job.client.common.Lifecycle;
+import com.old.silence.job.client.common.cache.EndPointInfoCache;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
 
 import java.util.List;
 

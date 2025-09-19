@@ -1,8 +1,8 @@
 package com.old.silence.job.common.client.dto.request;
 
-import com.old.silence.job.common.core.enums.ExecutorType;
-import com.old.silence.job.common.core.enums.JobTaskType;
-import com.old.silence.job.common.core.enums.MapReduceStage;
+import com.old.silence.job.common.enums.ExecutorType;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.enums.MapReduceStage;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

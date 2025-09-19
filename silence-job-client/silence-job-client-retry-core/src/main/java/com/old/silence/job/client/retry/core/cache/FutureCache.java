@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.core.cache;
+package com.old.silence.job.client.retry.cache;
 
 import com.google.common.util.concurrent.ListenableFuture;
 

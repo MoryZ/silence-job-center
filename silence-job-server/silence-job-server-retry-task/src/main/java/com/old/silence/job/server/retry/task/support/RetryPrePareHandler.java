@@ -1,7 +1,7 @@
 package com.old.silence.job.server.retry.task.support;
 
-import com.old.silence.platform.job.common.core.enums.RetryTaskStatus;
-import com.old.silence.platform.job.server.retry.task.dto.RetryTaskPrepareDTO;
+import com.old.silence.job.common.enums.RetryTaskStatus;
+import com.old.silence.job.server.retry.task.dto.RetryTaskPrepareDTO;
 
 
 public interface RetryPrePareHandler {

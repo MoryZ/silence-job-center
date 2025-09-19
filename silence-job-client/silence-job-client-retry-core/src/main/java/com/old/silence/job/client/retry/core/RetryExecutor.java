@@ -1,7 +1,7 @@
 package com.old.silence.job.client.retry.core;
 
 import com.github.rholder.retry.Retryer;
-import com.old.silence.platform.job.client.core.retryer.RetryerInfo;
+import com.old.silence.job.client.retryer.RetryerInfo;
 
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;

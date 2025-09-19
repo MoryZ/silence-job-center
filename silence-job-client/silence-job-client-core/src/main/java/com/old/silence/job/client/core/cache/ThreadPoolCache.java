@@ -1,4 +1,4 @@
-package com.old.silence.job.client.core.cache;
+package com.old.silence.job.client.cache;
 
 
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;

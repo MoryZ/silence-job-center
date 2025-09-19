@@ -1,9 +1,9 @@
 package com.old.silence.job.client.common.rpc.supports.handler;
 
 
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpRequest;
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpResponse;
-import com.old.silence.platform.job.common.core.grpc.auto.GrpcSilenceJobRequest;
+import com.old.silence.job.client.common.rpc.supports.http.HttpRequest;
+import com.old.silence.job.client.common.rpc.supports.http.HttpResponse;
+import com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest;
 
 
 

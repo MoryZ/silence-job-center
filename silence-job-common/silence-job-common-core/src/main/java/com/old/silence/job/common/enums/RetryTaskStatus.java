@@ -1,12 +1,13 @@
 package com.old.silence.job.common.enums;
 
 import org.springframework.lang.NonNull;
-import com.old.silence.core.enums.EnumValue;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+
+import com.old.silence.core.enums.EnumValue;
 
 /**
  * 重试任务状态终态枚举

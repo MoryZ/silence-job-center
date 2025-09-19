@@ -1,9 +1,9 @@
-package com.old.silence.job.client.retry.core.retryer;
+package com.old.silence.job.client.retry.retryer;
 
-import com.old.silence.platform.job.client.core.RetryOperations;
-import com.old.silence.platform.job.client.core.intercepter.RetrySiteSnapshot;
-import com.old.silence.platform.job.client.core.strategy.ExecutorMethod;
-import com.old.silence.platform.job.client.core.strategy.RetryStrategy;
+import com.old.silence.job.client.RetryOperations;
+import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
+import com.old.silence.job.client.strategy.ExecutorMethod;
+import com.old.silence.job.client.strategy.RetryStrategy;
 
 import java.util.Objects;
 

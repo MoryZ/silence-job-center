@@ -1,9 +1,8 @@
 package com.old.silence.job.common.alarm.email;
 
+
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.util.StrUtil;
-
-
 
 /**
  * 邮件异常

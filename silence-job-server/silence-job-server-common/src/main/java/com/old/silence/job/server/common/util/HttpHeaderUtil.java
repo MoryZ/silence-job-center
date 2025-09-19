@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.util;
 
 import io.netty.handler.codec.http.HttpHeaders;
-import com.old.silence.job.common.core.enums.HeadersEnum;
+import com.old.silence.job.common.enums.HeadersEnum;
 
 
 public final class HttpHeaderUtil {

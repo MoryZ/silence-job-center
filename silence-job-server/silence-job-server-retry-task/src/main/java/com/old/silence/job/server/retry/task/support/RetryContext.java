@@ -1,9 +1,9 @@
 package com.old.silence.job.server.retry.task.support;
 
-import com.old.silence.platform.job.server.common.WaitStrategy;
-import com.old.silence.platform.job.server.common.dto.RegisterNodeInfo;
-import com.old.silence.platform.job.server.domain.model.Retry;
-import com.old.silence.platform.job.server.domain.model.RetrySceneConfig;
+import com.old.silence.job.server.common.WaitStrategy;
+import com.old.silence.job.server.common.dto.RegisterNodeInfo;
+import com.old.silence.job.server.domain.model.Retry;
+import com.old.silence.job.server.domain.model.RetrySceneConfig;
 
 import java.util.Set;
 

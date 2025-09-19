@@ -1,35 +1,35 @@
 package com.old.silence.job.server.job.task.support.executor.workflow;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.lang.Assert;
+import cn.hutool.util.StrUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.common.core.enums.JobArgsType;
-import com.old.silence.platform.job.common.core.enums.WorkflowNodeType;
-import com.old.silence.platform.job.server.domain.model.JobTask;
-import com.old.silence.platform.job.server.domain.model.JobTaskBatch;
-import com.old.silence.platform.job.server.exception.SilenceJobServerException;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao;
-import com.old.silence.platform.job.server.job.task.dto.WorkflowNodeTaskExecuteDTO;
-import com.old.silence.platform.job.server.job.task.support.WorkflowExecutor;
-import com.old.silence.platform.job.server.job.task.support.WorkflowTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.generator.batch.JobTaskBatchGenerator;
-import com.old.silence.platform.job.server.job.task.support.generator.batch.JobTaskBatchGeneratorContext;
-import com.old.silence.platform.job.server.job.task.support.handler.DistributedLockHandler;
-import com.old.silence.platform.job.server.job.task.support.handler.WorkflowBatchHandler;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.common.enums.JobArgsType;
+import com.old.silence.job.common.enums.WorkflowNodeType;
+import com.old.silence.job.server.domain.model.JobTask;
+import com.old.silence.job.server.domain.model.JobTaskBatch;
+import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
+import com.old.silence.job.server.job.task.dto.WorkflowNodeTaskExecuteDTO;
+import com.old.silence.job.server.job.task.support.WorkflowExecutor;
+import com.old.silence.job.server.job.task.support.WorkflowTaskConverter;
+import com.old.silence.job.server.job.task.support.generator.batch.JobTaskBatchGenerator;
+import com.old.silence.job.server.job.task.support.generator.batch.JobTaskBatchGeneratorContext;
+import com.old.silence.job.server.job.task.support.handler.DistributedLockHandler;
+import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
 
 import java.text.MessageFormat;
 import java.time.Duration;
 import java.util.List;
 
-import static com.old.silence.platform.job.common.core.enums.JobOperationReason.WORKFLOW_SUCCESSOR_SKIP_EXECUTION;
+import static com.old.silence.job.common.enums.JobOperationReason.WORKFLOW_SUCCESSOR_SKIP_EXECUTION;
 
 
 public abstract class AbstractWorkflowExecutor implements WorkflowExecutor, InitializingBean {

@@ -1,8 +1,9 @@
 package com.old.silence.job.server.common.util;
 
 import cn.hutool.core.lang.Assert;
-import com.old.silence.job.common.core.util.CronExpression;
-import com.old.silence.job.server.exception.SilenceJobServerException;
+
+import com.old.silence.core.context.CommonErrors;
+import com.old.silence.job.common.util.CronExpression;
 
 import java.text.ParseException;
 import java.time.Duration;
@@ -40,8 +41,8 @@ public class CronUtils {
 
     public static long getExecuteInterval(String cron) {
         List<String> executeTimeByCron = getExecuteTimeByCron(cron, 2);
-        Assert.isTrue(!executeTimeByCron.isEmpty(), () -> new SilenceJobServerException("表达式解析有误.[{}]", cron));
-        Assert.isTrue(executeTimeByCron.size() == 2, () -> new SilenceJobServerException("表达式必须支持多次执行.[{}]", cron));
+        Assert.isTrue(!executeTimeByCron.isEmpty(), () -> CommonErrors.INVALID_PARAMETER.createException("表达式解析有误.[{}]", cron));
+        Assert.isTrue(executeTimeByCron.size() == 2, () -> CommonErrors.INVALID_PARAMETER.createException("表达式必须支持多次执行.[{}]", cron));
         Instant first = Instant.parse(executeTimeByCron.get(0));
         Instant second = Instant.parse(executeTimeByCron.get(1));
         Duration duration = Duration.between(first, second);

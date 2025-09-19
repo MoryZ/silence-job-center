@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.core.intercepter;
+package com.old.silence.job.client.retry.intercepter;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.common.core.constant.SystemConstants;
-import com.old.silence.platform.job.common.core.model.SilenceJobHeaders;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.model.SilenceJobHeaders;
+import com.old.silence.job.log.SilenceJobLog;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
@@ -81,7 +81,7 @@ public class SilenceRetryHeaderAspect {
             return;
         }
 
-        // 服务端重试的在com.old.silence.silence.job.client.core.client.SilenceRetryEndPoint.dispatch 中进行清除threadLocal
+        // 服务端重试的在com.old.silence.silence.job.client.client.SilenceRetryEndPoint.dispatch 中进行清除threadLocal
         if (Objects.nonNull(RetrySiteSnapshot.getStage()) && RetrySiteSnapshot.EnumStage.REMOTE.getStage() == RetrySiteSnapshot.getStage()) {
             return;
         }

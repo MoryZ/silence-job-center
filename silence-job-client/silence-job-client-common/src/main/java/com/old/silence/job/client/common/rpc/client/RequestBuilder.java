@@ -1,10 +1,10 @@
 package com.old.silence.job.client.common.rpc.client;
 
-import com.old.silence.platform.job.client.common.config.SilenceJobProperties;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.enums.RpcType;
-import com.old.silence.platform.job.common.core.model.ApiResult;
+import com.old.silence.job.client.common.config.SilenceJobProperties;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.RpcType;
+import com.old.silence.job.common.model.ApiResult;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

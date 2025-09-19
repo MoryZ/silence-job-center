@@ -2,7 +2,7 @@ package com.old.silence.job.server.retry.task.support.generator.retry;
 
 
 
-import com.old.silence.platform.job.common.core.enums.RetryStatus;
+import com.old.silence.job.common.enums.RetryStatus;
 
 import java.util.List;
 

@@ -1,13 +1,13 @@
-package com.old.silence.job.client.core.openapi;
+package com.old.silence.job.client.openapi;
 
 
 
-import com.old.silence.platform.job.client.common.annotation.Mapping;
-import com.old.silence.platform.job.client.common.rpc.client.RequestMethod;
-import com.old.silence.platform.job.client.core.dto.JobTriggerDTO;
-import com.old.silence.platform.job.client.core.dto.RequestAddOrUpdateJobDTO;
-import com.old.silence.platform.job.client.core.dto.RequestUpdateStatusDTO;
-import com.old.silence.platform.job.common.core.model.ApiResult;
+import com.old.silence.job.client.common.annotation.Mapping;
+import com.old.silence.job.client.common.rpc.client.RequestMethod;
+import com.old.silence.job.client.dto.JobTriggerDTO;
+import com.old.silence.job.client.dto.RequestAddOrUpdateJobDTO;
+import com.old.silence.job.client.dto.RequestUpdateStatusDTO;
+import com.old.silence.job.common.model.ApiResult;
 
 import java.math.BigInteger;
 import java.util.Set;

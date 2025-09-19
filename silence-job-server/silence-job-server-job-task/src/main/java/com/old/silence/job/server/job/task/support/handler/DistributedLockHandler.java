@@ -8,11 +8,11 @@ import com.github.rholder.retry.Retryer;
 import com.github.rholder.retry.RetryerBuilder;
 import com.github.rholder.retry.StopStrategies;
 import com.github.rholder.retry.WaitStrategies;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.lock.LockBuilder;
-import com.old.silence.platform.job.server.common.lock.LockManager;
-import com.old.silence.platform.job.server.common.lock.LockProvider;
-import com.old.silence.platform.job.server.job.task.support.LockExecutor;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.lock.LockBuilder;
+import com.old.silence.job.server.common.lock.LockManager;
+import com.old.silence.job.server.common.lock.LockProvider;
+import com.old.silence.job.server.job.task.support.LockExecutor;
 
 import java.time.Duration;
 import java.util.concurrent.ExecutionException;

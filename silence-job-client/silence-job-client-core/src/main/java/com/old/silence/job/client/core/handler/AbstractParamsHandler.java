@@ -1,17 +1,17 @@
-package com.old.silence.job.client.core.handler;
+package com.old.silence.job.client.handler;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.lang.Assert;
+import cn.hutool.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.common.core.enums.TriggerType;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.platform.job.client.core.dto.RequestAddOrUpdateJobDTO;
-import com.old.silence.platform.job.common.core.enums.AllocationAlgorithmEnum;
-import com.old.silence.platform.job.common.core.enums.ExecutorType;
-import com.old.silence.platform.job.common.core.enums.JobArgsType;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.util.JsonUtils;
+import com.old.silence.job.common.enums.TriggerType;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
+import com.old.silence.job.client.dto.RequestAddOrUpdateJobDTO;
+import com.old.silence.job.common.enums.AllocationAlgorithmEnum;
+import com.old.silence.job.common.enums.ExecutorType;
+import com.old.silence.job.common.enums.JobArgsType;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.util.JsonUtils;
 
 
 
@@ -19,8 +19,8 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.old.silence.platform.job.common.core.enums.TriggerType.SCHEDULED_TIME;
-import static com.old.silence.platform.job.common.core.enums.TriggerType.WORK_FLOW;
+import static com.old.silence.job.common.enums.TriggerType.SCHEDULED_TIME;
+import static com.old.silence.job.common.enums.TriggerType.WORK_FLOW;
 
 
 public abstract class AbstractParamsHandler<H, R> extends AbstractRequestHandler<R> {

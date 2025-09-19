@@ -6,21 +6,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Lists;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.common.core.enums.RetryTaskExecutorSceneEnum;
-import com.old.silence.platform.job.server.domain.model.RetryTask;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.RetryTaskDao;
-import com.old.silence.platform.job.server.retry.task.dto.RetryTaskPrepareDTO;
-import com.old.silence.platform.job.server.retry.task.support.RetryPrePareHandler;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.common.enums.RetryTaskExecutorSceneEnum;
+import com.old.silence.job.server.domain.model.RetryTask;
+import com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskDao;
+import com.old.silence.job.server.retry.task.dto.RetryTaskPrepareDTO;
+import com.old.silence.job.server.retry.task.support.RetryPrePareHandler;
 
 import java.util.List;
 import java.util.Objects;
 
-import static com.old.silence.platform.job.common.core.enums.RetryTaskStatus.NOT_COMPLETE;
-import static com.old.silence.platform.job.common.core.enums.RetryTaskStatus.SUCCESS;
-import static com.old.silence.platform.job.server.pekko.ActorGenerator.RETRY_TASK_PREPARE_ACTOR;
+import static com.old.silence.job.common.enums.RetryTaskStatus.NOT_COMPLETE;
+import static com.old.silence.job.common.enums.RetryTaskStatus.SUCCESS;
+import static com.old.silence.job.server.pekko.ActorGenerator.RETRY_TASK_PREPARE_ACTOR;
 
 
 

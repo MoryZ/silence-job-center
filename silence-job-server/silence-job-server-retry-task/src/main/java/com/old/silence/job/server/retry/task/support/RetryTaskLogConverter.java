@@ -3,14 +3,14 @@ package com.old.silence.job.server.retry.task.support;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import com.old.silence.platform.job.server.common.dto.RetryLogMetaDTO;
-import com.old.silence.platform.job.server.domain.model.Retry;
-import com.old.silence.platform.job.server.domain.model.RetryTask;
-import com.old.silence.platform.job.server.domain.model.RetryTaskLogMessage;
-import com.old.silence.platform.job.server.retry.task.dto.RequestCallbackExecutorDTO;
-import com.old.silence.platform.job.server.retry.task.dto.RequestRetryExecutorDTO;
-import com.old.silence.platform.job.server.retry.task.dto.RetryMergePartitionTaskDTO;
-import com.old.silence.platform.job.server.retry.task.dto.RetryTaskLogDTO;
+import com.old.silence.job.server.common.dto.RetryLogMetaDTO;
+import com.old.silence.job.server.domain.model.Retry;
+import com.old.silence.job.server.domain.model.RetryTask;
+import com.old.silence.job.server.domain.model.RetryTaskLogMessage;
+import com.old.silence.job.server.retry.task.dto.RequestCallbackExecutorDTO;
+import com.old.silence.job.server.retry.task.dto.RequestRetryExecutorDTO;
+import com.old.silence.job.server.retry.task.dto.RetryMergePartitionTaskDTO;
+import com.old.silence.job.server.retry.task.dto.RetryTaskLogDTO;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.log;
 
-import com.old.silence.job.log.center.enums.LogTypeEnum;
+import com.old.silence.job.log.enums.LogTypeEnum;
 import com.old.silence.job.server.common.LogStorage;
 
 import java.util.Map;

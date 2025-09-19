@@ -1,12 +1,20 @@
 package com.old.silence.job.log.factory;
 
 
+
+import cn.hutool.core.io.resource.ResourceUtil;
+import cn.hutool.core.lang.caller.CallerUtil;
+import cn.hutool.core.util.ServiceLoaderUtil;
+
 import com.old.silence.job.log.dialect.Log;
 import com.old.silence.job.log.dialect.console.ConsoleLogFactory;
 import com.old.silence.job.log.dialect.jdk.JdkLogFactory;
 
 import java.net.URL;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.springframework.util.ResourceUtils;
 
 /**
  * 日志工厂类
@@ -31,7 +39,7 @@ public abstract class LogFactory {
      */
     public LogFactory(String name) {
         this.name = name;
-        logCache = new SafeConcurrentHashMap<>();
+        logCache = new ConcurrentHashMap<>();
     }
 
     /**
@@ -155,7 +163,7 @@ public abstract class LogFactory {
      * @return 日志实现类
      */
     public static LogFactory create() {
-        final LogFactory factory = doCreate();
+        LogFactory factory = doCreate();
         //factory.getLog(LogFactory.class).debug("Use [{}] Logger As Default.", factory.name);
         factory.getLog(LogFactory.class);
         return factory;
@@ -169,13 +177,13 @@ public abstract class LogFactory {
      * @return 日志实现类
      */
     private static LogFactory doCreate() {
-        final LogFactory factory = ServiceLoaderUtil.loadFirstAvailable(LogFactory.class);
+        LogFactory factory = ServiceLoaderUtil.loadFirstAvailable(LogFactory.class);
         if (null != factory) {
             return factory;
         }
 
         // 未找到任何可支持的日志库时判断依据：当JDK Logging的配置文件位于classpath中，使用JDK Logging，否则使用Console
-        final URL url = ResourceUtil.getResource("logging.properties");
+        URL url = ResourceUtil.getResource("logging.properties");
         return (null != url) ? new JdkLogFactory() : new ConsoleLogFactory();
     }
     // ------------------------------------------------------------------------- Static end

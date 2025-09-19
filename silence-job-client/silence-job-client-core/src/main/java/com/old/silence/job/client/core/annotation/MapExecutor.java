@@ -1,6 +1,6 @@
-package com.old.silence.job.client.core.annotation;
+package com.old.silence.job.client.annotation;
 
-import com.old.silence.platform.job.common.core.constant.SystemConstants;
+import com.old.silence.job.common.constant.SystemConstants;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,14 +1,14 @@
 package com.old.silence.job.log.dialect.slf4j;
 
-import cn.hutool.core.util.StrUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.slf4j.spi.LocationAwareLogger;
-import com.old.silence.job.log.center.constant.LogFieldConstants;
-import com.old.silence.job.log.center.dialect.AbstractLog;
+import com.old.silence.job.log.constant.LogFieldConstants;
+import com.old.silence.job.log.dialect.AbstractLog;
 
-import static com.old.silence.job.log.center.factory.LogFactory.extractThrowable;
+import static com.old.silence.job.log.factory.LogFactory.extractThrowable;
 
 
 /**
@@ -150,7 +150,7 @@ public class Slf4jLog extends AbstractLog {
 
     // ------------------------------------------------------------------------- Log
     @Override
-    public void log(com.old.silence.job.log.center.level.Level level, Boolean remote, String fqcn, String format, Object... arguments) {
+    public void log(com.old.silence.job.log.level.Level level, Boolean remote, String fqcn, String format, Object... arguments) {
         switch (level) {
             case TRACE:
                 trace(remote, fqcn, format, arguments);
@@ -170,7 +170,7 @@ public class Slf4jLog extends AbstractLog {
             case OFF:
                 break;
             default:
-                throw new Error(StrUtil.format("Can not identify level: {}", level));
+                throw new Error(String.format("Can not identify level: %s", level));
         }
     }
 
@@ -200,7 +200,7 @@ public class Slf4jLog extends AbstractLog {
      * @return {@link Logger}
      */
     private static Logger getSlf4jLogger(Class<?> clazz) {
-        return (null == clazz) ? LoggerFactory.getLogger(StrUtil.EMPTY) : LoggerFactory.getLogger(clazz);
+        return (null == clazz) ? LoggerFactory.getLogger(StringUtils.EMPTY) : LoggerFactory.getLogger(clazz);
     }
 
     /**

@@ -1,8 +1,8 @@
 package com.old.silence.job.server.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.old.silence.job.common.core.enums.JobArgsType;
-import com.old.silence.job.common.core.enums.JobTaskStatus;
+import com.old.silence.job.common.enums.JobArgsType;
+import com.old.silence.job.common.enums.JobTaskStatus;
 
 import java.math.BigInteger;
 import java.time.Instant;

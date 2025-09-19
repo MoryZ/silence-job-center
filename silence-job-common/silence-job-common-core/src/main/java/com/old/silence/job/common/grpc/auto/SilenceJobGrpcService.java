@@ -52,7 +52,7 @@ public final class SilenceJobGrpcService {
       " \001(\0132\t.Metadata\022\014\n\004body\030\003 \001(\t\"J\n\nGrpcRes" +
       "ult\022\r\n\005reqId\030\001 \001(\003\022\016\n\006status\030\002 \001(\005\022\017\n\007me" +
       "ssage\030\003 \001(\t\022\014\n\004data\030\004 \001(\tB6\n2com.old.sil" +
-      "ence.job.common.core.grpc.autoP" +
+      "ence.job.common.grpc.autoP" +
       "\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

@@ -1,7 +1,7 @@
-package com.old.silence.job.client.retry.core.log;
+package com.old.silence.job.client.retry.log;
 
 
-import com.old.silence.platform.job.client.common.log.LogMeta;
+import com.old.silence.job.client.common.log.LogMeta;
 
 import java.math.BigInteger;
 

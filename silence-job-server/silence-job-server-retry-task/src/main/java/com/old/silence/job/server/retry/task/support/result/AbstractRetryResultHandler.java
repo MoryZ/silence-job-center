@@ -1,6 +1,6 @@
 package com.old.silence.job.server.retry.task.support.result;
 
-import com.old.silence.platform.job.server.retry.task.support.RetryResultHandler;
+import com.old.silence.job.server.retry.task.support.RetryResultHandler;
 
 /**
  * <p>

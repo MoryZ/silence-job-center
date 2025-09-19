@@ -1,10 +1,10 @@
 package com.old.silence.job.client.common.log;
 
-import cn.hutool.core.util.ServiceLoaderUtil;
-import com.old.silence.platform.job.client.common.SilenceJobLogThreadLocal;
-import com.old.silence.platform.job.client.common.SilenceThreadLocal;
-import com.old.silence.platform.job.client.common.threadlocal.CommonThreadLocal;
-import com.old.silence.platform.job.log.center.enums.LogTypeEnum;
+import cn.hutool.util.ServiceLoaderUtil;
+import com.old.silence.job.client.common.SilenceJobLogThreadLocal;
+import com.old.silence.job.client.common.SilenceThreadLocal;
+import com.old.silence.job.client.common.threadlocal.CommonThreadLocal;
+import com.old.silence.job.log.enums.LogTypeEnum;
 
 import java.util.Objects;
 

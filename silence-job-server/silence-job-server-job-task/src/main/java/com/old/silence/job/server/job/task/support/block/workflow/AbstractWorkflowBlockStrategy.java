@@ -2,9 +2,9 @@ package com.old.silence.job.server.job.task.support.block.workflow;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.transaction.annotation.Transactional;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.server.job.task.support.BlockStrategy;
-import com.old.silence.platform.job.server.job.task.support.block.job.BlockStrategyContext;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.server.job.task.support.BlockStrategy;
+import com.old.silence.job.server.job.task.support.block.job.BlockStrategyContext;
 
 
 public abstract class AbstractWorkflowBlockStrategy implements BlockStrategy, InitializingBean {

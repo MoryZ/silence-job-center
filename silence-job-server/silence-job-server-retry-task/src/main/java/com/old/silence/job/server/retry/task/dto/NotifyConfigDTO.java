@@ -1,8 +1,8 @@
 package com.old.silence.job.server.retry.task.dto;
 
 
-import com.old.silence.platform.job.common.core.enums.JobNotifyScene;
-import com.old.silence.platform.job.common.core.enums.NotifyType;
+import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.NotifyType;
 
 import java.math.BigInteger;
 import java.util.List;

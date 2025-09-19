@@ -2,13 +2,13 @@ package com.old.silence.job.client.common.handler;
 
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.common.Lifecycle;
-import com.old.silence.platform.job.client.common.NettyClient;
-import com.old.silence.platform.job.client.common.cache.GroupVersionCache;
-import com.old.silence.platform.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.model.dto.ConfigDTO;
+import com.old.silence.job.client.common.Lifecycle;
+import com.old.silence.job.client.common.NettyClient;
+import com.old.silence.job.client.common.cache.GroupVersionCache;
+import com.old.silence.job.client.common.rpc.client.RequestBuilder;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.model.dto.ConfigDTO;
 
 import java.util.Objects;
 import java.util.concurrent.Executors;

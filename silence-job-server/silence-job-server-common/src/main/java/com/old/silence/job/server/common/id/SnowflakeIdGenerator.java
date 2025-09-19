@@ -1,9 +1,9 @@
 package com.old.silence.job.server.common.id;
 
-import cn.hutool.core.lang.Snowflake;
-import cn.hutool.core.util.IdUtil;
+import cn.hutool.lang.Snowflake;
+import cn.hutool.util.IdUtil;
 import org.springframework.stereotype.Component;
-import com.old.silence.job.common.core.enums.IdGeneratorMode;
+import com.old.silence.job.common.enums.IdGeneratorMode;
 
 /**
  * 使用hutool自带的雪花算法生成id

@@ -6,17 +6,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.server.domain.model.WorkflowTaskBatch;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.WorkflowTaskBatchDao;
-import com.old.silence.platform.job.server.job.task.dto.WorkflowTaskPrepareDTO;
-import com.old.silence.platform.job.server.job.task.support.WorkflowPrePareHandler;
-import com.old.silence.platform.job.server.pekko.ActorGenerator;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.server.domain.model.WorkflowTaskBatch;
+import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowTaskBatchDao;
+import com.old.silence.job.server.job.task.dto.WorkflowTaskPrepareDTO;
+import com.old.silence.job.server.job.task.support.WorkflowPrePareHandler;
+import com.old.silence.job.server.pekko.ActorGenerator;
 
 import java.util.List;
 
-import static com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus.NOT_COMPLETE;
+import static com.old.silence.job.common.enums.JobTaskBatchStatus.NOT_COMPLETE;
 
 
 @Component(ActorGenerator.WORKFLOW_TASK_PREPARE_ACTOR)

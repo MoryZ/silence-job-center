@@ -1,6 +1,6 @@
 package com.old.silence.job.common.model;
 
-import com.old.silence.job.common.core.constant.SystemConstants;
+import com.old.silence.job.common.constant.SystemConstants;
 
 
 /**

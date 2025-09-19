@@ -1,14 +1,15 @@
 package com.old.silence.job.log.dialect;
 
 
-import com.old.silence.job.log.center.factory.LogFactory;
-import com.old.silence.job.log.center.lang.LogCaller;
-import com.old.silence.job.log.center.level.DebugLog;
-import com.old.silence.job.log.center.level.ErrorLog;
-import com.old.silence.job.log.center.level.InfoLog;
-import com.old.silence.job.log.center.level.Level;
-import com.old.silence.job.log.center.level.TraceLog;
-import com.old.silence.job.log.center.level.WarnLog;
+import com.old.silence.job.log.factory.LogFactory;
+import com.old.silence.job.log.lang.LogCaller;
+import com.old.silence.job.log.level.DebugLog;
+import com.old.silence.job.log.level.ErrorLog;
+import com.old.silence.job.log.level.InfoLog;
+import com.old.silence.job.log.level.Level;
+import com.old.silence.job.log.level.TraceLog;
+import com.old.silence.job.log.level.WarnLog;
+import com.old.silence.job.log.level.InfoLog;
 
 /**
  * 日志统一接口

@@ -3,8 +3,8 @@ package com.old.silence.job.client.common.rpc.supports.handler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpRequest;
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpResponse;
+import com.old.silence.job.client.common.rpc.supports.http.HttpRequest;
+import com.old.silence.job.client.common.rpc.supports.http.HttpResponse;
 
 
 

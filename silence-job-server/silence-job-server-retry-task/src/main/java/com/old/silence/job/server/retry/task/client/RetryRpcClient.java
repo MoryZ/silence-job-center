@@ -2,21 +2,21 @@ package com.old.silence.job.server.retry.task.client;
 
 
  
-import com.old.silence.platform.job.client.model.GenerateRetryIdempotentIdDTO;
-import com.old.silence.platform.job.client.model.request.DispatchRetryRequest;
-import com.old.silence.platform.job.client.model.request.RetryCallbackRequest;
-import com.old.silence.platform.job.client.model.request.StopRetryRequest;
-import com.old.silence.platform.job.common.core.model.ApiResult;
-import com.old.silence.platform.job.common.core.model.SilenceJobHeaders;
-import com.old.silence.platform.job.server.common.rpc.client.RequestMethod;
-import com.old.silence.platform.job.server.common.rpc.client.annotation.Body;
-import com.old.silence.platform.job.server.common.rpc.client.annotation.Header;
-import com.old.silence.platform.job.server.common.rpc.client.annotation.Mapping;
+import com.old.silence.job.client.model.GenerateRetryIdempotentIdDTO;
+import com.old.silence.job.client.model.request.DispatchRetryRequest;
+import com.old.silence.job.client.model.request.RetryCallbackRequest;
+import com.old.silence.job.client.model.request.StopRetryRequest;
+import com.old.silence.job.common.model.ApiResult;
+import com.old.silence.job.common.model.SilenceJobHeaders;
+import com.old.silence.job.server.common.rpc.client.RequestMethod;
+import com.old.silence.job.server.common.rpc.client.annotation.Body;
+import com.old.silence.job.server.common.rpc.client.annotation.Header;
+import com.old.silence.job.server.common.rpc.client.annotation.Mapping;
 
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.RETRY_CALLBACK;
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.RETRY_DISPATCH;
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.RETRY_GENERATE_IDEM_ID;
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.RETRY_STOP;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.RETRY_CALLBACK;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.RETRY_DISPATCH;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.RETRY_GENERATE_IDEM_ID;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.RETRY_STOP;
 
 /**
  * 调用客户端接口

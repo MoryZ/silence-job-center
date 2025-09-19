@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.id;
 
-import com.old.silence.job.common.core.enums.IdGeneratorMode;
+import com.old.silence.job.common.enums.IdGeneratorMode;
 
 /**
  * 分布式Id生成器

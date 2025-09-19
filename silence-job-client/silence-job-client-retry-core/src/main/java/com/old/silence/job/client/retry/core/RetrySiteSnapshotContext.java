@@ -1,6 +1,6 @@
 package com.old.silence.job.client.retry.core;
 
-import com.old.silence.platform.job.client.core.intercepter.ThreadLockRetrySiteSnapshotContext;
+import com.old.silence.job.client.intercepter.ThreadLockRetrySiteSnapshotContext;
 
 /**
  * 重试现场记录上下文

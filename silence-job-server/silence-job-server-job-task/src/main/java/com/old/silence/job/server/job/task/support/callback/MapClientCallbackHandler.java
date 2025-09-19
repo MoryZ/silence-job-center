@@ -1,10 +1,10 @@
 package com.old.silence.job.server.job.task.support.callback;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.WorkflowTaskBatchDao;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowTaskBatchDao;
 
 
 @Component

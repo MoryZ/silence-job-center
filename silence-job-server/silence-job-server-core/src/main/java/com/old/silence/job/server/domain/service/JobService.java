@@ -1,0 +1,304 @@
+package com.old.silence.job.server.domain.service;
+
+import cn.hutool.lang.Assert;
+import cn.hutool.util.HashUtil;
+import cn.hutool.util.StrUtil;
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
+import com.alibaba.fastjson2.JSON;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
+import com.baomidou.mybatisplus.metadata.IPage;
+import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.enums.JobTaskExecutorScene;
+import com.old.silence.job.common.enums.SystemTaskType;
+import com.old.silence.job.common.util.StreamUtils;
+import com.old.silence.job.server.common.WaitStrategy;
+import com.old.silence.job.server.common.config.SystemProperties;
+import com.old.silence.job.server.common.dto.PartitionTask;
+import com.old.silence.job.server.common.strategy.WaitStrategies;
+import com.old.silence.job.server.common.util.CronUtils;
+import com.old.silence.job.server.common.util.DateUtils;
+import com.old.silence.job.server.common.util.PartitionTaskUtils;
+import com.old.silence.job.server.domain.model.GroupConfig;
+import com.old.silence.job.server.domain.model.Job;
+import com.old.silence.job.server.domain.model.JobSummary;
+import com.old.silence.job.server.domain.model.SystemUser;
+import com.old.silence.job.server.dto.ExportJobVO;
+import com.old.silence.job.server.dto.JobCommand;
+import com.old.silence.job.server.dto.JobTriggerVO;
+import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobSummaryDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.SystemUserDao;
+import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;
+import com.old.silence.job.server.job.task.support.JobPrepareHandler;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.cache.ResidentTaskCache;
+import com.old.silence.job.server.vo.JobResponseVO;
+import com.old.silence.job.server.web.api.assembler.JobMapper;
+import com.old.silence.job.server.web.api.assembler.JobResponseVOMapper;
+import com.old.silence.job.server.web.domain.service.handler.GroupHandler;
+import com.old.silence.util.CollectionUtils;
+
+
+@Service
+@Validated
+public class JobService {
+
+    private final SystemProperties systemProperties;
+    private final JobDao jobDao;
+    private final JobPrepareHandler terminalJobPrepareHandler;
+    private final AccessTemplate accessTemplate;
+    private final GroupHandler groupHandler;
+    private final JobSummaryDao jobSummaryDao;
+    private final SystemUserDao systemUserDao;
+
+    public JobService(SystemProperties systemProperties, JobDao jobDao,
+                      JobPrepareHandler terminalJobPrepareHandler, AccessTemplate accessTemplate,
+                      GroupHandler groupHandler, JobSummaryDao jobSummaryDao,
+                      SystemUserDao systemUserDao) {
+        this.systemProperties = systemProperties;
+        this.jobDao = jobDao;
+        this.terminalJobPrepareHandler = terminalJobPrepareHandler;
+        this.accessTemplate = accessTemplate;
+        this.groupHandler = groupHandler;
+        this.jobSummaryDao = jobSummaryDao;
+        this.systemUserDao = systemUserDao;
+    }
+
+    private static Long calculateNextTriggerAt(Job job, Long time) {
+        if (Objects.equals(job.getTriggerType().getValue().intValue(), SystemConstants.WORKFLOW_TRIGGER_TYPE)) {
+            return 0L;
+        }
+
+        WaitStrategy waitStrategy = WaitStrategies.WaitStrategyEnum.getWaitStrategy(job.getTriggerType().getValue());
+        WaitStrategies.WaitStrategyContext waitStrategyContext = new WaitStrategies.WaitStrategyContext();
+        waitStrategyContext.setTriggerInterval(job.getTriggerInterval());
+        waitStrategyContext.setNextTriggerAt(time);
+        return waitStrategy.computeTriggerTime(waitStrategyContext);
+    }
+
+    
+    public IPage<JobResponseVO> getJobPage(Page<Job> pageDTO, QueryWrapper<Job> queryWrapper) {
+
+        queryWrapper.eq("namespace_id", "764d604ec6fc45f68cd92514c40e9e1a");
+        Page<Job> selectPage = jobDao.selectPage(pageDTO, queryWrapper);
+
+        var responseVOIPage = selectPage.convert(JobResponseVOMapper.INSTANCE::convert);
+        List<JobResponseVO> jobResponseList = responseVOIPage.getRecords();
+
+        for (JobResponseVO jobResponseVO : jobResponseList) {
+            if (Objects.nonNull(jobResponseVO.getOwnerId())) {
+                SystemUser systemUser = systemUserDao.selectById(jobResponseVO.getOwnerId());
+                jobResponseVO.setOwnerName(systemUser.getUsername());
+            }
+        }
+        responseVOIPage.setRecords(jobResponseList);
+        return responseVOIPage;
+    }
+
+    
+    public JobResponseVO getJobDetail(BigInteger id) {
+        Job job = jobDao.selectById(id);
+        return JobResponseVOMapper.INSTANCE.convert(job);
+    }
+
+    
+    public List<String> getTimeByCron(String cron) {
+        return CronUtils.getExecuteTimeByCron(cron, 5);
+    }
+
+    
+    public boolean create(Job job) {
+        // 判断常驻任务
+        job.setResident(isResident(job));
+        job.setBucketIndex(HashUtil.bkdrHash(job.getGroupName() + job.getJobName())
+                % systemProperties.getBucketTotal());
+        job.setNextTriggerAt(calculateNextTriggerAt(job, DateUtils.toNowMilli()));
+        job.setNamespaceId("764d604ec6fc45f68cd92514c40e9e1a");
+        job.setId(null);
+        return 1 == jobDao.insert(job);
+    }
+
+    
+    public boolean update(Job job) {
+
+        // 判断常驻任务
+        job.setResident(isResident(job));
+        job.setNamespaceId(job.getNamespaceId());
+
+        // 工作流任务
+        if (Objects.equals(job.getTriggerType().getValue().intValue(), SystemConstants.WORKFLOW_TRIGGER_TYPE)) {
+            job.setNextTriggerAt(0L);
+            // 非常驻任务 > 非常驻任务
+        } else if (! job.getResident() && ! job.getResident()) {
+            job.setNextTriggerAt(calculateNextTriggerAt(job, DateUtils.toNowMilli()));
+        } else if (job.getResident() && !job.getResident()) {
+            // 常驻任务的触发时间
+            long time = Optional.ofNullable(ResidentTaskCache.get(job.getId()))
+                    .orElse(DateUtils.toNowMilli());
+            job.setNextTriggerAt(calculateNextTriggerAt(job, time));
+            // 老的是不是常驻任务 新的是常驻任务 需要使用当前时间计算下次触发时间
+        } else if (!job.getResident()) {
+            job.setNextTriggerAt(DateUtils.toNowMilli());
+        }
+
+        // 禁止更新组
+        job.setGroupName(null);
+        return 1 == jobDao.updateById(job);
+    }
+
+    private Boolean isResident(Job job) {
+        if (Objects.equals(job.getTriggerType().getValue().intValue(), SystemConstants.WORKFLOW_TRIGGER_TYPE)) {
+            return false;
+        }
+
+        if (job.getTriggerType().getValue().intValue() == WaitStrategies.WaitStrategyEnum.FIXED.getValue()) {
+            if (Integer.parseInt(job.getTriggerInterval()) < 10) {
+                return true;
+            }
+        } else if (job.getTriggerType().getValue().intValue() == WaitStrategies.WaitStrategyEnum.CRON.getValue()) {
+            if (CronUtils.getExecuteInterval(job.getTriggerInterval()) < 10 * 1000) {
+                return true;
+            }
+        } else {
+            throw new SilenceJobServerException("未知触发类型");
+        }
+
+        return false;
+    }
+
+    
+    public int updateJobStatus(BigInteger id, boolean status) {
+        return jobDao.updateStatusById(status, id);
+    }
+
+
+    
+    public boolean trigger(BigInteger id, JobTriggerVO jobTrigger) {
+        Job job = jobDao.selectById(id);
+        Assert.notNull(job, () -> new SilenceJobServerException("job can not be null."));
+
+        long count = accessTemplate.getGroupConfigAccess().count(new LambdaQueryWrapper<GroupConfig>()
+                .eq(GroupConfig::getGroupName, job.getGroupName())
+                .eq(GroupConfig::getNamespaceId, job.getNamespaceId())
+                .eq(GroupConfig::getGroupStatus, true)
+        );
+
+        Assert.isTrue(count > 0,
+                () -> new SilenceJobServerException("组:[{}]已经关闭，不支持手动执行.", job.getGroupName()));
+        JobTaskPrepareDTO jobTaskPrepare = JobTaskConverter.INSTANCE.toJobTaskPrepare(job);
+        // 设置now表示立即执行
+        jobTaskPrepare.setNextTriggerAt(DateUtils.toNowMilli());
+        jobTaskPrepare.setTaskExecutorScene(JobTaskExecutorScene.MANUAL_JOB);
+        if (StrUtil.isNotBlank(jobTrigger.getTmpArgsStr())) {
+            jobTaskPrepare.setTmpArgsStr(jobTrigger.getTmpArgsStr());
+        }
+        // 创建批次
+        terminalJobPrepareHandler.handle(jobTaskPrepare);
+
+        return Boolean.TRUE;
+    }
+
+    
+    public List<JobResponseVO> getJobList(QueryWrapper<Job> queryWrapper) {
+        String namespaceId = "764d604ec6fc45f68cd92514c40e9e1a";
+        queryWrapper.eq("namespace_id", namespaceId);
+        List<Job> jobs = jobDao.selectList(queryWrapper);
+        return  CollectionUtils.transformToList(jobs, JobResponseVOMapper.INSTANCE::convert);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void importJobs(List<Job> jobs) {
+        String namespaceId = "764d604ec6fc45f68cd92514c40e9e1a";
+        groupHandler.validateGroupExistence(
+                StreamUtils.toSet(jobs, Job::getGroupName), namespaceId
+        );
+        jobs.forEach(this::create);
+    }
+
+    
+    public String exportJobs(ExportJobVO exportJobVO) {
+        String namespaceId = "764d604ec6fc45f68cd92514c40e9e1a";
+
+        List<JobCommand> requestList = new ArrayList<>();
+        PartitionTaskUtils.process(startId -> {
+                    List<Job> jobList = jobDao.selectPage(new PageDTO<>(0, 100),
+                            new LambdaQueryWrapper<Job>()
+                                    .eq(Job::getNamespaceId, namespaceId)
+                                    .eq(StrUtil.isNotBlank(exportJobVO.getGroupName()), Job::getGroupName, exportJobVO.getGroupName())
+                                    .likeRight(StrUtil.isNotBlank(exportJobVO.getJobName()), Job::getJobName, StrUtil.trim(exportJobVO.getJobName()))
+                                    .eq(Objects.nonNull(exportJobVO.getJobStatus()), Job::getJobStatus, exportJobVO.getJobStatus())
+                                    .in(CollectionUtils.isNotEmpty(exportJobVO.getJobIds()), Job::getId, exportJobVO.getJobIds())
+                                    .eq(Job::getDeleted, 500)
+                                    .gt(Job::getId, startId)
+                                    .orderByAsc(Job::getId)
+                    ).getRecords();
+                    return StreamUtils.toList(jobList, JobPartitionTask::new);
+                },
+                partitionTasks -> {
+                    List<JobPartitionTask> jobPartitionTasks = (List<JobPartitionTask>) partitionTasks;
+                    requestList.addAll(
+                            CollectionUtils.transformToList(jobPartitionTasks, jobPartitionTask ->
+                                    JobMapper.INSTANCE.convert(jobPartitionTask.getJob())));
+                }, 0);
+
+        return JSON.toJSONString(requestList);
+    }
+
+    
+    @Transactional
+    public Boolean deleteJobByIds(Set<BigInteger> ids) {
+        String namespaceId = "764d604ec6fc45f68cd92514c40e9e1a";
+
+        Assert.isTrue(ids.size() == jobDao.delete(
+                new LambdaQueryWrapper<Job>()
+                        .eq(Job::getNamespaceId, namespaceId)
+                        .eq(Job::getJobStatus, 500)
+                        .in(Job::getId, ids)
+        ), () -> new SilenceJobServerException("删除定时任务失败, 请检查任务状态是否关闭状态"));
+
+        List<JobSummary> jobSummaries = jobSummaryDao.selectList(new LambdaQueryWrapper<JobSummary>()
+                .select(JobSummary::getId)
+                .in(JobSummary::getBusinessId, ids)
+                .eq(JobSummary::getNamespaceId, namespaceId)
+                .eq(JobSummary::getSystemTaskType, SystemTaskType.JOB.getValue())
+        );
+        if (CollectionUtils.isNotEmpty(jobSummaries)) {
+            jobSummaryDao.deleteBatchIds(StreamUtils.toSet(jobSummaries, JobSummary::getId));
+        }
+
+        return Boolean.TRUE;
+    }
+
+    
+    
+    private static class JobPartitionTask extends PartitionTask {
+
+        // 这里就直接放GroupConfig为了后面若加字段不需要再这里在调整了
+        private final Job job;
+
+        public JobPartitionTask(@NotNull Job job) {
+            this.job = job;
+            setId(job.getId());
+        }
+
+        public Job getJob() {
+            return job;
+        }
+    }
+
+}

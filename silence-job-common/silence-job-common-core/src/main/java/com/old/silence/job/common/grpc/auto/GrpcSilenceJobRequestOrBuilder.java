@@ -23,11 +23,11 @@ public interface GrpcSilenceJobRequestOrBuilder extends
    * <code>.Metadata metadata = 2;</code>
    * @return The metadata.
    */
-  com.old.silence.job.common.core.grpc.auto.Metadata getMetadata();
+  com.old.silence.job.common.grpc.auto.Metadata getMetadata();
   /**
    * <code>.Metadata metadata = 2;</code>
    */
-  com.old.silence.job.common.core.grpc.auto.MetadataOrBuilder getMetadataOrBuilder();
+  com.old.silence.job.common.grpc.auto.MetadataOrBuilder getMetadataOrBuilder();
 
   /**
    * <code>string body = 3;</code>

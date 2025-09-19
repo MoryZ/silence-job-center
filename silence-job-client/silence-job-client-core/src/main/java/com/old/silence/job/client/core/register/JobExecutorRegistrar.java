@@ -1,13 +1,13 @@
-package com.old.silence.job.client.core.register;
+package com.old.silence.job.client.register;
 
 
 import org.springframework.stereotype.Component;
 
-import com.old.silence.platform.job.client.common.Lifecycle;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.platform.job.client.core.Scanner;
-import com.old.silence.platform.job.client.core.cache.JobExecutorInfoCache;
-import com.old.silence.platform.job.client.core.dto.JobExecutorInfo;
+import com.old.silence.job.client.common.Lifecycle;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
+import com.old.silence.job.client.Scanner;
+import com.old.silence.job.client.cache.JobExecutorInfoCache;
+import com.old.silence.job.client.dto.JobExecutorInfo;
 
 import java.util.List;
 

@@ -1,30 +1,30 @@
-package com.old.silence.job.client.core.executor;
+package com.old.silence.job.client.executor;
 
-import com.old.silence.platform.job.client.common.log.SilenceJobLogManager;
-import com.old.silence.platform.job.client.core.IJobExecutor;
-import com.old.silence.platform.job.client.core.cache.FutureCache;
-import com.old.silence.platform.job.client.core.cache.ThreadPoolCache;
-import com.old.silence.platform.job.client.core.dto.JobArgs;
-import com.old.silence.platform.job.client.core.dto.MapArgs;
-import com.old.silence.platform.job.client.core.dto.MergeReduceArgs;
-import com.old.silence.platform.job.client.core.dto.ReduceArgs;
-import com.old.silence.platform.job.client.core.dto.ShardingJobArgs;
-import com.old.silence.platform.job.client.core.log.JobLogMeta;
-import com.old.silence.platform.job.client.core.timer.StopTaskTimerTask;
-import com.old.silence.platform.job.client.core.timer.TimerManager;
-import com.old.silence.platform.job.log.center.enums.LogTypeEnum;
-import com.old.silence.platform.job.client.model.ExecuteResult;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.enums.MapReduceStage;
-import com.old.silence.platform.job.common.core.model.JobArgsHolder;
-import com.old.silence.platform.job.common.core.model.JobContext;
+import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.IJobExecutor;
+import com.old.silence.job.client.cache.FutureCache;
+import com.old.silence.job.client.cache.ThreadPoolCache;
+import com.old.silence.job.client.dto.JobArgs;
+import com.old.silence.job.client.dto.MapArgs;
+import com.old.silence.job.client.dto.MergeReduceArgs;
+import com.old.silence.job.client.dto.ReduceArgs;
+import com.old.silence.job.client.dto.ShardingJobArgs;
+import com.old.silence.job.client.log.JobLogMeta;
+import com.old.silence.job.client.timer.StopTaskTimerTask;
+import com.old.silence.job.client.timer.TimerManager;
+import com.old.silence.job.log.enums.LogTypeEnum;
+import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.enums.MapReduceStage;
+import com.old.silence.job.common.model.JobArgsHolder;
+import com.old.silence.job.common.model.JobContext;
 
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
-import com.old.silence.platform.job.common.core.util.JsonUtils;
+import com.old.silence.job.common.util.JsonUtils;
 
 
 import java.util.List;

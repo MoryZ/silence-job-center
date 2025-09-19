@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Role;
-import com.old.silence.platform.job.client.core.annotation.JobExecutor;
+import com.old.silence.job.client.annotation.JobExecutor;
 
 @Configuration
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-@ComponentScan({"com.old.silence.platform.job.client.core.*", "com.old.silence.platform.job.client.common.*"})
+@ComponentScan({"com.old.silence.job.client.*", "com.old.silence.job.client.common.*"})
 @ConditionalOnClass(JobExecutor.class)
 @ConditionalOnProperty(prefix = "silence-job", name = "enabled", havingValue = "true")
 public class SilenceJobClientJobCoreAutoConfiguration {

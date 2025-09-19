@@ -1,11 +1,11 @@
 package com.old.silence.job.server.job.task.support.block.workflow;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.server.job.task.support.WorkflowTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.generator.batch.WorkflowBatchGenerator;
-import com.old.silence.platform.job.server.job.task.support.generator.batch.WorkflowTaskBatchGeneratorContext;
-import com.old.silence.platform.job.server.job.task.support.handler.WorkflowBatchHandler;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.server.job.task.support.WorkflowTaskConverter;
+import com.old.silence.job.server.job.task.support.generator.batch.WorkflowBatchGenerator;
+import com.old.silence.job.server.job.task.support.generator.batch.WorkflowTaskBatchGeneratorContext;
+import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
 
 
 @Component

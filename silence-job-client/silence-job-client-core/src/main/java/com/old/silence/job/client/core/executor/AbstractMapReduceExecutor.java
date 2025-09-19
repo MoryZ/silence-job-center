@@ -1,14 +1,14 @@
-package com.old.silence.job.client.core.executor;
+package com.old.silence.job.client.executor;
 
-import cn.hutool.core.lang.Assert;
+import cn.hutool.lang.Assert;
 
-import com.old.silence.platform.job.client.core.dto.JobArgs;
-import com.old.silence.platform.job.client.core.dto.MergeReduceArgs;
-import com.old.silence.platform.job.client.core.dto.ReduceArgs;
-import com.old.silence.platform.job.client.model.ExecuteResult;
-import com.old.silence.platform.job.common.core.enums.MapReduceStage;
-import com.old.silence.platform.job.common.core.exception.SilenceJobMapReduceException;
-import com.old.silence.platform.job.common.core.model.JobContext;
+import com.old.silence.job.client.dto.JobArgs;
+import com.old.silence.job.client.dto.MergeReduceArgs;
+import com.old.silence.job.client.dto.ReduceArgs;
+import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.common.enums.MapReduceStage;
+import com.old.silence.job.common.exception.SilenceJobMapReduceException;
+import com.old.silence.job.common.model.JobContext;
 
 
 public abstract class AbstractMapReduceExecutor extends AbstractMapExecutor {

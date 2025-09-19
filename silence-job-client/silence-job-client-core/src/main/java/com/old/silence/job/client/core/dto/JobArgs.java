@@ -1,6 +1,6 @@
-package com.old.silence.job.client.core.dto;
+package com.old.silence.job.client.dto;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 
 
 

@@ -2,7 +2,7 @@ package com.old.silence.job.common.alarm.attribute;
 
 
 
-import com.old.silence.job.common.core.enums.ContentTypeEnum;
+import com.old.silence.job.common.enums.ContentTypeEnum;
 
 
 public class WebhookAttribute {

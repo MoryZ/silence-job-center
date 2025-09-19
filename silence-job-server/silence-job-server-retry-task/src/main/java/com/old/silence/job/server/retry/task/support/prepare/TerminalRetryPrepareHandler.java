@@ -1,13 +1,13 @@
 package com.old.silence.job.server.retry.task.support.prepare;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.RetryTaskStatus;
-import com.old.silence.platform.job.server.retry.task.dto.RetryTaskPrepareDTO;
-import com.old.silence.platform.job.server.retry.task.support.RetryPrePareHandler;
-import com.old.silence.platform.job.server.retry.task.support.RetryTaskConverter;
-import com.old.silence.platform.job.server.retry.task.support.generator.task.RetryTaskGeneratorHandler;
+import com.old.silence.job.common.enums.RetryTaskStatus;
+import com.old.silence.job.server.retry.task.dto.RetryTaskPrepareDTO;
+import com.old.silence.job.server.retry.task.support.RetryPrePareHandler;
+import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
+import com.old.silence.job.server.retry.task.support.generator.task.RetryTaskGeneratorHandler;
 
-import static com.old.silence.platform.job.common.core.enums.RetryTaskStatus.TERMINAL_STATUS_SET;
+import static com.old.silence.job.common.enums.RetryTaskStatus.TERMINAL_STATUS_SET;
 
 @Component
 public class TerminalRetryPrepareHandler implements RetryPrePareHandler {

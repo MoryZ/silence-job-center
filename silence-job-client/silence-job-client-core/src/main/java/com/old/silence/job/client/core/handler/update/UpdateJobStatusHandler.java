@@ -1,12 +1,12 @@
-package com.old.silence.job.client.core.handler.update;
+package com.old.silence.job.client.handler.update;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.Pair;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.platform.job.client.core.dto.RequestUpdateStatusDTO;
-import com.old.silence.platform.job.client.core.handler.AbstractRequestHandler;
-import com.old.silence.platform.job.client.core.util.ValidatorUtils;
-import com.old.silence.platform.job.common.core.model.ApiResult;
+import cn.hutool.lang.Assert;
+import cn.hutool.lang.Pair;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
+import com.old.silence.job.client.dto.RequestUpdateStatusDTO;
+import com.old.silence.job.client.handler.AbstractRequestHandler;
+import com.old.silence.job.client.util.ValidatorUtils;
+import com.old.silence.job.common.model.ApiResult;
 
 import java.math.BigInteger;
 import java.util.Objects;

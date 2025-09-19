@@ -1,8 +1,8 @@
 package com.old.silence.job.server.job.task.support.block.job;
 
 import org.springframework.beans.factory.InitializingBean;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.server.job.task.support.BlockStrategy;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.server.job.task.support.BlockStrategy;
 
 
 public abstract class AbstracJobBlockStrategy implements BlockStrategy, InitializingBean {

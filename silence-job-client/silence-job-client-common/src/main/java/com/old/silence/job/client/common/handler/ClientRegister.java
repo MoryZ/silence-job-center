@@ -1,12 +1,12 @@
 package com.old.silence.job.client.common.handler;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.client.common.Lifecycle;
-import com.old.silence.platform.job.client.common.NettyClient;
-import com.old.silence.platform.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.platform.job.common.core.constant.SystemConstants.BEAT;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.common.Lifecycle;
+import com.old.silence.job.client.common.NettyClient;
+import com.old.silence.job.client.common.rpc.client.RequestBuilder;
+import com.old.silence.job.common.constant.SystemConstants.BEAT;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

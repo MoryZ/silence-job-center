@@ -1,6 +1,6 @@
 package com.old.silence.job.client.common.log;
 
-import com.old.silence.platform.job.client.common.LogReport;
+import com.old.silence.job.client.common.LogReport;
 
 import java.util.ArrayList;
 import java.util.List;

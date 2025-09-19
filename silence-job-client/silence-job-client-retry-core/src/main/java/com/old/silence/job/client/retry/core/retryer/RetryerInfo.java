@@ -1,8 +1,8 @@
-package com.old.silence.job.client.retry.core.retryer;
+package com.old.silence.job.client.retry.retryer;
 
-import com.old.silence.platform.job.client.core.IdempotentIdGenerate;
-import com.old.silence.platform.job.client.core.callback.complete.RetryCompleteCallback;
-import com.old.silence.platform.job.client.core.strategy.ExecutorMethod;
+import com.old.silence.job.client.IdempotentIdGenerate;
+import com.old.silence.job.client.callback.complete.RetryCompleteCallback;
+import com.old.silence.job.client.strategy.ExecutorMethod;
 
 import java.lang.reflect.Method;
 import java.util.Set;

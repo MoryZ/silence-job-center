@@ -1,7 +1,7 @@
 package com.old.silence.job.server.job.task.support.alarm.event;
 
 import org.springframework.context.ApplicationEvent;
-import com.old.silence.platform.job.server.job.task.dto.JobTaskFailAlarmEventDTO;
+import com.old.silence.job.server.job.task.dto.JobTaskFailAlarmEventDTO;
 
 
 public class JobTaskFailAlarmEvent extends ApplicationEvent {

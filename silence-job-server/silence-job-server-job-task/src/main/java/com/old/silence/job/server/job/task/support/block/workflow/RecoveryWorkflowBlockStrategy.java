@@ -1,9 +1,9 @@
 package com.old.silence.job.server.job.task.support.block.workflow;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.server.exception.SilenceJobServerException;
-import com.old.silence.platform.job.server.job.task.support.handler.WorkflowBatchHandler;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
 
 import java.io.IOException;
 

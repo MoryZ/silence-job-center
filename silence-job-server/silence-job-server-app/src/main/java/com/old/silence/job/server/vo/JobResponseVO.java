@@ -1,11 +1,11 @@
 package com.old.silence.job.server.vo;
 
 
-import com.old.silence.job.common.core.enums.ExecutorType;
-import com.old.silence.job.common.core.enums.JobArgsType;
-import com.old.silence.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.job.common.core.enums.JobTaskType;
-import com.old.silence.job.common.core.enums.TriggerType;
+import com.old.silence.job.common.enums.ExecutorType;
+import com.old.silence.job.common.enums.JobArgsType;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.enums.TriggerType;
 
 import java.math.BigInteger;
 import java.time.Instant;

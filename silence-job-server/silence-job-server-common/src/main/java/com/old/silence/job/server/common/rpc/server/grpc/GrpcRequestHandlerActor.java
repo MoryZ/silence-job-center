@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.rpc.server.grpc;
 
-import cn.hutool.core.net.url.UrlBuilder;
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.net.url.UrlBuilder;
+import cn.hutool.util.StrUtil;
 import io.grpc.stub.StreamObserver;
 import io.netty.handler.codec.http.DefaultHttpHeaders;
 import org.apache.pekko.actor.AbstractActor;
@@ -9,14 +9,15 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.common.core.context.SilenceSpringContext;
-import com.old.silence.job.common.core.enums.HeadersEnum;
-import com.old.silence.job.common.core.grpc.auto.GrpcResult;
-import com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest;
-import com.old.silence.job.common.core.grpc.auto.Metadata;
-import com.old.silence.job.common.core.model.SilenceJobRequest;
-import com.old.silence.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.context.CommonErrors;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.HeadersEnum;
+import com.old.silence.job.common.grpc.auto.GrpcResult;
+import com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest;
+import com.old.silence.job.common.grpc.auto.Metadata;
+import com.old.silence.job.common.model.SilenceJobRequest;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.HttpRequestHandler;
 import com.old.silence.job.server.common.cache.CacheToken;
 import com.old.silence.job.server.common.dto.GrpcRequest;
@@ -88,8 +89,8 @@ public class GrpcRequestHandlerActor extends AbstractActor {
         String token = headersMap.get(HeadersEnum.TOKEN.getKey());
 
         if (StrUtil.isBlank(token) || !CacheToken.get(groupName, namespace).equals(token)) {
-            throw new SilenceJobServerException("Token authentication failed. [namespace:{} groupName:{} token:{}]",
-                namespace, groupName, token);
+            throw CommonErrors.ACCESS_DENIED.createException("Token authentication failed. [namespace:{} groupName:{} token:{}]",
+                    namespace, groupName, token);
         }
 
         DefaultHttpHeaders headers = new DefaultHttpHeaders();
@@ -104,7 +105,7 @@ public class GrpcRequestHandlerActor extends AbstractActor {
             }
         }
 
-        throw new SilenceJobServerException("No matching handler found. Path:[{}] method:[{}]", builder.getPathStr());
+        throw CommonErrors.INVALID_PARAMETER.createException("No matching handler found. Path:[{}] method:[{}]", builder.getPathStr());
     }
 
 

@@ -1,7 +1,7 @@
 package com.old.silence.job.server.job.task.support.prepare.job;
 
-import com.old.silence.platform.job.server.job.task.dto.JobTaskPrepareDTO;
-import com.old.silence.platform.job.server.job.task.support.JobPrepareHandler;
+import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;
+import com.old.silence.job.server.job.task.support.JobPrepareHandler;
 
 
 public abstract class AbstractJobPrepareHandler implements JobPrepareHandler {

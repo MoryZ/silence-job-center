@@ -3,7 +3,7 @@ package com.old.silence.job.server.retry.task.support.handler;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import com.google.common.util.concurrent.RateLimiter;
-import com.old.silence.platform.job.server.common.config.SystemProperties;
+import com.old.silence.job.server.common.config.SystemProperties;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,15 +1,15 @@
-package com.old.silence.job.client.core.handler.add;
+package com.old.silence.job.client.handler.add;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.Pair;
+import cn.hutool.lang.Assert;
+import cn.hutool.lang.Pair;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.platform.job.client.core.handler.AbstractParamsHandler;
-import com.old.silence.platform.job.client.core.util.ValidatorUtils;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.model.ApiResult;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
+import com.old.silence.job.client.handler.AbstractParamsHandler;
+import com.old.silence.job.client.util.ValidatorUtils;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.model.ApiResult;
 
-import static com.old.silence.platform.job.common.core.enums.TriggerType.WORK_FLOW;
+import static com.old.silence.job.common.enums.TriggerType.WORK_FLOW;
 
 
 public abstract class AddHandler<H> extends AbstractParamsHandler<H, Long> {

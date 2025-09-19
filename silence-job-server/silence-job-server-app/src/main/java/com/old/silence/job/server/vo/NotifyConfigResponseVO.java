@@ -1,8 +1,8 @@
 package com.old.silence.job.server.vo;
 
 
-import com.old.silence.job.common.core.enums.JobNotifyScene;
-import com.old.silence.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 import java.io.Serializable;
 import java.math.BigInteger;

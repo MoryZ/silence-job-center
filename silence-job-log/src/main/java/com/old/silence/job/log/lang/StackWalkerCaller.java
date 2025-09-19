@@ -1,10 +1,11 @@
 package com.old.silence.job.log.lang;
 
-import cn.hutool.core.exceptions.UtilException;
 
 import java.io.Serializable;
 import java.util.function.Function;
 import java.util.stream.Stream;
+
+import com.old.silence.core.context.CommonErrors;
 
 
 public class StackWalkerCaller implements Caller, Serializable {
@@ -22,7 +23,7 @@ public class StackWalkerCaller implements Caller, Serializable {
         try {
             return Class.forName(walk.getClassName());
         } catch (ClassNotFoundException e) {
-            throw new UtilException(e, "[{}] not found!", walk.getClassName());
+            throw CommonErrors.INVALID_PARAMETER.createException(e, "[{}] not found!", walk.getClassName());
         }
     }
 

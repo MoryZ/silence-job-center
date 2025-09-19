@@ -1,8 +1,8 @@
 package com.old.silence.job.server.retry.task.support.block;
 
 import org.springframework.beans.factory.InitializingBean;
-import com.old.silence.platform.job.common.core.enums.RetryBlockStrategy;
-import com.old.silence.platform.job.server.retry.task.support.BlockStrategy;
+import com.old.silence.job.common.enums.RetryBlockStrategy;
+import com.old.silence.job.server.retry.task.support.BlockStrategy;
 
 
 public abstract class AbstracJobBlockStrategy implements BlockStrategy, InitializingBean {

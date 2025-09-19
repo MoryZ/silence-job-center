@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.allocate.client;
 
+import com.old.silence.context.CommonErrors;
 import com.old.silence.job.server.common.ClientLoadBalance;
-import com.old.silence.job.server.exception.SilenceJobServerException;
 
 
 
@@ -16,7 +16,7 @@ public class ClientLoadBalanceManager {
             }
         }
 
-        throw new SilenceJobServerException("routeType is not existed. routeType:[{}]", routeType);
+        throw CommonErrors.INVALID_PARAMETER.createException("routeType is not existed. routeType:[{}]", routeType);
     }
 
     public enum AllocationAlgorithmEnum {

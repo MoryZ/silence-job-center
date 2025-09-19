@@ -1,12 +1,12 @@
 package com.old.silence.job.log.dialect.log4j;
 
-import cn.hutool.core.util.StrUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
-import com.old.silence.job.log.center.constant.LogFieldConstants;
-import com.old.silence.job.log.center.dialect.AbstractLog;
-import com.old.silence.job.log.center.factory.LogFactory;
+import com.old.silence.job.log.constant.LogFieldConstants;
+import com.old.silence.job.log.dialect.AbstractLog;
+import com.old.silence.job.log.factory.LogFactory;
 
 /**
  * <a href="http://logging.apache.org/log4j/1.2/index.html">Apache Log4J</a> log.<br>
@@ -25,7 +25,7 @@ public class Log4jLog extends AbstractLog {
     }
 
     public Log4jLog(Class<?> clazz) {
-        this((null == clazz) ? StrUtil.NULL : clazz.getName());
+        this((null == clazz) ? StringUtils.EMPTY : clazz.getName());
     }
 
     public Log4jLog(String name) {
@@ -45,7 +45,7 @@ public class Log4jLog extends AbstractLog {
 
     @Override
     public void trace(Boolean remote, String fqcn, String format, Object... arguments) {
-        log(com.old.silence.job.log.center.level.Level.TRACE, remote, fqcn, format, arguments);
+        log(com.old.silence.job.log.level.Level.TRACE, remote, fqcn, format, arguments);
     }
 
     // ------------------------------------------------------------------------- Debug
@@ -56,7 +56,7 @@ public class Log4jLog extends AbstractLog {
 
     @Override
     public void debug(Boolean remote, String fqcn, String format, Object... arguments) {
-        log(com.old.silence.job.log.center.level.Level.DEBUG, remote, fqcn, format, arguments);
+        log(com.old.silence.job.log.level.Level.DEBUG, remote, fqcn, format, arguments);
     }
 
     // ------------------------------------------------------------------------- Info
@@ -67,7 +67,7 @@ public class Log4jLog extends AbstractLog {
 
     @Override
     public void info(Boolean remote, String fqcn, String format, Object... arguments) {
-        log(com.old.silence.job.log.center.level.Level.INFO, remote, fqcn, format, arguments);
+        log(com.old.silence.job.log.level.Level.INFO, remote, fqcn, format, arguments);
     }
 
     // ------------------------------------------------------------------------- Warn
@@ -78,7 +78,7 @@ public class Log4jLog extends AbstractLog {
 
     @Override
     public void warn(Boolean remote, String fqcn, String format, Object... arguments) {
-        log(com.old.silence.job.log.center.level.Level.WARN, remote, fqcn, format, arguments);
+        log(com.old.silence.job.log.level.Level.WARN, remote, fqcn, format, arguments);
     }
 
     // ------------------------------------------------------------------------- Error
@@ -89,12 +89,12 @@ public class Log4jLog extends AbstractLog {
 
     @Override
     public void error(Boolean remote, String fqcn, String format, Object... arguments) {
-        log(com.old.silence.job.log.center.level.Level.ERROR, remote, fqcn, format, arguments);
+        log(com.old.silence.job.log.level.Level.ERROR, remote, fqcn, format, arguments);
     }
 
     // ------------------------------------------------------------------------- Log
     @Override
-    public void log(com.old.silence.job.log.center.level.Level level, Boolean remote, String fqcn, String format,
+    public void log(com.old.silence.job.log.level.Level level, Boolean remote, String fqcn, String format,
                     Object... arguments) {
         org.apache.log4j.Level log4jLevel;
         switch (level) {
@@ -114,7 +114,7 @@ public class Log4jLog extends AbstractLog {
                 log4jLevel = Level.ERROR;
                 break;
             default:
-                throw new Error(StrUtil.format("Can not identify level: {}", level));
+                throw new Error(String.format("Can not identify level: %s", level));
         }
 
         if (logger.isEnabledFor(log4jLevel)) {
@@ -122,7 +122,7 @@ public class Log4jLog extends AbstractLog {
                 MDC.put(LogFieldConstants.MDC_REMOTE, remote.toString());
             }
 
-            logger.log(fqcn, log4jLevel, StrUtil.format(format, arguments), LogFactory.extractThrowable(arguments));
+            logger.log(fqcn, log4jLevel, String.format(format, arguments), LogFactory.extractThrowable(arguments));
         }
     }
 }

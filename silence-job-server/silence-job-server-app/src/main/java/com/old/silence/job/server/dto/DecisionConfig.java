@@ -1,7 +1,7 @@
 package com.old.silence.job.server.dto;
 
 
-import com.old.silence.job.common.core.enums.ExpressionTypeEnum;
+import com.old.silence.job.common.enums.ExpressionTypeEnum;
 
 /**
  * 决策节点配置

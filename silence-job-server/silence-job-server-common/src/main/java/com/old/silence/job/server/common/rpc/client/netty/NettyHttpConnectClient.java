@@ -9,10 +9,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.http.HttpClientCodec;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.timeout.IdleStateHandler;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
+import org.springframework.Ordered;
+import org.springframework.annotation.Order;
 import org.springframework.stereotype.Component;
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 
 import java.util.concurrent.TimeUnit;

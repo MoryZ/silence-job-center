@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_descriptor;
+    return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_descriptor;
   }
 
   @Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_fieldAccessorTable
+    return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest.class, com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest.Builder.class);
+            com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest.class, com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest.Builder.class);
   }
 
   private int bitField0_;
@@ -53,7 +53,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int METADATA_FIELD_NUMBER = 2;
-  private com.old.silence.job.common.core.grpc.auto.Metadata metadata_;
+  private com.old.silence.job.common.grpc.auto.Metadata metadata_;
   /**
    * <code>.Metadata metadata = 2;</code>
    * @return Whether the metadata field is set.
@@ -67,15 +67,15 @@ private static final long serialVersionUID = 0L;
    * @return The metadata.
    */
   @Override
-  public com.old.silence.job.common.core.grpc.auto.Metadata getMetadata() {
-    return metadata_ == null ? com.old.silence.job.common.core.grpc.auto.Metadata.getDefaultInstance() : metadata_;
+  public com.old.silence.job.common.grpc.auto.Metadata getMetadata() {
+    return metadata_ == null ? com.old.silence.job.common.grpc.auto.Metadata.getDefaultInstance() : metadata_;
   }
   /**
    * <code>.Metadata metadata = 2;</code>
    */
   @Override
-  public com.old.silence.job.common.core.grpc.auto.MetadataOrBuilder getMetadataOrBuilder() {
-    return metadata_ == null ? com.old.silence.job.common.core.grpc.auto.Metadata.getDefaultInstance() : metadata_;
+  public com.old.silence.job.common.grpc.auto.MetadataOrBuilder getMetadataOrBuilder() {
+    return metadata_ == null ? com.old.silence.job.common.grpc.auto.Metadata.getDefaultInstance() : metadata_;
   }
 
   public static final int BODY_FIELD_NUMBER = 3;
@@ -170,10 +170,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest)) {
+    if (!(obj instanceof com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest)) {
       return super.equals(obj);
     }
-    com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest other = (com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest) obj;
+    com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest other = (com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest) obj;
 
     if (getReqId()
         != other.getReqId()) return false;
@@ -209,44 +209,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(byte[] data)
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(java.io.InputStream input)
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -254,26 +254,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseDelimitedFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -286,7 +286,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest prototype) {
+  public static Builder newBuilder(com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @Override
@@ -307,21 +307,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:GrpcSilenceJobRequest)
-      com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequestOrBuilder {
+      com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_descriptor;
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_descriptor;
     }
 
     @Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_fieldAccessorTable
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest.class, com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest.Builder.class);
+              com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest.class, com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest.Builder.class);
     }
 
-    // Construct using com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest.newBuilder()
+    // Construct using com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -354,17 +354,17 @@ private static final long serialVersionUID = 0L;
     @Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_descriptor;
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcSilenceJobRequest_descriptor;
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest getDefaultInstanceForType() {
-      return com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest.getDefaultInstance();
+    public com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest getDefaultInstanceForType() {
+      return com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest.getDefaultInstance();
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest build() {
-      com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest result = buildPartial();
+    public com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest build() {
+      com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -372,14 +372,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest buildPartial() {
-      com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest result = new com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest(this);
+    public com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest buildPartial() {
+      com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest result = new com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest result) {
+    private void buildPartial0(com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.reqId_ = reqId_;
@@ -431,16 +431,16 @@ private static final long serialVersionUID = 0L;
     }
     @Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest) {
-        return mergeFrom((com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest)other);
+      if (other instanceof com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest) {
+        return mergeFrom((com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest other) {
-      if (other == com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest other) {
+      if (other == com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest.getDefaultInstance()) return this;
       if (other.getReqId() != 0L) {
         setReqId(other.getReqId());
       }
@@ -544,9 +544,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.old.silence.job.common.core.grpc.auto.Metadata metadata_;
+    private com.old.silence.job.common.grpc.auto.Metadata metadata_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.old.silence.job.common.core.grpc.auto.Metadata, com.old.silence.job.common.core.grpc.auto.Metadata.Builder, com.old.silence.job.common.core.grpc.auto.MetadataOrBuilder> metadataBuilder_;
+        com.old.silence.job.common.grpc.auto.Metadata, com.old.silence.job.common.grpc.auto.Metadata.Builder, com.old.silence.job.common.grpc.auto.MetadataOrBuilder> metadataBuilder_;
     /**
      * <code>.Metadata metadata = 2;</code>
      * @return Whether the metadata field is set.
@@ -558,9 +558,9 @@ private static final long serialVersionUID = 0L;
      * <code>.Metadata metadata = 2;</code>
      * @return The metadata.
      */
-    public com.old.silence.job.common.core.grpc.auto.Metadata getMetadata() {
+    public com.old.silence.job.common.grpc.auto.Metadata getMetadata() {
       if (metadataBuilder_ == null) {
-        return metadata_ == null ? com.old.silence.job.common.core.grpc.auto.Metadata.getDefaultInstance() : metadata_;
+        return metadata_ == null ? com.old.silence.job.common.grpc.auto.Metadata.getDefaultInstance() : metadata_;
       } else {
         return metadataBuilder_.getMessage();
       }
@@ -568,7 +568,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Metadata metadata = 2;</code>
      */
-    public Builder setMetadata(com.old.silence.job.common.core.grpc.auto.Metadata value) {
+    public Builder setMetadata(com.old.silence.job.common.grpc.auto.Metadata value) {
       if (metadataBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -585,7 +585,7 @@ private static final long serialVersionUID = 0L;
      * <code>.Metadata metadata = 2;</code>
      */
     public Builder setMetadata(
-        com.old.silence.job.common.core.grpc.auto.Metadata.Builder builderForValue) {
+        com.old.silence.job.common.grpc.auto.Metadata.Builder builderForValue) {
       if (metadataBuilder_ == null) {
         metadata_ = builderForValue.build();
       } else {
@@ -598,11 +598,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Metadata metadata = 2;</code>
      */
-    public Builder mergeMetadata(com.old.silence.job.common.core.grpc.auto.Metadata value) {
+    public Builder mergeMetadata(com.old.silence.job.common.grpc.auto.Metadata value) {
       if (metadataBuilder_ == null) {
         if (((bitField0_ & 0x00000002) != 0) &&
           metadata_ != null &&
-          metadata_ != com.old.silence.job.common.core.grpc.auto.Metadata.getDefaultInstance()) {
+          metadata_ != com.old.silence.job.common.grpc.auto.Metadata.getDefaultInstance()) {
           getMetadataBuilder().mergeFrom(value);
         } else {
           metadata_ = value;
@@ -632,7 +632,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Metadata metadata = 2;</code>
      */
-    public com.old.silence.job.common.core.grpc.auto.Metadata.Builder getMetadataBuilder() {
+    public com.old.silence.job.common.grpc.auto.Metadata.Builder getMetadataBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getMetadataFieldBuilder().getBuilder();
@@ -640,23 +640,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Metadata metadata = 2;</code>
      */
-    public com.old.silence.job.common.core.grpc.auto.MetadataOrBuilder getMetadataOrBuilder() {
+    public com.old.silence.job.common.grpc.auto.MetadataOrBuilder getMetadataOrBuilder() {
       if (metadataBuilder_ != null) {
         return metadataBuilder_.getMessageOrBuilder();
       } else {
         return metadata_ == null ?
-            com.old.silence.job.common.core.grpc.auto.Metadata.getDefaultInstance() : metadata_;
+            com.old.silence.job.common.grpc.auto.Metadata.getDefaultInstance() : metadata_;
       }
     }
     /**
      * <code>.Metadata metadata = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.old.silence.job.common.core.grpc.auto.Metadata, com.old.silence.job.common.core.grpc.auto.Metadata.Builder, com.old.silence.job.common.core.grpc.auto.MetadataOrBuilder>
+        com.old.silence.job.common.grpc.auto.Metadata, com.old.silence.job.common.grpc.auto.Metadata.Builder, com.old.silence.job.common.grpc.auto.MetadataOrBuilder>
         getMetadataFieldBuilder() {
       if (metadataBuilder_ == null) {
         metadataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.old.silence.job.common.core.grpc.auto.Metadata, com.old.silence.job.common.core.grpc.auto.Metadata.Builder, com.old.silence.job.common.core.grpc.auto.MetadataOrBuilder>(
+            com.old.silence.job.common.grpc.auto.Metadata, com.old.silence.job.common.grpc.auto.Metadata.Builder, com.old.silence.job.common.grpc.auto.MetadataOrBuilder>(
                 getMetadata(),
                 getParentForChildren(),
                 isClean());
@@ -753,12 +753,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:GrpcSilenceJobRequest)
-  private static final com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest DEFAULT_INSTANCE;
+  private static final com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest();
+    DEFAULT_INSTANCE = new com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest();
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest getDefaultInstance() {
+  public static com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -794,7 +794,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @Override
-  public com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest getDefaultInstanceForType() {
+  public com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

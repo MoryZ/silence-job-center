@@ -1,7 +1,7 @@
-package com.old.silence.job.client.core.handler.update;
+package com.old.silence.job.client.handler.update;
 
-import com.old.silence.platform.job.common.core.enums.AllocationAlgorithmEnum;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
+import com.old.silence.job.common.enums.AllocationAlgorithmEnum;
+import com.old.silence.job.common.enums.JobTaskType;
 
 import java.math.BigInteger;
 

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.util.concurrent.RateLimiter;
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 
 import java.util.concurrent.TimeUnit;
@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
  * 缓存通知限流组件
  *
  * @author zuoJunLin
- * @date 2023-11-20
  * @since 2.5.0
  */
 @Component

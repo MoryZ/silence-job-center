@@ -1,7 +1,7 @@
 package com.old.silence.job.server.job.task.support.executor.workflow;
 
-import com.old.silence.platform.job.common.core.enums.WorkflowNodeType;
-import com.old.silence.platform.job.server.job.task.support.WorkflowExecutor;
+import com.old.silence.job.common.enums.WorkflowNodeType;
+import com.old.silence.job.server.job.task.support.WorkflowExecutor;
 
 import java.util.concurrent.ConcurrentHashMap;
 

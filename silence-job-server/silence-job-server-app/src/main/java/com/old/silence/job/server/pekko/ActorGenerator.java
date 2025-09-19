@@ -2,7 +2,7 @@ package com.old.silence.job.server.pekko;
 
 import org.apache.pekko.actor.ActorRef;
 import org.apache.pekko.actor.ActorSystem;
-import com.old.silence.job.common.core.context.SilenceSpringContext;
+import com.old.silence.job.common.context.SilenceSpringContext;
 
 
 /**

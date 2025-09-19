@@ -1,7 +1,7 @@
 package com.old.silence.job.server.retry.task.support.request;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.net.url.UrlQuery;
+import cn.hutool.lang.Assert;
+import cn.hutool.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.dao.ConcurrencyFailureException;
@@ -11,18 +11,18 @@ import org.springframework.transaction.TransactionSystemException;
 import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson2.JSON;
 import com.github.rholder.retry.*;
-import com.old.silence.platform.job.common.core.enums.HeadersEnum;
-import com.old.silence.platform.job.common.core.enums.TaskGeneratorSceneEnum;
-import com.old.silence.platform.job.common.core.model.SilenceJobRequest;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.common.core.util.StreamUtils;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.handler.PostHttpRequestHandler;
-import com.old.silence.platform.job.server.exception.SilenceJobServerException;
-import com.old.silence.platform.job.server.model.dto.RetryTaskDTO;
-import com.old.silence.platform.job.server.retry.task.service.TaskContextConverter;
-import com.old.silence.platform.job.server.retry.task.support.generator.retry.TaskContext;
-import com.old.silence.platform.job.server.retry.task.support.generator.retry.TaskGenerator;
+import com.old.silence.job.common.enums.HeadersEnum;
+import com.old.silence.job.common.enums.TaskGeneratorSceneEnum;
+import com.old.silence.job.common.model.SilenceJobRequest;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.util.StreamUtils;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.handler.PostHttpRequestHandler;
+import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.model.dto.RetryTaskDTO;
+import com.old.silence.job.server.retry.task.service.TaskContextConverter;
+import com.old.silence.job.server.retry.task.support.generator.retry.TaskContext;
+import com.old.silence.job.server.retry.task.support.generator.retry.TaskGenerator;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +31,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.BATCH_REPORT;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.BATCH_REPORT;
 
 /**
  * 处理上报数据

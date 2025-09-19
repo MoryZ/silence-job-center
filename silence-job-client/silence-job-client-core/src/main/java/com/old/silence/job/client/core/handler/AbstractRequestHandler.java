@@ -1,7 +1,7 @@
-package com.old.silence.job.client.core.handler;
+package com.old.silence.job.client.handler;
 
-import cn.hutool.core.lang.Pair;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
+import cn.hutool.lang.Pair;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
 
 
 public abstract class AbstractRequestHandler<R> implements RequestHandler<R> {

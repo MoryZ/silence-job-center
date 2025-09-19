@@ -1,7 +1,7 @@
 package com.old.silence.job.server.dto;
 
 
-import com.old.silence.job.common.core.enums.SystemModeEnum;
+import com.old.silence.job.common.enums.SystemModeEnum;
 
 public class JobLineQueryVo extends LineQueryVO {
     /**

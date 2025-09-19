@@ -1,9 +1,9 @@
 package com.old.silence.job.server.vo;
 
 
-import com.old.silence.job.common.core.enums.RetryOperationReason;
-import com.old.silence.job.common.core.enums.RetryTaskStatus;
-import com.old.silence.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.RetryOperationReason;
+import com.old.silence.job.common.enums.RetryTaskStatus;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 import java.math.BigInteger;
 import java.time.Instant;

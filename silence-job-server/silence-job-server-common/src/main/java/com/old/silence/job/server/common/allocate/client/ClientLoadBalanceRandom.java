@@ -8,11 +8,11 @@ import java.util.TreeSet;
 
 public class ClientLoadBalanceRandom implements ClientLoadBalance {
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     @Override
     public String route(String allocKey, TreeSet<String> clientAllAddressSet) {
-        String[] addressArr = clientAllAddressSet.toArray(new String[clientAllAddressSet.size()]);
+        String[] addressArr = clientAllAddressSet.toArray(new String[0]);
         return addressArr[random.nextInt(clientAllAddressSet.size())];
     }
 

@@ -29,7 +29,7 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_descriptor;
+    return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
@@ -47,9 +47,9 @@ private static final long serialVersionUID = 0L;
   @Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_fieldAccessorTable
+    return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.old.silence.job.common.core.grpc.auto.Metadata.class, com.old.silence.job.common.core.grpc.auto.Metadata.Builder.class);
+            com.old.silence.job.common.grpc.auto.Metadata.class, com.old.silence.job.common.grpc.auto.Metadata.Builder.class);
   }
 
   public static final int URI_FIELD_NUMBER = 3;
@@ -97,7 +97,7 @@ private static final long serialVersionUID = 0L;
         String, String> defaultEntry =
             com.google.protobuf.MapEntry
             .<String, String>newDefaultInstance(
-                com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_HeadersEntry_descriptor,
+                com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_HeadersEntry_descriptor,
                 com.google.protobuf.WireFormat.FieldType.STRING,
                 "",
                 com.google.protobuf.WireFormat.FieldType.STRING,
@@ -225,10 +225,10 @@ String defaultValue) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.old.silence.job.common.core.grpc.auto.Metadata)) {
+    if (!(obj instanceof com.old.silence.job.common.grpc.auto.Metadata)) {
       return super.equals(obj);
     }
-    com.old.silence.job.common.core.grpc.auto.Metadata other = (com.old.silence.job.common.core.grpc.auto.Metadata) obj;
+    com.old.silence.job.common.grpc.auto.Metadata other = (com.old.silence.job.common.grpc.auto.Metadata) obj;
 
     if (!getUri()
         .equals(other.getUri())) return false;
@@ -256,44 +256,44 @@ String defaultValue) {
     return hash;
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(byte[] data)
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(java.io.InputStream input)
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -301,26 +301,26 @@ String defaultValue) {
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseDelimitedFrom(java.io.InputStream input)
+  public static com.old.silence.job.common.grpc.auto.Metadata parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseDelimitedFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.old.silence.job.common.core.grpc.auto.Metadata parseFrom(
+  public static com.old.silence.job.common.grpc.auto.Metadata parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -333,7 +333,7 @@ String defaultValue) {
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.old.silence.job.common.core.grpc.auto.Metadata prototype) {
+  public static Builder newBuilder(com.old.silence.job.common.grpc.auto.Metadata prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @Override
@@ -354,10 +354,10 @@ String defaultValue) {
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:Metadata)
-      com.old.silence.job.common.core.grpc.auto.MetadataOrBuilder {
+      com.old.silence.job.common.grpc.auto.MetadataOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_descriptor;
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -385,12 +385,12 @@ String defaultValue) {
     @Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_fieldAccessorTable
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.old.silence.job.common.core.grpc.auto.Metadata.class, com.old.silence.job.common.core.grpc.auto.Metadata.Builder.class);
+              com.old.silence.job.common.grpc.auto.Metadata.class, com.old.silence.job.common.grpc.auto.Metadata.Builder.class);
     }
 
-    // Construct using com.old.silence.job.common.core.grpc.auto.Metadata.newBuilder()
+    // Construct using com.old.silence.job.common.grpc.auto.Metadata.newBuilder()
     private Builder() {
 
     }
@@ -412,17 +412,17 @@ String defaultValue) {
     @Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_descriptor;
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_Metadata_descriptor;
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.Metadata getDefaultInstanceForType() {
-      return com.old.silence.job.common.core.grpc.auto.Metadata.getDefaultInstance();
+    public com.old.silence.job.common.grpc.auto.Metadata getDefaultInstanceForType() {
+      return com.old.silence.job.common.grpc.auto.Metadata.getDefaultInstance();
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.Metadata build() {
-      com.old.silence.job.common.core.grpc.auto.Metadata result = buildPartial();
+    public com.old.silence.job.common.grpc.auto.Metadata build() {
+      com.old.silence.job.common.grpc.auto.Metadata result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -430,14 +430,14 @@ String defaultValue) {
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.Metadata buildPartial() {
-      com.old.silence.job.common.core.grpc.auto.Metadata result = new com.old.silence.job.common.core.grpc.auto.Metadata(this);
+    public com.old.silence.job.common.grpc.auto.Metadata buildPartial() {
+      com.old.silence.job.common.grpc.auto.Metadata result = new com.old.silence.job.common.grpc.auto.Metadata(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.old.silence.job.common.core.grpc.auto.Metadata result) {
+    private void buildPartial0(com.old.silence.job.common.grpc.auto.Metadata result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.uri_ = uri_;
@@ -482,16 +482,16 @@ String defaultValue) {
     }
     @Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.old.silence.job.common.core.grpc.auto.Metadata) {
-        return mergeFrom((com.old.silence.job.common.core.grpc.auto.Metadata)other);
+      if (other instanceof com.old.silence.job.common.grpc.auto.Metadata) {
+        return mergeFrom((com.old.silence.job.common.grpc.auto.Metadata)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.old.silence.job.common.core.grpc.auto.Metadata other) {
-      if (other == com.old.silence.job.common.core.grpc.auto.Metadata.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.old.silence.job.common.grpc.auto.Metadata other) {
+      if (other == com.old.silence.job.common.grpc.auto.Metadata.getDefaultInstance()) return this;
       if (!other.getUri().isEmpty()) {
         uri_ = other.uri_;
         bitField0_ |= 0x00000001;
@@ -772,12 +772,12 @@ String defaultValue) {
   }
 
   // @@protoc_insertion_point(class_scope:Metadata)
-  private static final com.old.silence.job.common.core.grpc.auto.Metadata DEFAULT_INSTANCE;
+  private static final com.old.silence.job.common.grpc.auto.Metadata DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.old.silence.job.common.core.grpc.auto.Metadata();
+    DEFAULT_INSTANCE = new com.old.silence.job.common.grpc.auto.Metadata();
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.Metadata getDefaultInstance() {
+  public static com.old.silence.job.common.grpc.auto.Metadata getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -813,7 +813,7 @@ String defaultValue) {
   }
 
   @Override
-  public com.old.silence.job.common.core.grpc.auto.Metadata getDefaultInstanceForType() {
+  public com.old.silence.job.common.grpc.auto.Metadata getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

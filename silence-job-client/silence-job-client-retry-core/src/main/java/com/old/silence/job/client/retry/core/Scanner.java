@@ -1,6 +1,6 @@
 package com.old.silence.job.client.retry.core;
 
-import com.old.silence.platform.job.client.core.retryer.RetryerInfo;
+import com.old.silence.job.client.retryer.RetryerInfo;
 
 import java.util.List;
 

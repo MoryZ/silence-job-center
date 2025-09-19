@@ -3,7 +3,7 @@ package com.old.silence.job.common.rpc;
 
 
 
-import com.old.silence.job.common.core.model.ApiResult;
+import com.old.silence.job.common.model.ApiResult;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;

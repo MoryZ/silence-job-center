@@ -1,47 +1,47 @@
 package com.old.silence.job.server.job.task.support.handler;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.lang.Assert;
+import cn.hutool.util.StrUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.old.silence.platform.job.common.core.constant.SystemConstants;
-import com.old.silence.platform.job.common.core.enums.JobTaskExecutorScene;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.enums.MapReduceStage;
-import com.old.silence.platform.job.common.core.model.JobArgsHolder;
-import com.old.silence.platform.job.server.common.WaitStrategy;
-import com.old.silence.platform.job.server.common.dto.DistributeInstance;
-import com.old.silence.platform.job.server.common.strategy.WaitStrategies;
-import com.old.silence.platform.job.server.common.util.DateUtils;
-import com.old.silence.platform.job.server.domain.model.GroupConfig;
-import com.old.silence.platform.job.server.domain.model.Job;
-import com.old.silence.platform.job.server.domain.model.JobTask;
-import com.old.silence.platform.job.server.domain.model.JobTaskBatch;
-import com.old.silence.platform.job.server.exception.SilenceJobServerException;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.GroupConfigDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao;
-import com.old.silence.platform.job.server.job.task.dto.CompleteJobBatchDTO;
-import com.old.silence.platform.job.server.job.task.dto.JobTimerTaskDTO;
-import com.old.silence.platform.job.server.job.task.dto.MapReduceArgsStrDTO;
-import com.old.silence.platform.job.server.job.task.dto.TaskExecuteDTO;
-import com.old.silence.platform.job.server.job.task.support.JobExecutorResultHandler;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.cache.ResidentTaskCache;
-import com.old.silence.platform.job.server.job.task.support.result.job.JobExecutorResultContext;
-import com.old.silence.platform.job.server.job.task.support.timer.JobTimerWheel;
-import com.old.silence.platform.job.server.job.task.support.timer.ResidentJobTimerTask;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.enums.JobTaskExecutorScene;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.enums.MapReduceStage;
+import com.old.silence.job.common.model.JobArgsHolder;
+import com.old.silence.job.server.common.WaitStrategy;
+import com.old.silence.job.server.common.dto.DistributeInstance;
+import com.old.silence.job.server.common.strategy.WaitStrategies;
+import com.old.silence.job.server.common.util.DateUtils;
+import com.old.silence.job.server.domain.model.GroupConfig;
+import com.old.silence.job.server.domain.model.Job;
+import com.old.silence.job.server.domain.model.JobTask;
+import com.old.silence.job.server.domain.model.JobTaskBatch;
+import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.infrastructure.persistence.dao.GroupConfigDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
+import com.old.silence.job.server.job.task.dto.CompleteJobBatchDTO;
+import com.old.silence.job.server.job.task.dto.JobTimerTaskDTO;
+import com.old.silence.job.server.job.task.dto.MapReduceArgsStrDTO;
+import com.old.silence.job.server.job.task.dto.TaskExecuteDTO;
+import com.old.silence.job.server.job.task.support.JobExecutorResultHandler;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.cache.ResidentTaskCache;
+import com.old.silence.job.server.job.task.support.result.job.JobExecutorResultContext;
+import com.old.silence.job.server.job.task.support.timer.JobTimerWheel;
+import com.old.silence.job.server.job.task.support.timer.ResidentJobTimerTask;
 
 import java.math.BigInteger;
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
 
-import static com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus.COMPLETED;
+import static com.old.silence.job.common.enums.JobTaskBatchStatus.COMPLETED;
 
 
 @Component

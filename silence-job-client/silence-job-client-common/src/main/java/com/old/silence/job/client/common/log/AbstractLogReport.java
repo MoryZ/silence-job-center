@@ -3,14 +3,14 @@ package com.old.silence.job.client.common.log;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.old.silence.platform.job.client.common.Lifecycle;
-import com.old.silence.platform.job.client.common.LogReport;
-import com.old.silence.platform.job.client.common.config.SilenceJobProperties;
-import com.old.silence.platform.job.client.common.window.SlidingWindow;
-import com.old.silence.platform.job.common.core.window.Listener;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.log.center.dto.LogContentDTO;
-import com.old.silence.platform.job.server.model.dto.LogTaskDTO;
+import com.old.silence.job.client.common.Lifecycle;
+import com.old.silence.job.client.common.LogReport;
+import com.old.silence.job.client.common.config.SilenceJobProperties;
+import com.old.silence.job.client.common.window.SlidingWindow;
+import com.old.silence.job.common.window.Listener;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.log.dto.LogContentDTO;
+import com.old.silence.job.server.model.dto.LogTaskDTO;
 
 import java.util.Objects;
 

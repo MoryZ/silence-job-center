@@ -1,15 +1,15 @@
-package com.old.silence.job.client.retry.core.callback.future;
+package com.old.silence.job.client.retry.callback.future;
 
 import com.google.common.util.concurrent.FutureCallback;
-import com.old.silence.platform.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.platform.job.client.core.client.RetryClient;
-import com.old.silence.platform.job.client.core.context.RemoteRetryContext;
-import com.old.silence.platform.job.client.model.DispatchRetryResultDTO;
-import com.old.silence.platform.job.client.model.request.DispatchRetryResultRequest;
-import com.old.silence.platform.job.common.core.enums.RetryResultStatus;
-import com.old.silence.platform.job.common.core.enums.RetryTaskStatus;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.common.rpc.client.RequestBuilder;
+import com.old.silence.job.client.client.RetryClient;
+import com.old.silence.job.client.context.RemoteRetryContext;
+import com.old.silence.job.client.model.DispatchRetryResultDTO;
+import com.old.silence.job.client.model.request.DispatchRetryResultRequest;
+import com.old.silence.job.common.enums.RetryResultStatus;
+import com.old.silence.job.common.enums.RetryTaskStatus;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.util.Objects;
 import java.util.concurrent.CancellationException;

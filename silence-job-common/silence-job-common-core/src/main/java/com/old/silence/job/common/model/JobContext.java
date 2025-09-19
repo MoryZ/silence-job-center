@@ -2,8 +2,8 @@ package com.old.silence.job.common.model;
 
 
 
-import com.old.silence.job.common.core.enums.JobTaskType;
-import com.old.silence.job.common.core.enums.MapReduceStage;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.enums.MapReduceStage;
 
 import java.math.BigInteger;
 import java.util.List;

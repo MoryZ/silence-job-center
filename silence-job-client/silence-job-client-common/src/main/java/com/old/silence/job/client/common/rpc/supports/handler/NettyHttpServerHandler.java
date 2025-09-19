@@ -7,11 +7,11 @@ import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.common.config.SilenceJobProperties;
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpRequest;
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpResponse;
-import com.old.silence.platform.job.common.core.model.SilenceJobRequest;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
+import com.old.silence.job.client.common.config.SilenceJobProperties;
+import com.old.silence.job.client.common.rpc.supports.http.HttpRequest;
+import com.old.silence.job.client.common.rpc.supports.http.HttpResponse;
+import com.old.silence.job.common.model.SilenceJobRequest;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
 
 import java.util.HashMap;
 import java.util.Map;

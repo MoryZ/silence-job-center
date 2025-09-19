@@ -1,8 +1,8 @@
 package com.old.silence.job.server.common.util;
 
 import cn.hutool.core.util.StrUtil;
+
 import com.alibaba.fastjson2.JSON;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
@@ -25,7 +25,7 @@ public class GraphUtils {
             return null;
         }
         // 将JSON字符串转换为Map<BigInteger, Iterable<BigInteger>>
-        var typeReference = new TypeReference<Map<BigInteger, Iterable<BigInteger>>>() {
+        var typeReference = new                               TypeReference<Map<BigInteger, Iterable<BigInteger>>>() {
         }.getType();
         Map<BigInteger, Iterable<BigInteger>> adjacencyList = JSON.parseObject(jsonGraph, typeReference);
 

@@ -1,7 +1,7 @@
 package com.old.silence.job.client.common;
 
 
-import com.old.silence.platform.job.log.center.dto.LogContentDTO;
+import com.old.silence.job.log.dto.LogContentDTO;
 
 public interface LogReport {
 

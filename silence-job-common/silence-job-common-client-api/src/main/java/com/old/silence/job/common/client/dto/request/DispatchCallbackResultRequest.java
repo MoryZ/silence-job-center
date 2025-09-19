@@ -2,7 +2,7 @@ package com.old.silence.job.common.client.dto.request;
 
 
 
-import com.old.silence.job.common.core.enums.RetryTaskStatus;
+import com.old.silence.job.common.enums.RetryTaskStatus;
 
 import java.math.BigInteger;
 

@@ -2,8 +2,8 @@ package com.old.silence.job.log.dialect.slf4j;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.helpers.NOPLoggerFactory;
-import com.old.silence.job.log.center.dialect.Log;
-import com.old.silence.job.log.center.factory.LogFactory;
+import com.old.silence.job.log.dialect.Log;
+import com.old.silence.job.log.factory.LogFactory;
 
 import java.io.OutputStream;
 import java.io.PrintStream;

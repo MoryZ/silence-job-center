@@ -1,9 +1,7 @@
 package com.old.silence.job.server.common.dto;
 
 
-import com.old.silence.job.log.center.enums.LogTypeEnum;
-
-
+import com.old.silence.job.log.enums.LogTypeEnum;
 
 public class LogMetaDTO {
 

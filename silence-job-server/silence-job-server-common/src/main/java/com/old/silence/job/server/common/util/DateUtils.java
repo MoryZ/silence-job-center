@@ -5,8 +5,8 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import static com.old.silence.job.common.core.constant.SystemConstants.YYYYMMDDHHMMSS;
-import static com.old.silence.job.common.core.constant.SystemConstants.YYYY_MM_DD_HH_MM_SS;
+import static com.old.silence.job.common.constant.SystemConstants.YYYYMMDDHHMMSS;
+import static com.old.silence.job.common.constant.SystemConstants.YYYY_MM_DD_HH_MM_SS;
 
 
 public class DateUtils {

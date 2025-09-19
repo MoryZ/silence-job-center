@@ -2,8 +2,8 @@ package com.old.silence.job.server.retry.task.dto;
 
 
 
-import com.old.silence.platform.job.common.core.enums.RetryOperationReason;
-import com.old.silence.platform.job.common.core.enums.RetryTaskStatus;
+import com.old.silence.job.common.enums.RetryOperationReason;
+import com.old.silence.job.common.enums.RetryTaskStatus;
 
 public class RetryExecutorResultDTO extends BaseDTO  {
 

@@ -1,8 +1,8 @@
 package com.old.silence.job.log.dialect.log4j;
 
 
-import com.old.silence.job.log.center.dialect.Log;
-import com.old.silence.job.log.center.factory.LogFactory;
+import com.old.silence.job.log.dialect.Log;
+import com.old.silence.job.log.factory.LogFactory;
 
 /**
  * <a href="http://logging.apache.org/log4j/1.2/index.html">Apache Log4J</a> log.<br>

@@ -1,23 +1,20 @@
 package com.old.silence.job.server.job.task.support.alarm.listener;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.event.TransactionPhase;
-import org.springframework.transaction.event.TransactionalEventListener;
 import com.google.common.collect.Lists;
 import com.old.silence.core.enums.EnumValueFactory;
-import com.old.silence.platform.job.common.core.alarm.AlarmContext;
-import com.old.silence.platform.job.common.core.enums.JobNotifyScene;
-import com.old.silence.platform.job.common.core.enums.SystemTaskType;
-import com.old.silence.platform.job.common.core.util.EnvironmentUtils;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.alarm.AbstractJobAlarm;
-import com.old.silence.platform.job.server.common.dto.JobAlarmInfo;
-import com.old.silence.platform.job.server.common.dto.NotifyConfigInfo;
-import com.old.silence.platform.job.server.common.util.DateUtils;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
-import com.old.silence.platform.job.server.job.task.dto.JobTaskFailAlarmEventDTO;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.alarm.event.JobTaskFailAlarmEvent;
+import com.old.silence.job.common.alarm.AlarmContext;
+import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.SystemTaskType;
+import com.old.silence.job.common.util.EnvironmentUtils;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.alarm.AbstractJobAlarm;
+import com.old.silence.job.server.common.dto.JobAlarmInfo;
+import com.old.silence.job.server.common.dto.NotifyConfigInfo;
+import com.old.silence.job.server.common.util.DateUtils;
+import com.old.silence.job.server.job.task.dto.JobTaskFailAlarmEventDTO;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.alarm.event.JobTaskFailAlarmEvent;
 
 import java.util.ArrayList;
 import java.util.List;

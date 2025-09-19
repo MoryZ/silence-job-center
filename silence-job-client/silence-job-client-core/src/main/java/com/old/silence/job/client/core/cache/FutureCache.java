@@ -1,6 +1,6 @@
-package com.old.silence.job.client.core.cache;
+package com.old.silence.job.client.cache;
 
-import com.old.silence.platform.job.client.model.ExecuteResult;
+import com.old.silence.job.client.model.ExecuteResult;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.math.BigInteger;

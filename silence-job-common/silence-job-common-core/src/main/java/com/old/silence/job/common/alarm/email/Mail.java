@@ -1,5 +1,6 @@
 package com.old.silence.job.common.alarm.email;
 
+
 import cn.hutool.core.builder.Builder;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IORuntimeException;
@@ -8,7 +9,8 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
-import com.old.silence.job.common.core.util.MailUtils;
+
+import com.old.silence.job.common.util.MailUtils;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;

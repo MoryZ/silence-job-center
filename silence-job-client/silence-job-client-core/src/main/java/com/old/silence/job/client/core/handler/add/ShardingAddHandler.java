@@ -1,7 +1,7 @@
-package com.old.silence.job.client.core.handler.add;
+package com.old.silence.job.client.handler.add;
 
-import com.old.silence.platform.job.common.core.enums.AllocationAlgorithmEnum;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
+import com.old.silence.job.common.enums.AllocationAlgorithmEnum;
+import com.old.silence.job.common.enums.JobTaskType;
 
 
 public class ShardingAddHandler extends AddHandler<ShardingAddHandler> {

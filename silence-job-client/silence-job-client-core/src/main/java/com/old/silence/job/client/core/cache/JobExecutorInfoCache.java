@@ -1,7 +1,7 @@
-package com.old.silence.job.client.core.cache;
+package com.old.silence.job.client.cache;
 
 
-import com.old.silence.platform.job.client.core.dto.JobExecutorInfo;
+import com.old.silence.job.client.dto.JobExecutorInfo;
 
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,12 +1,12 @@
 package com.old.silence.job.server.job.task.support.executor.workflow;
 
-import com.old.silence.platform.job.common.core.enums.FailStrategy;
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus;
-import com.old.silence.platform.job.common.core.enums.JobTaskExecutorScene;
-import com.old.silence.platform.job.common.core.enums.JobTaskStatus;
-import com.old.silence.platform.job.common.core.enums.WorkflowNodeType;
-import com.old.silence.platform.job.server.domain.model.Job;
+import com.old.silence.job.common.enums.FailStrategy;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.JobTaskExecutorScene;
+import com.old.silence.job.common.enums.JobTaskStatus;
+import com.old.silence.job.common.enums.WorkflowNodeType;
+import com.old.silence.job.server.domain.model.Job;
 
 import java.math.BigInteger;
 

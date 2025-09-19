@@ -1,13 +1,13 @@
 package com.old.silence.job.log.dialect.jdk;
 
-import cn.hutool.core.util.StrUtil;
-import com.old.silence.job.log.center.dialect.AbstractLog;
+import com.old.silence.job.log.dialect.AbstractLog;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-import static com.old.silence.job.log.center.factory.LogFactory.extractThrowable;
+import cn.hutool.core.util.StrUtil;
+import static com.old.silence.job.log.factory.LogFactory.extractThrowable;
 import static java.util.logging.Level.INFO;
 
 
@@ -97,7 +97,7 @@ public class JdkLog extends AbstractLog {
 
     // ------------------------------------------------------------------------- Log
     @Override
-    public void log(com.old.silence.job.log.center.level.Level level, Boolean remote, String fqcn, String format,
+    public void log(com.old.silence.job.log.level.Level level, Boolean remote, String fqcn, String format,
                     Object... arguments) {
         Level jdkLevel;
         switch (level) {
@@ -117,7 +117,7 @@ public class JdkLog extends AbstractLog {
                 jdkLevel = Level.SEVERE;
                 break;
             default:
-                throw new Error(StrUtil.format("Can not identify level: {}", level));
+                throw new Error(String.format("Can not identify level: %s", level));
         }
         logIfEnabled(jdkLevel, fqcn, format, arguments);
     }
@@ -134,7 +134,7 @@ public class JdkLog extends AbstractLog {
      */
     private void logIfEnabled(Level level, String callerFQCN, String format, Object... arguments) {
         if (logger.isLoggable(level)) {
-            LogRecord record = new LogRecord(level, StrUtil.format(format, arguments));
+            LogRecord record = new LogRecord(level, String.format(format, arguments));
             record.setLoggerName(getName());
             record.setThrown(extractThrowable(arguments));
             fillCallerData(callerFQCN, record);

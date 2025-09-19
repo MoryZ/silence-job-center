@@ -1,22 +1,22 @@
 
 package com.old.silence.job.client.common.appender;
 
-import org.apache.logging.log4j.core.Filter;
-import org.apache.logging.log4j.core.Layout;
-import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.appender.AbstractAppender;
-import org.apache.logging.log4j.core.config.plugins.Plugin;
-import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
-import org.apache.logging.log4j.core.config.plugins.PluginElement;
-import org.apache.logging.log4j.core.config.plugins.PluginFactory;
-import org.apache.logging.log4j.core.util.Booleans;
-import org.apache.logging.log4j.core.util.Throwables;
+import org.apache.logging.log4j.Filter;
+import org.apache.logging.log4j.Layout;
+import org.apache.logging.log4j.LogEvent;
+import org.apache.logging.log4j.appender.AbstractAppender;
+import org.apache.logging.log4j.config.plugins.Plugin;
+import org.apache.logging.log4j.config.plugins.PluginAttribute;
+import org.apache.logging.log4j.config.plugins.PluginElement;
+import org.apache.logging.log4j.config.plugins.PluginFactory;
+import org.apache.logging.log4j.util.Booleans;
+import org.apache.logging.log4j.util.Throwables;
 import org.slf4j.MDC;
-import com.old.silence.platform.job.client.common.log.LogReportFactory;
-import com.old.silence.platform.job.client.common.log.SilenceJobLogManager;
-import com.old.silence.platform.job.client.common.rpc.client.NettyChannel;
-import com.old.silence.platform.job.log.center.constant.LogFieldConstants;
-import com.old.silence.platform.job.log.center.dto.LogContentDTO;
+import com.old.silence.job.client.common.log.LogReportFactory;
+import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.common.rpc.client.NettyChannel;
+import com.old.silence.job.log.constant.LogFieldConstants;
+import com.old.silence.job.log.dto.LogContentDTO;
 
 import java.io.Serializable;
 import java.util.Objects;

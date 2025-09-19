@@ -2,7 +2,7 @@ package com.old.silence.job.server.retry.task.dto;
 
 
 
-import com.old.silence.platform.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 import java.math.BigInteger;
 

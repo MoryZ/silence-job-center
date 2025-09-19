@@ -2,7 +2,7 @@ package com.old.silence.job.server.dto;
 
 
 
-import com.old.silence.job.common.core.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
 
 import java.math.BigInteger;
 

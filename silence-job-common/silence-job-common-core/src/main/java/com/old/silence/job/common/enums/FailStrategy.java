@@ -1,8 +1,9 @@
 package com.old.silence.job.common.enums;
 
-import com.old.silence.core.enums.DescribedEnumValue;
 
 import java.util.Objects;
+
+import com.old.silence.core.enums.DescribedEnumValue;
 
 
 public enum FailStrategy implements DescribedEnumValue<Byte> {

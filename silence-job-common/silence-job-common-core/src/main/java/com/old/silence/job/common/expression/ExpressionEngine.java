@@ -1,6 +1,6 @@
 package com.old.silence.job.common.expression;
 
-import com.old.silence.job.common.core.enums.ExpressionTypeEnum;
+import com.old.silence.job.common.enums.ExpressionTypeEnum;
 
 /**
  * 参数表达式解析引擎

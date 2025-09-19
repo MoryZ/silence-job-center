@@ -2,9 +2,9 @@ package com.old.silence.job.server.job.task.support.timer;
 
 import io.netty.util.HashedWheelTimer;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.TimerTask;
-import com.old.silence.platform.job.server.job.task.support.idempotent.TimerIdempotent;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.TimerTask;
+import com.old.silence.job.server.job.task.support.idempotent.TimerIdempotent;
 
 import java.time.Duration;
 import java.util.concurrent.LinkedBlockingQueue;

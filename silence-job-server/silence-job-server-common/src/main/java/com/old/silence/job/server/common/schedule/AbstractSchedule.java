@@ -1,15 +1,16 @@
 package com.old.silence.job.server.common.schedule;
 
 import cn.hutool.core.lang.Assert;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.TaskScheduler;
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.core.context.CommonErrors;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Schedule;
 import com.old.silence.job.server.common.lock.LockBuilder;
 import com.old.silence.job.server.common.lock.LockManager;
 import com.old.silence.job.server.common.lock.LockProvider;
-import com.old.silence.job.server.exception.SilenceJobServerException;
 
 import java.time.Duration;
 
@@ -27,9 +28,9 @@ public abstract class AbstractSchedule implements Schedule {
         String lockName = lockName();
         String lockAtMost = lockAtMost();
         String lockAtLeast = lockAtLeast();
-        Assert.notBlank(lockAtMost, () -> new SilenceJobServerException("lockAtLeast can not be null."));
-        Assert.notBlank(lockAtLeast, () -> new SilenceJobServerException("lockAtLeast can not be null."));
-        Assert.notBlank(lockName, () -> new SilenceJobServerException("lockName can not be null."));
+        Assert.notBlank(lockAtMost, () -> CommonErrors.INVALID_PARAMETER.createException("lockAtLeast can not be null."));
+        Assert.notBlank(lockAtLeast, () -> CommonErrors.INVALID_PARAMETER.createException("lockAtLeast can not be null."));
+        Assert.notBlank(lockName, () -> CommonErrors.INVALID_PARAMETER.createException("lockName can not be null."));
 
         LockProvider lockProvider = LockBuilder.newBuilder()
                 .withResident(lockName)

@@ -1,7 +1,7 @@
 package com.old.silence.job.server.retry.task.support.block;
 
-import com.old.silence.platform.job.common.core.enums.RetryBlockStrategy;
-import com.old.silence.platform.job.server.retry.task.support.BlockStrategy;
+import com.old.silence.job.common.enums.RetryBlockStrategy;
+import com.old.silence.job.server.retry.task.support.BlockStrategy;
 
 import java.util.concurrent.ConcurrentHashMap;
 

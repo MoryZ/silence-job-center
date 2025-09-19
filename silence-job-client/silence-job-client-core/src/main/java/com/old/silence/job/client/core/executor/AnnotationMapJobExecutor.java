@@ -1,9 +1,9 @@
-package com.old.silence.job.client.core.executor;
+package com.old.silence.job.client.executor;
 
-import com.old.silence.platform.job.client.core.MapHandler;
-import com.old.silence.platform.job.client.core.dto.MapArgs;
-import com.old.silence.platform.job.client.core.executor.AbstractMapExecutor;
-import com.old.silence.platform.job.client.model.ExecuteResult;
+import com.old.silence.job.client.MapHandler;
+import com.old.silence.job.client.dto.MapArgs;
+import com.old.silence.job.client.executor.AbstractMapExecutor;
+import com.old.silence.job.client.model.ExecuteResult;
 import org.springframework.stereotype.Component;
 
 /**

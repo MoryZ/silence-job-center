@@ -4,9 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
-import org.springframework.core.env.Environment;
-import org.springframework.core.env.StandardEnvironment;
-import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.env.Environment;
+import org.springframework.env.StandardEnvironment;
+import org.springframework.type.AnnotationMetadata;
 
 import java.util.Map;
 import java.util.Objects;

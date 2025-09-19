@@ -4,8 +4,8 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
-import com.old.silence.job.common.core.util.SilenceJobVersion;
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.job.common.util.SilenceJobVersion;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 
 import java.util.ArrayList;

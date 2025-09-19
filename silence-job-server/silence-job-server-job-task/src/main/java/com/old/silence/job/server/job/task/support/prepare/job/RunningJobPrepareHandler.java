@@ -4,22 +4,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus;
-import com.old.silence.platform.job.server.common.util.DateUtils;
-import com.old.silence.platform.job.server.job.task.dto.CompleteJobBatchDTO;
-import com.old.silence.platform.job.server.job.task.dto.JobTaskFailAlarmEventDTO;
-import com.old.silence.platform.job.server.job.task.dto.JobTaskPrepareDTO;
-import com.old.silence.platform.job.server.job.task.support.BlockStrategy;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.JobTaskStopHandler;
-import com.old.silence.platform.job.server.job.task.support.block.job.BlockStrategyContext;
-import com.old.silence.platform.job.server.job.task.support.block.job.JobBlockStrategyFactory;
-import com.old.silence.platform.job.server.job.task.support.handler.JobTaskBatchHandler;
-import com.old.silence.platform.job.server.job.task.support.stop.JobTaskStopFactory;
-import com.old.silence.platform.job.server.job.task.support.stop.TaskStopJobContext;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
+import com.old.silence.job.server.common.util.DateUtils;
+import com.old.silence.job.server.job.task.dto.CompleteJobBatchDTO;
+import com.old.silence.job.server.job.task.dto.JobTaskFailAlarmEventDTO;
+import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;
+import com.old.silence.job.server.job.task.support.BlockStrategy;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.JobTaskStopHandler;
+import com.old.silence.job.server.job.task.support.block.job.BlockStrategyContext;
+import com.old.silence.job.server.job.task.support.block.job.JobBlockStrategyFactory;
+import com.old.silence.job.server.job.task.support.handler.JobTaskBatchHandler;
+import com.old.silence.job.server.job.task.support.stop.JobTaskStopFactory;
+import com.old.silence.job.server.job.task.support.stop.TaskStopJobContext;
 
 /**
  * 处理处于{@link JobTaskBatchStatus ::RUNNING}状态的任务

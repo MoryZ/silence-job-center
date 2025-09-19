@@ -1,8 +1,8 @@
 package com.old.silence.job.client.common.cache;
 
-import cn.hutool.core.lang.Pair;
-import com.old.silence.platform.job.client.common.rpc.client.RequestMethod;
-import com.old.silence.platform.job.client.common.rpc.supports.scan.EndPointInfo;
+import cn.hutool.lang.Pair;
+import com.old.silence.job.client.common.rpc.client.RequestMethod;
+import com.old.silence.job.client.common.rpc.supports.scan.EndPointInfo;
 
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,6 +1,6 @@
 package com.old.silence.job.client.retry.core;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.JsonProcessingException;
 
 import java.lang.reflect.Method;
 

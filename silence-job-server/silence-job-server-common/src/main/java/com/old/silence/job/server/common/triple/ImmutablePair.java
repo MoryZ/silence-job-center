@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.triple;
 
 
-import com.old.silence.job.common.core.exception.SilenceJobCommonException;
+import com.old.silence.job.common.exception.SilenceJobCommonException;
 
 public final class ImmutablePair<L, R> extends Pair<L, R> {
 

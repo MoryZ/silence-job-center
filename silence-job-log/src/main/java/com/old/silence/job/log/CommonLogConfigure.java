@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@ComponentScan("com.old.silence.job.log.center.*")
+@ComponentScan("com.old.silence.job.log.*")
 public class CommonLogConfigure {
 }

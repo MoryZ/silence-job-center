@@ -2,7 +2,7 @@ package com.old.silence.job.server.vo;
 
 
 
-import com.old.silence.job.common.core.enums.NodeType;
+import com.old.silence.job.common.enums.NodeType;
 
 import java.time.Instant;
 import java.util.Set;

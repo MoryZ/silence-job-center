@@ -1,10 +1,10 @@
 package com.old.silence.job.common.server.dto;
 
 
-import com.old.silence.job.common.core.constant.SystemConstants;
-import com.old.silence.job.common.core.enums.JobNotifyScene;
-import com.old.silence.job.common.core.enums.NotifyType;
-import com.old.silence.job.common.core.enums.RetryNotifyScene;
+import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.NotifyType;
+import com.old.silence.job.common.enums.RetryNotifyScene;
 
 import java.util.List;
 

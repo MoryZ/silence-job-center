@@ -2,24 +2,24 @@ package com.old.silence.job.server.job.task.support.result.job;
 
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.enums.MapReduceStage;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.domain.model.JobTask;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.GroupConfigDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao;
-import com.old.silence.platform.job.server.job.task.dto.ReduceTaskDTO;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.handler.WorkflowBatchHandler;
-import com.old.silence.platform.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.enums.MapReduceStage;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.domain.model.JobTask;
+import com.old.silence.job.server.infrastructure.persistence.dao.GroupConfigDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
+import com.old.silence.job.server.job.task.dto.ReduceTaskDTO;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
+import com.old.silence.job.server.pekko.ActorGenerator;
 
 import java.util.Objects;
 
-import static com.old.silence.platform.job.common.core.enums.MapReduceStage.MAP;
-import static com.old.silence.platform.job.common.core.enums.MapReduceStage.MERGE_REDUCE;
-import static com.old.silence.platform.job.common.core.enums.MapReduceStage.REDUCE;
+import static com.old.silence.job.common.enums.MapReduceStage.MAP;
+import static com.old.silence.job.common.enums.MapReduceStage.MERGE_REDUCE;
+import static com.old.silence.job.common.enums.MapReduceStage.REDUCE;
 
 @Component
 public class MapReduceJobExecutorHandler extends AbstractJobExecutorResultHandler {

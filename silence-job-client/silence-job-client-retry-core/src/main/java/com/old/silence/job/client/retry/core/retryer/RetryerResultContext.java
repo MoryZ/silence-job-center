@@ -1,6 +1,6 @@
-package com.old.silence.job.client.retry.core.retryer;
+package com.old.silence.job.client.retry.retryer;
 
-import com.old.silence.platform.job.common.core.enums.RetryResultStatus;
+import com.old.silence.job.common.enums.RetryResultStatus;
 
 
 

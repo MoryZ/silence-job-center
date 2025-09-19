@@ -1,14 +1,13 @@
 package com.old.silence.job.log.dialect.log4j2;
 
-import cn.hutool.core.util.StrUtil;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.spi.AbstractLogger;
 import org.slf4j.MDC;
-import com.old.silence.job.log.center.constant.LogFieldConstants;
-import com.old.silence.job.log.center.dialect.AbstractLog;
-import com.old.silence.job.log.center.factory.LogFactory;
+import com.old.silence.job.log.constant.LogFieldConstants;
+import com.old.silence.job.log.dialect.AbstractLog;
+import com.old.silence.job.log.factory.LogFactory;
 
 
 /**
@@ -97,7 +96,7 @@ public class Log4j2Log extends AbstractLog {
 
     // ------------------------------------------------------------------------- Log
     @Override
-    public void log(com.old.silence.job.log.center.level.Level level, Boolean remote, String fqcn, String format,
+    public void log(com.old.silence.job.log.level.Level level, Boolean remote, String fqcn, String format,
                     Object... arguments) {
         Level log4j2Level;
         switch (level) {
@@ -117,7 +116,7 @@ public class Log4j2Log extends AbstractLog {
                 log4j2Level = Level.ERROR;
                 break;
             default:
-                throw new Error(StrUtil.format("Can not identify level: {}", level));
+                throw new Error(String.format("Can not identify level: %s", level));
         }
         logIfEnabled(log4j2Level, remote, fqcn, format, arguments);
     }
@@ -140,11 +139,11 @@ public class Log4j2Log extends AbstractLog {
                 MDC.put(LogFieldConstants.MDC_REMOTE, remote.toString());
             }
             if (this.logger instanceof AbstractLogger) {
-                ((AbstractLogger) this.logger).logIfEnabled(fqcn, level, null, StrUtil.format(msgTemplate, arguments),
+                ((AbstractLogger) this.logger).logIfEnabled(fqcn, level, null, String.format(msgTemplate, arguments),
                         LogFactory.extractThrowable(arguments));
             } else {
                 // FQCN无效
-                this.logger.log(level, StrUtil.format(msgTemplate, arguments), LogFactory.extractThrowable(arguments));
+                this.logger.log(level, String.format(msgTemplate, arguments), LogFactory.extractThrowable(arguments));
             }
         }
     }

@@ -1,14 +1,14 @@
 package com.old.silence.job.server.job.task.support.block.job;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.JobTaskStopHandler;
-import com.old.silence.platform.job.server.job.task.support.generator.batch.JobTaskBatchGenerator;
-import com.old.silence.platform.job.server.job.task.support.generator.batch.JobTaskBatchGeneratorContext;
-import com.old.silence.platform.job.server.job.task.support.stop.JobTaskStopFactory;
-import com.old.silence.platform.job.server.job.task.support.stop.TaskStopJobContext;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.JobTaskStopHandler;
+import com.old.silence.job.server.job.task.support.generator.batch.JobTaskBatchGenerator;
+import com.old.silence.job.server.job.task.support.generator.batch.JobTaskBatchGeneratorContext;
+import com.old.silence.job.server.job.task.support.stop.JobTaskStopFactory;
+import com.old.silence.job.server.job.task.support.stop.TaskStopJobContext;
 
 import java.util.Objects;
 

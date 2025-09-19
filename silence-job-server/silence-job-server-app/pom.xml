@@ -24,11 +24,6 @@
 
         <dependency>
             <groupId>com.old.silence</groupId>
-            <artifactId>platform-data-mybatis-plus</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.old.silence</groupId>
             <artifactId>platform-validation</artifactId>
         </dependency>
 
@@ -42,12 +37,6 @@
             <artifactId>pekko-actor_2.13</artifactId>
             <version>1.2.0-M1</version>
             <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.49</version>
         </dependency>
 
     </dependencies>

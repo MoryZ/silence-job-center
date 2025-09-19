@@ -1,34 +1,34 @@
-package com.old.silence.job.client.core.client;
+package com.old.silence.job.client.client;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.common.annotation.Mapping;
-import com.old.silence.platform.job.client.common.annotation.SilenceEndPoint;
-import com.old.silence.platform.job.client.common.log.SilenceJobLogManager;
-import com.old.silence.platform.job.client.common.rpc.client.RequestMethod;
-import com.old.silence.platform.job.client.core.IJobExecutor;
-import com.old.silence.platform.job.client.core.cache.JobExecutorInfoCache;
-import com.old.silence.platform.job.client.core.cache.ThreadPoolCache;
-import com.old.silence.platform.job.client.core.dto.JobExecutorInfo;
-import com.old.silence.platform.job.client.core.executor.AbstractJobExecutor;
-import com.old.silence.platform.job.client.core.executor.AbstractMapExecutor;
-import com.old.silence.platform.job.client.core.executor.AbstractMapReduceExecutor;
-import com.old.silence.platform.job.client.core.executor.AnnotationJobExecutor;
-import com.old.silence.platform.job.client.core.executor.AnnotationMapJobExecutor;
-import com.old.silence.platform.job.client.core.executor.AnnotationMapReduceJobExecutor;
-import com.old.silence.platform.job.client.core.log.JobLogMeta;
-import com.old.silence.platform.job.log.center.enums.LogTypeEnum;
-import com.old.silence.platform.job.client.model.StopJobDTO;
-import com.old.silence.platform.job.client.model.request.DispatchJobRequest;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.enums.ExecutorType;
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.common.core.model.ApiResult;
-import com.old.silence.platform.job.common.core.model.JobArgsHolder;
-import com.old.silence.platform.job.common.core.model.JobContext;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.common.annotation.Mapping;
+import com.old.silence.job.client.common.annotation.SilenceEndPoint;
+import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.common.rpc.client.RequestMethod;
+import com.old.silence.job.client.IJobExecutor;
+import com.old.silence.job.client.cache.JobExecutorInfoCache;
+import com.old.silence.job.client.cache.ThreadPoolCache;
+import com.old.silence.job.client.dto.JobExecutorInfo;
+import com.old.silence.job.client.executor.AbstractJobExecutor;
+import com.old.silence.job.client.executor.AbstractMapExecutor;
+import com.old.silence.job.client.executor.AbstractMapReduceExecutor;
+import com.old.silence.job.client.executor.AnnotationJobExecutor;
+import com.old.silence.job.client.executor.AnnotationMapJobExecutor;
+import com.old.silence.job.client.executor.AnnotationMapReduceJobExecutor;
+import com.old.silence.job.client.log.JobLogMeta;
+import com.old.silence.job.log.enums.LogTypeEnum;
+import com.old.silence.job.client.model.StopJobDTO;
+import com.old.silence.job.client.model.request.DispatchJobRequest;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.ExecutorType;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.common.model.ApiResult;
+import com.old.silence.job.common.model.JobArgsHolder;
+import com.old.silence.job.common.model.JobContext;
+import com.old.silence.job.log.SilenceJobLog;
 import com.google.common.collect.Maps;
-import com.old.silence.platform.job.common.core.util.JsonUtils;
+import com.old.silence.job.common.util.JsonUtils;
 
 import javax.validation.Valid;
 import org.springframework.validation.annotation.Validated;
@@ -36,8 +36,8 @@ import org.springframework.validation.annotation.Validated;
 import java.util.Objects;
 import java.util.concurrent.ThreadPoolExecutor;
 
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.JOB_DISPATCH;
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.JOB_STOP;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.JOB_DISPATCH;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.JOB_STOP;
 
 
 @SilenceEndPoint

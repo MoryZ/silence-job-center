@@ -1,8 +1,8 @@
 package com.old.silence.job.server.job.task.support.generator.task;
 
 
-import com.old.silence.platform.job.common.core.enums.JobArgsType;
-import com.old.silence.platform.job.common.core.enums.MapReduceStage;
+import com.old.silence.job.common.enums.JobArgsType;
+import com.old.silence.job.common.enums.MapReduceStage;
 
 import java.math.BigInteger;
 import java.util.List;

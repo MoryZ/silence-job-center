@@ -4,8 +4,8 @@ import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.old.silence.job.common.core.enums.SystemTaskType;
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.job.common.enums.SystemTaskType;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 
 /**

@@ -1,15 +1,15 @@
-package com.old.silence.job.client.core.executor.builtin;
+package com.old.silence.job.client.executor.builtin;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import org.apache.commons.lang3.StringUtils;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.common.config.SilenceJobProperties;
-import com.old.silence.platform.job.client.model.ExecuteResult;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.exception.SilenceJobInnerExecutorException;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.common.core.util.JsonUtils;
+import com.old.silence.job.client.common.config.SilenceJobProperties;
+import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.exception.SilenceJobInnerExecutorException;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.common.util.JsonUtils;
 
 import java.util.Base64;
 import java.util.Map;

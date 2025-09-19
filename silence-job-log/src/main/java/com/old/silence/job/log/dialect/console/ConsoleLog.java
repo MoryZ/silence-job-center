@@ -1,11 +1,16 @@
 package com.old.silence.job.log.dialect.console;
 
+
+
+
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.StrUtil;
-import com.old.silence.job.log.center.dialect.AbstractLog;
-import com.old.silence.job.log.center.level.Level;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.Assert;
+import com.old.silence.job.log.dialect.AbstractLog;
+import com.old.silence.job.log.level.Level;
 
 /**
  * 利用System.out.println()打印日志
@@ -29,7 +34,7 @@ public class ConsoleLog extends AbstractLog {
      * @param clazz 类
      */
     public ConsoleLog(Class<?> clazz) {
-        this.name = (null == clazz) ? StrUtil.NULL : clazz.getName();
+        this.name = (null == clazz) ? StringUtils.EMPTY : clazz.getName();
     }
 
     /**
@@ -53,7 +58,7 @@ public class ConsoleLog extends AbstractLog {
      * @since 4.1.10
      */
     public static void setLevel(Level customLevel) {
-        Assert.notNull(customLevel);
+        Assert.notNull(customLevel, "customLevel is not null");
         currentLevel = customLevel;
     }
 
@@ -120,13 +125,13 @@ public class ConsoleLog extends AbstractLog {
             return;
         }
 
-        final Dict dict = Dict.create()
+        Dict dict = Dict.create()
                 .set("date", DateUtil.now())
                 .set("level", level.toString())
                 .set("name", this.name)
-                .set("msg", StrUtil.format(format, arguments));
+                .set("msg", String.format(format, arguments));
 
-        final String logMsg = StrUtil.format(logFormat, dict);
+        String logMsg = StrUtil.format(logFormat, dict);
 
         //WARN以上级别打印至System.err
         if (level.ordinal() >= Level.WARN.ordinal()) {

@@ -1,8 +1,8 @@
 package com.old.silence.job.server.retry.task.service;
 
 import org.mapstruct.factory.Mappers;
-import com.old.silence.platform.job.server.domain.model.RetryDeadLetter;
-import com.old.silence.platform.job.server.retry.task.dto.RetryPartitionTask;
+import com.old.silence.job.server.domain.model.RetryDeadLetter;
+import com.old.silence.job.server.retry.task.dto.RetryPartitionTask;
 
 
 @Mapper

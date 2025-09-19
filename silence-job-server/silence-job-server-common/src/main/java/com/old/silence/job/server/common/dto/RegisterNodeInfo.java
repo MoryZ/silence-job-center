@@ -2,7 +2,7 @@ package com.old.silence.job.server.common.dto;
 
 
 
-import com.old.silence.job.common.core.enums.NodeType;
+import com.old.silence.job.common.enums.NodeType;
 
 import java.text.MessageFormat;
 import java.time.Instant;

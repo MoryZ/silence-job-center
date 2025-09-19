@@ -1,7 +1,7 @@
 package com.old.silence.job.server.retry.task.support.event;
 
 import org.springframework.context.ApplicationEvent;
-import com.old.silence.platform.job.server.retry.task.dto.RetryTaskFailAlarmEventDTO;
+import com.old.silence.job.server.retry.task.dto.RetryTaskFailAlarmEventDTO;
 
 /**
  * 重试任务失败事件

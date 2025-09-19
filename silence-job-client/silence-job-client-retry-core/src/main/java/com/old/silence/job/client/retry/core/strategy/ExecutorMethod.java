@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.core.strategy;
+package com.old.silence.job.client.retry.strategy;
 
 
 public interface ExecutorMethod {

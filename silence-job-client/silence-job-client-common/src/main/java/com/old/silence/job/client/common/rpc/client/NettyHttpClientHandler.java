@@ -7,13 +7,13 @@ import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.CharsetUtil;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.common.event.SilenceChannelReconnectEvent;
-import com.old.silence.platform.job.client.common.handler.ClientRegister;
-import com.old.silence.platform.job.common.core.constant.SystemConstants.BEAT;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.common.core.rpc.RpcContext;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.common.event.SilenceChannelReconnectEvent;
+import com.old.silence.job.client.common.handler.ClientRegister;
+import com.old.silence.job.common.constant.SystemConstants.BEAT;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.rpc.RpcContext;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.util.concurrent.TimeUnit;
 

@@ -2,7 +2,7 @@ package com.old.silence.job.server.retry.task.support.idempotent;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.old.silence.platform.job.server.common.IdempotentStrategy;
+import com.old.silence.job.server.common.IdempotentStrategy;
 
 import java.util.concurrent.TimeUnit;
 

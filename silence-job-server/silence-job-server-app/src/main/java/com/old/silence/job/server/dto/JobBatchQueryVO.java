@@ -3,7 +3,7 @@ package com.old.silence.job.server.dto;
 
 import com.old.silence.data.commons.annotation.RelationalQueryProperty;
 import com.old.silence.data.commons.converter.Part;
-import com.old.silence.job.common.core.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
 
 import java.math.BigInteger;
 import java.util.List;

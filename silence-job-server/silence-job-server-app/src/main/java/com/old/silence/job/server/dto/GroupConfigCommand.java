@@ -1,6 +1,6 @@
 package com.old.silence.job.server.dto;
 
-import com.old.silence.job.common.core.enums.IdGeneratorMode;
+import com.old.silence.job.common.enums.IdGeneratorMode;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

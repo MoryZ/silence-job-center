@@ -1,9 +1,9 @@
 package com.old.silence.job.server.retry.task.dto;
 
 
-import com.old.silence.platform.job.common.core.enums.RetryBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.RetryTaskStatus;
-import com.old.silence.platform.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.RetryBlockStrategy;
+import com.old.silence.job.common.enums.RetryTaskStatus;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 import java.math.BigInteger;
 

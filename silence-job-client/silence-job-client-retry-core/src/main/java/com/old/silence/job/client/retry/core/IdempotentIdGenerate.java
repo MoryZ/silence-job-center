@@ -1,6 +1,6 @@
 package com.old.silence.job.client.retry.core;
 
-import com.old.silence.platform.job.common.core.model.IdempotentIdContext;
+import com.old.silence.job.common.model.IdempotentIdContext;
 
 /**
  * 幂等id生成器

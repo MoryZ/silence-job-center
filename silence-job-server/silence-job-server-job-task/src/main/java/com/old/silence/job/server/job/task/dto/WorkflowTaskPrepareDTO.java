@@ -1,8 +1,8 @@
 package com.old.silence.job.server.job.task.dto;
 
 
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.JobTaskExecutorScene;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.JobTaskExecutorScene;
 
 import java.math.BigInteger;
 

@@ -2,18 +2,18 @@ package com.old.silence.job.server.job.task.support.stop;
 
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.beans.factory.InitializingBean;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus;
-import com.old.silence.platform.job.common.core.enums.JobTaskStatus;
-import com.old.silence.platform.job.server.domain.model.JobTask;
-import com.old.silence.platform.job.server.domain.model.JobTaskBatch;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao;
-import com.old.silence.platform.job.server.job.task.dto.JobExecutorResultDTO;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.JobTaskStopHandler;
-import com.old.silence.platform.job.server.pekko.ActorGenerator;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.JobTaskStatus;
+import com.old.silence.job.server.domain.model.JobTask;
+import com.old.silence.job.server.domain.model.JobTaskBatch;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
+import com.old.silence.job.server.job.task.dto.JobExecutorResultDTO;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.JobTaskStopHandler;
+import com.old.silence.job.server.pekko.ActorGenerator;
 
 import java.util.List;
 

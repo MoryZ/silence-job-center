@@ -30,15 +30,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_descriptor;
+    return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_descriptor;
   }
 
   @Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_fieldAccessorTable
+    return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.old.silence.job.common.core.grpc.auto.GrpcResult.class, com.old.silence.job.common.core.grpc.auto.GrpcResult.Builder.class);
+            com.old.silence.job.common.grpc.auto.GrpcResult.class, com.old.silence.job.common.grpc.auto.GrpcResult.Builder.class);
   }
 
   public static final int REQID_FIELD_NUMBER = 1;
@@ -200,10 +200,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.old.silence.job.common.core.grpc.auto.GrpcResult)) {
+    if (!(obj instanceof com.old.silence.job.common.grpc.auto.GrpcResult)) {
       return super.equals(obj);
     }
-    com.old.silence.job.common.core.grpc.auto.GrpcResult other = (com.old.silence.job.common.core.grpc.auto.GrpcResult) obj;
+    com.old.silence.job.common.grpc.auto.GrpcResult other = (com.old.silence.job.common.grpc.auto.GrpcResult) obj;
 
     if (getReqId()
         != other.getReqId()) return false;
@@ -238,44 +238,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(byte[] data)
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(java.io.InputStream input)
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -283,26 +283,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseDelimitedFrom(java.io.InputStream input)
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseDelimitedFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult parseFrom(
+  public static com.old.silence.job.common.grpc.auto.GrpcResult parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -315,7 +315,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.old.silence.job.common.core.grpc.auto.GrpcResult prototype) {
+  public static Builder newBuilder(com.old.silence.job.common.grpc.auto.GrpcResult prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @Override
@@ -336,21 +336,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:GrpcResult)
-      com.old.silence.job.common.core.grpc.auto.GrpcResultOrBuilder {
+      com.old.silence.job.common.grpc.auto.GrpcResultOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_descriptor;
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_descriptor;
     }
 
     @Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_fieldAccessorTable
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.old.silence.job.common.core.grpc.auto.GrpcResult.class, com.old.silence.job.common.core.grpc.auto.GrpcResult.Builder.class);
+              com.old.silence.job.common.grpc.auto.GrpcResult.class, com.old.silence.job.common.grpc.auto.GrpcResult.Builder.class);
     }
 
-    // Construct using com.old.silence.job.common.core.grpc.auto.GrpcResult.newBuilder()
+    // Construct using com.old.silence.job.common.grpc.auto.GrpcResult.newBuilder()
     private Builder() {
 
     }
@@ -374,17 +374,17 @@ private static final long serialVersionUID = 0L;
     @Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.old.silence.job.common.core.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_descriptor;
+      return com.old.silence.job.common.grpc.auto.SilenceJobGrpcService.internal_static_GrpcResult_descriptor;
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.GrpcResult getDefaultInstanceForType() {
-      return com.old.silence.job.common.core.grpc.auto.GrpcResult.getDefaultInstance();
+    public com.old.silence.job.common.grpc.auto.GrpcResult getDefaultInstanceForType() {
+      return com.old.silence.job.common.grpc.auto.GrpcResult.getDefaultInstance();
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.GrpcResult build() {
-      com.old.silence.job.common.core.grpc.auto.GrpcResult result = buildPartial();
+    public com.old.silence.job.common.grpc.auto.GrpcResult build() {
+      com.old.silence.job.common.grpc.auto.GrpcResult result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -392,14 +392,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @Override
-    public com.old.silence.job.common.core.grpc.auto.GrpcResult buildPartial() {
-      com.old.silence.job.common.core.grpc.auto.GrpcResult result = new com.old.silence.job.common.core.grpc.auto.GrpcResult(this);
+    public com.old.silence.job.common.grpc.auto.GrpcResult buildPartial() {
+      com.old.silence.job.common.grpc.auto.GrpcResult result = new com.old.silence.job.common.grpc.auto.GrpcResult(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.old.silence.job.common.core.grpc.auto.GrpcResult result) {
+    private void buildPartial0(com.old.silence.job.common.grpc.auto.GrpcResult result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.reqId_ = reqId_;
@@ -449,16 +449,16 @@ private static final long serialVersionUID = 0L;
     }
     @Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.old.silence.job.common.core.grpc.auto.GrpcResult) {
-        return mergeFrom((com.old.silence.job.common.core.grpc.auto.GrpcResult)other);
+      if (other instanceof com.old.silence.job.common.grpc.auto.GrpcResult) {
+        return mergeFrom((com.old.silence.job.common.grpc.auto.GrpcResult)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.old.silence.job.common.core.grpc.auto.GrpcResult other) {
-      if (other == com.old.silence.job.common.core.grpc.auto.GrpcResult.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.old.silence.job.common.grpc.auto.GrpcResult other) {
+      if (other == com.old.silence.job.common.grpc.auto.GrpcResult.getDefaultInstance()) return this;
       if (other.getReqId() != 0L) {
         setReqId(other.getReqId());
       }
@@ -762,12 +762,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:GrpcResult)
-  private static final com.old.silence.job.common.core.grpc.auto.GrpcResult DEFAULT_INSTANCE;
+  private static final com.old.silence.job.common.grpc.auto.GrpcResult DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.old.silence.job.common.core.grpc.auto.GrpcResult();
+    DEFAULT_INSTANCE = new com.old.silence.job.common.grpc.auto.GrpcResult();
   }
 
-  public static com.old.silence.job.common.core.grpc.auto.GrpcResult getDefaultInstance() {
+  public static com.old.silence.job.common.grpc.auto.GrpcResult getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -803,7 +803,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @Override
-  public com.old.silence.job.common.core.grpc.auto.GrpcResult getDefaultInstanceForType() {
+  public com.old.silence.job.common.grpc.auto.GrpcResult getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

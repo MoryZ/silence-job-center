@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.client.common.Lifecycle;
-import com.old.silence.platform.job.client.common.event.SilenceClientClosedEvent;
-import com.old.silence.platform.job.client.common.event.SilenceClientClosingEvent;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.util.SilenceJobVersion;
+import com.old.silence.job.client.common.Lifecycle;
+import com.old.silence.job.client.common.event.SilenceClientClosedEvent;
+import com.old.silence.job.client.common.event.SilenceClientClosingEvent;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.util.SilenceJobVersion;
 
 import java.util.List;
 

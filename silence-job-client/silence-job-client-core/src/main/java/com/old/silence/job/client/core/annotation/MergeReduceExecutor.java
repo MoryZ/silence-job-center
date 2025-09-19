@@ -1,4 +1,4 @@
-package com.old.silence.job.client.core.annotation;
+package com.old.silence.job.client.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

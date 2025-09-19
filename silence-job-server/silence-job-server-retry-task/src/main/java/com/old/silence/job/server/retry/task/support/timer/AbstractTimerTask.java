@@ -3,7 +3,7 @@ package com.old.silence.job.server.retry.task.support.timer;
 import io.netty.util.Timeout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.old.silence.platform.job.server.common.TimerTask;
+import com.old.silence.job.server.common.TimerTask;
 
 import java.math.BigInteger;
 import java.time.Instant;

@@ -1,7 +1,6 @@
 package com.old.silence.job.log.dialect;
 
-import cn.hutool.core.util.StrUtil;
-import com.old.silence.job.log.center.level.Level;
+import com.old.silence.job.log.level.Level;
 
 import java.io.Serializable;
 
@@ -29,7 +28,7 @@ public abstract class AbstractLog implements Log, Serializable {
             case ERROR:
                 return isErrorEnabled();
             default:
-                throw new Error(StrUtil.format("Can not identify level: {}", level));
+                throw new Error(String.format("Can not identify level: %s", level));
         }
     }
 

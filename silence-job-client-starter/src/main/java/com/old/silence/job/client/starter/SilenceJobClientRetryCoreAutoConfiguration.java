@@ -5,17 +5,17 @@ import org.springframework.aop.Advisor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.core.Ordered;
-import org.springframework.core.env.StandardEnvironment;
-import com.old.silence.platform.job.client.core.annotation.Retryable;
-import com.old.silence.platform.job.client.core.intercepter.SilenceRetryInterceptor;
-import com.old.silence.platform.job.client.core.intercepter.SilenceRetryPointcutAdvisor;
-import com.old.silence.platform.job.client.core.strategy.RetryStrategy;
+import org.springframework.Ordered;
+import org.springframework.env.StandardEnvironment;
+import com.old.silence.job.client.annotation.Retryable;
+import com.old.silence.job.client.intercepter.SilenceRetryInterceptor;
+import com.old.silence.job.client.intercepter.SilenceRetryPointcutAdvisor;
+import com.old.silence.job.client.strategy.RetryStrategy;
 
 @Configuration
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 @ConditionalOnClass(Retryable.class)
-@ComponentScan({"com.old.silence.platform.job.client.core", "com.old.silence.platform.job.client.common"})
+@ComponentScan({"com.old.silence.job.client.core", "com.old.silence.job.client.common"})
 @ConditionalOnProperty(prefix = "silence-job", name = "enabled", havingValue = "true")
 public class SilenceJobClientRetryCoreAutoConfiguration {
 

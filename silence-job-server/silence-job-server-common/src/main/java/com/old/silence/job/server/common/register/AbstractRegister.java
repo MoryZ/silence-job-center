@@ -1,11 +1,11 @@
 package com.old.silence.job.server.common.register;
 
 import org.springframework.dao.DuplicateKeyException;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Sets;
 import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.job.common.core.enums.NodeType;
-import com.old.silence.job.log.center.SilenceJobLog;
+import com.old.silence.job.common.enums.NodeType;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 import com.old.silence.job.server.common.Register;
 import com.old.silence.job.server.common.cache.CacheRegisterTable;
@@ -15,7 +15,6 @@ import com.old.silence.job.server.infrastructure.persistence.dao.ServerNodeDao;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -43,7 +42,7 @@ public abstract class AbstractRegister implements Register, Lifecycle {
         return result;
     }
 
-    protected abstract void afterProcessor(final ServerNode serverNode);
+    protected abstract void afterProcessor(ServerNode serverNode);
 
     protected void refreshExpireAt(List<ServerNode> serverNodes) {
         if (CollectionUtils.isEmpty(serverNodes)) {

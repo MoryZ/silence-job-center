@@ -1,9 +1,9 @@
 package com.old.silence.job.client.common;
 
 
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpRequest;
-import com.old.silence.platform.job.client.common.rpc.supports.http.HttpResponse;
-import com.old.silence.platform.job.client.common.rpc.supports.scan.EndPointInfo;
+import com.old.silence.job.client.common.rpc.supports.http.HttpRequest;
+import com.old.silence.job.client.common.rpc.supports.http.HttpResponse;
+import com.old.silence.job.client.common.rpc.supports.scan.EndPointInfo;
 
 public interface HandlerInterceptor {
 

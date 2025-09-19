@@ -1,8 +1,8 @@
-package com.old.silence.job.client.core.handler;
+package com.old.silence.job.client.handler;
 
-import com.old.silence.platform.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.platform.job.client.core.openapi.OpenApiClient;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
+import com.old.silence.job.client.common.rpc.client.RequestBuilder;
+import com.old.silence.job.client.openapi.OpenApiClient;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
 
 public interface RequestHandler<R> {
 

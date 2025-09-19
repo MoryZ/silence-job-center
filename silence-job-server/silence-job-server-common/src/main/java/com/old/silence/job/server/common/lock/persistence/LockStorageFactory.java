@@ -1,9 +1,10 @@
 package com.old.silence.job.server.common.lock.persistence;
 
-import com.old.silence.job.server.exception.SilenceJobServerException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.old.silence.core.context.CommonErrors;
 
 
 public final class LockStorageFactory {
@@ -16,7 +17,7 @@ public final class LockStorageFactory {
 
     public static LockStorage getLockStorage() {
         return LOCK_STORAGES.stream()
-                .findFirst().orElseThrow(() -> new SilenceJobServerException("未找到合适锁处理器"));
+                .findFirst().orElseThrow(() -> CommonErrors.FATAL_ERROR.createException("未找到合适锁处理器"));
     }
 
 }

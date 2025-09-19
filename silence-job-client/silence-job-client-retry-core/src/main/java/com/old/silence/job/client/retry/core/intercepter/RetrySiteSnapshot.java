@@ -1,10 +1,10 @@
-package com.old.silence.job.client.retry.core.intercepter;
+package com.old.silence.job.client.retry.intercepter;
 
-import com.old.silence.platform.job.client.core.RetrySiteSnapshotContext;
-import com.old.silence.platform.job.client.core.exception.SilenceRetryClientException;
-import com.old.silence.platform.job.client.core.loader.SilenceRetrySpiLoader;
-import com.old.silence.platform.job.common.core.constant.SystemConstants;
-import com.old.silence.platform.job.common.core.model.SilenceJobHeaders;
+import com.old.silence.job.client.RetrySiteSnapshotContext;
+import com.old.silence.job.client.exception.SilenceRetryClientException;
+import com.old.silence.job.client.loader.SilenceRetrySpiLoader;
+import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.model.SilenceJobHeaders;
 
 import java.util.Deque;
 import java.util.Objects;

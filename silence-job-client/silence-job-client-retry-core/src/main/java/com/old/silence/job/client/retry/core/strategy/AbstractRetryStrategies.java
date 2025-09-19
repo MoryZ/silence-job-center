@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.core.strategy;
+package com.old.silence.job.client.retry.strategy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,25 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.github.rholder.retry.Retryer;
 import com.github.rholder.retry.StopStrategy;
 import com.github.rholder.retry.WaitStrategy;
-import com.old.silence.platform.job.client.common.cache.GroupVersionCache;
-import com.old.silence.platform.job.client.common.config.SilenceJobProperties;
-import com.old.silence.platform.job.client.core.Report;
-import com.old.silence.platform.job.client.core.RetryExecutor;
-import com.old.silence.platform.job.client.core.RetryExecutorParameter;
-import com.old.silence.platform.job.client.core.event.SilenceJobListener;
-import com.old.silence.platform.job.client.core.executor.GuavaRetryExecutor;
-import com.old.silence.platform.job.client.core.intercepter.RetrySiteSnapshot;
-import com.old.silence.platform.job.client.core.loader.SilenceRetrySpiLoader;
-import com.old.silence.platform.job.client.core.retryer.RetryerInfo;
-import com.old.silence.platform.job.client.core.retryer.RetryerResultContext;
-import com.old.silence.platform.job.common.core.alarm.AlarmContext;
-import com.old.silence.platform.job.common.core.alarm.SilenceJobAlarmFactory;
-import com.old.silence.platform.job.common.core.enums.RetryNotifyScene;
-import com.old.silence.platform.job.common.core.util.EnvironmentUtils;
-import com.old.silence.platform.job.common.core.util.NetUtil;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.model.dto.ConfigDTO;
-import com.old.silence.platform.job.server.model.dto.ConfigDTO.Notify.Recipient;
+import com.old.silence.job.client.common.cache.GroupVersionCache;
+import com.old.silence.job.client.common.config.SilenceJobProperties;
+import com.old.silence.job.client.Report;
+import com.old.silence.job.client.RetryExecutor;
+import com.old.silence.job.client.RetryExecutorParameter;
+import com.old.silence.job.client.event.SilenceJobListener;
+import com.old.silence.job.client.executor.GuavaRetryExecutor;
+import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
+import com.old.silence.job.client.loader.SilenceRetrySpiLoader;
+import com.old.silence.job.client.retryer.RetryerInfo;
+import com.old.silence.job.client.retryer.RetryerResultContext;
+import com.old.silence.job.common.alarm.AlarmContext;
+import com.old.silence.job.common.alarm.SilenceJobAlarmFactory;
+import com.old.silence.job.common.enums.RetryNotifyScene;
+import com.old.silence.job.common.util.EnvironmentUtils;
+import com.old.silence.job.common.util.NetUtil;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.model.dto.ConfigDTO;
+import com.old.silence.job.server.model.dto.ConfigDTO.Notify.Recipient;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -36,7 +36,7 @@ import java.util.Optional;
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.YYYY_MM_DD_HH_MM_SS;
+import static com.old.silence.job.common.constant.SystemConstants.YYYY_MM_DD_HH_MM_SS;
 
 
 

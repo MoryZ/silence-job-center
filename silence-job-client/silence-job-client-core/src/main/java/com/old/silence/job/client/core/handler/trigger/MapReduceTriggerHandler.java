@@ -1,4 +1,4 @@
-package com.old.silence.job.client.core.handler.trigger;
+package com.old.silence.job.client.handler.trigger;
 
 
 import java.math.BigInteger;

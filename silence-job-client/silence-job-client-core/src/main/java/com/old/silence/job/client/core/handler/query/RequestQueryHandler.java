@@ -1,13 +1,13 @@
-package com.old.silence.job.client.core.handler.query;
+package com.old.silence.job.client.handler.query;
 
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.Pair;
+import cn.hutool.lang.Assert;
+import cn.hutool.lang.Pair;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.platform.job.client.core.dto.JobResponseVO;
-import com.old.silence.platform.job.client.core.handler.AbstractRequestHandler;
-import com.old.silence.platform.job.common.core.model.ApiResult;
+import com.old.silence.job.client.common.exception.SilenceJobClientException;
+import com.old.silence.job.client.dto.JobResponseVO;
+import com.old.silence.job.client.handler.AbstractRequestHandler;
+import com.old.silence.job.common.model.ApiResult;
 
 import java.math.BigInteger;
 import java.util.Objects;

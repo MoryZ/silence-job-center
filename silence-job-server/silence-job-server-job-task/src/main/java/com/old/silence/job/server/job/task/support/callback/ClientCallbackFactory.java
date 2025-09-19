@@ -1,7 +1,7 @@
 package com.old.silence.job.server.job.task.support.callback;
 
-import com.old.silence.platform.job.common.core.enums.JobTaskType;
-import com.old.silence.platform.job.server.job.task.support.ClientCallbackHandler;
+import com.old.silence.job.common.enums.JobTaskType;
+import com.old.silence.job.server.job.task.support.ClientCallbackHandler;
 
 import java.util.concurrent.ConcurrentHashMap;
 

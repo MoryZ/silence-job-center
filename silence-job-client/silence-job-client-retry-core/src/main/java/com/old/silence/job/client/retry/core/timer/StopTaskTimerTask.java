@@ -1,8 +1,8 @@
-package com.old.silence.job.client.retry.core.timer;
+package com.old.silence.job.client.retry.timer;
 
 import io.netty.util.Timeout;
 import io.netty.util.TimerTask;
-import com.old.silence.platform.job.client.core.cache.FutureCache;
+import com.old.silence.job.client.cache.FutureCache;
 
 import java.math.BigInteger;
 

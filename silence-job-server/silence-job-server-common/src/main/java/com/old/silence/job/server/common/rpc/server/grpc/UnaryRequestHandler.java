@@ -3,9 +3,9 @@ package com.old.silence.job.server.common.rpc.server.grpc;
 import io.grpc.stub.ServerCalls;
 import io.grpc.stub.StreamObserver;
 import org.apache.pekko.actor.ActorRef;
-import com.old.silence.job.common.core.grpc.auto.GrpcResult;
-import com.old.silence.job.common.core.grpc.auto.GrpcSilenceJobRequest;
-import com.old.silence.job.common.core.grpc.auto.Metadata;
+import com.old.silence.job.common.grpc.auto.GrpcResult;
+import com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest;
+import com.old.silence.job.common.grpc.auto.Metadata;
 import com.old.silence.job.server.common.dto.GrpcRequest;
 import com.old.silence.job.server.pekko.ActorGenerator;
 

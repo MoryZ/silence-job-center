@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.util.concurrent.RateLimiter;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.Lifecycle;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.Lifecycle;
 
 /**
  * 缓存组组限流组件

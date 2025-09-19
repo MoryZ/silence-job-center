@@ -1,9 +1,9 @@
 package com.old.silence.job.server.dto;
 
-import com.old.silence.job.common.core.enums.FailStrategy;
-import com.old.silence.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.job.common.core.enums.TriggerType;
-import com.old.silence.job.common.core.enums.WorkflowNodeType;
+import com.old.silence.job.common.enums.FailStrategy;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.TriggerType;
+import com.old.silence.job.common.enums.WorkflowNodeType;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;

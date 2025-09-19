@@ -1,20 +1,17 @@
 package com.old.silence.job.server.common.lock.persistence;
 
+
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.dao.ConcurrencyFailureException;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.DuplicateKeyException;
-import org.springframework.jdbc.BadSqlGrammarException;
-import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionSystemException;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.old.silence.job.log.center.SilenceJobLog;
+import org.yaml.snakeyaml.constructor.DuplicateKeyException;
+import com.baomidou.mybatisplus.conditions.update.LambdaUpdateWrapper;
+import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 import com.old.silence.job.server.common.cache.CacheLockRecord;
 import com.old.silence.job.server.common.dto.LockConfig;

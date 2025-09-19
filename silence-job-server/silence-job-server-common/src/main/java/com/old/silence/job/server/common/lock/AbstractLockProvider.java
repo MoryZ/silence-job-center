@@ -1,9 +1,10 @@
 package com.old.silence.job.server.common.lock;
 
-import cn.hutool.core.lang.Assert;
+import cn.hutool.lang.Assert;
+
+import com.old.silence.context.CommonErrors;
 import com.old.silence.job.server.common.cache.CacheLockRecord;
 import com.old.silence.job.server.common.dto.LockConfig;
-import com.old.silence.job.server.exception.SilenceJobServerException;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -22,13 +23,13 @@ public abstract class AbstractLockProvider implements LockProvider {
         String lockName = lockConfig.getLockName();
 
         Assert.notNull(lockAtMost,
-                () -> new SilenceJobServerException("lockAtMost can not be null. lockName:[{}]", lockName));
+                () -> CommonErrors.INVALID_PARAMETER.createException("lockAtMost can not be null. lockName:[{}]", lockName));
         Assert.isFalse(lockAtMost.isNegative(),
-                () -> new SilenceJobServerException("lockAtMost  is negative. lockName:[{}]", lockName));
+                () -> CommonErrors.INVALID_PARAMETER.createException("lockAtMost  is negative. lockName:[{}]", lockName));
         Assert.notNull(lockAtLeast,
-                () -> new SilenceJobServerException("lockAtLeast can not be null. lockName:[{}]", lockName));
+                () -> CommonErrors.INVALID_PARAMETER.createException("lockAtLeast can not be null. lockName:[{}]", lockName));
         Assert.isFalse(lockAtLeast.compareTo(lockAtMost) > 0,
-                () -> new SilenceJobServerException("lockAtLeast is longer than lockAtMost for lock. lockName:[{}]",
+                () -> CommonErrors.INVALID_PARAMETER.createException("lockAtLeast is longer than lockAtMost for lock. lockName:[{}]",
                         lockName));
 
         LockManager.setcreatedDate(Instant.now());
@@ -56,7 +57,7 @@ public abstract class AbstractLockProvider implements LockProvider {
     public void unlock() {
         try {
             LockConfig lockConfig = LockManager.getLockConfig();
-            Assert.notNull(lockConfig, () -> new SilenceJobServerException("lockConfig can not be null."));
+            Assert.notNull(lockConfig, () -> CommonErrors.INVALID_PARAMETER.createException("lockConfig can not be null."));
             doUnlock(lockConfig);
         } finally {
             LockManager.clear();

@@ -1,15 +1,15 @@
 package com.old.silence.job.server.retry.task.support.block;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.common.core.enums.RetryBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.RetryOperationReason;
-import com.old.silence.platform.job.common.core.enums.RetryTaskStatus;
-import com.old.silence.platform.job.server.retry.task.dto.RetryTaskGeneratorDTO;
-import com.old.silence.platform.job.server.retry.task.dto.TaskStopJobDTO;
-import com.old.silence.platform.job.server.retry.task.support.RetryTaskConverter;
-import com.old.silence.platform.job.server.retry.task.support.generator.task.RetryTaskGeneratorHandler;
-import com.old.silence.platform.job.server.retry.task.support.handler.RetryTaskStopHandler;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.RetryBlockStrategy;
+import com.old.silence.job.common.enums.RetryOperationReason;
+import com.old.silence.job.common.enums.RetryTaskStatus;
+import com.old.silence.job.server.retry.task.dto.RetryTaskGeneratorDTO;
+import com.old.silence.job.server.retry.task.dto.TaskStopJobDTO;
+import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
+import com.old.silence.job.server.retry.task.support.generator.task.RetryTaskGeneratorHandler;
+import com.old.silence.job.server.retry.task.support.handler.RetryTaskStopHandler;
 
 import java.util.Objects;
 

@@ -1,12 +1,12 @@
 package com.old.silence.job.server.api.assembler;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.job.common.core.enums.WorkflowNodeType;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.common.enums.WorkflowNodeType;
 import com.old.silence.job.server.common.util.DateUtils;
 import com.old.silence.job.server.domain.model.Workflow;
 import com.old.silence.job.server.domain.model.WorkflowNode;

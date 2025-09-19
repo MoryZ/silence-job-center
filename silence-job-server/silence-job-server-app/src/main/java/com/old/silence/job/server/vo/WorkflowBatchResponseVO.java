@@ -2,8 +2,8 @@ package com.old.silence.job.server.vo;
 
 
 
-import com.old.silence.job.common.core.enums.JobOperationReason;
-import com.old.silence.job.common.core.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
 
 import java.math.BigInteger;
 import java.time.Instant;

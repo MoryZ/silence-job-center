@@ -1,22 +1,22 @@
 package com.old.silence.job.server.job.task.support.request;
 
-import cn.hutool.core.net.url.UrlQuery;
+import cn.hutool.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.model.request.DispatchJobResultRequest;
-import com.old.silence.platform.job.common.core.enums.HeadersEnum;
-import com.old.silence.platform.job.common.core.model.SilenceJobRequest;
-import com.old.silence.platform.job.common.core.model.SilenceJobRpcResult;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.handler.PostHttpRequestHandler;
-import com.old.silence.platform.job.server.job.task.support.ClientCallbackHandler;
-import com.old.silence.platform.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.platform.job.server.job.task.support.callback.ClientCallbackContext;
-import com.old.silence.platform.job.server.job.task.support.callback.ClientCallbackFactory;
+import com.old.silence.job.client.model.request.DispatchJobResultRequest;
+import com.old.silence.job.common.enums.HeadersEnum;
+import com.old.silence.job.common.model.SilenceJobRequest;
+import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.handler.PostHttpRequestHandler;
+import com.old.silence.job.server.job.task.support.ClientCallbackHandler;
+import com.old.silence.job.server.job.task.support.JobTaskConverter;
+import com.old.silence.job.server.job.task.support.callback.ClientCallbackContext;
+import com.old.silence.job.server.job.task.support.callback.ClientCallbackFactory;
 
-import static com.old.silence.platform.job.common.core.constant.SystemConstants.HTTP_PATH.REPORT_JOB_DISPATCH_RESULT;
+import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.REPORT_JOB_DISPATCH_RESULT;
 
 
 @Component

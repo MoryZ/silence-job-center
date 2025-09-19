@@ -8,14 +8,14 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.model.StopJobDTO;
-import com.old.silence.platform.job.common.core.model.ApiResult;
-import com.old.silence.platform.job.server.common.cache.CacheRegisterTable;
-import com.old.silence.platform.job.server.common.dto.RegisterNodeInfo;
-import com.old.silence.platform.job.server.common.rpc.client.RequestBuilder;
-import com.old.silence.platform.job.server.job.task.client.JobRpcClient;
-import com.old.silence.platform.job.server.job.task.dto.RealStopTaskInstanceDTO;
-import com.old.silence.platform.job.server.pekko.ActorGenerator;
+import com.old.silence.job.client.model.StopJobDTO;
+import com.old.silence.job.common.model.ApiResult;
+import com.old.silence.job.server.common.cache.CacheRegisterTable;
+import com.old.silence.job.server.common.dto.RegisterNodeInfo;
+import com.old.silence.job.server.common.rpc.client.RequestBuilder;
+import com.old.silence.job.server.job.task.client.JobRpcClient;
+import com.old.silence.job.server.job.task.dto.RealStopTaskInstanceDTO;
+import com.old.silence.job.server.pekko.ActorGenerator;
 
 import java.util.Objects;
 

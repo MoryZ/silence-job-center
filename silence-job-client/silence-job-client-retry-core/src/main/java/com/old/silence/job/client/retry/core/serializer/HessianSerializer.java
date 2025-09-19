@@ -1,9 +1,9 @@
-package com.old.silence.job.client.retry.core.serializer;
+package com.old.silence.job.client.retry.serializer;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 import com.caucho.hessian.io.HessianInput;
 import com.caucho.hessian.io.HessianOutput;
-import com.old.silence.platform.job.client.core.RetryArgSerializer;
+import com.old.silence.job.client.RetryArgSerializer;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

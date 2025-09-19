@@ -1,12 +1,12 @@
-package com.old.silence.job.client.core.handler;
+package com.old.silence.job.client.handler;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 
 
 
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.platform.job.client.core.dto.JobTriggerDTO;
-import com.old.silence.platform.job.common.core.util.JsonUtils;
+import com.old.silence.job.client.dto.JobTriggerDTO;
+import com.old.silence.job.common.util.JsonUtils;
 
 import java.math.BigInteger;
 import java.util.HashMap;

@@ -1,12 +1,12 @@
-package com.old.silence.job.client.retry.core.serializer;
+package com.old.silence.job.client.retry.serializer;
 
 import com.alibaba.fastjson2.JSON;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.old.silence.platform.job.client.core.RetryArgSerializer;
-import com.old.silence.platform.job.common.core.util.JsonUtils;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.job.client.RetryArgSerializer;
+import com.old.silence.job.common.util.JsonUtils;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;

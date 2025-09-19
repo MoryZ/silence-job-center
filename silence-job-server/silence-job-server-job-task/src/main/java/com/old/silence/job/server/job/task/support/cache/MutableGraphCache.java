@@ -4,8 +4,8 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.Sets;
 import com.google.common.graph.MutableGraph;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.server.common.util.GraphUtils;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.server.common.util.GraphUtils;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

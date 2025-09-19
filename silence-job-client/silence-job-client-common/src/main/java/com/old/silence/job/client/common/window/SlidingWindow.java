@@ -3,9 +3,9 @@ package com.old.silence.job.client.common.window;
 
 import org.springframework.util.Assert;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.platform.job.common.core.window.Listener;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
+import com.old.silence.util.CollectionUtils;
+import com.old.silence.job.common.window.Listener;
+import com.old.silence.job.log.SilenceJobLog;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

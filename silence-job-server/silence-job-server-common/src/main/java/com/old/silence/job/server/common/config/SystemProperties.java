@@ -4,8 +4,8 @@ package com.old.silence.job.server.common.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.context.annotation.Configuration;
-import com.old.silence.job.common.core.alarm.email.SilenceJobMailProperties;
-import com.old.silence.job.common.core.enums.RpcType;
+import com.old.silence.job.common.alarm.email.SilenceJobMailProperties;
+import com.old.silence.job.common.enums.RpcType;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;

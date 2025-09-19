@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.executor.workflow;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.util.StrUtil;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,33 +17,33 @@ import com.github.rholder.retry.Retryer;
 import com.github.rholder.retry.RetryerBuilder;
 import com.github.rholder.retry.StopStrategies;
 import com.github.rholder.retry.WaitStrategies;
-import com.old.silence.platform.job.common.core.constant.SystemConstants;
-import com.old.silence.platform.job.common.core.context.SilenceSpringContext;
-import com.old.silence.platform.job.common.core.enums.JobNotifyScene;
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.common.core.enums.JobTaskBatchStatus;
-import com.old.silence.platform.job.common.core.enums.JobTaskStatus;
-import com.old.silence.platform.job.common.core.enums.WorkflowNodeType;
-import com.old.silence.platform.job.log.center.SilenceJobLog;
-import com.old.silence.platform.job.server.common.dto.JobLogMetaDTO;
-import com.old.silence.platform.job.server.common.rpc.okhttp.RequestInterceptor;
-import com.old.silence.platform.job.server.domain.model.JobTask;
-import com.old.silence.platform.job.server.domain.model.JobTaskBatch;
-import com.old.silence.platform.job.server.dto.CallbackConfig;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao;
-import com.old.silence.platform.job.server.job.task.dto.WorkflowTaskFailAlarmEventDTO;
-import com.old.silence.platform.job.server.job.task.support.alarm.event.WorkflowTaskFailAlarmEvent;
-import com.old.silence.platform.job.server.job.task.support.generator.batch.JobTaskBatchGenerator;
-import com.old.silence.platform.job.server.job.task.support.handler.DistributedLockHandler;
-import com.old.silence.platform.job.server.job.task.support.handler.WorkflowBatchHandler;
-import com.old.silence.platform.job.server.model.dto.CallbackParamsDTO;
+import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.JobTaskBatchStatus;
+import com.old.silence.job.common.enums.JobTaskStatus;
+import com.old.silence.job.common.enums.WorkflowNodeType;
+import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.common.dto.JobLogMetaDTO;
+import com.old.silence.job.server.common.rpc.okhttp.RequestInterceptor;
+import com.old.silence.job.server.domain.model.JobTask;
+import com.old.silence.job.server.domain.model.JobTaskBatch;
+import com.old.silence.job.server.dto.CallbackConfig;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
+import com.old.silence.job.server.job.task.dto.WorkflowTaskFailAlarmEventDTO;
+import com.old.silence.job.server.job.task.support.alarm.event.WorkflowTaskFailAlarmEvent;
+import com.old.silence.job.server.job.task.support.generator.batch.JobTaskBatchGenerator;
+import com.old.silence.job.server.job.task.support.handler.DistributedLockHandler;
+import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
+import com.old.silence.job.server.model.dto.CallbackParamsDTO;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static com.old.silence.platform.job.common.core.enums.JobOperationReason.WORKFLOW_SUCCESSOR_SKIP_EXECUTION;
+import static com.old.silence.job.common.enums.JobOperationReason.WORKFLOW_SUCCESSOR_SKIP_EXECUTION;
 
 
 @Component

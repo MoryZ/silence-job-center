@@ -1,6 +1,6 @@
 package com.old.silence.job.common.client.dto.request;
 
-import com.old.silence.job.common.core.enums.RetryStatus;
+import com.old.silence.job.common.enums.RetryStatus;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

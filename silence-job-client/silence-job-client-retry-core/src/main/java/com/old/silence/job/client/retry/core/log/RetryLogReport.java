@@ -1,11 +1,11 @@
-package com.old.silence.job.client.retry.core.log;
+package com.old.silence.job.client.retry.log;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.platform.job.client.common.log.AbstractLogReport;
-import com.old.silence.platform.job.client.common.log.SilenceJobLogManager;
-import com.old.silence.platform.job.log.center.dto.LogContentDTO;
-import com.old.silence.platform.job.log.center.enums.LogTypeEnum;
-import com.old.silence.platform.job.server.model.dto.RetryLogTaskDTO;
+import com.old.silence.job.client.common.log.AbstractLogReport;
+import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.log.dto.LogContentDTO;
+import com.old.silence.job.log.enums.LogTypeEnum;
+import com.old.silence.job.server.dto.RetryLogTaskDTO;
 
 
 @Component

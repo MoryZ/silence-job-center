@@ -1,14 +1,14 @@
-package com.old.silence.job.client.core.executor;
+package com.old.silence.job.client.executor;
 
-import com.old.silence.platform.job.client.core.IJobExecutor;
-import com.old.silence.platform.job.client.core.MapHandler;
-import com.old.silence.platform.job.client.core.cache.JobExecutorInfoCache;
-import com.old.silence.platform.job.client.core.dto.JobArgs;
-import com.old.silence.platform.job.client.core.dto.JobExecutorInfo;
-import com.old.silence.platform.job.client.core.dto.MapArgs;
-import com.old.silence.platform.job.client.model.ExecuteResult;
+import com.old.silence.job.client.IJobExecutor;
+import com.old.silence.job.client.MapHandler;
+import com.old.silence.job.client.cache.JobExecutorInfoCache;
+import com.old.silence.job.client.dto.JobArgs;
+import com.old.silence.job.client.dto.JobExecutorInfo;
+import com.old.silence.job.client.dto.MapArgs;
+import com.old.silence.job.client.model.ExecuteResult;
 
-import com.old.silence.platform.job.common.core.exception.SilenceJobMapReduceException;
+import com.old.silence.job.common.exception.SilenceJobMapReduceException;
 
 
 import org.springframework.util.ReflectionUtils;

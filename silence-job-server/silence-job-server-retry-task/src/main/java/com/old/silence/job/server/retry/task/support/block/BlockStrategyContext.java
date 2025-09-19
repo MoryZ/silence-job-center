@@ -2,10 +2,10 @@ package com.old.silence.job.server.retry.task.support.block;
 
 
 
-import com.old.silence.platform.job.common.core.enums.JobBlockStrategy;
-import com.old.silence.platform.job.common.core.enums.JobOperationReason;
-import com.old.silence.platform.job.common.core.enums.RetryTaskStatus;
-import com.old.silence.platform.job.common.core.enums.SystemTaskType;
+import com.old.silence.job.common.enums.JobBlockStrategy;
+import com.old.silence.job.common.enums.JobOperationReason;
+import com.old.silence.job.common.enums.RetryTaskStatus;
+import com.old.silence.job.common.enums.SystemTaskType;
 
 import java.math.BigInteger;
 

@@ -1,15 +1,15 @@
 package com.old.silence.job.log.dialect.console;
 
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.ConsoleTable;
-import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.CharUtil;
-import cn.hutool.core.util.StrUtil;
 
 import java.util.Scanner;
 
+import cn.hutool.core.lang.ConsoleTable;
 import static java.lang.System.err;
 import static java.lang.System.out;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.Assert;
 
 /**
  * 命令行（控制台）工具方法类<br>
@@ -54,10 +54,10 @@ public class Console {
      * @since 5.4.3
      */
     public static void log(Object obj1, Object... otherObjs) {
-        if (ArrayUtil.isEmpty(otherObjs)) {
+        if (ArrayUtils.isEmpty(otherObjs)) {
             log(obj1);
         } else {
-            log(buildTemplateSplitBySpace(otherObjs.length + 1), ArrayUtil.insert(otherObjs, 0, obj1));
+            log(buildTemplateSplitBySpace(otherObjs.length + 1), ArrayUtils.insert(0, otherObjs, obj1));
         }
     }
 
@@ -69,10 +69,10 @@ public class Console {
      * @param values   值
      */
     public static void log(String template, Object... values) {
-        if (ArrayUtil.isEmpty(values) || StrUtil.contains(template, TEMPLATE_VAR)) {
+        if (ArrayUtils.isEmpty(values) || StringUtils.contains(template, TEMPLATE_VAR)) {
             logInternal(template, values);
         } else {
-            logInternal(buildTemplateSplitBySpace(values.length + 1), ArrayUtil.insert(values, 0, template));
+            logInternal(buildTemplateSplitBySpace(values.length + 1), ArrayUtils.insert(0, values, template));
         }
     }
 
@@ -84,7 +84,7 @@ public class Console {
      * @param values   值
      */
     public static void log(Throwable t, String template, Object... values) {
-        out.println(StrUtil.format(template, values));
+        out.printf((template) + "%n", values);
         if (null != t) {
             //noinspection CallToPrintStackTrace
             t.printStackTrace(out);
@@ -134,10 +134,10 @@ public class Console {
      * @since 5.4.3
      */
     public static void print(Object obj1, Object... otherObjs) {
-        if (ArrayUtil.isEmpty(otherObjs)) {
+        if (ArrayUtils.isEmpty(otherObjs)) {
             print(obj1);
         } else {
-            print(buildTemplateSplitBySpace(otherObjs.length + 1), ArrayUtil.insert(otherObjs, 0, obj1));
+            print(buildTemplateSplitBySpace(otherObjs.length + 1), ArrayUtils.insert(0, otherObjs, obj1));
         }
     }
 
@@ -149,10 +149,10 @@ public class Console {
      * @since 3.3.1
      */
     public static void print(String template, Object... values) {
-        if (ArrayUtil.isEmpty(values) || StrUtil.contains(template, TEMPLATE_VAR)) {
+        if (ArrayUtils.isEmpty(values) || StringUtils.contains(template, TEMPLATE_VAR)) {
             printInternal(template, values);
         } else {
-            printInternal(buildTemplateSplitBySpace(values.length + 1), ArrayUtil.insert(values, 0, template));
+            printInternal(buildTemplateSplitBySpace(values.length + 1), ArrayUtils.insert(0, values, template));
         }
     }
 
@@ -164,7 +164,7 @@ public class Console {
      * @since 4.5.6
      */
     public static void printProgress(char showChar, int len) {
-        print("{}{}", CharUtil.CR, StrUtil.repeat(showChar, len));
+        print("{}{}", System.lineSeparator(), StringUtils.repeat(showChar, len));
     }
 
     /**
@@ -188,7 +188,7 @@ public class Console {
      * @since 5.4.3
      */
     private static void printInternal(String template, Object... values) {
-        out.print(StrUtil.format(template, values));
+        out.printf(template, values);
     }
 
     // --------------------------------------------------------------------------------- Error
@@ -223,10 +223,10 @@ public class Console {
      * @since 5.4.3
      */
     public static void error(Object obj1, Object... otherObjs) {
-        if (ArrayUtil.isEmpty(otherObjs)) {
+        if (ArrayUtils.isEmpty(otherObjs)) {
             error(obj1);
         } else {
-            error(buildTemplateSplitBySpace(otherObjs.length + 1), ArrayUtil.insert(otherObjs, 0, obj1));
+            error(buildTemplateSplitBySpace(otherObjs.length + 1), ArrayUtils.insert(0,otherObjs, obj1));
         }
     }
 
@@ -237,10 +237,10 @@ public class Console {
      * @param values   值
      */
     public static void error(String template, Object... values) {
-        if (ArrayUtil.isEmpty(values) || StrUtil.contains(template, TEMPLATE_VAR)) {
+        if (ArrayUtils.isEmpty(values) || StringUtils.contains(template, TEMPLATE_VAR)) {
             errorInternal(template, values);
         } else {
-            errorInternal(buildTemplateSplitBySpace(values.length + 1), ArrayUtil.insert(values, 0, template));
+            errorInternal(buildTemplateSplitBySpace(values.length + 1), ArrayUtils.insert(0, values, template));
         }
     }
 
@@ -252,7 +252,7 @@ public class Console {
      * @param values   值
      */
     public static void error(Throwable t, String template, Object... values) {
-        err.println(StrUtil.format(template, values));
+        err.printf((template) + "%n", values);
         if (null != t) {
             t.printStackTrace(err);
             err.flush();
@@ -326,7 +326,9 @@ public class Console {
      * @return 模板
      */
     private static String buildTemplateSplitBySpace(int count) {
-        return StrUtil.repeatAndJoin(TEMPLATE_VAR, count, StrUtil.SPACE);
+        String[] array = new String[count];
+        java.util.Arrays.fill(array, TEMPLATE_VAR);
+        return StringUtils.join(array, StringUtils.SPACE);
     }
 
 }

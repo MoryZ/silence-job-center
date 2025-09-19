@@ -1,8 +1,8 @@
 package com.old.silence.job.common.util;
 
 import cn.hutool.core.map.MapUtil;
+
 import org.apache.commons.lang.StringUtils;
-import com.old.silence.core.util.CollectionUtils;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -10,6 +10,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.old.silence.core.util.CollectionUtils;
 
 /**
  * stream 流工具类

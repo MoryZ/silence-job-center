@@ -1,7 +1,7 @@
 package com.old.silence.job.common.enums;
 
-import com.old.silence.core.enums.EnumValue;
 
+import com.old.silence.core.enums.EnumValue;
 
 public enum ContentTypeEnum implements EnumValue<Byte> {
 

@@ -1,7 +1,7 @@
 package com.old.silence.job.server.dto;
 
 
-import com.old.silence.job.common.core.enums.ContentTypeEnum;
+import com.old.silence.job.common.enums.ContentTypeEnum;
 
 /**
  * 回调节点配置

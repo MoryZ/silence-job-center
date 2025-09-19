@@ -1,19 +1,19 @@
 package com.old.silence.job.server.retry.task.support.schedule;
 
 import org.springframework.stereotype.Component;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.old.silence.platform.job.common.core.alarm.AlarmContext;
-import com.old.silence.platform.job.common.core.alarm.SilenceJobAlarmFactory;
-import com.old.silence.platform.job.common.core.enums.RetryNotifyScene;
-import com.old.silence.platform.job.common.core.enums.RetryStatus;
-import com.old.silence.platform.job.common.core.util.EnvironmentUtils;
-import com.old.silence.platform.job.server.common.Lifecycle;
-import com.old.silence.platform.job.server.common.util.DateUtils;
-import com.old.silence.platform.job.server.domain.model.Retry;
-import com.old.silence.platform.job.server.domain.service.AccessTemplate;
-import com.old.silence.platform.job.server.infrastructure.persistence.dao.NotifyRecipientDao;
-import com.old.silence.platform.job.server.retry.task.dto.NotifyConfigDTO;
-import com.old.silence.platform.job.server.retry.task.dto.RetrySceneConfigPartitionTask;
+import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.old.silence.job.common.alarm.AlarmContext;
+import com.old.silence.job.common.alarm.SilenceJobAlarmFactory;
+import com.old.silence.job.common.enums.RetryNotifyScene;
+import com.old.silence.job.common.enums.RetryStatus;
+import com.old.silence.job.common.util.EnvironmentUtils;
+import com.old.silence.job.server.common.Lifecycle;
+import com.old.silence.job.server.common.util.DateUtils;
+import com.old.silence.job.server.domain.model.Retry;
+import com.old.silence.job.server.domain.service.AccessTemplate;
+import com.old.silence.job.server.infrastructure.persistence.dao.NotifyRecipientDao;
+import com.old.silence.job.server.retry.task.dto.NotifyConfigDTO;
+import com.old.silence.job.server.retry.task.dto.RetrySceneConfigPartitionTask;
 
 import java.math.BigInteger;
 import java.time.Duration;

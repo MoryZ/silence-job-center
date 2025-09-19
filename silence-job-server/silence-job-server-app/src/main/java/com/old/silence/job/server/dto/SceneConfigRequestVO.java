@@ -1,8 +1,8 @@
 package com.old.silence.job.server.dto;
 
-import com.old.silence.job.common.core.constant.SystemConstants;
-import com.old.silence.job.common.core.enums.RetryBlockStrategy;
-import com.old.silence.job.common.core.enums.TriggerType;
+import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.enums.RetryBlockStrategy;
+import com.old.silence.job.common.enums.TriggerType;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
