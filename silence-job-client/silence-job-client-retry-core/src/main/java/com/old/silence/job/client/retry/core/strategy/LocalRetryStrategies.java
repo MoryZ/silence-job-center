@@ -1,16 +1,22 @@
-package com.old.silence.job.client.retry.strategy;
+package com.old.silence.job.client.retry.core.strategy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import com.github.rholder.retry.*;
-import com.old.silence.job.client.RetryExecutor;
-import com.old.silence.job.client.RetryExecutorParameter;
-import com.old.silence.job.client.exception.SilenceRetryClientException;
-import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
-import com.old.silence.job.client.retryer.RetryType;
-import com.old.silence.job.client.retryer.RetryerInfo;
-import com.old.silence.job.client.retryer.RetryerResultContext;
+
+import com.github.rholder.retry.Attempt;
+import com.github.rholder.retry.RetryListener;
+import com.github.rholder.retry.StopStrategies;
+import com.github.rholder.retry.StopStrategy;
+import com.github.rholder.retry.WaitStrategies;
+import com.github.rholder.retry.WaitStrategy;
+import com.old.silence.job.client.retry.core.RetryExecutor;
+import com.old.silence.job.client.retry.core.RetryExecutorParameter;
+import com.old.silence.job.client.retry.core.exception.SilenceRetryClientException;
+import com.old.silence.job.client.retry.core.intercepter.RetrySiteSnapshot;
+import com.old.silence.job.client.retry.core.retryer.RetryType;
+import com.old.silence.job.client.retry.core.retryer.RetryerInfo;
+import com.old.silence.job.client.retry.core.retryer.RetryerResultContext;
 import com.old.silence.job.common.enums.RetryResultStatus;
 import com.old.silence.job.log.SilenceJobLog;
 
@@ -131,7 +137,7 @@ public class LocalRetryStrategies extends AbstractRetryStrategies {
     @Override
     public RetryExecutorParameter<WaitStrategy, StopStrategy> getRetryExecutorParameter(RetryerInfo retryerInfo) {
 
-        return new RetryExecutorParameter<WaitStrategy, StopStrategy>() {
+        return new RetryExecutorParameter<>() {
 
             @Override
             public WaitStrategy backOff() {

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.allocate.client;
 
-import com.old.silence.context.CommonErrors;
+import com.old.silence.core.context.CommonErrors;
 import com.old.silence.job.server.common.ClientLoadBalance;
 
 

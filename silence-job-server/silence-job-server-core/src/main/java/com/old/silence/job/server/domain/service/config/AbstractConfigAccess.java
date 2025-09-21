@@ -14,6 +14,7 @@ import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobNotifyScene;
 import com.old.silence.job.common.enums.NodeType;
 import com.old.silence.job.common.enums.RetryNotifyScene;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.server.domain.model.GroupConfig;
 import com.old.silence.job.server.domain.model.NotifyConfig;
 import com.old.silence.job.server.domain.model.NotifyRecipient;
@@ -154,7 +155,7 @@ public abstract class AbstractConfigAccess<T> implements ConfigAccess<T> {
     }
 
     @Override
-    public ConfigDTO getConfigInfo(String groupName, final String namespaceId) {
+    public ConfigDTO getConfigInfo(String groupName, String namespaceId) {
 
         ConfigDTO configDTO = new ConfigDTO();
         configDTO.setVersion(getConfigVersion(groupName, namespaceId));
@@ -194,17 +195,17 @@ public abstract class AbstractConfigAccess<T> implements ConfigAccess<T> {
         return configDTO;
     }
 
-    private static Notify getNotify(NotifyConfig notifyConfig, List<NotifyRecipient> notifyRecipients,
-                                    RetryNotifyScene retryNotifyScene, JobNotifyScene jobNotifyScene) {
-        List<Recipient> recipients = new ArrayList<>();
-        for (final NotifyRecipient notifyRecipient : notifyRecipients) {
-            Recipient recipient = new Recipient();
+    private static ConfigDTO.Notify getNotify(NotifyConfig notifyConfig, List<NotifyRecipient> notifyRecipients,
+                                              RetryNotifyScene retryNotifyScene, JobNotifyScene jobNotifyScene) {
+        List<ConfigDTO.Notify.Recipient> recipients = new ArrayList<>();
+        for (NotifyRecipient notifyRecipient : notifyRecipients) {
+            ConfigDTO.Notify.Recipient recipient = new ConfigDTO.Notify.Recipient();
             recipient.setNotifyAttribute(notifyRecipient.getNotifyAttribute());
             recipient.setNotifyType(notifyRecipient.getNotifyType());
             recipients.add(recipient);
         }
 
-        Notify notify = new Notify();
+        ConfigDTO.Notify notify = new ConfigDTO.Notify();
         if (Objects.nonNull(retryNotifyScene)) {
             notify.setRetryNotifyScene(retryNotifyScene);
         }

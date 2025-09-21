@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.scheduling.TaskScheduler;
 import com.alibaba.fastjson2.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.RateLimiter;
 import com.old.silence.core.util.CollectionUtils;
@@ -24,6 +25,7 @@ import com.old.silence.job.server.common.dto.NotifyConfigInfo.RecipientInfo;
 import com.old.silence.job.server.domain.model.NotifyConfig;
 import com.old.silence.job.server.domain.model.NotifyRecipient;
 import com.old.silence.job.server.domain.service.AccessTemplate;
+import com.old.silence.job.server.infrastructure.persistence.dao.NotifyRecipientDao;
 
 import java.math.BigInteger;
 import java.time.Duration;

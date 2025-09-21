@@ -1,11 +1,12 @@
-package com.old.silence.job.client.retry.callback.future;
+package com.old.silence.job.client.retry.core.callback.future;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.old.silence.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.job.client.client.RetryClient;
-import com.old.silence.job.client.context.RemoteRetryContext;
-import com.old.silence.job.client.model.DispatchRetryResultDTO;
-import com.old.silence.job.client.model.request.DispatchRetryResultRequest;
+
+import com.old.silence.job.client.retry.core.client.RetryClient;
+import com.old.silence.job.client.retry.core.context.RemoteRetryContext;
+import com.old.silence.job.common.client.dto.DispatchRetryResultDTO;
+import com.old.silence.job.common.client.dto.request.DispatchRetryResultRequest;
 import com.old.silence.job.common.enums.RetryResultStatus;
 import com.old.silence.job.common.enums.RetryTaskStatus;
 import com.old.silence.job.common.model.SilenceJobRpcResult;

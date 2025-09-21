@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import com.old.silence.job.client.model.request.StopRetryRequest;
+import com.old.silence.job.common.client.dto.request.StopRetryRequest;
 import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.cache.CacheRegisterTable;

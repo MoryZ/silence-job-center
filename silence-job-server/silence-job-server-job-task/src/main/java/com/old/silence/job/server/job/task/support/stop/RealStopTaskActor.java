@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.client.model.StopJobDTO;
+import com.old.silence.job.common.client.dto.StopJobDTO;
 import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.server.common.cache.CacheRegisterTable;
 import com.old.silence.job.server.common.dto.RegisterNodeInfo;

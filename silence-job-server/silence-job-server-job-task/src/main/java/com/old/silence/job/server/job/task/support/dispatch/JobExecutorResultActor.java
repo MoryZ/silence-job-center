@@ -6,7 +6,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.domain.model.JobTask;
 import com.old.silence.job.server.exception.SilenceJobServerException;

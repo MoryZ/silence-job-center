@@ -2,8 +2,8 @@ package com.old.silence.job.client.common.rpc.client.grpc;
 
 import io.grpc.*;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
-import org.springframework.Ordered;
-import org.springframework.annotation.Order;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.old.silence.job.client.common.Lifecycle;

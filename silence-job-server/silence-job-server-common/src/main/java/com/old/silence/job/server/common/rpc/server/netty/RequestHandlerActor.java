@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.rpc.server.netty;
 
-import cn.hutool.net.url.UrlBuilder;
-import cn.hutool.core.lang.Assert;
+import cn.hutool.core.net.url.UrlBuilder;
+import cn.hutool.core.util.StrUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.*;

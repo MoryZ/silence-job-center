@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.strategy;
+package com.old.silence.job.client.retry.core.strategy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,23 +8,23 @@ import com.github.rholder.retry.StopStrategy;
 import com.github.rholder.retry.WaitStrategy;
 import com.old.silence.job.client.common.cache.GroupVersionCache;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
-import com.old.silence.job.client.Report;
-import com.old.silence.job.client.RetryExecutor;
-import com.old.silence.job.client.RetryExecutorParameter;
-import com.old.silence.job.client.event.SilenceJobListener;
-import com.old.silence.job.client.executor.GuavaRetryExecutor;
-import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
-import com.old.silence.job.client.loader.SilenceRetrySpiLoader;
-import com.old.silence.job.client.retryer.RetryerInfo;
-import com.old.silence.job.client.retryer.RetryerResultContext;
+import com.old.silence.job.client.retry.core.Report;
+import com.old.silence.job.client.retry.core.RetryExecutor;
+import com.old.silence.job.client.retry.core.RetryExecutorParameter;
+import com.old.silence.job.client.retry.core.event.SilenceJobListener;
+import com.old.silence.job.client.retry.core.executor.GuavaRetryExecutor;
+import com.old.silence.job.client.retry.core.intercepter.RetrySiteSnapshot;
+import com.old.silence.job.client.retry.core.loader.SilenceRetrySpiLoader;
+import com.old.silence.job.client.retry.core.retryer.RetryerInfo;
+import com.old.silence.job.client.retry.core.retryer.RetryerResultContext;
 import com.old.silence.job.common.alarm.AlarmContext;
 import com.old.silence.job.common.alarm.SilenceJobAlarmFactory;
 import com.old.silence.job.common.enums.RetryNotifyScene;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.common.util.EnvironmentUtils;
 import com.old.silence.job.common.util.NetUtil;
 import com.old.silence.job.log.SilenceJobLog;
-import com.old.silence.job.server.model.dto.ConfigDTO;
-import com.old.silence.job.server.model.dto.ConfigDTO.Notify.Recipient;
+
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -186,9 +186,9 @@ public abstract class AbstractRetryStrategies implements RetryStrategy {
         try {
             ConfigDTO.Notify notify = GroupVersionCache.getRetryNotifyAttribute(RetryNotifyScene.CLIENT_COMPONENT_ERROR);
             if (Objects.nonNull(notify)) {
-                List<Recipient> recipients = Optional.ofNullable(notify.getRecipients()).orElse(new ArrayList<>());
+                List<ConfigDTO.Notify.Recipient> recipients = Optional.ofNullable(notify.getRecipients()).orElse(new ArrayList<>());
 
-                for (final Recipient recipient : recipients) {
+                for (ConfigDTO.Notify.Recipient recipient : recipients) {
                     AlarmContext context = AlarmContext.build()
                             .text(TEXT_MESSAGE_FORMATTER,
                                     EnvironmentUtils.getActiveProfile(),

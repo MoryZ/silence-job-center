@@ -1,6 +1,7 @@
 package com.old.silence.job.client.core;
 
-import com.old.silence.job.client.dto.JobExecutorInfo;
+
+import com.old.silence.job.client.core.dto.JobExecutorInfo;
 
 import java.util.List;
 

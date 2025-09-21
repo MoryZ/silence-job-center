@@ -1,14 +1,11 @@
 package com.old.silence.job.common.model;
 
-
-
 import com.old.silence.job.common.enums.JobTaskType;
 import com.old.silence.job.common.enums.MapReduceStage;
 
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
-
 
 
 public class JobContext {

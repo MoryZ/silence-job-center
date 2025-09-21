@@ -1,6 +1,7 @@
 package com.old.silence.job.client.core;
 
-import com.old.silence.job.client.model.ExecuteResult;
+
+import com.old.silence.job.common.client.dto.ExecuteResult;
 
 import java.util.List;
 

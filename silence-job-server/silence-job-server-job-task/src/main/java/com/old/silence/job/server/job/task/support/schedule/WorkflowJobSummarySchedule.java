@@ -16,9 +16,9 @@ import com.old.silence.job.server.common.schedule.AbstractSchedule;
 import com.old.silence.job.server.common.triple.Pair;
 import com.old.silence.job.server.domain.model.JobSummary;
 import com.old.silence.job.server.domain.model.WorkflowTaskBatch;
-import com.old.silence.job.server.dto.JobBatchSummaryResponseDO;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobSummaryDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
+import com.old.silence.job.server.vo.JobBatchSummaryResponseDO;
 
 import java.math.BigInteger;
 import java.time.Duration;

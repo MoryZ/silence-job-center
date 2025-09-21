@@ -1,6 +1,7 @@
 package com.old.silence.job.server.domain.service;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 
 import java.math.BigInteger;
 import java.util.Comparator;
@@ -21,6 +22,9 @@ import com.google.common.collect.Lists;
 import com.old.silence.job.common.enums.RetryOperationReason;
 import com.old.silence.job.common.enums.RetryTaskStatus;
 import com.old.silence.job.log.constant.LogFieldConstants;
+import com.old.silence.job.server.api.assembler.RetryMapper;
+import com.old.silence.job.server.api.assembler.RetryTaskLogResponseVOMapper;
+import com.old.silence.job.server.api.assembler.RetryTaskResponseVOMapper;
 import com.old.silence.job.server.domain.model.Retry;
 import com.old.silence.job.server.domain.model.RetryTask;
 import com.old.silence.job.server.domain.model.RetryTaskLogMessage;
@@ -31,12 +35,10 @@ import com.old.silence.job.server.infrastructure.persistence.dao.RetryDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskLogMessageDao;
 import com.old.silence.job.server.retry.task.dto.TaskStopJobDTO;
+import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
 import com.old.silence.job.server.retry.task.support.handler.RetryTaskStopHandler;
 import com.old.silence.job.server.vo.RetryTaskLogMessageResponseVO;
 import com.old.silence.job.server.vo.RetryTaskResponseVO;
-import com.old.silence.job.server.web.api.assembler.RetryMapper;
-import com.old.silence.job.server.web.api.assembler.RetryTaskLogResponseVOMapper;
-import com.old.silence.job.server.web.api.assembler.RetryTaskResponseVOMapper;
 import com.old.silence.core.util.CollectionUtils;
 
 
@@ -47,18 +49,24 @@ public class RetryTaskService {
     private final RetryDao retryDao;
     private final RetryTaskLogMessageDao retryTaskLogMessageDao;
     private final RetryTaskStopHandler retryTaskStopHandler;
+    private final RetryTaskLogResponseVOMapper retryTaskLogResponseVOMapper;
+    private final RetryTaskResponseVOMapper retryTaskResponseVOMapper;
 
     public RetryTaskService(RetryTaskDao retryTaskDao, RetryDao retryDao,
-                            RetryTaskLogMessageDao retryTaskLogMessageDao, RetryTaskStopHandler retryTaskStopHandler) {
+                            RetryTaskLogMessageDao retryTaskLogMessageDao,
+                            RetryTaskStopHandler retryTaskStopHandler, RetryTaskLogResponseVOMapper retryTaskLogResponseVOMapper,
+                            RetryTaskResponseVOMapper retryTaskResponseVOMapper) {
         this.retryTaskDao = retryTaskDao;
         this.retryDao = retryDao;
         this.retryTaskLogMessageDao = retryTaskLogMessageDao;
         this.retryTaskStopHandler = retryTaskStopHandler;
+        this.retryTaskLogResponseVOMapper = retryTaskLogResponseVOMapper;
+        this.retryTaskResponseVOMapper = retryTaskResponseVOMapper;
     }
 
     public IPage<RetryTaskResponseVO> getRetryTaskLogPage(Page<RetryTask> pageDTO, RetryTaskQueryVO queryVO) {
 
-        String namespaceId = "111";
+        String namespaceId = "namespaceId";
 
         List<String> groupNames = List.of();
 
@@ -73,7 +81,7 @@ public class RetryTaskService {
                 .orderByDesc(RetryTask::getCreatedDate);
 
         Page<RetryTask> retryTaskPageDTO = retryTaskDao.selectPage(pageDTO, wrapper);
-        return retryTaskPageDTO.convert(RetryTaskLogResponseVOMapper.INSTANCE::convert);
+        return retryTaskPageDTO.convert(retryTaskLogResponseVOMapper::convert);
 
     }
 
@@ -169,8 +177,8 @@ public class RetryTaskService {
         }
 
         Retry retry = retryDao.selectById(retryTask.getRetryId());
-        RetryTaskResponseVO responseVO = RetryTaskLogResponseVOMapper.INSTANCE.convert(retryTask);
-        responseVO.setResponseVO(RetryTaskResponseVOMapper.INSTANCE.convert(retry));
+        RetryTaskResponseVO responseVO = retryTaskLogResponseVOMapper.convert(retryTask);
+        responseVO.setResponseVO(retryTaskResponseVOMapper.convert(retry));
         return responseVO;
     }
 
@@ -224,7 +232,7 @@ public class RetryTaskService {
         Retry retry = retryDao.selectById(retryTask.getRetryId());
         Assert.notNull(retry, () -> new SilenceJobServerException("任务不存在"));
 
-        TaskStopJobDTO taskStopJobDTO = RetryMapper.INSTANCE.toTaskStopJobDTO(retry);
+        TaskStopJobDTO taskStopJobDTO = RetryTaskConverter.INSTANCE.toTaskStopJobDTO(retry);
         taskStopJobDTO.setOperationReason(RetryOperationReason.MANNER_STOP);
         taskStopJobDTO.setNeedUpdateTaskStatus(true);
         taskStopJobDTO.setMessage("用户手动触发停止");

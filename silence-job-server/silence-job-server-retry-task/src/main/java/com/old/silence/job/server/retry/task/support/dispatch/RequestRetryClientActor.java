@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.github.rholder.retry.Attempt;
 import com.github.rholder.retry.RetryException;
 import com.google.common.collect.Maps;
-import com.old.silence.job.client.model.request.DispatchRetryRequest;
+import com.old.silence.job.common.client.dto.request.DispatchRetryRequest;
 import com.old.silence.job.common.enums.RetryTaskStatus;
 import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.common.model.SilenceJobHeaders;

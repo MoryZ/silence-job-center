@@ -1,6 +1,6 @@
 package com.old.silence.job.client.common.rpc.client;
 
-import cn.hutool.date.StopWatch;
+import cn.hutool.core.date.StopWatch;
 import cn.hutool.core.lang.Assert;
 import io.netty.handler.codec.http.HttpMethod;
 import com.old.silence.job.client.common.annotation.Mapping;

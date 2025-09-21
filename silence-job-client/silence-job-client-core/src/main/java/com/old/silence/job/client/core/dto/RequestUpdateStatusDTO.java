@@ -1,10 +1,7 @@
-package com.old.silence.job.client.dto;
-
-
+package com.old.silence.job.client.core.dto;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
-
 
 
 public class RequestUpdateStatusDTO {

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.callback;
 
-import cn.hutool.util.RandomUtil;
+import cn.hutool.core.util.RandomUtil;
 import org.apache.pekko.actor.ActorRef;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,22 +1,22 @@
-package com.old.silence.job.client.openapi;
+package com.old.silence.job.client.core.openapi;
 
 
 
 import com.old.silence.job.client.common.annotation.Mapping;
 import com.old.silence.job.client.common.rpc.client.RequestMethod;
-import com.old.silence.job.client.dto.JobTriggerDTO;
-import com.old.silence.job.client.dto.RequestAddOrUpdateJobDTO;
-import com.old.silence.job.client.dto.RequestUpdateStatusDTO;
+import com.old.silence.job.client.core.dto.JobTriggerDTO;
+import com.old.silence.job.client.core.dto.RequestAddOrUpdateJobDTO;
+import com.old.silence.job.client.core.dto.RequestUpdateStatusDTO;
 import com.old.silence.job.common.model.ApiResult;
 
 import java.math.BigInteger;
 import java.util.Set;
 
 public interface OpenApiClient {
-    @Mapping(method = RequestMethod.POST, path = "/api/job/add")
+    @Mapping(method = RequestMethod.POST, path = "/api/v1/jobs")
     ApiResult<Object> addJob(RequestAddOrUpdateJobDTO requestAddOrUpdateJobDTO);
 
-    @Mapping(method = RequestMethod.POST, path = "/api/job/update")
+    @Mapping(method = RequestMethod.POST, path = "/api/v1/jobs/{id}")
     ApiResult<Object> updateJob(RequestAddOrUpdateJobDTO requestUpdateJobDTO);
 
     @Mapping(method = RequestMethod.POST, path = "/api/job/getJobDetail")

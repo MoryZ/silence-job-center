@@ -11,10 +11,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.old.silence.job.common.enums.JobTaskBatchStatus;
 import com.old.silence.job.server.domain.model.JobTaskBatch;
 import com.old.silence.job.server.exception.SilenceJobServerException;
-import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
+import com.old.silence.job.server.handler.JobHandler;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
-import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
-import com.old.silence.job.server.web.domain.service.handler.JobHandler;
 import com.old.silence.core.util.CollectionUtils;
 
 
@@ -22,15 +20,11 @@ import com.old.silence.core.util.CollectionUtils;
 public class WorkflowNodeService  {
 
     private final JobTaskBatchDao jobTaskBatchDao;
-    private final JobDao jobDao;
-    private final WorkflowBatchHandler workflowBatchHandler;
     private final JobHandler jobHandler;
 
-    public WorkflowNodeService(JobTaskBatchDao jobTaskBatchDao, JobDao jobDao,
-                               WorkflowBatchHandler workflowBatchHandler, JobHandler jobHandler) {
+    public WorkflowNodeService(JobTaskBatchDao jobTaskBatchDao,
+                               JobHandler jobHandler) {
         this.jobTaskBatchDao = jobTaskBatchDao;
-        this.jobDao = jobDao;
-        this.workflowBatchHandler = workflowBatchHandler;
         this.jobHandler = jobHandler;
     }
 

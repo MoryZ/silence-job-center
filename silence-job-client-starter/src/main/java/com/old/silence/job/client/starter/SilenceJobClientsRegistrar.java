@@ -4,9 +4,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
-import org.springframework.env.Environment;
-import org.springframework.env.StandardEnvironment;
-import org.springframework.type.AnnotationMetadata;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.StandardEnvironment;
+import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.lang.NonNull;
+
 
 import java.util.Map;
 import java.util.Objects;
@@ -26,7 +28,7 @@ public class SilenceJobClientsRegistrar implements ImportBeanDefinitionRegistrar
     private StandardEnvironment standardEnvironment;
 
     @Override
-    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, @NonNull BeanDefinitionRegistry registry) {
         Map<String, Object> attrs = importingClassMetadata.getAnnotationAttributes(EnableSilenceJob.class.getName());
         Map<String, Object> systemEnvironment = standardEnvironment.getSystemProperties();
         systemEnvironment.put(AOP_ORDER_CONFIG, attrs.get(ORDER_ATTR));
@@ -39,7 +41,7 @@ public class SilenceJobClientsRegistrar implements ImportBeanDefinitionRegistrar
     }
 
     @Override
-    public void setEnvironment(Environment env) {
+    public void setEnvironment(@NonNull Environment env) {
         this.standardEnvironment = (StandardEnvironment) env;
         Map<String, Object> systemEnvironment = standardEnvironment.getSystemProperties();
         // 若是用户需要自定义enabled的值，那么以用户的为主

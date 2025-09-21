@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.job.common.enums.OperationTypeEnum;
 import com.old.silence.job.server.domain.model.NotifyConfig;
-import com.old.silence.job.server.enums.OperationTypeEnum;
 
 
 @Component

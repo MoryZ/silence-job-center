@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.report;
+package com.old.silence.job.client.retry.core.report;
 
 import com.alibaba.fastjson2.JSON;
 import com.github.rholder.retry.*;
@@ -6,21 +6,21 @@ import com.old.silence.job.client.common.NettyClient;
 import com.old.silence.job.client.common.cache.GroupVersionCache;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
 import com.old.silence.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.job.client.RetryExecutor;
-import com.old.silence.job.client.RetryExecutorParameter;
-import com.old.silence.job.client.executor.GuavaRetryExecutor;
+
+import com.old.silence.job.client.retry.core.RetryExecutor;
+import com.old.silence.job.client.retry.core.RetryExecutorParameter;
+import com.old.silence.job.client.retry.core.executor.GuavaRetryExecutor;
 import com.old.silence.job.common.alarm.AlarmContext;
 import com.old.silence.job.common.alarm.SilenceJobAlarmFactory;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.RetryNotifyScene;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.server.dto.RetryTaskDTO;
 import com.old.silence.job.common.util.EnvironmentUtils;
 import com.old.silence.job.common.util.NetUtil;
 import com.old.silence.job.common.window.Listener;
 import com.old.silence.job.log.SilenceJobLog;
-import com.old.silence.job.server.model.dto.ConfigDTO;
-import com.old.silence.job.server.model.dto.ConfigDTO.Notify.Recipient;
-import com.old.silence.job.server.model.dto.RetryTaskDTO;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -116,8 +116,8 @@ public class ReportListener implements Listener<RetryTaskDTO> {
             if (Objects.isNull(properties)) {
                 return;
             }
-            List<Recipient> recipients = Optional.ofNullable(notify.getRecipients()).orElse(new ArrayList<>());
-            for (final Recipient recipient : recipients) {
+            List<ConfigDTO.Notify.Recipient> recipients = Optional.ofNullable(notify.getRecipients()).orElse(new ArrayList<>());
+            for (final ConfigDTO.Notify.Recipient recipient : recipients) {
                 AlarmContext context = AlarmContext.build()
                         .text(reportErrorTextMessageFormatter,
                                 EnvironmentUtils.getActiveProfile(),

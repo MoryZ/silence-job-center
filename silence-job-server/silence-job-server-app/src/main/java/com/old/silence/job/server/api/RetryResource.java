@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.server.domain.model.Retry;
 import com.old.silence.job.server.domain.service.RetryService;
@@ -39,7 +40,7 @@ public class RetryResource {
 
 
     @GetMapping(value = "/retries", params = {"pageNo", "pageSize"})
-    public Page<RetryResponseVO> getRetryTaskPage(Page<Retry> page, RetryQueryVO queryVO) {
+    public IPage<RetryResponseVO> getRetryTaskPage(Page<Retry> page, RetryQueryVO queryVO) {
         return retryService.getRetryPage(page, queryVO);
     }
 

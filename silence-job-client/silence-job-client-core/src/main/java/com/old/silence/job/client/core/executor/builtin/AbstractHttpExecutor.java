@@ -1,11 +1,11 @@
-package com.old.silence.job.client.executor.builtin;
+package com.old.silence.job.client.core.executor.builtin;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import org.apache.commons.lang3.StringUtils;
 import com.alibaba.fastjson2.JSON;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
-import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.common.client.dto.ExecuteResult;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.exception.SilenceJobInnerExecutorException;
 import com.old.silence.job.log.SilenceJobLog;

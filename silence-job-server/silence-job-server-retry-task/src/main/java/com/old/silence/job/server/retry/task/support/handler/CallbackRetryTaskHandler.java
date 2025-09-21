@@ -2,6 +2,7 @@ package com.old.silence.job.server.retry.task.support.handler;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -42,7 +43,7 @@ public class CallbackRetryTaskHandler {
      * 创建回调数据
      *
      * @param parentRetry            {@link Retry} 重试任务数据
-     * @param retrySceneConfig
+     * @param retrySceneConfig      {@link RetrySceneConfig} 回调场景配置
      */
     public void create(Retry parentRetry, RetrySceneConfig retrySceneConfig) {
         if (!SystemTaskType.RETRY.equals(parentRetry.getTaskType())) {

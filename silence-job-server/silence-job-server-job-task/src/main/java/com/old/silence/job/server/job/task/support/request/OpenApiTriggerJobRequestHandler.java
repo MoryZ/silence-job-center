@@ -1,8 +1,8 @@
 package com.old.silence.job.server.job.task.support.request;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.net.url.UrlQuery;
-import cn.hutool.core.lang.Assert;
+import cn.hutool.core.net.url.UrlQuery;
+import cn.hutool.core.util.StrUtil;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;

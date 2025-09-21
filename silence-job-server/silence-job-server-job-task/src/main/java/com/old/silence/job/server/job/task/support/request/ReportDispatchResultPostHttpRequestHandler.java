@@ -1,11 +1,11 @@
 package com.old.silence.job.server.job.task.support.request;
 
-import cn.hutool.net.url.UrlQuery;
+import cn.hutool.core.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.client.model.request.DispatchJobResultRequest;
+import com.old.silence.job.common.client.dto.request.DispatchJobResultRequest;
 import com.old.silence.job.common.enums.HeadersEnum;
 import com.old.silence.job.common.model.SilenceJobRequest;
 import com.old.silence.job.common.model.SilenceJobRpcResult;

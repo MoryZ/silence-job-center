@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.event;
+package com.old.silence.job.client.retry.core.event;
 
 
 public interface SilenceJobListener {

@@ -1,12 +1,12 @@
-package com.old.silence.job.client.executor;
+package com.old.silence.job.client.core.executor;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
 import com.old.silence.job.client.common.rpc.client.RequestBuilder;
-import com.old.silence.job.client.client.JobNettyClient;
-import com.old.silence.job.client.model.ExecuteResult;
-import com.old.silence.job.client.model.request.MapTaskRequest;
+import com.old.silence.job.client.core.client.JobNettyClient;
+import com.old.silence.job.common.client.dto.ExecuteResult;
+import com.old.silence.job.common.client.dto.request.MapTaskRequest;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.exception.SilenceJobMapReduceException;
 import com.old.silence.job.common.model.ApiResult;
@@ -30,7 +30,7 @@ public final class MapInvokeHandler implements InvocationHandler {
         .build();
 
     @Override
-    public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         return doMap((List<Object>) args[0], (String) args[1]);
     }
 

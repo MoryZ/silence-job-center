@@ -2,8 +2,8 @@ package com.old.silence.job.server.job.task.support.prepare.job;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.Ordered;
-import org.springframework.annotation.Order;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import com.old.silence.job.common.enums.JobTaskBatchStatus;
 import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;

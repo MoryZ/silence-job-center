@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.job.common.enums.OperationTypeEnum;
 import com.old.silence.job.server.domain.model.Retry;
-import com.old.silence.job.server.enums.OperationTypeEnum;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryDao;
 
 /**

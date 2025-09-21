@@ -1,6 +1,7 @@
 package com.old.silence.job.server.retry.task.support;
 
-import cn.hutool.lang.Pair;
+
+import cn.hutool.core.lang.Pair;
 
 /**
  * 重试过滤策略，为了判断哪些重试数据符合条件

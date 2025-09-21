@@ -1,5 +1,5 @@
 
-package com.old.silence.job.client.retry.annotation;
+package com.old.silence.job.client.retry.core.annotation;
 
 /**
  * silence job 重试任务传播机制

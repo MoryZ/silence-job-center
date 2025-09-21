@@ -1,12 +1,8 @@
-package com.old.silence.job.client.retry.event;
-
-
+package com.old.silence.job.client.retry.core.event;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson2.JSON;
-
-
 
 public class SimpleSilenceRetryListener implements SilenceJobListener {
 

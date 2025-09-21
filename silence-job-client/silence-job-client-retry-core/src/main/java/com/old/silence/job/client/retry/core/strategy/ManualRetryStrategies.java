@@ -1,13 +1,18 @@
-package com.old.silence.job.client.retry.strategy;
+package com.old.silence.job.client.retry.core.strategy;
 
 import org.springframework.stereotype.Component;
-import com.github.rholder.retry.*;
-import com.old.silence.job.client.RetryExecutor;
-import com.old.silence.job.client.RetryExecutorParameter;
-import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
-import com.old.silence.job.client.retryer.RetryType;
-import com.old.silence.job.client.retryer.RetryerInfo;
-import com.old.silence.job.client.retryer.RetryerResultContext;
+import com.github.rholder.retry.Attempt;
+import com.github.rholder.retry.RetryListener;
+import com.github.rholder.retry.StopStrategies;
+import com.github.rholder.retry.StopStrategy;
+import com.github.rholder.retry.WaitStrategies;
+import com.github.rholder.retry.WaitStrategy;
+import com.old.silence.job.client.retry.core.RetryExecutor;
+import com.old.silence.job.client.retry.core.RetryExecutorParameter;
+import com.old.silence.job.client.retry.core.intercepter.RetrySiteSnapshot;
+import com.old.silence.job.client.retry.core.retryer.RetryType;
+import com.old.silence.job.client.retry.core.retryer.RetryerInfo;
+import com.old.silence.job.client.retry.core.retryer.RetryerResultContext;
 import com.old.silence.job.common.enums.RetryResultStatus;
 import com.old.silence.job.log.SilenceJobLog;
 
@@ -31,19 +36,19 @@ public class ManualRetryStrategies extends AbstractRetryStrategies {
     }
 
     @Override
-    protected Consumer<Object> doRetrySuccessConsumer(final RetryerResultContext context) {
+    protected Consumer<Object> doRetrySuccessConsumer(RetryerResultContext context) {
         return o -> {
             SilenceJobLog.LOCAL.debug("ManualRetryStrategies doRetrySuccessConsumer ");
         };
     }
 
     @Override
-    protected void error(final RetryerResultContext context) {
+    protected void error(RetryerResultContext context) {
         context.setRetryResultStatus(RetryResultStatus.FAILURE);
     }
 
     @Override
-    protected boolean preValidator(final RetryerInfo retryerInfo, final RetryerResultContext resultContext) {
+    protected boolean preValidator(RetryerInfo retryerInfo, RetryerResultContext resultContext) {
 
         if (retryerInfo.isForceReport()) {
             return true;
@@ -59,24 +64,24 @@ public class ManualRetryStrategies extends AbstractRetryStrategies {
     }
 
     @Override
-    protected void unexpectedError(final Exception e, final RetryerResultContext retryerResultContext) {
+    protected void unexpectedError(Exception e, RetryerResultContext retryerResultContext) {
         retryerResultContext.setRetryResultStatus(RetryResultStatus.FAILURE);
     }
 
     @Override
-    protected void success(final RetryerResultContext retryerResultContext) {
+    protected void success(RetryerResultContext retryerResultContext) {
         retryerResultContext.setRetryResultStatus(RetryResultStatus.SUCCESS);
     }
 
     @Override
-    protected Consumer<Throwable> doGetRetryErrorConsumer(final RetryerInfo retryerInfo, final Object[] params) {
+    protected Consumer<Throwable> doGetRetryErrorConsumer(RetryerInfo retryerInfo, Object[] params) {
         return throwable -> {
             SilenceJobLog.LOCAL.debug("ManualRetryStrategies doGetRetryErrorConsumer ");
         };
     }
 
     @Override
-    protected Callable doGetCallable(final RetryExecutor<WaitStrategy, StopStrategy> retryExecutor, Object[] params) {
+    protected Callable doGetCallable(RetryExecutor<WaitStrategy, StopStrategy> retryExecutor, Object[] params) {
         RetryerInfo retryerInfo = retryExecutor.getRetryerInfo();
         return () -> doReport(retryerInfo, params);
 
@@ -117,7 +122,7 @@ public class ManualRetryStrategies extends AbstractRetryStrategies {
     }
 
     @Override
-    public boolean supports(final int stage, final RetryType retryType) {
+    public boolean supports(int stage, RetryType retryType) {
         return RetrySiteSnapshot.EnumStage.MANUAL_REPORT.getStage() == stage;
     }
 }

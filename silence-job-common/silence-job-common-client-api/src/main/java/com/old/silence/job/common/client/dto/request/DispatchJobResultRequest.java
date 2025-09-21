@@ -1,6 +1,6 @@
 package com.old.silence.job.common.client.dto.request;
 
-import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.common.client.dto.ExecuteResult;
 import com.old.silence.job.common.enums.JobTaskStatus;
 import com.old.silence.job.common.enums.JobTaskType;
 

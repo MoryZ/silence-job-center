@@ -27,7 +27,7 @@ public interface JobSummaryResponseVOMapper extends Converter<DashboardCardRespo
 
     DashboardRetryLineResponseVO.Task convert(DashboardRetryLineResponseDO.Task task);
 
-    static BigDecimal toSuccessRate(Integer successNum, Integer totalNum) {
+    default BigDecimal toSuccessRate(Integer successNum, Integer totalNum) {
         if (Objects.isNull(totalNum) || totalNum == 0) {
             return null;
         }

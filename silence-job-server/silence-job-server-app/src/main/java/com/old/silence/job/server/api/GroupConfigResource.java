@@ -19,7 +19,7 @@ import com.old.silence.data.commons.converter.QueryWrapperConverter;
 import com.old.silence.job.server.api.assembler.GroupConfigMapper;
 import com.old.silence.job.server.domain.model.GroupConfig;
 import com.old.silence.job.server.domain.service.GroupConfigService;
-import com.old.silence.job.server.dto.ExportGroupVO;
+import com.old.silence.job.server.dto.ExportGroupCommand;
 import com.old.silence.job.server.dto.GroupConfigCommand;
 import com.old.silence.job.server.dto.GroupConfigQuery;
 import com.old.silence.job.server.dto.GroupStatusUpdateCommand;
@@ -88,8 +88,8 @@ public class GroupConfigResource {
     }
 
     @PostMapping("/groupConfigs/export")
-    public ResponseEntity<String> exportGroup(@RequestBody ExportGroupVO exportGroupVO) {
-        return ExportUtils.doExport(groupConfigService.exportGroup(exportGroupVO));
+    public ResponseEntity<String> exportGroup(@RequestBody ExportGroupCommand exportGroupComman) {
+        return ExportUtils.doExport(groupConfigService.exportGroup(exportGroupComman));
     }
 
 

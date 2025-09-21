@@ -1,14 +1,14 @@
 package com.old.silence.job.server.retry.task.support.request;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.net.url.UrlQuery;
+import cn.hutool.core.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.client.model.request.DispatchCallbackResultRequest;
+import com.old.silence.job.common.client.dto.request.DispatchCallbackResultRequest;
 import com.old.silence.job.common.enums.RetryTaskStatus;
 import com.old.silence.job.common.model.SilenceJobRequest;
 import com.old.silence.job.common.model.SilenceJobRpcResult;

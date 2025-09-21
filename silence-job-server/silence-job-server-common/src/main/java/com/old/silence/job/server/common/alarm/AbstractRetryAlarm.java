@@ -1,6 +1,7 @@
 package com.old.silence.job.server.common.alarm;
 
 import cn.hutool.core.lang.Assert;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationEvent;
 import com.alibaba.fastjson2.JSON;
 import com.old.silence.job.server.common.dto.RetryAlarmInfo;
@@ -54,7 +55,8 @@ public abstract class AbstractRetryAlarm<E extends ApplicationEvent> extends Abs
                 continue;
             }
 
-            Set<BigInteger> retryNotifyIds = StrUtil.isBlank(retrySceneConfig.getNotifyIds()) ? new HashSet<>() : new HashSet<>(JSON.parseArray(retrySceneConfig.getNotifyIds(), BigInteger.class));
+            Set<BigInteger> retryNotifyIds = StringUtils.isBlank(retrySceneConfig.getNotifyIds()) ?
+                    new HashSet<>() : new HashSet<>(JSON.parseArray(retrySceneConfig.getNotifyIds(), BigInteger.class));
 
             for (BigInteger retryNotifyId : retryNotifyIds) {
                 List<RetryAlarmInfo> retryAlarmInfos = retryAlarmInfoMap.getOrDefault(retryNotifyId, new ArrayList<>());

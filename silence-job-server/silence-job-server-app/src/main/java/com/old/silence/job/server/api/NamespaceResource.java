@@ -30,10 +30,11 @@ public class NamespaceResource {
 
     private final NamespaceService namespaceService;
 
-    private final NamespaceMapper namespaceMapper = NamespaceMapper.INSTANCE;
+    private final NamespaceMapper namespaceMapper;
 
-    public NamespaceResource(NamespaceService namespaceService) {
+    public NamespaceResource(NamespaceService namespaceService, NamespaceMapper namespaceMapper) {
         this.namespaceService = namespaceService;
+        this.namespaceMapper = namespaceMapper;
     }
 
     @GetMapping("/namespaces")

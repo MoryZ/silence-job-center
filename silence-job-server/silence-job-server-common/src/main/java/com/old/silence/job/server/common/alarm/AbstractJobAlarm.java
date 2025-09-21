@@ -8,6 +8,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.server.common.convert.AlarmInfoConverter;
 import com.old.silence.job.server.common.dto.JobAlarmInfo;
+import com.old.silence.job.server.domain.model.JobTaskBatch;
+import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
+import com.old.silence.job.server.vo.JobBatchResponseDO;
 
 
 import java.math.BigInteger;

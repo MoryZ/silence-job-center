@@ -83,9 +83,8 @@ public class SceneConfigResource {
     @PostMapping(value = "/sceneConfig/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void importScene(@RequestPart MultipartFile file) throws IOException {
         var sceneConfigCommands = ImportUtils.parseList(file, SceneConfigCommand.class);
-        var retrySceneConfigs = CollectionUtils.transformToList(sceneConfigCommands, sceneConfigMapper::convert);
         // 写入数据
-        sceneConfigService.importSceneConfig(retrySceneConfigs);
+        sceneConfigService.importSceneConfig(sceneConfigCommands);
     }
 
     

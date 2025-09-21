@@ -1,6 +1,7 @@
 package com.old.silence.job.server.domain.service;
 
 
+import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 
 import java.math.BigInteger;
@@ -37,6 +38,7 @@ import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.common.server.dto.RetryTaskDTO;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.api.assembler.RetryMapper;
 import com.old.silence.job.server.api.assembler.RetryTaskResponseVOMapper;
 import com.old.silence.job.server.api.assembler.TaskContextMapper;
 import com.old.silence.job.server.common.WaitStrategy;
@@ -89,16 +91,19 @@ public class RetryService {
     private final RetryTaskLogMessageDao retryTaskLogMessageDao;
     private final TransactionTemplate transactionTemplate;
     private final RetryTaskResponseVOMapper retryTaskResponseVOMapper;
+    private final RetryMapper retryMapper;
 
     public RetryService(ClientNodeAllocateHandler clientNodeAllocateHandler, RetryTaskDao retryTaskMapper,
                         AccessTemplate accessTemplate, RetryTaskLogMessageDao retryTaskLogMessageDao,
-                        TransactionTemplate transactionTemplate, RetryTaskResponseVOMapper retryTaskResponseVOMapper) {
+                        TransactionTemplate transactionTemplate, RetryTaskResponseVOMapper retryTaskResponseVOMapper,
+                        RetryMapper retryMapper) {
         this.clientNodeAllocateHandler = clientNodeAllocateHandler;
         this.retryTaskMapper = retryTaskMapper;
         this.accessTemplate = accessTemplate;
         this.retryTaskLogMessageDao = retryTaskLogMessageDao;
         this.transactionTemplate = transactionTemplate;
         this.retryTaskResponseVOMapper = retryTaskResponseVOMapper;
+        this.retryMapper = retryMapper;
     }
 
     public IPage<RetryResponseVO> getRetryPage(Page<Retry> pageDTO, RetryQueryVO retryQueryVO) {
@@ -130,7 +135,8 @@ public class RetryService {
            callbackMap = StreamUtils.toIdentityMap(callbackTaskList, Retry::getParentId);
         }
 
-        return pageDTO.convert(sss-> convertToRetryResponseVO(sss, callbackMap) );
+        Map<BigInteger, Retry> finalCallbackMap = callbackMap;
+        return pageDTO.convert(sss-> convertToRetryResponseVO(sss, finalCallbackMap) );
     }
 
     private RetryResponseVO convertToRetryResponseVO(Retry retry, Map<BigInteger, Retry> callbackMap) {
@@ -148,7 +154,7 @@ public class RetryService {
     public RetryResponseVO getRetryById(String groupName, Long id) {
         TaskAccess<Retry> retryTaskAccess = accessTemplate.getRetryAccess();
         Retry retry = retryTaskAccess.one(new LambdaQueryWrapper<Retry>().eq(Retry::getId, id));
-        return RetryTaskResponseVOMapper.INSTANCE.convert(retry);
+        return retryTaskResponseVOMapper.convert(retry);
     }
 
     
@@ -382,7 +388,7 @@ public class RetryService {
 
     
     public boolean manualTriggerRetryTask(ManualTriggerTaskRequestVO requestVO) {
-        String namespaceId = "111";
+        String namespaceId = "namespaceId";
 
         long count = accessTemplate.getGroupConfigAccess().count(new LambdaQueryWrapper<GroupConfig>()
                 .eq(GroupConfig::getGroupName, requestVO.getGroupName())
@@ -402,7 +408,7 @@ public class RetryService {
         Assert.notEmpty(list, () -> new SilenceJobServerException("没有可执行的任务"));
 
         for (Retry retry : list) {
-            RetryTaskPrepareDTO retryTaskPrepareDTO = RetryMapper.INSTANCE.toRetryTaskPrepareDTO(retry);
+            RetryTaskPrepareDTO retryTaskPrepareDTO = retryMapper.toRetryTaskPrepareDTO(retry);
             // 设置now表示立即执行
             retryTaskPrepareDTO.setNextTriggerAt(DateUtils.toNowMilli());
             retryTaskPrepareDTO.setRetryTaskExecutorScene(RetryTaskExecutorSceneEnum.MANUAL_RETRY.getScene());

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.rpc.server.handler;
 
-import cn.hutool.net.url.UrlQuery;
+import cn.hutool.core.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -9,10 +9,9 @@ import com.old.silence.job.common.constant.SystemConstants.HTTP_PATH;
 import com.old.silence.job.common.enums.HeadersEnum;
 import com.old.silence.job.common.model.SilenceJobRequest;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
-import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.server.common.handler.GetHttpRequestHandler;
 import com.old.silence.job.server.domain.service.AccessTemplate;
-import com.old.silence.job.server.dto.ConfigDTO;
 
 
 @Component

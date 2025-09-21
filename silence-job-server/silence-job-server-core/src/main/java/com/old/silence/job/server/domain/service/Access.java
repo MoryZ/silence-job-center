@@ -1,11 +1,12 @@
 package com.old.silence.job.server.domain.service;
 
-import com.old.silence.job.server.enums.OperationTypeEnum;
+
+import com.old.silence.job.common.enums.OperationTypeEnum;
 
 /**
  * @author moryzang
  */
-public interface  Access {
+public interface Access {
 
     boolean supports(OperationTypeEnum operationType);
 }

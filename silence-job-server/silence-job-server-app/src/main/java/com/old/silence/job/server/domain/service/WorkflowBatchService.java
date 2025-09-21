@@ -1,6 +1,7 @@
 package com.old.silence.job.server.domain.service;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 
 import java.math.BigInteger;
 import java.util.Comparator;
@@ -17,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.google.common.collect.Lists;
@@ -27,15 +28,19 @@ import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.enums.JobOperationReason;
 import com.old.silence.job.common.enums.JobTaskBatchStatus;
 import com.old.silence.job.common.util.StreamUtils;
+import com.old.silence.job.server.api.assembler.JobBatchResponseVOConverter;
+import com.old.silence.job.server.api.assembler.JobResponseVOMapper;
+import com.old.silence.job.server.api.assembler.WorkflowMapper;
 import com.old.silence.job.server.domain.model.Job;
 import com.old.silence.job.server.domain.model.JobTaskBatch;
 import com.old.silence.job.server.domain.model.Workflow;
 import com.old.silence.job.server.domain.model.WorkflowNode;
 import com.old.silence.job.server.domain.model.WorkflowTaskBatch;
 import com.old.silence.job.server.dto.JobTaskConfig;
-import com.old.silence.job.server.dto.WorkflowBatchQueryVO;
-import com.old.silence.job.server.dto.WorkflowBatchResponseDO;
+import com.old.silence.job.server.dto.WorkflowBatchQuery;
 import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.handler.JobHandler;
+import com.old.silence.job.server.handler.WorkflowHandler;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowDao;
@@ -44,12 +49,9 @@ import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowTaskBat
 import com.old.silence.job.server.job.task.support.cache.MutableGraphCache;
 import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
 import com.old.silence.job.server.vo.JobBatchResponseVO;
+import com.old.silence.job.server.vo.WorkflowBatchResponseDO;
 import com.old.silence.job.server.vo.WorkflowBatchResponseVO;
 import com.old.silence.job.server.vo.WorkflowDetailResponseVO;
-import com.old.silence.job.server.web.api.assembler.JobBatchResponseVOConverter;
-import com.old.silence.job.server.web.api.assembler.WorkflowMapper;
-import com.old.silence.job.server.web.domain.service.handler.JobHandler;
-import com.old.silence.job.server.web.domain.service.handler.WorkflowHandler;
 import com.old.silence.core.util.CollectionUtils;
 
 
@@ -65,11 +67,15 @@ public class WorkflowBatchService {
     private final WorkflowBatchHandler workflowBatchHandler;
     private final JobDao jobDao;
     private final JobHandler jobHandler;
+    private final WorkflowMapper workflowMapper;
+    private final JobBatchResponseVOConverter jobBatchResponseVOConverter;
+    private final JobResponseVOMapper jobResponseVOMapper;
 
     public WorkflowBatchService(WorkflowTaskBatchDao workflowTaskBatchDao, WorkflowDao workflowDao,
                                 WorkflowNodeDao workflowNodeDao, JobTaskBatchDao jobTaskBatchDao,
                                 WorkflowHandler workflowHandler, WorkflowBatchHandler workflowBatchHandler,
-                                JobDao jobDao, JobHandler jobHandler) {
+                                JobDao jobDao, JobHandler jobHandler, WorkflowMapper workflowMapper,
+                                JobBatchResponseVOConverter jobBatchResponseVOConverter, JobResponseVOMapper jobResponseVOMapper) {
         this.workflowTaskBatchDao = workflowTaskBatchDao;
         this.workflowDao = workflowDao;
         this.workflowNodeDao = workflowNodeDao;
@@ -78,6 +84,9 @@ public class WorkflowBatchService {
         this.workflowBatchHandler = workflowBatchHandler;
         this.jobDao = jobDao;
         this.jobHandler = jobHandler;
+        this.workflowMapper = workflowMapper;
+        this.jobBatchResponseVOConverter = jobBatchResponseVOConverter;
+        this.jobResponseVOMapper = jobResponseVOMapper;
     }
 
     private static boolean isNoOperation(JobTaskBatch i) {
@@ -85,7 +94,7 @@ public class WorkflowBatchService {
                 || i.getTaskBatchStatus() == JobTaskBatchStatus.STOP;
     }
 
-    public IPage<WorkflowBatchResponseVO> listPage(Page<WorkflowTaskBatch> pageDTO, WorkflowBatchQueryVO queryVO) {
+    public IPage<WorkflowBatchResponseVO> listPage(Page<WorkflowTaskBatch> pageDTO, WorkflowBatchQuery queryVO) {
 
         List<String> groupNames = List.of();
 
@@ -101,7 +110,7 @@ public class WorkflowBatchService {
                 wrapper);
 
         List<WorkflowBatchResponseVO> batchResponseVOList =
-                CollectionUtils.transformToList(batchResponseDOList, WorkflowMapper.INSTANCE::convertListToWorkflowBatchList);
+                CollectionUtils.transformToList(batchResponseDOList, workflowMapper::convertWorkflowBatchResponseVO);
         var objectPage = new Page<WorkflowBatchResponseVO>();
         objectPage.setRecords(batchResponseVOList);
         objectPage.setCurrent(pageDTO.getCurrent());
@@ -121,7 +130,7 @@ public class WorkflowBatchService {
 
         Workflow workflow = workflowDao.selectById(workflowTaskBatch.getWorkflowId());
 
-        WorkflowDetailResponseVO responseVO = WorkflowMapper.INSTANCE.convert(workflow);
+        WorkflowDetailResponseVO responseVO = workflowMapper.convert(workflow);
         responseVO.setWorkflowBatchStatus(workflowTaskBatch.getTaskBatchStatus());
         List<WorkflowNode> workflowNodes = workflowNodeDao.selectList(new LambdaQueryWrapper<WorkflowNode>()
                 .eq(WorkflowNode::getDeleted, 500)
@@ -140,7 +149,7 @@ public class WorkflowBatchService {
 
         Map<BigInteger, List<JobTaskBatch>> jobTaskBatchMap = StreamUtils.groupByKey(alJobTaskBatchList,
                 JobTaskBatch::getWorkflowNodeId);
-        List<WorkflowDetailResponseVO.NodeInfo> nodeInfos = CollectionUtils.transformToList(workflowNodes, WorkflowMapper.INSTANCE::convertList);
+        List<WorkflowDetailResponseVO.NodeInfo> nodeInfos = CollectionUtils.transformToList(workflowNodes, workflowMapper::convert);
 
         String flowInfo = workflowTaskBatch.getFlowInfo();
         MutableGraph<BigInteger> graph = MutableGraphCache.getOrDefault(id, flowInfo);
@@ -160,7 +169,7 @@ public class WorkflowBatchService {
                                 .sorted(Comparator.comparing(jobTaskBatch -> jobTaskBatch.getTaskBatchStatus().getValue()))
                                 .collect(Collectors.toList());
                         nodeInfo.setJobBatchList(
-                                JobBatchResponseVOConverter.INSTANCE.convertListToJobBatchList(jobTaskBatchList));
+                                CollectionUtils.transformToList(jobTaskBatchList, jobBatchResponseVOConverter::convert));
 
                         // 取第最新的一条状态
                         JobTaskBatch jobTaskBatch = jobTaskBatchList.get(0);
@@ -200,7 +209,7 @@ public class WorkflowBatchService {
                         .sorted(Comparator.comparing(jobTaskBatch -> jobTaskBatch.getTaskBatchStatus().getValue()))
                         .collect(Collectors.toList());
                 nodeInfo.setJobBatchList(
-                        JobBatchResponseVOConverter.INSTANCE.convertListToJobBatchList(jobTaskBatches));
+                        CollectionUtils.transformToList(jobTaskBatches, jobBatchResponseVOConverter::convert));
             } else {
                 JobBatchResponseVO jobBatchResponseVO = new JobBatchResponseVO();
                 JobTaskConfig jobTask = nodeInfo.getJobTask();

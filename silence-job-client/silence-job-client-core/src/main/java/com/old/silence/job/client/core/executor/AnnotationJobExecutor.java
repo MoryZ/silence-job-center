@@ -1,9 +1,9 @@
-package com.old.silence.job.client.executor;
+package com.old.silence.job.client.core.executor;
 
-import com.old.silence.job.client.cache.JobExecutorInfoCache;
-import com.old.silence.job.client.dto.JobArgs;
-import com.old.silence.job.client.dto.JobExecutorInfo;
-import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.client.core.cache.JobExecutorInfoCache;
+import com.old.silence.job.client.core.dto.JobArgs;
+import com.old.silence.job.client.core.dto.JobExecutorInfo;
+import com.old.silence.job.common.client.dto.ExecuteResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 

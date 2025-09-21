@@ -1,8 +1,8 @@
-package com.old.silence.job.client.retry.retryer;
+package com.old.silence.job.client.retry.core.retryer;
 
-import com.old.silence.job.client.IdempotentIdGenerate;
-import com.old.silence.job.client.callback.complete.RetryCompleteCallback;
-import com.old.silence.job.client.strategy.ExecutorMethod;
+import com.old.silence.job.client.retry.core.IdempotentIdGenerate;
+import com.old.silence.job.client.retry.core.callback.complete.RetryCompleteCallback;
+import com.old.silence.job.client.retry.core.strategy.ExecutorMethod;
 
 import java.lang.reflect.Method;
 import java.util.Set;
@@ -36,7 +36,10 @@ public class RetryerInfo {
     private final TimeUnit unit;
 
 
-    public RetryerInfo(String scene, String executorClassName, Set<Class<? extends Throwable>> include, Set<Class<? extends Throwable>> exclude, Object executor, Method method, RetryType retryType, Integer localTimes, Integer localInterval, Class<? extends IdempotentIdGenerate> idempotentIdGenerate, String bizNo, Class<? extends ExecutorMethod> executorMethod, boolean isThrowException, Class<? extends RetryCompleteCallback> retryCompleteCallback, boolean async, boolean forceReport, long timeout, TimeUnit unit) {
+    public RetryerInfo(String scene, String executorClassName, Set<Class<? extends Throwable>> include, Set<Class<? extends Throwable>> exclude, Object executor,
+                       Method method, RetryType retryType, Integer localTimes, Integer localInterval, Class<? extends IdempotentIdGenerate> idempotentIdGenerate,
+                       String bizNo, Class<? extends ExecutorMethod> executorMethod, boolean isThrowException, Class<? extends RetryCompleteCallback> retryCompleteCallback,
+                       boolean async, boolean forceReport, long timeout, TimeUnit unit) {
         this.scene = scene;
         this.executorClassName = executorClassName;
         this.include = include;

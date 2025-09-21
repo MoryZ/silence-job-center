@@ -1,11 +1,11 @@
-package com.old.silence.job.client.handler.update;
+package com.old.silence.job.client.core.handler.update;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.lang.Pair;
+import cn.hutool.core.lang.Pair;
 import com.old.silence.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.job.client.dto.RequestUpdateStatusDTO;
-import com.old.silence.job.client.handler.AbstractRequestHandler;
-import com.old.silence.job.client.util.ValidatorUtils;
+import com.old.silence.job.client.core.dto.RequestUpdateStatusDTO;
+import com.old.silence.job.client.core.handler.AbstractRequestHandler;
+import com.old.silence.job.client.core.util.ValidatorUtils;
 import com.old.silence.job.common.model.ApiResult;
 
 import java.math.BigInteger;
@@ -46,8 +46,7 @@ public class UpdateWorkflowStatusHandler extends AbstractRequestHandler<Boolean>
     /**
      * 设置任务/工作流ID
      *
-     * @param id
-     * @return
+     * @param id 工作流ID
      */
     private UpdateWorkflowStatusHandler setId(BigInteger id) {
         this.statusDTO.setId(id);

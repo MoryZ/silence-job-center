@@ -1,13 +1,10 @@
-package com.old.silence.job.client.dto;
-
-
+package com.old.silence.job.client.core.dto;
 
 
 /**
  * Task执行结果
  *
  */
-
 
 public class MapArgs extends JobArgs {
 

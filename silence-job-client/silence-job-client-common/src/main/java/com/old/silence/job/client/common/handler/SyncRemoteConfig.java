@@ -7,8 +7,8 @@ import com.old.silence.job.client.common.NettyClient;
 import com.old.silence.job.client.common.cache.GroupVersionCache;
 import com.old.silence.job.client.common.rpc.client.RequestBuilder;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.log.SilenceJobLog;
-import com.old.silence.job.server.model.dto.ConfigDTO;
 
 import java.util.Objects;
 import java.util.concurrent.Executors;

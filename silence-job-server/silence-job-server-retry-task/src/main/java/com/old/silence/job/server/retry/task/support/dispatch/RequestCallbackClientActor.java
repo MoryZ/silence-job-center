@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.rholder.retry.Attempt;
 import com.github.rholder.retry.RetryException;
 import com.google.common.collect.Maps;
-import com.old.silence.job.client.model.request.RetryCallbackRequest;
+import com.old.silence.job.common.client.dto.request.RetryCallbackRequest;
 import com.old.silence.job.common.enums.RetryTaskStatus;
 import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.log.SilenceJobLog;

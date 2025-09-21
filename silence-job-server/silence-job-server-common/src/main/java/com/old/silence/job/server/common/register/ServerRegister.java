@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.register;
 
-import cn.hutool.util.IdUtil;
-import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;

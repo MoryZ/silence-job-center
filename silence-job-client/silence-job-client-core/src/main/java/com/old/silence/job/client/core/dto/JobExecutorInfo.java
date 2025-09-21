@@ -1,6 +1,4 @@
-package com.old.silence.job.client.dto;
-
-
+package com.old.silence.job.client.core.dto;
 
 
 import java.lang.reflect.Method;
@@ -21,7 +19,8 @@ public class JobExecutorInfo {
 
     private Object executor;
 
-    public JobExecutorInfo(String executorName, Method method, Map<String, Method> mapExecutorMap, Method reduceExecutor, Method mergeReduceExecutor, Object executor) {
+    public JobExecutorInfo(String executorName, Method method, Map<String, Method> mapExecutorMap,
+                           Method reduceExecutor, Method mergeReduceExecutor, Object executor) {
         this.mapExecutorMap = mapExecutorMap;
         this.reduceExecutor = reduceExecutor;
         this.mergeReduceExecutor = mergeReduceExecutor;

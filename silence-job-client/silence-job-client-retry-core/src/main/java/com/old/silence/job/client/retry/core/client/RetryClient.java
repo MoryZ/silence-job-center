@@ -1,10 +1,10 @@
-package com.old.silence.job.client.retry.client;
+package com.old.silence.job.client.retry.core.client;
 
  
 import com.old.silence.job.client.common.annotation.Mapping;
 import com.old.silence.job.client.common.rpc.client.RequestMethod;
-import com.old.silence.job.client.model.request.DispatchCallbackResultRequest;
-import com.old.silence.job.client.model.request.DispatchRetryResultRequest;
+import com.old.silence.job.common.client.dto.request.DispatchCallbackResultRequest;
+import com.old.silence.job.common.client.dto.request.DispatchRetryResultRequest;
 import com.old.silence.job.common.constant.SystemConstants.HTTP_PATH;
 import com.old.silence.job.common.model.ApiResult;
 

@@ -1,7 +1,6 @@
-package com.old.silence.job.client.dto;
+package com.old.silence.job.client.core.dto;
 
-import cn.hutool.core.lang.Assert;
-
+import cn.hutool.core.util.StrUtil;
 
 
 import java.math.BigInteger;

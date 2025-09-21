@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.rpc.client.grpc;
 
-import cn.hutool.date.StopWatch;
+import cn.hutool.core.date.StopWatch;
 import cn.hutool.core.lang.Assert;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;

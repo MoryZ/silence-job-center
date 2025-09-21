@@ -1,16 +1,18 @@
 package com.old.silence.job.server.retry.task.support;
 
-import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.client.model.request.DispatchCallbackResultRequest;
-import com.old.silence.job.client.model.request.DispatchRetryRequest;
-import com.old.silence.job.client.model.request.DispatchRetryResultRequest;
-import com.old.silence.job.client.model.request.RetryCallbackRequest;
-import com.old.silence.job.client.model.request.StopRetryRequest;
+import com.old.silence.job.common.client.dto.request.DispatchCallbackResultRequest;
+import com.old.silence.job.common.client.dto.request.DispatchRetryRequest;
+import com.old.silence.job.common.client.dto.request.DispatchRetryResultRequest;
+import com.old.silence.job.common.client.dto.request.RetryCallbackRequest;
+import com.old.silence.job.common.client.dto.request.StopRetryRequest;
 import com.old.silence.job.common.enums.JobNotifyScene;
+import com.old.silence.job.common.server.dto.RetryLogTaskDTO;
+import com.old.silence.job.common.server.dto.RetryTaskDTO;
 import com.old.silence.job.server.common.dto.JobLogMetaDTO;
 import com.old.silence.job.server.common.dto.RetryAlarmInfo;
 import com.old.silence.job.server.common.dto.RetryLogMetaDTO;
@@ -21,8 +23,6 @@ import com.old.silence.job.server.domain.model.RetryDeadLetter;
 import com.old.silence.job.server.domain.model.RetrySceneConfig;
 import com.old.silence.job.server.domain.model.RetryTask;
 import com.old.silence.job.server.domain.model.RetryTaskLogMessage;
-import com.old.silence.job.server.model.dto.RetryLogTaskDTO;
-import com.old.silence.job.server.model.dto.RetryTaskDTO;
 import com.old.silence.job.server.retry.task.dto.*;
 import com.old.silence.job.server.retry.task.dto.RetryTaskGeneratorDTO;
 import com.old.silence.job.server.retry.task.support.block.BlockStrategyContext;
@@ -127,12 +127,12 @@ public interface RetryTaskConverter {
 
     RetryTaskGeneratorDTO toRetryTaskGeneratorDTO(RetryTaskPrepareDTO jobPrepareDTO);
 
-    @Mapping(target = "operationReason", expression = "java(com.old.silence.enums.EnumValueFactory.getRequired(com.old.silence.job.common.enums.RetryOperationReason.class, context.getOperationReason()))")
+    @Mapping(target = "operationReason", expression = "java(com.old.silence.core.enums.EnumValueFactory.getRequired(com.old.silence.job.common.enums.RetryOperationReason.class, context.getOperationReason()))")
     RetryTaskGeneratorDTO toRetryTaskGeneratorDTO(BlockStrategyContext context);
 
     BlockStrategyContext toBlockStrategyContext(RetryTaskPrepareDTO prepare);
 
-    @Mapping(target = "operationReason", expression = "java(com.old.silence.enums.EnumValueFactory.getRequired(com.old.silence.job.common.enums.RetryOperationReason.class, context.getOperationReason()))")
+    @Mapping(target = "operationReason", expression = "java(com.old.silence.core.enums.EnumValueFactory.getRequired(com.old.silence.job.common.enums.RetryOperationReason.class, context.getOperationReason()))")
     TaskStopJobDTO toTaskStopJobDTO(BlockStrategyContext context);
 
     TaskStopJobDTO toTaskStopJobDTO(Retry retry);

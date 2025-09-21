@@ -1,6 +1,7 @@
 package com.old.silence.job.server.job.task.support.dispatch;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 import org.apache.pekko.actor.AbstractActor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,13 +10,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
 import com.old.silence.core.util.CollectionUtils;
+import com.old.silence.job.common.server.dto.JobLogTaskDTO;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.log.dto.TaskLogFieldDTO;
 import com.old.silence.job.server.domain.model.JobLogMessage;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobLogMessageDao;
 import com.old.silence.job.server.job.task.dto.JobLogDTO;
 import com.old.silence.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.job.server.model.dto.JobLogTaskDTO;
 import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.math.BigInteger;

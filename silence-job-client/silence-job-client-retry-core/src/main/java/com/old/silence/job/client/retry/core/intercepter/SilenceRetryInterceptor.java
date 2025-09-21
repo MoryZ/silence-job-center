@@ -1,33 +1,32 @@
-package com.old.silence.job.client.retry.intercepter;
+package com.old.silence.job.client.retry.core.intercepter;
 
-import cn.hutool.util.IdUtil;
-import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.AfterAdvice;
-import org.springframework.Ordered;
-import org.springframework.annotation.AnnotatedElementUtils;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.AnnotatedElementUtils;
 import com.google.common.base.Defaults;
 import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.client.common.cache.GroupVersionCache;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
-import com.old.silence.job.client.annotation.Propagation;
-import com.old.silence.job.client.annotation.Retryable;
-import com.old.silence.job.client.cache.RetryerInfoCache;
-import com.old.silence.job.client.retryer.RetryerInfo;
-import com.old.silence.job.client.retryer.RetryerResultContext;
-import com.old.silence.job.client.strategy.RetryStrategy;
+import com.old.silence.job.client.retry.core.annotation.Propagation;
+import com.old.silence.job.client.retry.core.annotation.Retryable;
+import com.old.silence.job.client.retry.core.cache.RetryerInfoCache;
+import com.old.silence.job.client.retry.core.retryer.RetryerInfo;
+import com.old.silence.job.client.retry.core.retryer.RetryerResultContext;
+import com.old.silence.job.client.retry.core.strategy.RetryStrategy;
 import com.old.silence.job.common.alarm.AlarmContext;
 import com.old.silence.job.common.alarm.SilenceJobAlarmFactory;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.RetryNotifyScene;
 import com.old.silence.job.common.enums.RetryResultStatus;
 import com.old.silence.job.common.model.SilenceJobHeaders;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.common.util.EnvironmentUtils;
 import com.old.silence.job.common.util.NetUtil;
 import com.old.silence.job.log.SilenceJobLog;
-import com.old.silence.job.server.model.dto.ConfigDTO;
-import com.old.silence.job.server.model.dto.ConfigDTO.Notify.Recipient;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -221,8 +220,8 @@ public class SilenceRetryInterceptor implements MethodInterceptor, AfterAdvice, 
                 if (Objects.isNull(silenceJobProperties)) {
                     return;
                 }
-                List<Recipient> recipients = Optional.ofNullable(notify.getRecipients()).orElse(new ArrayList<>());
-                for (Recipient recipient : recipients) {
+                List<ConfigDTO.Notify.Recipient> recipients = Optional.ofNullable(notify.getRecipients()).orElse(new ArrayList<>());
+                for (ConfigDTO.Notify.Recipient recipient : recipients) {
                     AlarmContext context = AlarmContext.build()
                             .text(retryErrorMoreThresholdTextMessageFormatter,
                                     EnvironmentUtils.getActiveProfile(),

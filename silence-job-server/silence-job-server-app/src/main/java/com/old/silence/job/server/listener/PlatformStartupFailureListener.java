@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import com.old.silence.SilencePlatformApplication;
-import com.old.silence.job.server.starter.event.ServerStartupFailedEvent;
+import com.old.silence.job.server.SilencePlatformApplication;
+import com.old.silence.job.server.event.ServerStartupFailedEvent;
 
 /**
  * @author moryzang

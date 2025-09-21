@@ -1,5 +1,6 @@
 package com.old.silence.job.server.job.task.support.generator.task;
 
+import cn.hutool.core.lang.Assert;
 import org.springframework.beans.factory.InitializingBean;
 import com.old.silence.job.server.domain.model.JobTask;
 import com.old.silence.job.server.exception.SilenceJobServerException;

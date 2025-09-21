@@ -1,6 +1,6 @@
 package com.old.silence.job.client.common.rpc.client.grpc;
 
-import cn.hutool.date.StopWatch;
+import cn.hutool.core.date.StopWatch;
 import com.alibaba.fastjson2.JSON;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;

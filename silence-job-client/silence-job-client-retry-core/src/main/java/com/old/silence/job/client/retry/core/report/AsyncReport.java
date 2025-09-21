@@ -1,12 +1,12 @@
-package com.old.silence.job.client.retry.report;
+package com.old.silence.job.client.retry.core.report;
 
 import org.springframework.stereotype.Component;
 import com.old.silence.job.client.common.Lifecycle;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
 import com.old.silence.job.client.common.window.SlidingWindow;
-import com.old.silence.job.client.retryer.RetryerInfo;
+import com.old.silence.job.client.retry.core.retryer.RetryerInfo;
+import com.old.silence.job.common.server.dto.RetryTaskDTO;
 import com.old.silence.job.log.SilenceJobLog;
-import com.old.silence.job.server.model.dto.RetryTaskDTO;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;

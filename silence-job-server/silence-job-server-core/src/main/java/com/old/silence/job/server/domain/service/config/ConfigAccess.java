@@ -7,6 +7,7 @@ import java.util.Set;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.server.domain.model.GroupConfig;
 import com.old.silence.job.server.domain.model.NotifyConfig;
 import com.old.silence.job.server.domain.model.RetrySceneConfig;
@@ -89,7 +90,7 @@ public interface ConfigAccess<T> extends Access {
      * 获取配置版本号
      *
      * @param groupName   组名称
-     * @param namespaceId
+     * @param namespaceId 命名空间id
      * @return 版本号
      */
     Integer getConfigVersion(String groupName, String namespaceId);

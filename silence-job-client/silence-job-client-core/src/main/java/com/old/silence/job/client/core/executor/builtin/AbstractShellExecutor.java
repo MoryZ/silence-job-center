@@ -1,7 +1,9 @@
-package com.old.silence.job.client.executor.builtin;
+package com.old.silence.job.client.core.executor.builtin;
 
 
 import java.math.BigInteger;
+
+import static com.old.silence.job.client.core.executor.builtin.AbstractScriptExecutor.SH_SHELL;
 
 public abstract class AbstractShellExecutor extends AbstractScriptExecutor {
 

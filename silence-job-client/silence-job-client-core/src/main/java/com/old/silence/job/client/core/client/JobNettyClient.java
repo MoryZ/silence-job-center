@@ -1,10 +1,10 @@
-package com.old.silence.job.client.client;
+package com.old.silence.job.client.core.client;
 
 
 import com.old.silence.job.client.common.annotation.Mapping;
 import com.old.silence.job.client.common.rpc.client.RequestMethod;
-import com.old.silence.job.client.model.request.DispatchJobResultRequest;
-import com.old.silence.job.client.model.request.MapTaskRequest;
+import com.old.silence.job.common.client.dto.request.DispatchJobResultRequest;
+import com.old.silence.job.common.client.dto.request.MapTaskRequest;
 import com.old.silence.job.common.constant.SystemConstants.HTTP_PATH;
 import com.old.silence.job.common.model.ApiResult;
 

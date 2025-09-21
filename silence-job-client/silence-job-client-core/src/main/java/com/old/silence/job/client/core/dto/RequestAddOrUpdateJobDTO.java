@@ -1,10 +1,10 @@
-package com.old.silence.job.client.dto;
+package com.old.silence.job.client.core.dto;
 
+import com.old.silence.job.client.core.handler.add.Add;
+import com.old.silence.job.client.core.handler.update.Update;
 import com.old.silence.job.common.enums.JobArgsType;
 import com.old.silence.job.common.enums.JobBlockStrategy;
 import com.old.silence.job.common.enums.TriggerType;
-import com.old.silence.job.client.handler.add.Add;
-import com.old.silence.job.client.handler.update.Update;
 import com.old.silence.job.common.enums.ExecutorType;
 import com.old.silence.job.common.enums.JobTaskType;
 

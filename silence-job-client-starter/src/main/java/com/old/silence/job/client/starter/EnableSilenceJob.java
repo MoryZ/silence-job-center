@@ -2,7 +2,7 @@
 package com.old.silence.job.client.starter;
 
 import org.springframework.context.annotation.Import;
-import org.springframework.Ordered;
+import org.springframework.core.Ordered;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.lang.annotation.Documented;

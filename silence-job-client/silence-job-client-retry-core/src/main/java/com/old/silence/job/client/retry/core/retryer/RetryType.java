@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.retryer;
+package com.old.silence.job.client.retry.core.retryer;
 
 
 public enum RetryType {

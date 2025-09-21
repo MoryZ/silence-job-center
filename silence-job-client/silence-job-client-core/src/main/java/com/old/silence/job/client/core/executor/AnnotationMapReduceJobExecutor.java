@@ -1,12 +1,12 @@
-package com.old.silence.job.client.executor;
+package com.old.silence.job.client.core.executor;
 
-import com.old.silence.job.client.MapHandler;
-import com.old.silence.job.client.cache.JobExecutorInfoCache;
-import com.old.silence.job.client.dto.JobExecutorInfo;
-import com.old.silence.job.client.dto.MapArgs;
-import com.old.silence.job.client.dto.MergeReduceArgs;
-import com.old.silence.job.client.dto.ReduceArgs;
-import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.client.core.MapHandler;
+import com.old.silence.job.client.core.cache.JobExecutorInfoCache;
+import com.old.silence.job.client.core.dto.JobExecutorInfo;
+import com.old.silence.job.client.core.dto.MapArgs;
+import com.old.silence.job.client.core.dto.MergeReduceArgs;
+import com.old.silence.job.client.core.dto.ReduceArgs;
+import com.old.silence.job.common.client.dto.ExecuteResult;
 import com.old.silence.job.common.exception.SilenceJobMapReduceException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
@@ -22,7 +22,7 @@ import java.util.Objects;
 public class AnnotationMapReduceJobExecutor extends AbstractMapReduceExecutor {
 
     @Override
-    protected ExecuteResult doReduceExecute(final ReduceArgs reduceArgs) {
+    protected ExecuteResult doReduceExecute(ReduceArgs reduceArgs) {
         JobExecutorInfo jobExecutorInfo = JobExecutorInfoCache.get(reduceArgs.getExecutorInfo());
         if (Objects.isNull(jobExecutorInfo)) {
             throw new SilenceJobMapReduceException("[{}] not found", reduceArgs.getExecutorInfo());
@@ -44,7 +44,7 @@ public class AnnotationMapReduceJobExecutor extends AbstractMapReduceExecutor {
     }
 
     @Override
-    protected ExecuteResult doMergeReduceExecute(final MergeReduceArgs mergeReduceArgs) {
+    protected ExecuteResult doMergeReduceExecute(MergeReduceArgs mergeReduceArgs) {
         JobExecutorInfo jobExecutorInfo = JobExecutorInfoCache.get(mergeReduceArgs.getExecutorInfo());
 
         if (Objects.isNull(jobExecutorInfo)) {
@@ -70,7 +70,7 @@ public class AnnotationMapReduceJobExecutor extends AbstractMapReduceExecutor {
     }
 
     @Override
-    public ExecuteResult doJobMapExecute(final MapArgs mapArgs, final MapHandler mapHandler) {
+    public ExecuteResult doJobMapExecute(MapArgs mapArgs, MapHandler mapHandler) {
         return invokeMapExecute(mapArgs, mapHandler);
     }
 }

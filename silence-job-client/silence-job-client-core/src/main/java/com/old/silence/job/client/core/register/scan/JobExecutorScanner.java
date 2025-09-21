@@ -1,19 +1,20 @@
-package com.old.silence.job.client.register.scan;
+package com.old.silence.job.client.core.register.scan;
 
 import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.job.client.IJobExecutor;
-import com.old.silence.job.client.Scanner;
-import com.old.silence.job.client.annotation.JobExecutor;
-import com.old.silence.job.client.annotation.MapExecutor;
-import com.old.silence.job.client.annotation.MergeReduceExecutor;
-import com.old.silence.job.client.annotation.ReduceExecutor;
-import com.old.silence.job.client.cache.JobExecutorInfoCache;
-import com.old.silence.job.client.dto.JobArgs;
-import com.old.silence.job.client.dto.JobExecutorInfo;
-import com.old.silence.job.client.dto.MapArgs;
-import com.old.silence.job.client.dto.MergeReduceArgs;
-import com.old.silence.job.client.dto.ReduceArgs;
-import com.old.silence.job.client.dto.ShardingJobArgs;
+
+import com.old.silence.job.client.core.IJobExecutor;
+import com.old.silence.job.client.core.Scanner;
+import com.old.silence.job.client.core.annotation.JobExecutor;
+import com.old.silence.job.client.core.annotation.MapExecutor;
+import com.old.silence.job.client.core.annotation.MergeReduceExecutor;
+import com.old.silence.job.client.core.annotation.ReduceExecutor;
+import com.old.silence.job.client.core.cache.JobExecutorInfoCache;
+import com.old.silence.job.client.core.dto.JobArgs;
+import com.old.silence.job.client.core.dto.JobExecutorInfo;
+import com.old.silence.job.client.core.dto.MapArgs;
+import com.old.silence.job.client.core.dto.MergeReduceArgs;
+import com.old.silence.job.client.core.dto.ReduceArgs;
+import com.old.silence.job.client.core.dto.ShardingJobArgs;
 import com.old.silence.job.log.SilenceJobLog;
 
 
@@ -21,13 +22,18 @@ import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.MethodIntrospector;
-import org.springframework.annotation.AnnotatedElementUtils;
+import org.springframework.core.MethodIntrospector;
+import org.springframework.core.annotation.AnnotatedElementUtils;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 
 @Component
@@ -158,7 +164,7 @@ public class JobExecutorScanner implements Scanner, ApplicationContextAware {
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 }

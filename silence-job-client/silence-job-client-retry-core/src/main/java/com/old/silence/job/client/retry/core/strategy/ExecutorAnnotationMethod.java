@@ -1,15 +1,15 @@
-package com.old.silence.job.client.retry.strategy;
+package com.old.silence.job.client.retry.core.strategy;
 
 import org.springframework.util.ReflectionUtils;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.client.retryer.RetryerInfo;
+import com.old.silence.job.client.retry.core.retryer.RetryerInfo;
 import com.old.silence.job.log.SilenceJobLog;
 
 
 
 public class ExecutorAnnotationMethod implements ExecutorMethod {
 
-    private RetryerInfo retryerInfo;
+    private final RetryerInfo retryerInfo;
 
     public ExecutorAnnotationMethod(RetryerInfo retryerInfo) {
         this.retryerInfo = retryerInfo;

@@ -1,4 +1,4 @@
-package com.old.silence.job.client.handler.update;
+package com.old.silence.job.client.core.handler.update;
 
 
 import com.old.silence.job.common.enums.JobTaskType;

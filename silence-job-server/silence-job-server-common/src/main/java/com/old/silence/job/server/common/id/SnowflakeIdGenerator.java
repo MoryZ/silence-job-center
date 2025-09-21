@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.id;
 
-import cn.hutool.lang.Snowflake;
-import cn.hutool.util.IdUtil;
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.IdUtil;
 import org.springframework.stereotype.Component;
 import com.old.silence.job.common.enums.IdGeneratorMode;
 

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.convert;
 
-import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -9,8 +9,8 @@ import com.old.silence.job.server.common.dto.JobAlarmInfo;
 import com.old.silence.job.server.common.dto.NotifyConfigInfo;
 import com.old.silence.job.server.common.dto.WorkflowAlarmInfo;
 import com.old.silence.job.server.domain.model.NotifyConfig;
-import com.old.silence.job.server.dto.WorkflowBatchResponseDO;
 import com.old.silence.job.server.vo.JobBatchResponseDO;
+import com.old.silence.job.server.vo.WorkflowBatchResponseDO;
 
 import java.math.BigInteger;
 import java.util.HashSet;

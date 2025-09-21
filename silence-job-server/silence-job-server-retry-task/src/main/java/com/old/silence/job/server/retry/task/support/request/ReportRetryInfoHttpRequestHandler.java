@@ -1,7 +1,7 @@
 package com.old.silence.job.server.retry.task.support.request;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.net.url.UrlQuery;
+import cn.hutool.core.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.dao.ConcurrencyFailureException;
@@ -15,11 +15,11 @@ import com.old.silence.job.common.enums.HeadersEnum;
 import com.old.silence.job.common.enums.TaskGeneratorSceneEnum;
 import com.old.silence.job.common.model.SilenceJobRequest;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.server.dto.RetryTaskDTO;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.handler.PostHttpRequestHandler;
 import com.old.silence.job.server.exception.SilenceJobServerException;
-import com.old.silence.job.server.model.dto.RetryTaskDTO;
 import com.old.silence.job.server.retry.task.service.TaskContextConverter;
 import com.old.silence.job.server.retry.task.support.generator.retry.TaskContext;
 import com.old.silence.job.server.retry.task.support.generator.retry.TaskGenerator;

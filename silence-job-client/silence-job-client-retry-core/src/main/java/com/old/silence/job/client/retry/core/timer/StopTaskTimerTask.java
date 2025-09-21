@@ -1,15 +1,16 @@
-package com.old.silence.job.client.retry.timer;
+package com.old.silence.job.client.retry.core.timer;
 
 import io.netty.util.Timeout;
 import io.netty.util.TimerTask;
-import com.old.silence.job.client.cache.FutureCache;
+
+import com.old.silence.job.client.retry.core.cache.FutureCache;
 
 import java.math.BigInteger;
 
 
 public class StopTaskTimerTask implements TimerTask {
 
-    private BigInteger retryTaskId;
+    private final BigInteger retryTaskId;
 
     public StopTaskTimerTask(BigInteger retryTaskId) {
         this.retryTaskId = retryTaskId;

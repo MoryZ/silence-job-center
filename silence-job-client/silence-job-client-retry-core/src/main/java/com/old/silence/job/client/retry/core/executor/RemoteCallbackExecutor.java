@@ -1,15 +1,16 @@
-package com.old.silence.job.client.retry.executor;
+package com.old.silence.job.client.retry.core.executor;
 
 import cn.hutool.core.lang.Assert;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 import com.old.silence.job.client.common.log.support.SilenceJobLogManager;
-import com.old.silence.job.client.callback.complete.RetryCompleteCallback;
-import com.old.silence.job.client.context.CallbackContext;
-import com.old.silence.job.client.exception.SilenceRetryClientException;
-import com.old.silence.job.client.log.RetryLogMeta;
-import com.old.silence.job.client.retryer.RetryerInfo;
+
+import com.old.silence.job.client.retry.core.callback.complete.RetryCompleteCallback;
+import com.old.silence.job.client.retry.core.context.CallbackContext;
+import com.old.silence.job.client.retry.core.exception.SilenceRetryClientException;
+import com.old.silence.job.client.retry.core.log.RetryLogMeta;
+import com.old.silence.job.client.retry.core.retryer.RetryerInfo;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.log.enums.LogTypeEnum;
@@ -31,10 +32,10 @@ public class RemoteCallbackExecutor {
     /**
      * 执行服务端回调任务
      *
-     * @param context
-     * @throws NoSuchMethodException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
+     * @param context silenceJobLogManager
+     * @throws NoSuchMethodException NoSuchBeanDefinitionException
+     * @throws InstantiationException InstantiationException
+     * @throws IllegalAccessException IllegalAccessException
      */
     public void doRetryCallback(CallbackContext context) throws NoSuchMethodException, InstantiationException,
             IllegalAccessException, InvocationTargetException {
@@ -68,7 +69,6 @@ public class RemoteCallbackExecutor {
     /**
      * 以Spring Bean模式回调
      *
-     * @return Result
      */
     private void doCallbackForSpringBean(CallbackContext context) {
         RetryerInfo retryerInfo = context.getRetryerInfo();

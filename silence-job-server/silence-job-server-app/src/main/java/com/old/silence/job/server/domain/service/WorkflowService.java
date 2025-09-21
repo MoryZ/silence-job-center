@@ -1,8 +1,9 @@
 package com.old.silence.job.server.domain.service;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.lang.Pair;
-import cn.hutool.util.HashUtil;
+import cn.hutool.core.lang.Pair;
+import cn.hutool.core.util.HashUtil;
+import cn.hutool.core.util.StrUtil;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ import com.old.silence.job.common.expression.ExpressionEngine;
 import com.old.silence.job.common.expression.ExpressionFactory;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.log.SilenceJobLog;
+import com.old.silence.job.server.api.assembler.WorkflowMapper;
 import com.old.silence.job.server.common.WaitStrategy;
 import com.old.silence.job.server.common.config.SystemProperties;
 import com.old.silence.job.server.common.dto.PartitionTask;
@@ -54,9 +56,11 @@ import com.old.silence.job.server.dto.CheckDecisionVO;
 import com.old.silence.job.server.dto.ExportWorkflowVO;
 import com.old.silence.job.server.dto.JobTaskConfig;
 import com.old.silence.job.server.dto.WorkflowCommand;
-import com.old.silence.job.server.dto.WorkflowQueryVO;
+import com.old.silence.job.server.dto.WorkflowQuery;
 import com.old.silence.job.server.dto.WorkflowTriggerVO;
 import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.handler.GroupHandler;
+import com.old.silence.job.server.handler.WorkflowHandler;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobSummaryDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowDao;
@@ -67,9 +71,7 @@ import com.old.silence.job.server.job.task.support.WorkflowTaskConverter;
 import com.old.silence.job.server.job.task.support.expression.ExpressionInvocationHandler;
 import com.old.silence.job.server.vo.WorkflowDetailResponseVO;
 import com.old.silence.job.server.vo.WorkflowResponseVO;
-import com.old.silence.job.server.web.api.assembler.WorkflowMapper;
-import com.old.silence.job.server.web.domain.service.handler.GroupHandler;
-import com.old.silence.job.server.web.domain.service.handler.WorkflowHandler;
+
 import com.old.silence.core.util.CollectionUtils;
 
 
@@ -89,11 +91,13 @@ public class WorkflowService  {
     private final AccessTemplate accessTemplate;
     private final GroupHandler groupHandler;
     private final JobSummaryDao jobSummaryDao;
+    private final WorkflowMapper workflowMapper;
 
     public WorkflowService(WorkflowDao workflowDao, WorkflowNodeDao workflowNodeDao,
                            SystemProperties systemProperties, WorkflowHandler workflowHandler,
                            WorkflowPrePareHandler terminalWorkflowPrepareHandler, JobDao jobDao,
-                           AccessTemplate accessTemplate, GroupHandler groupHandler, JobSummaryDao jobSummaryDao) {
+                           AccessTemplate accessTemplate, GroupHandler groupHandler,
+                           JobSummaryDao jobSummaryDao, WorkflowMapper workflowMapper) {
         this.workflowDao = workflowDao;
         this.workflowNodeDao = workflowNodeDao;
         this.systemProperties = systemProperties;
@@ -103,6 +107,7 @@ public class WorkflowService  {
         this.accessTemplate = accessTemplate;
         this.groupHandler = groupHandler;
         this.jobSummaryDao = jobSummaryDao;
+        this.workflowMapper = workflowMapper;
     }
 
     private static Long calculateNextTriggerAt(final WorkflowCommand workflowCommand, Long time) {
@@ -138,7 +143,7 @@ public class WorkflowService  {
         graph.addNode(SystemConstants.ROOT);
 
         // 组装工作流信息
-        Workflow workflow = WorkflowMapper.INSTANCE.convert(workflowCommand);
+        Workflow workflow = workflowMapper.convert(workflowCommand);
         workflow.setVersion(1);
         workflow.setNextTriggerAt(calculateNextTriggerAt(workflowCommand, DateUtils.toNowMilli()));
         workflow.setFlowInfo(StrUtil.EMPTY);
@@ -190,7 +195,7 @@ public class WorkflowService  {
     }
 
     
-    public IPage<WorkflowResponseVO> listPage(Page<Workflow> pageDTO, WorkflowQueryVO queryVO) {
+    public IPage<WorkflowResponseVO> listPage(Page<Workflow> pageDTO, WorkflowQuery queryVO) {
 
         List<String> groupNames = List.of();
 
@@ -205,7 +210,7 @@ public class WorkflowService  {
                                 queryVO.getWorkflowStatus())
                         .orderByDesc(Workflow::getId));
 
-        return page.convert(WorkflowMapper.INSTANCE::convertListToWorkflowList);
+        return page.convert(workflowMapper::convertToWorkflow);
     }
 
     @Transactional
@@ -232,7 +237,7 @@ public class WorkflowService  {
         log.info("图构建完成. graph:[{}]", graph);
 
         // 保存图信息
-        workflow = WorkflowMapper.INSTANCE.convert(workflowCommand);
+        workflow = workflowMapper.convert(workflowCommand);
         workflow.setId(workflowCommand.getId());
         workflow.setVersion(version);
         workflow.setNextTriggerAt(calculateNextTriggerAt(workflowCommand, DateUtils.toNowMilli()));
@@ -302,7 +307,7 @@ public class WorkflowService  {
                         .eq(Workflow::getDeleted, 500)
                         .orderByDesc(Workflow::getId));
 
-        return CollectionUtils.transformToList(selectPage.getRecords(), WorkflowMapper.INSTANCE::convertListToWorkflowList);
+        return CollectionUtils.transformToList(selectPage.getRecords(), workflowMapper::convertToWorkflow);
     }
 
     
@@ -396,8 +401,8 @@ public class WorkflowService  {
         }
     }
 
-    private WorkflowDetailResponseVO doGetWorkflowDetail(final Workflow workflow) {
-        WorkflowDetailResponseVO responseVO = WorkflowMapper.INSTANCE.convert(workflow);
+    private WorkflowDetailResponseVO doGetWorkflowDetail(Workflow workflow) {
+        WorkflowDetailResponseVO responseVO = workflowMapper.convert(workflow);
         List<WorkflowNode> workflowNodes = workflowNodeDao.selectList(new LambdaQueryWrapper<WorkflowNode>()
                 .eq(WorkflowNode::getDeleted, 0)
                 .eq(WorkflowNode::getVersion, workflow.getVersion())
@@ -410,7 +415,7 @@ public class WorkflowService  {
 
         Map<BigInteger, Job> jobMap = StreamUtils.toIdentityMap(jobs, Job::getId);
 
-        List<WorkflowDetailResponseVO.NodeInfo> nodeInfos = CollectionUtils.transformToList(workflowNodes, WorkflowMapper.INSTANCE::convertList);
+        List<WorkflowDetailResponseVO.NodeInfo> nodeInfos = CollectionUtils.transformToList(workflowNodes, workflowMapper::convert);
 
         Map<BigInteger, WorkflowDetailResponseVO.NodeInfo> workflowNodeMap = nodeInfos.stream()
                 .peek(nodeInfo -> {

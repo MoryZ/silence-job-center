@@ -1,11 +1,10 @@
 package com.old.silence.job.server.retry.task.client;
 
 
- 
-import com.old.silence.job.client.model.GenerateRetryIdempotentIdDTO;
-import com.old.silence.job.client.model.request.DispatchRetryRequest;
-import com.old.silence.job.client.model.request.RetryCallbackRequest;
-import com.old.silence.job.client.model.request.StopRetryRequest;
+import com.old.silence.job.common.client.dto.GenerateRetryIdempotentIdDTO;
+import com.old.silence.job.common.client.dto.request.DispatchRetryRequest;
+import com.old.silence.job.common.client.dto.request.RetryCallbackRequest;
+import com.old.silence.job.common.client.dto.request.StopRetryRequest;
 import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.common.model.SilenceJobHeaders;
 import com.old.silence.job.server.common.rpc.client.RequestMethod;

@@ -18,8 +18,10 @@ import com.alibaba.fastjson2.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.graph.MutableGraph;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.enums.WorkflowNodeType;
+import com.old.silence.job.server.api.assembler.WorkflowMapper;
 import com.old.silence.job.server.domain.model.WorkflowNode;
 import com.old.silence.job.server.dto.CallbackConfig;
 import com.old.silence.job.server.dto.DecisionConfig;
@@ -28,17 +30,17 @@ import com.old.silence.job.server.dto.WorkflowCommand;
 import com.old.silence.job.server.exception.SilenceJobServerException;
 import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowNodeDao;
 import com.old.silence.job.server.vo.WorkflowDetailResponseVO;
-import com.old.silence.job.server.web.api.assembler.WorkflowMapper;
 
 
 @Component("webWorkflowHandler")
-
 public class WorkflowHandler {
 
     private final WorkflowNodeDao workflowNodeDao;
+    private final WorkflowMapper workflowMapper;
 
-    public WorkflowHandler(WorkflowNodeDao workflowNodeDao) {
+    public WorkflowHandler(WorkflowNodeDao workflowNodeDao, WorkflowMapper workflowMapper) {
         this.workflowNodeDao = workflowNodeDao;
+        this.workflowMapper = workflowMapper;
     }
 
     /**
@@ -150,7 +152,7 @@ public class WorkflowHandler {
                     .sorted(Comparator.comparing(WorkflowCommand.NodeInfo::getPriorityLevel))
                     .collect(Collectors.toList());
             for (final WorkflowCommand.NodeInfo nodeInfo : conditionNodes) {
-                WorkflowNode workflowNode = WorkflowMapper.INSTANCE.convert(nodeInfo);
+                WorkflowNode workflowNode = workflowMapper.convert(nodeInfo);
                 workflowNode.setWorkflowId(workflowId);
                 workflowNode.setGroupName(groupName);
                 workflowNode.setNodeType(nodeConfig.getNodeType());

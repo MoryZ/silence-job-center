@@ -1,6 +1,6 @@
 package com.old.silence.job.server.util;
 
-import cn.hutool.io.FileUtil;
+import cn.hutool.core.io.FileUtil;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson2.JSON;

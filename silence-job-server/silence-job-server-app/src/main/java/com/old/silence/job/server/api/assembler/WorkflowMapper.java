@@ -17,6 +17,7 @@ import com.old.silence.job.server.dto.CallbackConfig;
 import com.old.silence.job.server.dto.DecisionConfig;
 import com.old.silence.job.server.dto.JobTaskConfig;
 import com.old.silence.job.server.dto.WorkflowCommand;
+import com.old.silence.job.server.vo.WorkflowBatchResponseDO;
 import com.old.silence.job.server.vo.WorkflowBatchResponseVO;
 import com.old.silence.job.server.vo.WorkflowDetailResponseVO;
 import com.old.silence.job.server.vo.WorkflowResponseVO;
@@ -56,6 +57,9 @@ public interface WorkflowMapper extends Converter<WorkflowCommand, Workflow> {
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "executionAt", expression = "java(toLocalDateTime(workflowTaskBatch.getExecutionAt()))")
     WorkflowBatchResponseVO convert(WorkflowTaskBatch workflowTaskBatch, Workflow workflow);
+
+
+    WorkflowBatchResponseVO convertWorkflowBatchResponseVO(WorkflowBatchResponseDO workflowBatchResponseDO);
 
     default Instant toLocalDateTime(Long nextTriggerAt) {
         if (Objects.isNull(nextTriggerAt) || nextTriggerAt == 0) {

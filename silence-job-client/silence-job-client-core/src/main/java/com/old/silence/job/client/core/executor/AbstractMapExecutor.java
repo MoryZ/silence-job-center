@@ -1,13 +1,13 @@
-package com.old.silence.job.client.executor;
+package com.old.silence.job.client.core.executor;
 
-import com.old.silence.job.client.IJobExecutor;
-import com.old.silence.job.client.MapHandler;
-import com.old.silence.job.client.cache.JobExecutorInfoCache;
-import com.old.silence.job.client.dto.JobArgs;
-import com.old.silence.job.client.dto.JobExecutorInfo;
-import com.old.silence.job.client.dto.MapArgs;
-import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.client.core.IJobExecutor;
+import com.old.silence.job.client.core.MapHandler;
+import com.old.silence.job.client.core.cache.JobExecutorInfoCache;
+import com.old.silence.job.client.core.dto.JobArgs;
+import com.old.silence.job.client.core.dto.JobExecutorInfo;
+import com.old.silence.job.client.core.dto.MapArgs;
 
+import com.old.silence.job.common.client.dto.ExecuteResult;
 import com.old.silence.job.common.exception.SilenceJobMapReduceException;
 
 
@@ -25,7 +25,7 @@ import java.util.Optional;
 public abstract class AbstractMapExecutor extends AbstractJobExecutor implements IJobExecutor {
 
     @Override
-    protected ExecuteResult doJobExecute(final JobArgs jobArgs) {
+    protected ExecuteResult doJobExecute(JobArgs jobArgs) {
         if (jobArgs instanceof MapArgs) {
             return this.doJobMapExecute((MapArgs) jobArgs, getMapHandler());
         }
@@ -33,7 +33,7 @@ public abstract class AbstractMapExecutor extends AbstractJobExecutor implements
         throw new SilenceJobMapReduceException("For tasks that are not of type map or map reduce, please do not use the AbstractMapExecutor class.");
     }
 
-    public abstract ExecuteResult doJobMapExecute(MapArgs mapArgs, final MapHandler mapHandler);
+    public abstract ExecuteResult doJobMapExecute(MapArgs mapArgs, MapHandler mapHandler);
 
     private MapHandler getMapHandler() {
        return (MapHandler) Proxy.newProxyInstance(MapHandler.class.getClassLoader(),

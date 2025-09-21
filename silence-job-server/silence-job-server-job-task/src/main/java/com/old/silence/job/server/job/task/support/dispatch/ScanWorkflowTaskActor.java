@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.dispatch;
 
-import cn.hutool.util.RandomUtil;
+import cn.hutool.core.util.RandomUtil;
 import org.apache.pekko.actor.AbstractActor;
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

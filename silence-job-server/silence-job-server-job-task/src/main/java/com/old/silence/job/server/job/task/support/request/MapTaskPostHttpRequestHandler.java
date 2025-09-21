@@ -1,14 +1,14 @@
 package com.old.silence.job.server.job.task.support.request;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.net.url.UrlQuery;
+import cn.hutool.core.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.job.client.model.request.MapTaskRequest;
+import com.old.silence.job.common.client.dto.request.MapTaskRequest;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.enums.JobTaskType;
 import com.old.silence.job.common.enums.MapReduceStage;

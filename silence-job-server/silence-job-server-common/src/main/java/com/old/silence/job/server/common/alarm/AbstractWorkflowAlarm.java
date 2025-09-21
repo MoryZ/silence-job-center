@@ -3,13 +3,13 @@ package com.old.silence.job.server.common.alarm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationEvent;
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.server.common.convert.AlarmInfoConverter;
 import com.old.silence.job.server.common.dto.WorkflowAlarmInfo;
 import com.old.silence.job.server.domain.model.WorkflowTaskBatch;
-import com.old.silence.job.server.dto.WorkflowBatchResponseDO;
 import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowTaskBatchDao;
+import com.old.silence.job.server.vo.WorkflowBatchResponseDO;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

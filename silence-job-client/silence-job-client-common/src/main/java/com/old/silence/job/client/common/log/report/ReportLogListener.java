@@ -3,9 +3,9 @@ package com.old.silence.job.client.common.log.report;
 import com.old.silence.job.client.common.NettyClient;
 import com.old.silence.job.client.common.rpc.client.RequestBuilder;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
+import com.old.silence.job.common.server.dto.LogTaskDTO;
 import com.old.silence.job.common.window.Listener;
 import com.old.silence.job.log.SilenceJobLog;
-import com.old.silence.job.server.model.dto.LogTaskDTO;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package com.old.silence.job.server.common.cache;
 
 import org.springframework.stereotype.Component;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.Sets;

@@ -1,11 +1,10 @@
-package com.old.silence.job.client.handler;
+package com.old.silence.job.client.core.handler;
 
-import cn.hutool.core.lang.Assert;
-
+import cn.hutool.core.util.StrUtil;
 
 
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.client.dto.JobTriggerDTO;
+import com.old.silence.job.client.core.dto.JobTriggerDTO;
 import com.old.silence.job.common.util.JsonUtils;
 
 import java.math.BigInteger;
@@ -30,7 +29,6 @@ public abstract class AbstractTriggerHandler<H, R> extends AbstractRequestHandle
      *
      * @param argsKey   参数名
      * @param argsValue 参数值
-     * @return
      */
     protected H addArgsStr(String argsKey, Object argsValue) {
         Map<String, Object> map = new HashMap<>();

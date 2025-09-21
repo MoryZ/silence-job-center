@@ -4,9 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
-import com.old.silence.job.client.model.request.DispatchJobRequest;
-import com.old.silence.job.client.model.request.DispatchJobResultRequest;
-import com.old.silence.job.client.model.request.MapTaskRequest;
+import com.old.silence.job.common.client.dto.request.DispatchJobRequest;
+import com.old.silence.job.common.client.dto.request.DispatchJobResultRequest;
+import com.old.silence.job.common.client.dto.request.MapTaskRequest;
+import com.old.silence.job.common.server.dto.LogTaskDTO;
 import com.old.silence.job.server.common.dto.JobAlarmInfo;
 import com.old.silence.job.server.common.dto.JobLogMetaDTO;
 import com.old.silence.job.server.domain.model.Job;
@@ -22,7 +23,6 @@ import com.old.silence.job.server.job.task.support.generator.batch.JobTaskBatchG
 import com.old.silence.job.server.job.task.support.generator.task.JobTaskGenerateContext;
 import com.old.silence.job.server.job.task.support.result.job.JobExecutorResultContext;
 import com.old.silence.job.server.job.task.support.stop.TaskStopJobContext;
-import com.old.silence.job.server.model.dto.LogTaskDTO;
 
 import java.util.List;
 

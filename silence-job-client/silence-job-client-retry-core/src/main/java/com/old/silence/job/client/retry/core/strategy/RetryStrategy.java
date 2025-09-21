@@ -1,8 +1,8 @@
-package com.old.silence.job.client.retry.strategy;
+package com.old.silence.job.client.retry.core.strategy;
 
-import com.old.silence.job.client.retryer.RetryType;
-import com.old.silence.job.client.retryer.RetryerResultContext;
 
+import com.old.silence.job.client.retry.core.retryer.RetryType;
+import com.old.silence.job.client.retry.core.retryer.RetryerResultContext;
 
 public interface RetryStrategy {
 

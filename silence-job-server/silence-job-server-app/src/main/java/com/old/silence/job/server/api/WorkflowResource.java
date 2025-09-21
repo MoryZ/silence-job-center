@@ -1,5 +1,6 @@
 package com.old.silence.job.server.api;
 
+import cn.hutool.core.lang.Pair;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -43,7 +44,7 @@ public class WorkflowResource {
     }
 
     @GetMapping(value = "/workflows", params = {"pageNo", "pageSize"})
-    public IPage<WorkflowResponseVO> listPage(Page<Workflow> ppage, WorkflowQuery queryVO) {
+    public IPage<WorkflowResponseVO> listPage(Page<Workflow> page, WorkflowQuery queryVO) {
         return workflowService.listPage(page, queryVO);
     }
 

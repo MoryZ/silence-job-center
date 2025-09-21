@@ -1,4 +1,4 @@
-package com.old.silence.job.client.annotation;
+package com.old.silence.job.client.core.annotation;
 
 import com.old.silence.job.common.constant.SystemConstants;
 
@@ -19,7 +19,6 @@ public @interface MapExecutor {
     /**
      * 任务名称
      *
-     * @return
      */
     String taskName() default SystemConstants.ROOT_MAP;
 

@@ -1,4 +1,4 @@
-package com.old.silence.job.client.dto;
+package com.old.silence.job.client.core.dto;
 
 import javax.validation.constraints.NotNull;
 

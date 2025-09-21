@@ -1,6 +1,7 @@
 package com.old.silence.job.server.common.triple;
 
-import cn.hutool.builder.CompareToBuilder;
+
+import cn.hutool.core.builder.CompareToBuilder;
 
 import java.io.Serializable;
 import java.util.Objects;

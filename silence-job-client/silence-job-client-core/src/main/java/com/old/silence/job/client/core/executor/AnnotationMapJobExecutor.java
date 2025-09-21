@@ -1,9 +1,9 @@
-package com.old.silence.job.client.executor;
+package com.old.silence.job.client.core.executor;
 
-import com.old.silence.job.client.MapHandler;
-import com.old.silence.job.client.dto.MapArgs;
-import com.old.silence.job.client.executor.AbstractMapExecutor;
-import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.client.core.MapHandler;
+
+import com.old.silence.job.client.core.dto.MapArgs;
+import com.old.silence.job.common.client.dto.ExecuteResult;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class AnnotationMapJobExecutor extends AbstractMapExecutor {
 
     @Override
-    public ExecuteResult doJobMapExecute(final MapArgs mapArgs, final MapHandler mapHandler) {
+    public ExecuteResult doJobMapExecute(MapArgs mapArgs, MapHandler mapHandler) {
         return invokeMapExecute(mapArgs, mapHandler);
     }
 }

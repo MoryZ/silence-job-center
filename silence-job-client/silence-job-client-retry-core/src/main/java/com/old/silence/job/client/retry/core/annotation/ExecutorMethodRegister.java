@@ -1,11 +1,13 @@
 
-package com.old.silence.job.client.retry.annotation;
+package com.old.silence.job.client.retry.core.annotation;
 
 import org.springframework.stereotype.Component;
-import com.old.silence.job.client.IdempotentIdGenerate;
-import com.old.silence.job.client.callback.complete.RetryCompleteCallback;
-import com.old.silence.job.client.callback.complete.SimpleRetryCompleteCallback;
-import com.old.silence.job.client.generator.SimpleIdempotentIdGenerate;
+
+
+import com.old.silence.job.client.retry.core.IdempotentIdGenerate;
+import com.old.silence.job.client.retry.core.callback.complete.RetryCompleteCallback;
+import com.old.silence.job.client.retry.core.callback.complete.SimpleRetryCompleteCallback;
+import com.old.silence.job.client.retry.core.generator.SimpleIdempotentIdGenerate;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -43,7 +45,7 @@ public @interface ExecutorMethodRegister {
      * 时刻4:  idempotentId: A1 重试完成, 状态为已完成
      * 时刻5: 上报一个异常 idempotentId: A1 状态为重试中, 新增一条重试任务
      * <p>
-     * 默认的idempotentId生成器{@link SimpleIdempotentIdGenerate} 对所有参数进行MD5
+     * 默认的idempotentId生成器{@link com.old.silence.job.client.retry.core.generator.SimpleIdempotentIdGenerate} 对所有参数进行MD5
      *
      * @return idempotentId
      */

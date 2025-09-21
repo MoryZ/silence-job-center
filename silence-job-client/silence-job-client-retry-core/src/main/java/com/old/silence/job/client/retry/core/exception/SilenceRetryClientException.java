@@ -1,4 +1,4 @@
-package com.old.silence.job.client.retry.exception;
+package com.old.silence.job.client.retry.core.exception;
 
 import com.old.silence.job.common.exception.BaseSilenceJobException;
 

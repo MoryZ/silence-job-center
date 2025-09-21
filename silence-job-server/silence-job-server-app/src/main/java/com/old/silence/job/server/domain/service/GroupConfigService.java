@@ -50,6 +50,7 @@ import com.old.silence.job.server.domain.model.ServerNode;
 import com.old.silence.job.server.domain.model.SystemUserPermission;
 import com.old.silence.job.server.domain.model.Workflow;
 import com.old.silence.job.server.domain.service.config.ConfigAccess;
+import com.old.silence.job.server.dto.ExportGroupCommand;
 import com.old.silence.job.server.dto.GroupConfigCommand;
 import com.old.silence.job.server.exception.SilenceJobServerException;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
@@ -334,8 +335,11 @@ public class GroupConfigService {
 
     }
 
-    public String exportGroup(Boolean groupStatus, Set<BigInteger> groupIds, String groupName) {
+    public String exportGroup(ExportGroupCommand exportGroupCommand) {
         String namespaceId = "namespaceId";
+        var groupIds = exportGroupCommand.getGroupIds();
+        var groupStatus = exportGroupCommand.getGroupStatus();
+        var groupName = exportGroupCommand.getGroupName();
 
         List<GroupConfig> allRequestList = Lists.newArrayList();
         PartitionTaskUtils.process((startId -> {

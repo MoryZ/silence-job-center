@@ -1,12 +1,9 @@
 package com.old.silence.job.server.dto;
 
-
-
 import java.util.Set;
 
 
-
-public class ExportGroupVO {
+public class ExportGroupCommand {
 
     private String groupName;
 

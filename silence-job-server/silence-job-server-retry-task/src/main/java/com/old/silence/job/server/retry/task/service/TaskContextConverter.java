@@ -2,7 +2,7 @@ package com.old.silence.job.server.retry.task.service;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import com.old.silence.job.server.model.dto.RetryTaskDTO;
+import com.old.silence.job.common.server.dto.RetryTaskDTO;
 import com.old.silence.job.server.retry.task.support.generator.retry.TaskContext;
 
 @Mapper

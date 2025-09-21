@@ -1,7 +1,7 @@
 package com.old.silence.job.server.job.task.support.callback;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.util.RandomUtil;
+import cn.hutool.core.util.RandomUtil;
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;

@@ -1,6 +1,6 @@
 package com.old.silence.job.client.common.log.support;
 
-import cn.hutool.util.ServiceLoaderUtil;
+import cn.hutool.core.util.ServiceLoaderUtil;
 import com.old.silence.job.client.common.SilenceJobLogThreadLocal;
 import com.old.silence.job.client.common.SilenceThreadLocal;
 import com.old.silence.job.client.common.log.report.LogMeta;
