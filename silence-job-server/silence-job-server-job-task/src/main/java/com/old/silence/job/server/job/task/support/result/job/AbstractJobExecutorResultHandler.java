@@ -1,8 +1,8 @@
 package com.old.silence.job.server.job.task.support.result.job;
 
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.conditions.update.LambdaUpdateWrapper;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.JobNotifyScene;
 import com.old.silence.job.common.enums.JobOperationReason;

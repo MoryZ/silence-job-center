@@ -1,10 +1,10 @@
 package com.old.silence.job.server.retry.task.support.schedule;
 
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.RetryNotifyScene;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.server.common.Lifecycle;

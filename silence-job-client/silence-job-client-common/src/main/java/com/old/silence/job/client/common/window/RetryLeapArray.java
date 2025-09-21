@@ -4,7 +4,7 @@ package com.old.silence.job.client.common.window;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.window.LeapArray;
 import com.old.silence.job.common.window.Listener;
 import com.old.silence.job.common.window.WindowWrap;

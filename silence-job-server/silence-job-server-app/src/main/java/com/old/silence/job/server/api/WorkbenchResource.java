@@ -3,10 +3,11 @@ package com.old.silence.job.server.api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.old.silence.vo.ConfigStatVo;
-import com.old.silence.vo.JobStatVo;
-import com.old.silence.vo.MqStatVo;
-import com.old.silence.vo.WorkBenchVo;
+import com.old.silence.job.server.vo.ConfigStatVo;
+import com.old.silence.job.server.vo.JobStatVo;
+import com.old.silence.job.server.vo.MqStatVo;
+import com.old.silence.job.server.vo.WorkBenchVo;
+
 
 /**
  * @author MurrayZhang

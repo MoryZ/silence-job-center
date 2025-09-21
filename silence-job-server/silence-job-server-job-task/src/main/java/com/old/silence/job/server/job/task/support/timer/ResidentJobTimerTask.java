@@ -9,7 +9,7 @@ import com.old.silence.job.server.domain.model.Job;
 import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;
 import com.old.silence.job.server.job.task.dto.JobTimerTaskDTO;
 import com.old.silence.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.text.MessageFormat;
 

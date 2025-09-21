@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.rpc.client;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import com.github.rholder.retry.RetryListener;
 import com.old.silence.context.CommonErrors;
 import com.old.silence.job.common.context.SilenceSpringContext;

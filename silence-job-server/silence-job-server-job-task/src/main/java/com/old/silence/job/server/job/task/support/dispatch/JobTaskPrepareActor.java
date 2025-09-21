@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
-import com.old.silence.util.CollectionUtils;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobTaskBatchStatus;
 import com.old.silence.job.common.enums.JobTaskExecutorScene;
 import com.old.silence.job.common.enums.SystemTaskType;
@@ -15,7 +15,7 @@ import com.old.silence.job.server.domain.model.JobTaskBatch;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
 import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;
 import com.old.silence.job.server.job.task.support.JobPrepareHandler;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.util.List;
 

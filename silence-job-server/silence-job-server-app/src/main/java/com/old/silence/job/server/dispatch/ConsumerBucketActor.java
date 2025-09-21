@@ -6,13 +6,13 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.google.common.collect.Lists;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.SystemTaskType;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.cache.CacheGroupScanActor;
 import com.old.silence.job.server.common.config.SystemProperties;
 import com.old.silence.job.server.common.dto.ScanTask;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.support.handler.RateLimiterHandler;
 
 import java.util.ArrayList;

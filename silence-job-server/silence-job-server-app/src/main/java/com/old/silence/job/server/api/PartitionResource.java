@@ -3,9 +3,10 @@ package com.old.silence.job.server.api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.old.silence.job.server.web.domain.service.GroupConfigService;
 
 import java.util.List;
+
+import com.old.silence.job.server.domain.service.GroupConfigService;
 
 
 @RestController

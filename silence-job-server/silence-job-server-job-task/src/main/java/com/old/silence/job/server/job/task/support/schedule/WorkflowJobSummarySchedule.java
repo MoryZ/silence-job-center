@@ -2,9 +2,9 @@ package com.old.silence.job.server.job.task.support.schedule;
 
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Lists;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobTaskBatchStatus;
 import com.old.silence.job.common.enums.SystemTaskType;
 import com.old.silence.job.common.util.StreamUtils;

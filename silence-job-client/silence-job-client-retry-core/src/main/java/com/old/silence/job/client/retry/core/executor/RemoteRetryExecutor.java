@@ -2,7 +2,7 @@ package com.old.silence.job.client.retry.executor;
 
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.common.log.support.SilenceJobLogManager;
 import com.old.silence.job.client.context.RemoteRetryContext;
 import com.old.silence.job.client.intercepter.RetrySiteSnapshot;
 import com.old.silence.job.client.log.RetryLogMeta;

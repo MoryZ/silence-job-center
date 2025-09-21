@@ -3,7 +3,7 @@ package com.old.silence.job.server.retry.task.support.listener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.alarm.AlarmContext;
 import com.old.silence.job.common.enums.RetryNotifyScene;
 import com.old.silence.job.common.enums.SystemTaskType;

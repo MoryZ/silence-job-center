@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import com.old.silence.job.server.event.ServerStartupFailedEvent;
 import com.old.silence.job.server.common.rpc.server.grpc.GrpcServer;
 import com.old.silence.job.server.common.rpc.server.netty.NettyHttpServer;
-import com.old.silence.job.server.starter.event.ServerStartupFailedEvent;
 
 import java.util.concurrent.TimeUnit;
 

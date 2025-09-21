@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.register;
 
 import org.springframework.dao.DuplicateKeyException;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Sets;
 import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.NodeType;

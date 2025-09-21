@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.rpc.okhttp;
 
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.lang.Assert;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

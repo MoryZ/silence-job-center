@@ -1,6 +1,6 @@
 package com.old.silence.job.client.retry.serializer;
 
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.lang.Assert;
 import com.caucho.hessian.io.HessianInput;
 import com.caucho.hessian.io.HessianOutput;
 import com.old.silence.job.client.RetryArgSerializer;

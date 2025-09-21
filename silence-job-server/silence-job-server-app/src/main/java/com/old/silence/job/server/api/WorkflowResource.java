@@ -1,24 +1,24 @@
 package com.old.silence.job.server.api;
 
-import cn.hutool.lang.Pair;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.server.domain.model.Workflow;
+import com.old.silence.job.server.domain.service.WorkflowService;
 import com.old.silence.job.server.dto.CheckDecisionVO;
 import com.old.silence.job.server.dto.ExportWorkflowVO;
 import com.old.silence.job.server.dto.WorkflowCommand;
-import com.old.silence.job.server.dto.WorkflowQueryVO;
+import com.old.silence.job.server.dto.WorkflowQuery;
 import com.old.silence.job.server.dto.WorkflowTriggerVO;
+import com.old.silence.job.server.util.ExportUtils;
+import com.old.silence.job.server.util.ImportUtils;
 import com.old.silence.job.server.vo.WorkflowDetailResponseVO;
 import com.old.silence.job.server.vo.WorkflowResponseVO;
-import com.old.silence.job.server.web.domain.service.WorkflowService;
-import com.old.silence.job.server.web.util.ExportUtils;
-import com.old.silence.job.server.web.util.ImportUtils;
+
 
 import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
@@ -28,7 +28,7 @@ import java.util.Set;
 
 
 @RestController
-@RequestMapping("/workflow")
+@RequestMapping("/api/v1")
 public class WorkflowResource {
 
     private final WorkflowService workflowService;
@@ -37,13 +37,13 @@ public class WorkflowResource {
         this.workflowService = workflowService;
     }
 
-    @PostMapping
+    @PostMapping("/workflows")
     public Boolean saveWorkflow(@RequestBody @Validated WorkflowCommand workflowCommand) {
         return workflowService.saveWorkflow(workflowCommand);
     }
 
-    @GetMapping("/page/list")
-    public IPage<WorkflowResponseVO> listPage(Page<Workflow> page, WorkflowQueryVO queryVO) {
+    @GetMapping(value = "/workflows", params = {"pageNo", "pageSize"})
+    public IPage<WorkflowResponseVO> listPage(Page<Workflow> ppage, WorkflowQuery queryVO) {
         return workflowService.listPage(page, queryVO);
     }
 

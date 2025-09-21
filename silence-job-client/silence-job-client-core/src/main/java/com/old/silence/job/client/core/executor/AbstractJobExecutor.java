@@ -1,6 +1,6 @@
 package com.old.silence.job.client.executor;
 
-import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.common.log.support.SilenceJobLogManager;
 import com.old.silence.job.client.IJobExecutor;
 import com.old.silence.job.client.cache.FutureCache;
 import com.old.silence.job.client.cache.ThreadPoolCache;

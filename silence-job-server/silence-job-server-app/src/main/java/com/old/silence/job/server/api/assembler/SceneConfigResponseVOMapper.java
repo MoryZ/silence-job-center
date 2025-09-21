@@ -1,10 +1,12 @@
 package com.old.silence.job.server.api.assembler;
 
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.util.StrUtil;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
 import com.alibaba.fastjson2.JSON;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.RetrySceneConfig;
 import com.old.silence.job.server.vo.SceneConfigResponseVO;
 
@@ -13,11 +15,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Mapper
-public interface SceneConfigResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface SceneConfigResponseVOMapper extends Converter<RetrySceneConfig, SceneConfigResponseVO> {
 
-    SceneConfigResponseVOMapper INSTANCE = Mappers.getMapper(SceneConfigResponseVOMapper.class);
 
+    @Override
     @Mapping(target = "notifyIds", expression = "java(toNotifyIds(retrySceneConfig.getNotifyIds()))")
     SceneConfigResponseVO convert(RetrySceneConfig retrySceneConfig);
 

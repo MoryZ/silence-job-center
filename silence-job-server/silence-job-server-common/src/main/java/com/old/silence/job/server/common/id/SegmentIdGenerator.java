@@ -1,9 +1,9 @@
 package com.old.silence.job.server.common.id;
 
 import cn.hutool.lang.Pair;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.conditions.update.LambdaUpdateWrapper;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.IdGeneratorMode;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.log.SilenceJobLog;

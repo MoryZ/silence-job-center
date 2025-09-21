@@ -1,7 +1,7 @@
 package com.old.silence.job.client.common.cache;
 
 
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.enums.JobNotifyScene;
 import com.old.silence.job.common.enums.RetryNotifyScene;

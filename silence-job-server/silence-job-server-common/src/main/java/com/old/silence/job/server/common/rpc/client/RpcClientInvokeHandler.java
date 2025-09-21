@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.rpc.client;
 
 import cn.hutool.date.StopWatch;
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import io.netty.handler.codec.http.DefaultHttpHeaders;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;

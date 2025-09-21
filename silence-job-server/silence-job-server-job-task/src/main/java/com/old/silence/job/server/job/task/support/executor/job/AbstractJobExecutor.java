@@ -1,7 +1,7 @@
 package com.old.silence.job.server.job.task.support.executor.job;
 
 import org.springframework.beans.factory.InitializingBean;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.job.task.support.JobExecutor;
 

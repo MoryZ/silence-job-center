@@ -1,17 +1,18 @@
 package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.RetryTask;
 import com.old.silence.job.server.vo.RetryTaskResponseVO;
 
 
 
-@Mapper
-public interface RetryTaskLogResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface RetryTaskLogResponseVOMapper extends Converter<RetryTask, RetryTaskResponseVO> {
 
-    RetryTaskLogResponseVOMapper INSTANCE = Mappers.getMapper(RetryTaskLogResponseVOMapper.class);
 
+    @Override
     RetryTaskResponseVO convert(RetryTask retryTask);
 
 

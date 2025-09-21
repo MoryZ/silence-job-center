@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.dispatch;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.apache.pekko.actor.AbstractActor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,10 +8,10 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Sets;
 import com.google.common.graph.MutableGraph;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.FailStrategy;
@@ -45,7 +45,7 @@ import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
 import com.old.silence.job.server.job.task.support.timer.JobTimerWheel;
 import com.old.silence.job.server.job.task.support.timer.WorkflowTimeoutCheckTask;
 import com.old.silence.job.server.job.task.support.timer.WorkflowTimerTask;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.math.BigInteger;
 import java.text.MessageFormat;

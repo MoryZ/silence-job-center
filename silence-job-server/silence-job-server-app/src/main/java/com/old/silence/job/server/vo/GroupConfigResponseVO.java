@@ -1,7 +1,5 @@
 package com.old.silence.job.server.vo;
 
-
-
 import com.old.silence.job.common.enums.IdGeneratorMode;
 
 import java.math.BigInteger;

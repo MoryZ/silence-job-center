@@ -1,11 +1,13 @@
 package com.old.silence.job.server.api.assembler;
 
 
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.util.StrUtil;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
 import com.alibaba.fastjson2.JSON;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.Job;
 import com.old.silence.job.server.vo.JobResponseVO;
 
@@ -16,11 +18,11 @@ import java.util.Objects;
 import java.util.Set;
 
 
-@Mapper
-public interface JobResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface JobResponseVOMapper extends Converter<Job, JobResponseVO> {
 
-    JobResponseVOMapper INSTANCE = Mappers.getMapper(JobResponseVOMapper.class);
 
+    @Override
     @Mapping(target = "nextTriggerAt", expression = "java(toLocalDateTime(job.getNextTriggerAt()))")
     @Mapping(target = "notifyIds", expression = "java(toNotifyIds(job.getNotifyIds()))")
     JobResponseVO convert(Job job);

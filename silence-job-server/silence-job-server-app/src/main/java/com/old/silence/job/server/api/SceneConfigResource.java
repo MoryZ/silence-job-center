@@ -5,16 +5,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.core.util.CollectionUtils;
+import com.old.silence.job.server.api.assembler.SceneConfigMapper;
 import com.old.silence.job.server.domain.model.RetrySceneConfig;
-import com.old.silence.job.server.dto.ExportSceneVO;
+import com.old.silence.job.server.domain.service.SceneConfigService;
+import com.old.silence.job.server.dto.ExportSceneCommand;
 import com.old.silence.job.server.dto.SceneConfigQueryVO;
-import com.old.silence.job.server.dto.SceneConfigRequestVO;
+import com.old.silence.job.server.dto.SceneConfigCommand;
+import com.old.silence.job.server.util.ExportUtils;
+import com.old.silence.job.server.util.ImportUtils;
 import com.old.silence.job.server.vo.SceneConfigResponseVO;
-import com.old.silence.job.server.web.domain.service.SceneConfigService;
-import com.old.silence.job.server.web.util.ExportUtils;
-import com.old.silence.job.server.web.util.ImportUtils;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
@@ -30,9 +32,12 @@ import java.util.Set;
 @RequestMapping("/api/v1")
 public class SceneConfigResource {
     private final SceneConfigService sceneConfigService;
+    private final SceneConfigMapper sceneConfigMapper;
 
-    public SceneConfigResource(SceneConfigService sceneConfigService) {
+    public SceneConfigResource(SceneConfigService sceneConfigService,
+                               SceneConfigMapper sceneConfigMapper) {
         this.sceneConfigService = sceneConfigService;
+        this.sceneConfigMapper = sceneConfigMapper;
     }
 
 
@@ -61,27 +66,32 @@ public class SceneConfigResource {
 
     
     @PostMapping("/sceneConfig")
-    public Boolean saveSceneConfig(@RequestBody @Validated SceneConfigRequestVO requestVO) {
-        return sceneConfigService.saveSceneConfig(requestVO);
+    public Boolean saveSceneConfig(@RequestBody @Validated SceneConfigCommand sceneConfigCommand) {
+        var sceneConfig = sceneConfigMapper.convert(sceneConfigCommand);
+        return sceneConfigService.saveSceneConfig(sceneConfig);
     }
 
     
     @PutMapping("/sceneConfig/{id}")
-    public Boolean updateSceneConfig(@PathVariable BigInteger id, @RequestBody @Validated SceneConfigRequestVO requestVO) {
-        return sceneConfigService.updateSceneConfig(requestVO);
+    public Boolean updateSceneConfig(@PathVariable BigInteger id, @RequestBody @Validated SceneConfigCommand sceneConfigCommand) {
+        var retrySceneConfig = sceneConfigMapper.convert(sceneConfigCommand);
+        retrySceneConfig.setId(id);
+        return sceneConfigService.updateSceneConfig(retrySceneConfig);
     }
 
     
     @PostMapping(value = "/sceneConfig/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void importScene(@RequestPart("file") MultipartFile file) throws IOException {
+    public void importScene(@RequestPart MultipartFile file) throws IOException {
+        var sceneConfigCommands = ImportUtils.parseList(file, SceneConfigCommand.class);
+        var retrySceneConfigs = CollectionUtils.transformToList(sceneConfigCommands, sceneConfigMapper::convert);
         // 写入数据
-        sceneConfigService.importSceneConfig(ImportUtils.parseList(file, SceneConfigRequestVO.class));
+        sceneConfigService.importSceneConfig(retrySceneConfigs);
     }
 
     
     @PostMapping("/sceneConfig/export")
-    public ResponseEntity<String> export(@RequestBody ExportSceneVO exportSceneVO) {
-        return ExportUtils.doExport(sceneConfigService.exportSceneConfig(exportSceneVO));
+    public ResponseEntity<String> export(@RequestBody ExportSceneCommand exportSceneCommand) {
+        return ExportUtils.doExport(sceneConfigService.exportSceneConfig(exportSceneCommand));
     }
 
     

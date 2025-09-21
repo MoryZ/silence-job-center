@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.request;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.net.url.UrlQuery;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;

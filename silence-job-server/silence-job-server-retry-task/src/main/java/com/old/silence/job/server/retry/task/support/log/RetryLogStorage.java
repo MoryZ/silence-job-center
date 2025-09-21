@@ -12,7 +12,7 @@ import com.old.silence.job.server.common.LogStorage;
 import com.old.silence.job.server.common.dto.LogMetaDTO;
 import com.old.silence.job.server.common.dto.RetryLogMetaDTO;
 import com.old.silence.job.server.common.log.LogStorageFactory;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RetryTaskLogDTO;
 
 import java.util.Map;

@@ -1,7 +1,7 @@
 package com.old.silence.job.client.log;
 
-import com.old.silence.job.client.common.log.AbstractLogReport;
-import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.common.log.report.AbstractLogReport;
+import com.old.silence.job.client.common.log.support.SilenceJobLogManager;
 import com.old.silence.job.log.dto.LogContentDTO;
 import com.old.silence.job.log.enums.LogTypeEnum;
 import com.old.silence.job.server.model.dto.JobLogTaskDTO;

@@ -1,13 +1,13 @@
 package com.old.silence.job.server.job.task.support.dispatch;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.apache.pekko.actor.AbstractActor;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
-import com.old.silence.util.CollectionUtils;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobTaskType;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.domain.model.Job;
@@ -27,7 +27,7 @@ import com.old.silence.job.server.job.task.support.generator.task.JobTaskGenerat
 import com.old.silence.job.server.job.task.support.generator.task.JobTaskGeneratorFactory;
 import com.old.silence.job.server.job.task.support.handler.DistributedLockHandler;
 import com.old.silence.job.server.job.task.support.handler.JobTaskBatchHandler;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.text.MessageFormat;
 import java.time.Duration;

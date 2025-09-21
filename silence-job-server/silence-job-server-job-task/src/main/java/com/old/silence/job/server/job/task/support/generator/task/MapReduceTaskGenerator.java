@@ -1,15 +1,15 @@
 package com.old.silence.job.server.job.task.support.generator.task;
 
-import cn.hutool.lang.Assert;
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Lists;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobArgsType;
 import com.old.silence.job.common.enums.JobTaskStatus;
 import com.old.silence.job.common.enums.JobTaskType;

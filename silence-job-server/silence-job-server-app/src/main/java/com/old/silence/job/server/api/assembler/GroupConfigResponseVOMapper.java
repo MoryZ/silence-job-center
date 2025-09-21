@@ -1,19 +1,17 @@
 package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.GroupConfig;
 import com.old.silence.job.server.vo.GroupConfigResponseVO;
 
-import java.util.List;
 
-@Mapper
-public interface GroupConfigResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface GroupConfigResponseVOMapper extends Converter<GroupConfig, GroupConfigResponseVO> {
 
-    GroupConfigResponseVOMapper INSTANCE = Mappers.getMapper(GroupConfigResponseVOMapper.class);
 
- 
+    @Override
     GroupConfigResponseVO convert(GroupConfig groupConfig);
 
-    List<GroupConfigResponseVO> convertList(List<GroupConfig> groupConfigs);
 }

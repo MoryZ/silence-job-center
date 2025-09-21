@@ -5,7 +5,7 @@ import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 import com.google.common.collect.Lists;
 import com.old.silence.enums.EnumValueFactory;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.alarm.AlarmContext;
 import com.old.silence.job.common.enums.RetryNotifyScene;
 import com.old.silence.job.common.enums.SystemTaskType;

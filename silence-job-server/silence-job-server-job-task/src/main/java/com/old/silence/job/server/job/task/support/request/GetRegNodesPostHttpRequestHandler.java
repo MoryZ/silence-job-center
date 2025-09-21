@@ -5,7 +5,7 @@ import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.model.SilenceJobRequest;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
 import com.old.silence.job.log.SilenceJobLog;

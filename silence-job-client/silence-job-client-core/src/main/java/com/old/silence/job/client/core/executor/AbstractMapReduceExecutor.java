@@ -1,6 +1,6 @@
 package com.old.silence.job.client.executor;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 
 import com.old.silence.job.client.dto.JobArgs;
 import com.old.silence.job.client.dto.MergeReduceArgs;

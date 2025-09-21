@@ -5,13 +5,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.old.silence.job.server.web.domain.service.WorkflowNodeService;
 
 import java.math.BigInteger;
 
+import com.old.silence.job.server.domain.service.WorkflowNodeService;
+
 
 @RestController
-@RequestMapping("/workflow/node")
+@RequestMapping("/api/v1")
 public class WorkflowNodeResource {
     private final WorkflowNodeService workflowNodeService;
 
@@ -19,12 +20,12 @@ public class WorkflowNodeResource {
         this.workflowNodeService = workflowNodeService;
     }
 
-    @PutMapping("/stop/{nodeId}/{workflowTaskBatchId}")
+    @PutMapping("/workflowNodes/{nodeId}/{workflowTaskBatchId}/stop")
      public Boolean stop(@PathVariable BigInteger nodeId, @PathVariable BigInteger workflowTaskBatchId) {
         return workflowNodeService.stop(nodeId, workflowTaskBatchId);
     }
 
-    @PutMapping("/retry/{nodeId}/{workflowTaskBatchId}")
+    @PutMapping("/workflowNodes/{nodeId}/{workflowTaskBatchId}")
     public Boolean retry(@PathVariable BigInteger nodeId,
                          @PathVariable BigInteger workflowTaskBatchId) {
         return workflowNodeService.retry(nodeId, workflowTaskBatchId);

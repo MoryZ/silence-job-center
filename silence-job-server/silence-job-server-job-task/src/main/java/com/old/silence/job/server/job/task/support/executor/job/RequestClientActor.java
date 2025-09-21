@@ -32,7 +32,7 @@ import com.old.silence.job.server.job.task.support.JobTaskConverter;
 import com.old.silence.job.server.job.task.support.alarm.event.JobTaskFailAlarmEvent;
 import com.old.silence.job.server.job.task.support.callback.ClientCallbackContext;
 import com.old.silence.job.server.job.task.support.callback.ClientCallbackFactory;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Objects;

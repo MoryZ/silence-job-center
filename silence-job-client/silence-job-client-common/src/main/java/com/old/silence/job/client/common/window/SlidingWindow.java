@@ -3,7 +3,7 @@ package com.old.silence.job.client.common.window;
 
 import org.springframework.util.Assert;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.window.Listener;
 import com.old.silence.job.log.SilenceJobLog;
 

@@ -21,6 +21,7 @@
 
     <modules>
         <module>silence-job-server-app</module>
+        <module>silence-job-server-core</module>
         <module>silence-job-server-common</module>
         <module>silence-job-server-job-task</module>
         <module>silence-job-server-retry-task</module>

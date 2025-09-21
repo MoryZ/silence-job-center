@@ -7,7 +7,7 @@ import com.old.silence.job.common.grpc.auto.GrpcResult;
 import com.old.silence.job.common.grpc.auto.GrpcSilenceJobRequest;
 import com.old.silence.job.common.grpc.auto.Metadata;
 import com.old.silence.job.server.common.dto.GrpcRequest;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 
 public class UnaryRequestHandler implements ServerCalls.UnaryMethod<GrpcSilenceJobRequest, GrpcResult>{

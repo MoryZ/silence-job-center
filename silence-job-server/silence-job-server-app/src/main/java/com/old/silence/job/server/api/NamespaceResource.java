@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.data.commons.converter.QueryWrapperConverter;
+import com.old.silence.job.server.api.assembler.NamespaceMapper;
 import com.old.silence.job.server.domain.model.Namespace;
+import com.old.silence.job.server.domain.service.NamespaceService;
 import com.old.silence.job.server.dto.NamespaceCommand;
 import com.old.silence.job.server.dto.NamespaceQueryVO;
 import com.old.silence.job.server.vo.NamespaceResponseVO;
-import com.old.silence.job.server.web.api.assembler.NamespaceMapper;
-import com.old.silence.job.server.web.domain.service.NamespaceService;
 
 import java.math.BigInteger;
 import java.util.List;

@@ -7,7 +7,7 @@ import io.netty.handler.codec.http.HttpUtil;
 import io.netty.util.CharsetUtil;
 import org.apache.pekko.actor.ActorRef;
 import com.old.silence.job.server.common.dto.NettyHttpRequest;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 
 public class NettyHttpServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {

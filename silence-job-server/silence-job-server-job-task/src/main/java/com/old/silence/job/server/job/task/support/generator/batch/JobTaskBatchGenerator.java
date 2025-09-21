@@ -1,13 +1,13 @@
 package com.old.silence.job.server.job.task.support.generator.batch;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
-import com.old.silence.util.CollectionUtils;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.JobNotifyScene;
 import com.old.silence.job.common.enums.JobOperationReason;

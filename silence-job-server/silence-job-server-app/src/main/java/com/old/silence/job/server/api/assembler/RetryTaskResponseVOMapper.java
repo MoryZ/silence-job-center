@@ -3,25 +3,22 @@ package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.Retry;
 import com.old.silence.job.server.vo.RetryResponseVO;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.Objects;
 
 
-@Mapper
-public interface RetryTaskResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface RetryTaskResponseVOMapper extends Converter<Retry, RetryResponseVO> {
 
-    RetryTaskResponseVOMapper INSTANCE = Mappers.getMapper(RetryTaskResponseVOMapper.class);
-
+    @Override
     @Mapping(target = "nextTriggerAt", expression = "java(toLocalDateTime(retry.getNextTriggerAt()))")
- 
     RetryResponseVO convert(Retry retry);
 
-    List<RetryResponseVO> convertList(List<Retry> retries);
 
     default Instant toLocalDateTime(Long nextTriggerAt) {
         if (Objects.isNull(nextTriggerAt) || nextTriggerAt == 0) {

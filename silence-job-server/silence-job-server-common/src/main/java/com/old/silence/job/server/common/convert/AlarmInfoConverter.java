@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.convert;
 
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.lang.Assert;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

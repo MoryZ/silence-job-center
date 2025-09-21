@@ -2,18 +2,18 @@ package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
 import com.alibaba.fastjson2.JSON;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.server.domain.model.NotifyConfig;
 import com.old.silence.job.server.dto.NotifyConfigCommand;
 
 import java.util.Set;
 
-@Mapper
-public interface NotifyConfigMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface NotifyConfigMapper extends Converter<NotifyConfigCommand, NotifyConfig> {
 
-    NotifyConfigMapper INSTANCE = Mappers.getMapper(NotifyConfigMapper.class);
 
     default String toNotifyRecipientIdsStr(Set<Long> notifyRecipientIds) {
         if (CollectionUtils.isEmpty(notifyRecipientIds)) {
@@ -23,6 +23,7 @@ public interface NotifyConfigMapper {
         return JSON.toJSONString(notifyRecipientIds);
     }
 
-    @Mapping(target = "recipientIds", expression = "java(toNotifyRecipientIdsStr(notifyConfigVO.getRecipientIds()))")
-    NotifyConfig convert(NotifyConfigCommand notifyConfigVO);
+    @Override
+    @Mapping(target = "recipientIds", expression = "java(toNotifyRecipientIdsStr(notifyConfigCommand.getRecipientIds()))")
+    NotifyConfig convert(NotifyConfigCommand notifyConfigCommand);
 }

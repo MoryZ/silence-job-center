@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.data.commons.converter.QueryWrapperConverter;
 import com.old.silence.job.server.domain.model.JobTaskBatch;
+import com.old.silence.job.server.domain.service.JobBatchService;
 import com.old.silence.job.server.dto.JobBatchQueryVO;
 import com.old.silence.job.server.vo.JobBatchResponseVO;
-import com.old.silence.job.server.web.domain.service.JobBatchService;
 
 import java.math.BigInteger;
 import java.util.Set;

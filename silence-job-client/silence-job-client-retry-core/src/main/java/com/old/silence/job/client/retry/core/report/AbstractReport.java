@@ -1,6 +1,6 @@
 package com.old.silence.job.client.retry.report;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ReflectionUtils;
 import com.old.silence.job.client.common.config.SilenceJobProperties;

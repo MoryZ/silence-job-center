@@ -1,6 +1,6 @@
 package com.old.silence.job.client.handler.delete;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.lang.Pair;
 import com.old.silence.job.client.common.exception.SilenceJobClientException;
 import com.old.silence.job.client.handler.AbstractRequestHandler;

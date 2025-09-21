@@ -2,7 +2,7 @@ package com.old.silence.job.client.log;
 
 
 
-import com.old.silence.job.client.common.log.LogMeta;
+import com.old.silence.job.client.common.log.report.LogMeta;
 
 import java.math.BigInteger;
 

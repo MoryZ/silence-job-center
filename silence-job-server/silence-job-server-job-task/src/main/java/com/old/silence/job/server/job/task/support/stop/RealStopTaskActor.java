@@ -15,7 +15,7 @@ import com.old.silence.job.server.common.dto.RegisterNodeInfo;
 import com.old.silence.job.server.common.rpc.client.RequestBuilder;
 import com.old.silence.job.server.job.task.client.JobRpcClient;
 import com.old.silence.job.server.job.task.dto.RealStopTaskInstanceDTO;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.util.Objects;
 

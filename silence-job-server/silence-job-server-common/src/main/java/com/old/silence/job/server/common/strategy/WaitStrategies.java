@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.strategy;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import com.google.common.base.Preconditions;
 import com.old.silence.job.common.enums.DelayLevelEnum;
 import com.old.silence.job.common.exception.SilenceJobCommonException;

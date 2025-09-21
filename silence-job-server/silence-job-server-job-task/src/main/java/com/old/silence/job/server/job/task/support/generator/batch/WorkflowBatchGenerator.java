@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.generator.batch;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.springframework.stereotype.Component;
 import com.old.silence.job.common.enums.JobTaskBatchStatus;
 import com.old.silence.job.server.common.util.DateUtils;

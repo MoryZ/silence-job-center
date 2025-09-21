@@ -1,7 +1,7 @@
 package com.old.silence.job.client.handler.query;
 
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.lang.Pair;
 import com.alibaba.fastjson2.JSON;
 import com.old.silence.job.client.common.exception.SilenceJobClientException;

@@ -1,7 +1,7 @@
 package com.old.silence.job.client.retry.loader;
 
 import cn.hutool.util.ServiceLoaderUtil;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.client.RetryArgSerializer;
 import com.old.silence.job.client.RetrySiteSnapshotContext;
 import com.old.silence.job.client.event.SilenceJobListener;

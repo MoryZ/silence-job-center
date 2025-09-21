@@ -1,15 +1,18 @@
 package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.vo.DashboardRetryLineResponseDO;
 import com.old.silence.job.server.vo.DashboardRetryLineResponseVO;
 
 
-@Mapper
-public interface SceneQuantityRankResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface SceneQuantityRankResponseVOMapper extends Converter<DashboardRetryLineResponseDO.Rank, DashboardRetryLineResponseVO.Rank> {
 
-    SceneQuantityRankResponseVOMapper INSTANCE = Mappers.getMapper(SceneQuantityRankResponseVOMapper.class);
 
-    DashboardRetryLineResponseVO.Rank convertList(DashboardRetryLineResponseDO.Rank rank);
+    @Override
+    DashboardRetryLineResponseVO.Rank convert(DashboardRetryLineResponseDO.Rank rank);
+
+    DashboardRetryLineResponseVO.Task convert(DashboardRetryLineResponseDO.Task task);
 }

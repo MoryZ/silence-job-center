@@ -61,7 +61,7 @@
         <!-- 上报日志，采用logback打印，排除log4j2 -->
         <dependency>
             <groupId>com.old.silence</groupId>
-            <artifactId>silence-job-log</artifactId>
+            <artifactId>silence-job-common-log</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
@@ -84,6 +84,12 @@
         <dependency>
             <groupId>com.old.silence</groupId>
             <artifactId>silence-job-server-retry-task</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-job-server-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 

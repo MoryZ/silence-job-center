@@ -5,7 +5,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.old.silence.job.log.SilenceJobLog;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RetryExecutorResultDTO;
 import com.old.silence.job.server.retry.task.support.RetryResultHandler;
 import com.old.silence.job.server.retry.task.support.RetryTaskConverter;

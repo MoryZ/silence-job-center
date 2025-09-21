@@ -1,19 +1,18 @@
 package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.RetryDeadLetter;
 import com.old.silence.job.server.vo.RetryDeadLetterResponseVO;
 
-import java.util.List;
 
 
-@Mapper
-public interface RetryDeadLetterResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface RetryDeadLetterResponseVOMapper extends Converter<RetryDeadLetter, RetryDeadLetterResponseVO> {
 
-    RetryDeadLetterResponseVOMapper INSTANCE = Mappers.getMapper(RetryDeadLetterResponseVOMapper.class);
 
+    @Override
     RetryDeadLetterResponseVO convert(RetryDeadLetter retryDeadLetter);
 
-    List<RetryDeadLetterResponseVO> convertList(List<RetryDeadLetter> retryDeadLetters);
 }

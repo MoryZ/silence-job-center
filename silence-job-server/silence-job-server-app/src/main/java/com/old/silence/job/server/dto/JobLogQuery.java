@@ -1,11 +1,6 @@
 package com.old.silence.job.server.dto;
 
-
-
-
-
 import java.math.BigInteger;
-
 
 
 

@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.server.common.dto.DistributeInstance;
+import com.old.silence.job.server.domain.service.DashboardService;
 import com.old.silence.job.server.dto.JobLineQueryVo;
 import com.old.silence.job.server.dto.LineQueryVO;
 import com.old.silence.job.server.vo.DashboardCardResponseVO;
 import com.old.silence.job.server.vo.DashboardRetryLineResponseVO;
-import com.old.silence.job.server.web.domain.service.DashboardService;
 
 import java.util.Set;
 

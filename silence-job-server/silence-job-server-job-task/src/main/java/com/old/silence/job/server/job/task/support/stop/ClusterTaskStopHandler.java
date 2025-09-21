@@ -9,7 +9,7 @@ import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
 import com.old.silence.job.server.job.task.dto.RealStopTaskInstanceDTO;
 import com.old.silence.job.server.job.task.support.JobTaskConverter;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.util.List;
 

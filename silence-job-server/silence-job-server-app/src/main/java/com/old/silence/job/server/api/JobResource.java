@@ -5,20 +5,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.data.commons.converter.QueryWrapperConverter;
+import com.old.silence.job.server.api.assembler.JobMapper;
 import com.old.silence.job.server.domain.model.Job;
+import com.old.silence.job.server.domain.service.JobService;
 import com.old.silence.job.server.dto.ExportJobVO;
 import com.old.silence.job.server.dto.JobCommand;
 import com.old.silence.job.server.dto.JobQuery;
 import com.old.silence.job.server.dto.JobTriggerVO;
+import com.old.silence.job.server.util.ExportUtils;
+import com.old.silence.job.server.util.ImportUtils;
 import com.old.silence.job.server.vo.JobResponseVO;
-import com.old.silence.job.server.web.api.assembler.JobMapper;
-import com.old.silence.job.server.web.domain.service.JobService;
-import com.old.silence.job.server.web.util.ExportUtils;
-import com.old.silence.job.server.web.util.ImportUtils;
+
 
 import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
@@ -33,9 +34,11 @@ import java.util.Set;
 public class JobResource {
 
     private final JobService jobService;
+    private final JobMapper jobMapper;
 
-    public JobResource(JobService jobService) {
+    public JobResource(JobService jobService, JobMapper jobMapper) {
         this.jobService = jobService;
+        this.jobMapper = jobMapper;
     }
 
     @GetMapping(value = "/jobs", params = {"pageNo", "pageSize"})
@@ -63,13 +66,13 @@ public class JobResource {
 
     @PostMapping("/jobs")
     public Boolean create(@RequestBody @Validated JobCommand jobCommand) {
-        var job = JobMapper.INSTANCE.convert(jobCommand);
+        var job = jobMapper.convert(jobCommand);
         return jobService.create(job);
     }
 
     @PutMapping("/jobs/{id}")
     public Boolean update(@PathVariable BigInteger id, @RequestBody @Validated JobCommand jobCommand) {
-        var job = JobMapper.INSTANCE.convert(jobCommand);
+        var job = jobMapper.convert(jobCommand);
         job.setId(id);
         return jobService.update(job);
     }
@@ -97,7 +100,7 @@ public class JobResource {
     @PostMapping(value = "/jobs/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void importScene(@RequestPart("file") MultipartFile file) throws IOException {
         var jobCommands = ImportUtils.parseList(file, JobCommand.class);
-        var jobs = CollectionUtils.transformToList(jobCommands, JobMapper.INSTANCE::convert);
+        var jobs = CollectionUtils.transformToList(jobCommands, jobMapper::convert);
         jobService.importJobs(jobs);
     }
 

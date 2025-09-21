@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.callback;
 
-import com.old.silence.job.client.model.ExecuteResult;
+import com.old.silence.job.common.client.dto.ExecuteResult;
 import com.old.silence.job.common.enums.JobTaskStatus;
 import com.old.silence.job.server.domain.model.Job;
 import com.old.silence.job.server.domain.model.JobTask;

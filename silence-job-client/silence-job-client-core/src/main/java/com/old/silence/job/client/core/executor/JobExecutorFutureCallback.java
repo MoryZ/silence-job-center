@@ -15,10 +15,10 @@ import java.util.concurrent.CancellationException;
 import com.alibaba.fastjson2.JSON;
 
 import com.google.common.util.concurrent.FutureCallback;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.client.common.cache.GroupVersionCache;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
-import com.old.silence.job.client.common.log.SilenceJobLogManager;
+import com.old.silence.job.client.common.log.support.SilenceJobLogManager;
 import com.old.silence.job.client.common.rpc.client.RequestBuilder;
 import com.old.silence.job.client.cache.ThreadPoolCache;
 import com.old.silence.job.client.client.JobNettyClient;

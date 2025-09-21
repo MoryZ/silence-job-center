@@ -1,6 +1,6 @@
 package com.old.silence.job.client.register.scan;
 
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.client.IJobExecutor;
 import com.old.silence.job.client.Scanner;
 import com.old.silence.job.client.annotation.JobExecutor;

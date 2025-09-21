@@ -2,7 +2,8 @@ package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.vo.DashboardCardResponseDO;
 import com.old.silence.job.server.vo.DashboardCardResponseVO;
 import com.old.silence.job.server.vo.DashboardRetryLineResponseDO;
@@ -13,18 +14,18 @@ import java.math.RoundingMode;
 import java.util.Objects;
 
 
-@Mapper
-public interface JobSummaryResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface JobSummaryResponseVOMapper extends Converter<DashboardCardResponseDO.JobTask, DashboardCardResponseVO.JobTask> {
 
-    JobSummaryResponseVOMapper INSTANCE = Mappers.getMapper(JobSummaryResponseVOMapper.class);
 
-    @Mapping(target = "successRate", expression = "java(JobSummaryResponseVOMapper.toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))")
+    @Override
+    @Mapping(target = "successRate", expression = "java(toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))")
     DashboardCardResponseVO.JobTask convert(DashboardCardResponseDO.JobTask jobTask);
 
-    @Mapping(target = "successRate", expression = "java(JobSummaryResponseVOMapper.toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))")
+    @Mapping(target = "successRate", expression = "java(toSuccessRate(jobTask.getSuccessNum(), jobTask.getTotalNum()))")
     DashboardCardResponseVO.WorkFlowTask convertToWorkFlowTask(DashboardCardResponseDO.JobTask jobTask);
 
-    DashboardRetryLineResponseVO.Task convertList(DashboardRetryLineResponseDO.Task task);
+    DashboardRetryLineResponseVO.Task convert(DashboardRetryLineResponseDO.Task task);
 
     static BigDecimal toSuccessRate(Integer successNum, Integer totalNum) {
         if (Objects.isNull(totalNum) || totalNum == 0) {

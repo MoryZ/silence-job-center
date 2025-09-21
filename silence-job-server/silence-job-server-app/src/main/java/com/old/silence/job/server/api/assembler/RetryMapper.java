@@ -2,16 +2,14 @@ package com.old.silence.job.server.api.assembler;
 
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.Retry;
-import com.old.silence.job.server.retry.task.dto.RetryTaskPrepareDTO;
-import com.old.silence.job.server.retry.task.dto.TaskStopJobDTO;
+import com.old.silence.job.server.dto.RetryCommand;
 
-@Mapper
-public interface RetryMapper {
-    RetryMapper INSTANCE = Mappers.getMapper(RetryMapper.class);
+@Mapper(uses = MapStructSpringConfig.class)
+public interface RetryMapper extends Converter<RetryCommand, Retry> {
 
-    RetryTaskPrepareDTO toRetryTaskPrepareDTO(Retry retry);
-
-    TaskStopJobDTO toTaskStopJobDTO(Retry retry);
+    @Override
+    Retry convert(RetryCommand source);
 }

@@ -1,6 +1,6 @@
 package com.old.silence.job.server.job.task.support.dispatch;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.apache.pekko.actor.AbstractActor;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -15,7 +15,7 @@ import com.old.silence.job.server.job.task.dto.CompleteJobBatchDTO;
 import com.old.silence.job.server.job.task.dto.JobExecutorResultDTO;
 import com.old.silence.job.server.job.task.support.JobTaskConverter;
 import com.old.silence.job.server.job.task.support.handler.JobTaskBatchHandler;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.util.Objects;
 

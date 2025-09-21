@@ -1,8 +1,8 @@
 package com.old.silence.job.client.common.rpc.client;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.util.IdUtil;
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.lang.Assert;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.*;

@@ -210,7 +210,6 @@
         <module>silence-job-client</module>
         <module>silence-job-client-starter</module>
         <module>silence-job-common</module>
-        <module>silence-job-log</module>
         <module>silence-job-server</module>
     </modules>
 </project>

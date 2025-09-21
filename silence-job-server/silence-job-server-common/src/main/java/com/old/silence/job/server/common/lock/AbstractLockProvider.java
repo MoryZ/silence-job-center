@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.lock;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 
 import com.old.silence.context.CommonErrors;
 import com.old.silence.job.server.common.cache.CacheLockRecord;

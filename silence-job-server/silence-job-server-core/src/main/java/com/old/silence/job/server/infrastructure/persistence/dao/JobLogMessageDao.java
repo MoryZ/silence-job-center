@@ -7,12 +7,7 @@ import com.old.silence.job.server.domain.model.JobLogMessage;
 
 import java.util.List;
 
-/**
- * <p>
- * 调度日志 Mapper 接口
- * </p>
- *
- */
+
 @Mapper
 public interface JobLogMessageDao extends BaseMapper<JobLogMessage> {
 

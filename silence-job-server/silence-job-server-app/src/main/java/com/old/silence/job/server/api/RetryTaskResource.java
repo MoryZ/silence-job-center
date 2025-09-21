@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.server.domain.model.RetryTask;
 import com.old.silence.job.server.domain.model.RetryTaskLogMessage;
+import com.old.silence.job.server.domain.service.RetryTaskService;
 import com.old.silence.job.server.dto.RetryTaskLogMessageQueryVO;
 import com.old.silence.job.server.dto.RetryTaskQueryVO;
 import com.old.silence.job.server.vo.RetryTaskLogMessageResponseVO;
 import com.old.silence.job.server.vo.RetryTaskResponseVO;
-import com.old.silence.job.server.web.domain.service.RetryTaskService;
 
 import javax.validation.constraints.NotEmpty;
 import java.math.BigInteger;
@@ -26,7 +26,7 @@ import java.util.Set;
  *
  */
 @RestController
-@RequestMapping("/retry-task")
+@RequestMapping("/api/v1")
 public class RetryTaskResource {
 
     private final RetryTaskService retryTaskService;
@@ -36,37 +36,37 @@ public class RetryTaskResource {
     }
 
 
-    @GetMapping("list")
+    @GetMapping(value = "/retryTasks", params = {"pageNo", "pageSize"})
     public IPage<RetryTaskResponseVO> getRetryTaskPage(Page<RetryTask> page, RetryTaskQueryVO queryVO) {
         return retryTaskService.getRetryTaskLogPage(page, queryVO);
     }
 
     
-    @GetMapping("/message/list")
+    @GetMapping(value = "/retryTasks/messages", params = {"pageNo", "pageSize"})
     public RetryTaskLogMessageResponseVO getRetryTaskLogMessagePage(Page<RetryTaskLogMessage> page, RetryTaskLogMessageQueryVO queryVO) {
         return retryTaskService.getRetryTaskLogMessagePage(page, queryVO);
     }
 
     
-    @GetMapping("{id}")
+    @GetMapping("/retryTasks/{id}")
     public RetryTaskResponseVO getRetryTaskById(@PathVariable BigInteger id) {
         return retryTaskService.getRetryTaskById(id);
     }
 
     
-    @PostMapping("/stop/{id}")
+    @PostMapping("/retryTasks/{id}/stop")
     public Boolean stopById(@PathVariable BigInteger id) {
         return retryTaskService.stopById(id);
     }
 
     
-    @DeleteMapping("{id}")
+    @DeleteMapping("/retryTasks/{id}")
     public Boolean deleteById(@PathVariable BigInteger id) {
         return retryTaskService.deleteById(id);
     }
 
     
-    @DeleteMapping("ids")
+    @DeleteMapping("/retryTasks")
     public Boolean batchDelete(@RequestBody @NotEmpty(message = "ids不能为空") Set<BigInteger> ids) {
         return retryTaskService.batchDelete(ids);
     }

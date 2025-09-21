@@ -3,6 +3,7 @@ package com.old.silence.job.server.common.handler;
 
 import org.springframework.stereotype.Component;
 import com.old.silence.job.common.model.ApiResult;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 import com.old.silence.job.server.common.cache.CacheRegisterTable;
@@ -10,6 +11,7 @@ import com.old.silence.job.server.common.client.CommonRpcClient;
 import com.old.silence.job.server.common.dto.ConfigSyncTask;
 import com.old.silence.job.server.common.dto.RegisterNodeInfo;
 import com.old.silence.job.server.common.rpc.client.RequestBuilder;
+import com.old.silence.job.server.domain.service.AccessTemplate;
 
 import java.util.Objects;
 import java.util.Set;

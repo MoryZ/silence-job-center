@@ -2,6 +2,7 @@ package com.old.silence.job.server.common.client;
 
  
 import com.old.silence.job.common.model.ApiResult;
+import com.old.silence.job.common.server.dto.ConfigDTO;
 import com.old.silence.job.server.common.dto.PullRemoteNodeClientRegisterInfoDTO;
 import com.old.silence.job.server.common.rpc.client.RequestMethod;
 import com.old.silence.job.server.common.rpc.client.annotation.Body;

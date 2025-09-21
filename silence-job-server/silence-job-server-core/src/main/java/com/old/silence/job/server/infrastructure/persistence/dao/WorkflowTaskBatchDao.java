@@ -3,11 +3,11 @@ package com.old.silence.job.server.infrastructure.persistence.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import com.baomidou.mybatisplus.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.server.domain.model.WorkflowTaskBatch;
-import com.old.silence.job.server.dto.WorkflowBatchResponseDO;
+import com.old.silence.job.server.vo.WorkflowBatchResponseDO;
 
 import java.util.List;
 

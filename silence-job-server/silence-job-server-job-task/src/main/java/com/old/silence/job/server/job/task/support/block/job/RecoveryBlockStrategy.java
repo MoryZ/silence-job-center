@@ -1,10 +1,10 @@
 package com.old.silence.job.server.job.task.support.block.job;
 
-import cn.hutool.lang.Assert;
+import cn.hutool.core.lang.Assert;
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
-import com.baomidou.mybatisplus.conditions.query.LambdaQueryWrapper;
-import com.old.silence.util.CollectionUtils;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobBlockStrategy;
 import com.old.silence.job.common.enums.JobTaskExecutorScene;
 import com.old.silence.job.common.enums.JobTaskStatus;
@@ -19,7 +19,7 @@ import com.old.silence.job.server.job.task.support.JobExecutor;
 import com.old.silence.job.server.job.task.support.JobTaskConverter;
 import com.old.silence.job.server.job.task.support.executor.job.JobExecutorContext;
 import com.old.silence.job.server.job.task.support.executor.job.JobExecutorFactory;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.util.List;
 

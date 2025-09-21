@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.job.server.api.assembler.NotifyConfigMapper;
 import com.old.silence.job.server.domain.model.NotifyConfig;
+import com.old.silence.job.server.domain.service.NotifyConfigService;
 import com.old.silence.job.server.dto.NotifyConfigCommand;
 import com.old.silence.job.server.dto.NotifyConfigQueryVO;
 import com.old.silence.job.server.vo.NotifyConfigResponseVO;
-import com.old.silence.job.server.web.domain.service.NotifyConfigService;
 
 import javax.validation.constraints.NotEmpty;
 import java.math.BigInteger;
@@ -28,9 +29,11 @@ import java.util.Set;
 @RequestMapping("/api/v1")
 public class NotifyConfigResource {
     private final NotifyConfigService notifyConfigService;
+    private final NotifyConfigMapper notifyConfigMapper;
 
-    public NotifyConfigResource(NotifyConfigService notifyConfigService) {
+    public NotifyConfigResource(NotifyConfigService notifyConfigService, NotifyConfigMapper notifyConfigMapper) {
         this.notifyConfigService = notifyConfigService;
+        this.notifyConfigMapper = notifyConfigMapper;
     }
 
     @GetMapping(value = "/notifyConfig", params = {"pageNo", "pageSize"})
@@ -52,14 +55,17 @@ public class NotifyConfigResource {
 
     
     @PostMapping("/notifyConfig")
-    public Boolean saveNotify(@RequestBody @Validated NotifyConfigCommand requestVO) {
-        return notifyConfigService.saveNotify(requestVO);
+    public Boolean create(@RequestBody @Validated NotifyConfigCommand notifyConfigCommand) {
+        var notifyConfig = notifyConfigMapper.convert(notifyConfigCommand);
+        return notifyConfigService.saveNotify(notifyConfig);
     }
 
     
     @PutMapping("/notifyConfig/{id}")
-    public Boolean updateNotify(@PathVariable BigInteger id, @RequestBody @Validated NotifyConfigCommand requestVO) {
-        return notifyConfigService.updateNotify(requestVO);
+    public Boolean update(@PathVariable BigInteger id, @RequestBody @Validated NotifyConfigCommand notifyConfigCommand) {
+        var notifyConfig = notifyConfigMapper.convert(notifyConfigCommand);
+        notifyConfig.setId(id);
+        return notifyConfigService.updateNotify(notifyConfig);
     }
 
     

@@ -1,17 +1,18 @@
 package com.old.silence.job.server.api.assembler;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.springframework.core.convert.converter.Converter;
+import com.old.silence.core.mapstruct.MapStructSpringConfig;
 import com.old.silence.job.server.domain.model.ServerNode;
 import com.old.silence.job.server.vo.ServerNodeResponseVO;
 
 
-@Mapper
-public interface ServerNodeResponseVOMapper {
+@Mapper(uses = MapStructSpringConfig.class)
+public interface ServerNodeResponseVOMapper extends Converter<ServerNode, ServerNodeResponseVO> {
 
-    ServerNodeResponseVOMapper INSTANCE = Mappers.getMapper(ServerNodeResponseVOMapper.class);
 
- 
-    ServerNodeResponseVO convert(ServerNode server);
+
+    @Override
+    ServerNodeResponseVO convert(ServerNode serverNode);
 
 }

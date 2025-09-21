@@ -1,6 +1,6 @@
 package com.old.silence.job.client.retry.generator;
 
-import cn.hutool.util.StrUtil;
+import cn.hutool.core.lang.Assert;
 import com.google.common.hash.Hashing;
 import com.old.silence.job.client.IdempotentIdGenerate;
 import com.old.silence.job.common.model.IdempotentIdContext;

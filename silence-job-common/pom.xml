@@ -17,6 +17,7 @@
         <module>silence-job-common-server-api</module>
         <module>silence-job-common-client-api</module>
         <module>silence-job-common-core</module>
+        <module>silence-job-common-log</module>
     </modules>
 
 </project>

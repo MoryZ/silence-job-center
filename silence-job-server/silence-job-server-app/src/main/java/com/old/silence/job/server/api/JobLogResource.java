@@ -4,13 +4,13 @@ package com.old.silence.job.server.api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.old.silence.job.server.domain.service.JobLogService;
 import com.old.silence.job.server.dto.JobLogQuery;
 import com.old.silence.job.server.vo.JobLogResponseVO;
-import com.old.silence.job.server.web.domain.service.JobLogService;
 
 
 @RestController
-@RequestMapping("/job")
+@RequestMapping("/api/v1/")
 public class JobLogResource {
 
     private final JobLogService jobLogService;
@@ -19,7 +19,7 @@ public class JobLogResource {
         this.jobLogService = jobLogService;
     }
 
-    @GetMapping("/log/list")
+    @GetMapping("/jobLogs")
     public JobLogResponseVO getJobLogPage(JobLogQuery jobQueryVO) {
         return jobLogService.getJobLogPage(jobQueryVO);
     }

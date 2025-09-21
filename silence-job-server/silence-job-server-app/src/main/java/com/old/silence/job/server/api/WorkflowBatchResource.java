@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.baomidou.mybatisplus.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.server.domain.model.WorkflowTaskBatch;
-import com.old.silence.job.server.dto.WorkflowBatchQueryVO;
+import com.old.silence.job.server.domain.service.WorkflowBatchService;
+import com.old.silence.job.server.dto.WorkflowBatchQuery;
 import com.old.silence.job.server.vo.WorkflowBatchResponseVO;
 import com.old.silence.job.server.vo.WorkflowDetailResponseVO;
-import com.old.silence.job.server.web.domain.service.WorkflowBatchService;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 
 @RestController
-@RequestMapping("/workflow/batch")
+@RequestMapping("/api/v1")
 public class WorkflowBatchResource {
     private final WorkflowBatchService workflowBatchService;
 
@@ -32,24 +32,23 @@ public class WorkflowBatchResource {
     }
 
 
-    @GetMapping("/page/list")
-    public IPage<WorkflowBatchResponseVO> listPage(Page<WorkflowTaskBatch> page, WorkflowBatchQueryVO queryVO) {
+    @GetMapping(value = "/workflowBatches", params = {"pageNo", "pageSize"})
+    public IPage<WorkflowBatchResponseVO> listPage(Page<WorkflowTaskBatch> page, WorkflowBatchQuery queryVO) {
         return workflowBatchService.listPage(page, queryVO);
     }
 
     
-    @GetMapping("{id}")
+    @GetMapping("/workflowBatches/{id}")
     public WorkflowDetailResponseVO getWorkflowBatchDetail(@PathVariable BigInteger id) {
         return workflowBatchService.getWorkflowBatchDetail(id);
     }
 
-    @PostMapping("/stop/{id}")
-    
+    @PostMapping("/workflowBatches/{id}/stop")
     public Boolean stop(@PathVariable BigInteger id) {
         return workflowBatchService.stop(id);
     }
 
-    @DeleteMapping("/ids")
+    @DeleteMapping("/workflowBatches/ids")
     public Boolean deleteByIds(@RequestBody
                                @NotEmpty(message = "ids不能为空")
                                @Size(max = 100, message = "最多删除 {max} 个")

@@ -2,13 +2,13 @@ package com.old.silence.job.server.dispatch;
 
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
-import com.old.silence.util.CollectionUtils;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 import com.old.silence.job.server.common.dto.DistributeInstance;
 import com.old.silence.job.server.domain.model.GroupConfig;
-import com.old.silence.job.server.pekko.ActorGenerator;
+import com.old.silence.job.common.pekko.ActorGenerator;
 
 import java.util.Set;
 import java.util.concurrent.Executors;
