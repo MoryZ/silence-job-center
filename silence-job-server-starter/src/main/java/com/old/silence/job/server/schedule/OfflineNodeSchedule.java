@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
  *
  */
 @Component
-
 public class OfflineNodeSchedule extends AbstractSchedule implements Lifecycle {
     private final ServerNodeDao serverNodeDao;
 

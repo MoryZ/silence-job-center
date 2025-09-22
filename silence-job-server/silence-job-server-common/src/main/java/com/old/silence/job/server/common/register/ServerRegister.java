@@ -35,7 +35,8 @@ import java.util.concurrent.TimeUnit;
 @Component(ServerRegister.BEAN_NAME)
 public class ServerRegister extends AbstractRegister {
     public static final String BEAN_NAME = "serverRegister";
-    private final ScheduledExecutorService serverRegisterNode = Executors.newSingleThreadScheduledExecutor(r -> new Thread(r, "server-register-node"));
+    private final ScheduledExecutorService serverRegisterNode =
+            Executors.newSingleThreadScheduledExecutor(r -> new Thread(r, "server-register-node"));
     public static final int DELAY_TIME = 30;
     public static final String CURRENT_CID;
     public static final String GROUP_NAME = "DEFAULT_SERVER";
@@ -48,7 +49,8 @@ public class ServerRegister extends AbstractRegister {
         CURRENT_CID = IdUtil.getSnowflakeNextIdStr();
     }
 
-    protected ServerRegister(ServerNodeDao serverNodeDao, SystemProperties systemProperties, ServerProperties serverProperties) {
+    protected ServerRegister(ServerNodeDao serverNodeDao, SystemProperties systemProperties,
+                             ServerProperties serverProperties) {
         super(serverNodeDao);
         this.systemProperties = systemProperties;
         this.serverProperties = serverProperties;

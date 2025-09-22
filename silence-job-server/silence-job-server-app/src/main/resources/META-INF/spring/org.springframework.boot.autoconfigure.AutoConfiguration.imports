@@ -1,1 +1,1 @@
-com.old.silence.job.server.api.config.JobServerNettyAutoConfiguration
+com.old.silence.job.server.config.JobServerNettyAutoConfiguration

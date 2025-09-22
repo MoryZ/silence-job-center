@@ -56,8 +56,8 @@ public class GrpcChannel {
      *
      * @param url   url地址
      * @param body  请求的消息体
-     * @param reqId
-     * @throws InterruptedException
+     * @param reqId 请求id
+     * @throws InterruptedException 终端异常
      */
     public static ListenableFuture<GrpcResult> send(String hostId, String hostIp, Integer port, String url, String body, Map<String, String> headersMap,
         final long reqId) {
@@ -118,7 +118,6 @@ public class GrpcChannel {
     /**
      * 连接客户端
      *
-     * @return
      */
     public static ManagedChannel connect(String hostId, String ip, Integer port) {
 

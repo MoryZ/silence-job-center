@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.old.silence.platform.job.server.infrastructure.persistence.dao.RetryTaskLogMessageDao">
+<mapper namespace="com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskLogMessageDao">
 
     <insert id="insertBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO sj_retry_task_log_message (namespace_id, group_name, retry_task_id, retry_id, log_num, message,

@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.data.commons.converter.QueryWrapperConverter;
 import com.old.silence.job.server.domain.model.JobTaskBatch;
 import com.old.silence.job.server.domain.service.JobBatchService;
-import com.old.silence.job.server.dto.JobBatchQueryVO;
+import com.old.silence.job.server.dto.JobBatchQuery;
 import com.old.silence.job.server.vo.JobBatchResponseVO;
 
 import java.math.BigInteger;
@@ -29,7 +29,7 @@ public class JobBatchResource {
     }
 
     @GetMapping("/jobBatches")
-    public IPage<JobBatchResponseVO> getJobBatchPage(Page<JobTaskBatch> page, JobBatchQueryVO jobQueryVO) {
+    public IPage<JobBatchResponseVO> getJobBatchPage(Page<JobTaskBatch> page, JobBatchQuery jobQueryVO) {
         var queryWrapper = QueryWrapperConverter.convert(jobQueryVO, JobTaskBatch.class);
         return jobBatchService.getJobBatchPage(page, queryWrapper);
     }

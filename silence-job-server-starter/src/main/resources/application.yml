@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/silence-platform?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
-    password: 123456
+    password: admin123456
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       connection-timeout: 30000
@@ -50,12 +50,7 @@ mybatis-plus:
       logic-delete-value: 1
   type-handlers-package: com.old.silence.data.commons.handler
 
-threadpool:
-  config:
-    coreSize: 10
-    maxSize: 10
-    keepAliveTime: 3000
-    queueSize: 5000
+
 
 silence-job:
   retry-pull-page-size: 1000 # 拉取重试数据的每批次的大小
@@ -63,7 +58,21 @@ silence-job:
   server-port: 17888  # 服务器端口
   log-storage: 7 # 日志保存时间(单位: day)
   rpc-type: grpc
+  threadpool:
+    config:
+      coreSize: 10
+      maxSize: 10
+      keepAliveTime: 3000
+      queueSize: 5000
 
 platform:
   system:
     identifier: JC
+
+
+silence:
+  auth:
+    center:
+      security:
+        api:
+          white-list:

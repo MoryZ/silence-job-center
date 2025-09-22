@@ -3,6 +3,7 @@ package com.old.silence.job.server.listener;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import com.old.silence.job.common.util.SilenceJobVersion;
 import com.old.silence.job.log.SilenceJobLog;
@@ -27,7 +28,7 @@ public class EndListener implements ApplicationListener<ContextClosedEvent> {
     }
 
     @Override
-    public void onApplicationEvent(ContextClosedEvent event) {
+    public void onApplicationEvent(@NonNull ContextClosedEvent event) {
         SilenceJobLog.LOCAL.info("silence-job client about to shutdown v{}", SilenceJobVersion.getVersion());
         lifecycles.forEach(Lifecycle::close);
         SilenceJobLog.LOCAL.info("silence-job client closed successfully v{}", SilenceJobVersion.getVersion());

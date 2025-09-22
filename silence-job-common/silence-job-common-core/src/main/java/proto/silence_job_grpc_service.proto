@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "com.old.silence.job.common.grpc.auto";
+option java_package = "com.old.silence.job.comm on.grpc.auto";
 
 message Metadata {
   string uri = 3;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.old.silence.platform.job.server.infrastructure.persistence.dao.RetryDao">
+<mapper namespace="com.old.silence.job.server.infrastructure.persistence.dao.RetryDao">
 
     <insert id="insertBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO sj_retry (namespace_id, group_name, scene_name, idempotent_id, biz_no,
@@ -42,7 +42,7 @@
     </update>
 
     <select id="selectRetrySummaryList"
-            resultType="com.old.silence.platform.job.server.vo.DashboardRetryResponseDO">
+            resultType="com.old.silence.job.server.vo.DashboardRetryResponseDO">
         SELECT namespace_id                                          AS namespaceId,
                group_name                                            AS groupName,
                scene_name                                            AS sceneName,

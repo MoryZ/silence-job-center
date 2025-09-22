@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.old.silence</groupId>
-        <artifactId>silence-job-common</artifactId>
+        <artifactId>silence-job-center</artifactId>
         <version>1.8.0-SNAPSHOT</version>
-        <!--<relativePath>../pom.xml</relativePath>-->
+        <!--relativePath>../pom.xml</relativePath>-->
     </parent>
 
-    <artifactId>silence-job-common-log</artifactId>
+    <artifactId>silence-job-server-starter</artifactId>
+    <name>silence-job-server-starter</name>
     <packaging>jar</packaging>
-    <name>silence-job-common-log</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -19,37 +19,32 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-            <optional>true</optional>
-        </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-job-server-common</artifactId>
+            <version>1.8.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.old.silence</groupId>
-            <artifactId>platform-core</artifactId>
+            <artifactId>silence-job-server-retry-task</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-job-server-job-task</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.old.silence</groupId>
-            <artifactId>platform-web</artifactId>
+            <artifactId>platform-webmvc</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-auth-center-client</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 </project>

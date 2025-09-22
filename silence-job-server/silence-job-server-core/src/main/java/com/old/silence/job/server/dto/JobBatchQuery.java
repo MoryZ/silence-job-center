@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 
-public class JobBatchQueryVO  {
+public class JobBatchQuery {
     @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private BigInteger jobId;
     //@RelationalQueryProperty(name = "", type = Part.Type.STARTING_WITH)

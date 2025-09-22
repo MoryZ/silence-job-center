@@ -43,7 +43,6 @@ public class JsonUtils {
      * 将Java对象转JSON 字符串
      *
      * @param object
-     * @return
      */
     public static String toJsonString(Object object) {
         return JsonMapper.toJsonString(object);
@@ -55,7 +54,6 @@ public class JsonUtils {
      * @param jsonString
      * @param clazz
      * @param <T>
-     * @return
      */
     public static <T> T parseObject(String jsonString, Class<T> clazz) {
         return JsonMapper.toJavaObject(jsonString, clazz);
@@ -74,7 +72,6 @@ public class JsonUtils {
      * @param jsonString
      * @param clazz
      * @param <T>
-     * @return
      */
     public static <T> List<T> parseList(String jsonString, Class<T> clazz) {
         JavaType javaType = JsonMapper.getCollectionType(ArrayList.class, clazz);
@@ -85,7 +82,6 @@ public class JsonUtils {
      * 将JSON字符串转Map 对象
      *
      * @param jsonString
-     * @return
      */
     public static <K, V> Map<K, V> parseHashMap(String jsonString) {
         return JsonMapper.toJavaObject(jsonString, HashMap.class);
@@ -95,7 +91,6 @@ public class JsonUtils {
      * 将JSON字符串转ConcurrentHashMap 对象
      *
      * @param jsonString
-     * @return
      */
     public static <K, V> Map<K, V> parseConcurrentHashMap(String jsonString) {
         return JsonMapper.toJavaObject(jsonString, ConcurrentHashMap.class);
@@ -105,7 +100,6 @@ public class JsonUtils {
      * 将JSON字符串转Map 对象
      *
      * @param jsonString
-     * @return
      */
     public static <T> Map<String, T> parseHashMap(String jsonString, Class<T> clazz) {
         return (Map<String, T>) JsonMapper.toJavaObject(jsonString, new TypeReference<HashMap<String, T>>() {
@@ -116,7 +110,6 @@ public class JsonUtils {
      * 将JSON字符串转Map 对象
      *
      * @param jsonString
-     * @return
      */
     public static <T> T parseObject(String jsonString, TypeReference<T> reference) {
         return (T) JsonMapper.toJavaObject(jsonString, reference);
@@ -126,7 +119,6 @@ public class JsonUtils {
      * 将JSON字符串转JSON 对象
      *
      * @param jsonString
-     * @return
      */
     public static JsonNode toJson(String jsonString) {
         return JsonMapper.toJson(jsonString);
@@ -136,7 +128,6 @@ public class JsonUtils {
      * 将JSON字符串转JSON 对象
      *
      * @param object
-     * @return
      */
     public static JsonNode toJson(Object object) {
         return JsonMapper.toJson(object);
@@ -146,7 +137,6 @@ public class JsonUtils {
      * 将JSON字符串转JSON 对象
      *
      * @param jsonBytes
-     * @return
      */
     public static JsonNode toJson(byte[] jsonBytes) {
         return JsonMapper.toJson(jsonBytes);

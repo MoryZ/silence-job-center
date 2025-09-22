@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.old.silence.platform.job.server.infrastructure.persistence.dao.JobTaskDao">
+<mapper namespace="com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao">
 
     <insert id="insertBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO sj_job_task (namespace_id, group_name, job_id, task_batch_id, parent_id, task_status,

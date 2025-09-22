@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.old.silence.platform.job.server.infrastructure.persistence.dao.JobSummaryDao">
+<mapper namespace="com.old.silence.job.server.infrastructure.persistence.dao.JobSummaryDao">
 
     <insert id="insertBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO sj_job_summary (namespace_id, group_name, business_id, trigger_at, system_task_type, success_num,
@@ -54,7 +54,7 @@
     </update>
 
     <select id="selectJobLineList"
-            resultType="com.old.silence.platform.job.server.vo.DashboardLineResponseDO">
+            resultType="com.old.silence.job.server.vo.DashboardLineResponseDO">
         SELECT DATE_FORMAT(trigger_at, #{dateFormat})                           AS createdDate,
                IFNULL(SUM(success_num), 0)                                      AS success,
                IFNULL(SUM(stop_num), 0)                                         AS stop,
@@ -67,7 +67,7 @@
     </select>
 
     <select id="selectJobTask"
-            resultType="com.old.silence.platform.job.server.vo.DashboardCardResponseDO$JobTask">
+            resultType="com.old.silence.job.server.vo.DashboardCardResponseDO$JobTask">
         SELECT IFNULL(SUM(success_num), 0)                                      AS successNum,
                IFNULL(SUM(stop_num), 0)                                         AS stopNum,
                IFNULL(SUM(cancel_num), 0)                                       AS cancelNum,
@@ -78,7 +78,7 @@
     </select>
 
     <select id="selectDashboardRankList"
-            resultType="com.old.silence.platform.job.server.vo.DashboardRetryLineResponseDO$Rank">
+            resultType="com.old.silence.job.server.vo.DashboardRetryLineResponseDO$Rank">
         SELECT
         <if test="systemTaskType.value == 3">
             CONCAT(group_name, '/', (SELECT job_name FROM sj_job WHERE id = business_id))           AS name,
@@ -95,7 +95,7 @@
     </select>
 
     <select id="selectJobTaskList"
-            resultType="com.old.silence.platform.job.server.vo.DashboardRetryLineResponseDO$Task">
+            resultType="com.old.silence.job.server.vo.DashboardRetryLineResponseDO$Task">
         SELECT group_name                                               AS groupName,
                SUM(CASE WHEN (job_status = 1) THEN 1 ELSE 0 END)        AS run,
                COUNT(*)                                                 AS total
@@ -112,7 +112,7 @@
     </select>
 
     <select id="selectWorkflowTaskList"
-            resultType="com.old.silence.platform.job.server.vo.DashboardRetryLineResponseDO$Task">
+            resultType="com.old.silence.job.server.vo.DashboardRetryLineResponseDO$Task">
         SELECT group_name                                               AS groupName,
                SUM(CASE WHEN (workflow_status = 1) THEN 1 ELSE 0 END)   AS run,
                COUNT(*)                                                 AS total

@@ -69,10 +69,9 @@ public class GrpcClientInvokeHandler implements InvocationHandler {
     private final String namespaceId;
     private final boolean async;
 
-    public GrpcClientInvokeHandler(final String groupName, final RegisterNodeInfo registerNodeInfo,
-        final boolean failRetry, final int retryTimes,
-        final int retryInterval, final RetryListener retryListener, final Integer routeKey, final String allocKey,
-        final boolean failover, final Integer executorTimeout, final String namespaceId) {
+    public GrpcClientInvokeHandler(String groupName, RegisterNodeInfo registerNodeInfo, boolean failRetry,
+                                   int retryTimes, int retryInterval, RetryListener retryListener, Integer routeKey,
+                                   String allocKey, boolean failover, Integer executorTimeout, String namespaceId) {
         this.groupName = groupName;
         this.hostId = registerNodeInfo.getHostId();
         this.hostPort = registerNodeInfo.getHostPort();
@@ -90,7 +89,7 @@ public class GrpcClientInvokeHandler implements InvocationHandler {
     }
 
     @Override
-    public ApiResult invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+    public ApiResult invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Mapping annotation = method.getAnnotation(Mapping.class);
         Assert.notNull(annotation, () -> new SilenceJobServerException("@Mapping cannot be null"));
 
@@ -102,7 +101,7 @@ public class GrpcClientInvokeHandler implements InvocationHandler {
     }
 
     @NotNull
-    private ApiResult doFailoverHandler(final Method method, final Object[] args, final Mapping annotation)
+    private ApiResult doFailoverHandler(Method method, Object[] args, Mapping annotation)
         throws Throwable {
         Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName, namespaceId);
 
