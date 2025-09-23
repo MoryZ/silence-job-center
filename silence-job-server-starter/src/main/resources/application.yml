@@ -4,6 +4,8 @@ server:
     context-path: /
 
 spring:
+  application:
+    name: job-service
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/silence-platform?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
@@ -18,6 +20,12 @@ spring:
       idle-timeout: 30000
       pool-name: silence_job
       max-lifetime: 1800000
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
   mail:
     host: smtp.163.com
     port: 465
@@ -58,12 +66,13 @@ silence-job:
   server-port: 17888  # 服务器端口
   log-storage: 7 # 日志保存时间(单位: day)
   rpc-type: grpc
-  threadpool:
-    config:
-      coreSize: 10
-      maxSize: 10
-      keepAliveTime: 3000
-      queueSize: 5000
+
+threadpool:
+  config:
+    coreSize: 10
+    maxSize: 10
+    keepAliveTime: 3000
+    queueSize: 5000
 
 platform:
   system:
