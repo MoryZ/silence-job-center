@@ -6,7 +6,6 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -30,6 +29,7 @@ import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.google.common.collect.Lists;
@@ -37,7 +37,6 @@ import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.util.StreamUtils;
 
 
-import com.old.silence.job.server.api.assembler.GroupConfigMapper;
 import com.old.silence.job.server.api.assembler.GroupConfigResponseVOMapper;
 import com.old.silence.job.server.common.dto.PartitionTask;
 import com.old.silence.job.server.common.handler.ConfigVersionSyncHandler;
@@ -49,12 +48,12 @@ import com.old.silence.job.server.domain.model.RetrySceneConfig;
 import com.old.silence.job.server.domain.model.ServerNode;
 import com.old.silence.job.server.domain.model.SystemUserPermission;
 import com.old.silence.job.server.domain.model.Workflow;
-import com.old.silence.job.server.domain.service.config.ConfigAccess;
 import com.old.silence.job.server.dto.ExportGroupCommand;
-import com.old.silence.job.server.dto.GroupConfigCommand;
 import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.infrastructure.persistence.dao.GroupConfigDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.NamespaceDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.RetrySceneConfigDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.ServerNodeDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.SystemUserPermissionDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowDao;
@@ -69,29 +68,30 @@ import com.old.silence.job.server.vo.GroupConfigResponseVO;
 public class GroupConfigService {
 
     private final ServerNodeDao serverNodeDao;
-    private final AccessTemplate accessTemplate;
+    private final GroupConfigDao groupConfigDao;
+    private final RetrySceneConfigDao retrySceneConfigDao;
     private final ConfigVersionSyncHandler configVersionSyncHandler;
     private final JdbcTemplate jdbcTemplate;
     private final NamespaceDao namespaceDao;
     private final JobDao jobDao;
     private final WorkflowDao workflowDao;
     private final SystemUserPermissionDao systemUserPermissionDao;
-    private final GroupConfigMapper groupConfigMapper;
     private final GroupConfigResponseVOMapper groupConfigResponseVOMapper;
 
-    public GroupConfigService(ServerNodeDao serverNodeDao, AccessTemplate accessTemplate,
+    public GroupConfigService(ServerNodeDao serverNodeDao, GroupConfigDao groupConfigDao, RetrySceneConfigDao retrySceneConfigDao,
                               ConfigVersionSyncHandler configVersionSyncHandler, JdbcTemplate jdbcTemplate,
                               NamespaceDao namespaceDao, JobDao jobDao, WorkflowDao workflowDao,
-                              SystemUserPermissionDao systemUserPermissionDao, GroupConfigMapper groupConfigMapper, GroupConfigResponseVOMapper groupConfigResponseVOMapper) {
+                              SystemUserPermissionDao systemUserPermissionDao,
+                              GroupConfigResponseVOMapper groupConfigResponseVOMapper) {
         this.serverNodeDao = serverNodeDao;
-        this.accessTemplate = accessTemplate;
+        this.groupConfigDao = groupConfigDao;
+        this.retrySceneConfigDao = retrySceneConfigDao;
         this.configVersionSyncHandler = configVersionSyncHandler;
         this.jdbcTemplate = jdbcTemplate;
         this.namespaceDao = namespaceDao;
         this.jobDao = jobDao;
         this.workflowDao = workflowDao;
         this.systemUserPermissionDao = systemUserPermissionDao;
-        this.groupConfigMapper = groupConfigMapper;
         this.groupConfigResponseVOMapper = groupConfigResponseVOMapper;
     }
 
@@ -101,8 +101,8 @@ public class GroupConfigService {
 
         String namespaceId =  "namespaceId";
 
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
-        Assert.isTrue(groupConfigAccess.count(new LambdaQueryWrapper<GroupConfig>()
+        
+        Assert.isTrue(groupConfigDao.selectCount(new LambdaQueryWrapper<GroupConfig>()
                         .eq(GroupConfig::getNamespaceId, namespaceId)
                         .eq(GroupConfig::getGroupName, groupConfig.getGroupName())) == 0,
                 () -> new SilenceJobServerException("GroupName已经存在 {}", groupConfig.getGroupName()));
@@ -124,8 +124,8 @@ public class GroupConfigService {
         String groupName = groupConfig.getGroupName();
         String namespaceId = "namespaceId";
 
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
-        long count = groupConfigAccess.count(
+        
+        long count = groupConfigDao.selectCount(
                 new LambdaQueryWrapper<GroupConfig>()
                         .eq(GroupConfig::getNamespaceId, namespaceId)
                         .eq(GroupConfig::getGroupName, groupName));
@@ -145,7 +145,7 @@ public class GroupConfigService {
 
         // 不允许更新组
         groupConfig.setGroupName(null);
-        Assert.isTrue(1 == groupConfigAccess.update(groupConfig,
+        Assert.isTrue(1 == groupConfigDao.update(groupConfig,
                         new LambdaUpdateWrapper<GroupConfig>()
                                 .eq(GroupConfig::getNamespaceId, namespaceId)
                                 .eq(GroupConfig::getGroupName, groupName)),
@@ -164,46 +164,19 @@ public class GroupConfigService {
     public Boolean updateGroupStatus(String groupName, Boolean status) {
         GroupConfig groupConfig = new GroupConfig();
         groupConfig.setGroupStatus(status);
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
-        return groupConfigAccess.update(groupConfig,
+        
+        return groupConfigDao.update(groupConfig,
                 new LambdaUpdateWrapper<GroupConfig>()
                         .eq(GroupConfig::getNamespaceId,  "namespaceId")
                         .eq(GroupConfig::getGroupName, groupName)) == 1;
     }
 
-    public Page<GroupConfigResponseVO> queryPage(Page<GroupConfigResponseVO> page, QueryWrapper<GroupConfig> queryWrapper) {
+    public IPage<GroupConfigResponseVO> queryPage(Page<GroupConfig> page, QueryWrapper<GroupConfig> queryWrapper) {
 
-        String namespaceId =  "namespaceId";
+        Page<GroupConfig> groupConfigPageDTO = groupConfigDao.selectPage(
+                page, queryWrapper);
+        return groupConfigPageDTO.convert(groupConfigResponseVOMapper::convert);
 
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
-
-        Page<GroupConfig> groupConfigPageDTO = groupConfigAccess.listPage(
-                new PageDTO<>(page.getCurrent(), page.getSize()),
-                new LambdaQueryWrapper<GroupConfig>().eq(GroupConfig::getNamespaceId, namespaceId)
-        );
-
-        List<GroupConfig> records = groupConfigPageDTO.getRecords();
-        if (CollectionUtils.isEmpty(records)) {
-            return new Page<>(groupConfigPageDTO.getCurrent(), groupConfigPageDTO.getSize(),
-                    groupConfigPageDTO.getTotal());
-        }
-
-        Page<GroupConfigResponseVO> Page = new Page<>(groupConfigPageDTO.getCurrent(),
-                groupConfigPageDTO.getSize(), groupConfigPageDTO.getTotal());
-
-        List<GroupConfigResponseVO> responseVOList = CollectionUtils.transformToList(records,
-                groupConfigResponseVOMapper::convert);
-
-        for (GroupConfigResponseVO groupConfigResponseVO : responseVOList) {
-            Optional.ofNullable(groupConfigResponseVO.getIdGeneratorMode())
-                    .ifPresent(idGeneratorMode -> {
-                        groupConfigResponseVO.setIdGeneratorModeName(idGeneratorMode.getDescription());
-                    });
-        }
-
-        Page.setRecords(responseVOList);
-
-        return Page;
     }
 
     private boolean doSaveGroupConfig(String namespaceId, GroupConfig groupConfig) {
@@ -214,8 +187,8 @@ public class GroupConfigService {
         groupConfig.setGroupName(groupConfig.getGroupName());
         groupConfig.setToken(groupConfig.getToken());
         groupConfig.setDescription(Optional.ofNullable(groupConfig.getDescription()).orElse(StrUtil.EMPTY));
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
-        Assert.isTrue(1 == groupConfigAccess.insert(groupConfig),
+        
+        Assert.isTrue(1 == groupConfigDao.insert(groupConfig),
                 () -> new SilenceJobServerException("新增组异常异常 groupConfigVO[{}]", groupConfig));
 
         return Boolean.TRUE;
@@ -224,10 +197,8 @@ public class GroupConfigService {
     
     public GroupConfigResponseVO getGroupConfigByGroupName(String groupName) {
 
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
 
-
-        var groupConfig = groupConfigAccess.one(
+        var groupConfig = groupConfigDao.selectOne(
                 new LambdaQueryWrapper<GroupConfig>()
                         .eq(GroupConfig::getNamespaceId, "namespaceId")
                         .eq(GroupConfig::getGroupName, groupName));
@@ -237,9 +208,9 @@ public class GroupConfigService {
     
     public List<GroupConfigResponseVO> getAllGroupConfigList(final List<String> namespaceIds) {
 
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
+        
 
-        List<GroupConfig> groupConfigs = groupConfigAccess.list(
+        List<GroupConfig> groupConfigs = groupConfigDao.selectList(
                 new LambdaQueryWrapper<GroupConfig>()
                         .select(GroupConfig::getGroupName, GroupConfig::getNamespaceId)
                         .in(CollectionUtils.isNotEmpty(namespaceIds), GroupConfig::getNamespaceId, namespaceIds));
@@ -265,9 +236,9 @@ public class GroupConfigService {
     
     public List<GroupConfig> getAllGroupNameList() {
 
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
+        
 
-        return groupConfigAccess.list(new LambdaQueryWrapper<GroupConfig>()
+        return groupConfigDao.selectList(new LambdaQueryWrapper<GroupConfig>()
                 .eq(GroupConfig::getNamespaceId, "namespaceId"));
     }
 
@@ -316,9 +287,9 @@ public class GroupConfigService {
         String namespaceId = "namespaceId";
 
         Set<String> groupSet = StreamUtils.toSet(requestList, GroupConfig::getGroupName);
-        ConfigAccess<GroupConfig> groupConfigAccess = accessTemplate.getGroupConfigAccess();
+        
 
-        List<GroupConfig> configs = groupConfigAccess.list(new LambdaQueryWrapper<GroupConfig>()
+        List<GroupConfig> configs = groupConfigDao.selectList(new LambdaQueryWrapper<GroupConfig>()
                 .select(GroupConfig::getGroupName)
                 .eq(GroupConfig::getNamespaceId, namespaceId)
                 .in(GroupConfig::getGroupName, groupSet));
@@ -343,7 +314,7 @@ public class GroupConfigService {
 
         List<GroupConfig> allRequestList = Lists.newArrayList();
         PartitionTaskUtils.process((startId -> {
-            List<GroupConfig> groupConfigs = accessTemplate.getGroupConfigAccess().listPage(new PageDTO<>(0, 100),
+            List<GroupConfig> groupConfigs = groupConfigDao.selectPage(new PageDTO<>(0, 100),
                     new LambdaQueryWrapper<GroupConfig>()
                             .ge(GroupConfig::getId, startId)
                             .eq(GroupConfig::getNamespaceId, namespaceId)
@@ -377,7 +348,7 @@ public class GroupConfigService {
                         .eq(Workflow::getGroupName, groupName).orderByAsc(Workflow::getId))),
                 () -> new SilenceJobServerException("存在未删除的工作流任务. 请先删除当前组的工作流任务后再重试删除"));
         // 3. 重试场景是否删除
-        Assert.isTrue(CollectionUtils.isEmpty(accessTemplate.getSceneConfigAccess().listPage(new PageDTO<>(1, 1), new LambdaQueryWrapper<RetrySceneConfig>()
+        Assert.isTrue(CollectionUtils.isEmpty(retrySceneConfigDao.selectPage(new PageDTO<>(1, 1), new LambdaQueryWrapper<RetrySceneConfig>()
                         .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                         .eq(RetrySceneConfig::getGroupName, groupName).orderByAsc(RetrySceneConfig::getId)).getRecords()),
                 () -> new SilenceJobServerException("存在未删除的重试场景. 请先删除当前组的重试场景后再重试删除"));
@@ -392,7 +363,7 @@ public class GroupConfigService {
                         .eq(ServerNode::getGroupName, groupName).orderByAsc(ServerNode::getId))),
                 () -> new SilenceJobServerException("存在存活中客户端节点."));
 
-        Assert.isTrue(1 == accessTemplate.getGroupConfigAccess().delete(
+        Assert.isTrue(1 == groupConfigDao.delete(
                         new LambdaQueryWrapper<GroupConfig>()
                                 .eq(GroupConfig::getNamespaceId, namespaceId)
                                 .eq(GroupConfig::getGroupStatus, false)

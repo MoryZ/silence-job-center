@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class SilencePlatformApplication {
+public class SilenceJobCenterApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SilencePlatformApplication.class, args);
+        SpringApplication.run(SilenceJobCenterApplication.class, args);
     }
 
 }

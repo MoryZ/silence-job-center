@@ -48,7 +48,7 @@ public class NotifyConfigResource {
     }
 
     
-    @GetMapping("/notifyConfig{id}")
+    @GetMapping("/notifyConfig/{id}")
     public NotifyConfigResponseVO getNotifyConfigDetail(@PathVariable BigInteger id) {
         return notifyConfigService.getNotifyConfigDetail(id);
     }
@@ -69,13 +69,13 @@ public class NotifyConfigResource {
     }
 
     
-    @PutMapping("/{id}/{status}")
+    @PutMapping("/notifyConfig/{id}/{status}")
     public Boolean updateStatus(@PathVariable BigInteger id, @PathVariable Boolean status) {
         return notifyConfigService.updateStatus(id, status);
     }
 
     
-    @DeleteMapping("ids")
+    @DeleteMapping("/notifyConfig/ids")
     public Boolean batchDeleteNotify(@RequestBody @NotEmpty Set<Long> ids) {
         return notifyConfigService.batchDeleteNotify(ids);
     }

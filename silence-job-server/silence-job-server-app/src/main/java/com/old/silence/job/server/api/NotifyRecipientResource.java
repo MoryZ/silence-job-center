@@ -51,13 +51,13 @@ public class NotifyRecipientResource {
         this.notifyRecipientMapper = notifyRecipientMapper;
     }
 
-    @PostMapping("notifyRecipients")
+    @PostMapping("/notifyRecipients")
     public Boolean create(@RequestBody @Validated NotifyRecipientCommand notifyRecipientCommand) {
         var notifyRecipient = notifyRecipientMapper.convert(notifyRecipientCommand);
         return notifyRecipientService.saveNotifyRecipient(notifyRecipient);
     }
 
-    @PutMapping("notifyRecipients/{id}")
+    @PutMapping("/notifyRecipients/{id}")
     public Boolean update(@PathVariable BigInteger id, @RequestBody @Validated NotifyRecipientCommand notifyRecipientCommand) {
         var notifyRecipient = notifyRecipientMapper.convert(notifyRecipientCommand);
         notifyRecipient.setId(id);
@@ -69,24 +69,24 @@ public class NotifyRecipientResource {
         return notifyRecipientService.getNotifyRecipientPageList(page, queryVO);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/notifyRecipients")
     public List<CommonLabelValueResponseVO> getNotifyRecipientList() {
         return notifyRecipientService.getNotifyRecipientList();
     }
 
-    @DeleteMapping("/ids")
+    @DeleteMapping("/notifyRecipients/ids")
     public Boolean batchDeleteByIds(@RequestBody @NotEmpty(message = "ids不能为空") Set<Long> ids) {
         return notifyRecipientService.batchDeleteByIds(ids);
     }
 
-    @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/notifyRecipients/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void importScene(@RequestPart MultipartFile file) throws IOException {
         var notifyRecipientCommands = ImportUtils.parseList(file, NotifyRecipientCommand.class);
         var notifyRecipients = CollectionUtils.transformToList(notifyRecipientCommands, notifyRecipientMapper::convert);
         notifyRecipientService.importNotifyRecipient(notifyRecipients);
     }
 
-    @PostMapping("/export")
+    @PostMapping("/notifyRecipients/export")
     public ResponseEntity<String> exportGroup(@RequestBody ExportNotifyRecipientCommand exportNotifyRecipientCommand) {
         return ExportUtils.doExport(notifyRecipientService.exportNotifyRecipient(exportNotifyRecipientCommand));
     }

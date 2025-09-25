@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.data.commons.converter.QueryWrapperConverter;
@@ -48,7 +49,7 @@ public class GroupConfigResource {
     }
 
     @GetMapping(path= "/groupConfigs", params = {"pageNo", "pageSize"})
-    public Page<GroupConfigResponseVO> queryPage(Page<GroupConfigResponseVO> page, GroupConfigQuery groupConfigQuery) {
+    public IPage<GroupConfigResponseVO> queryPage(Page<GroupConfig> page, GroupConfigQuery groupConfigQuery) {
         var queryWrapper = QueryWrapperConverter.convert(groupConfigQuery, GroupConfig.class);
         return groupConfigService.queryPage(page, queryWrapper);
     }
