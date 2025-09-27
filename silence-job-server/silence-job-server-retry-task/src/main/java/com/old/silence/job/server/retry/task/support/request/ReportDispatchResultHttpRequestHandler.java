@@ -15,7 +15,7 @@ import com.old.silence.job.common.model.SilenceJobRequest;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
 import com.old.silence.job.server.common.handler.PostHttpRequestHandler;
 import com.old.silence.job.server.exception.SilenceJobServerException;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RetryExecutorResultDTO;
 import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
 

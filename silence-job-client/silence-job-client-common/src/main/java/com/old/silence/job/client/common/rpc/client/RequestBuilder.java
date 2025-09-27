@@ -2,7 +2,6 @@ package com.old.silence.job.client.common.rpc.client;
 
 import com.old.silence.job.client.common.config.SilenceJobProperties;
 import com.old.silence.job.client.common.exception.SilenceJobClientException;
-import com.old.silence.job.client.common.rpc.client.grpc.GrpcClientInvokeHandler;
 import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.RpcType;
 import com.old.silence.job.common.model.ApiResult;

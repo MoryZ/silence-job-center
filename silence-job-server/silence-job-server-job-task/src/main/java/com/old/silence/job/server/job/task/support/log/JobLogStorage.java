@@ -13,7 +13,7 @@ import com.old.silence.job.server.common.dto.JobLogMetaDTO;
 import com.old.silence.job.server.common.dto.LogMetaDTO;
 import com.old.silence.job.server.common.log.LogStorageFactory;
 import com.old.silence.job.server.job.task.dto.JobLogDTO;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.util.Map;
 import java.util.Objects;

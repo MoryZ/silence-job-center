@@ -11,7 +11,7 @@ import com.old.silence.job.common.server.dto.RetryLogTaskDTO;
 import com.old.silence.job.log.dto.TaskLogFieldDTO;
 import com.old.silence.job.server.domain.model.RetryTaskLogMessage;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskLogMessageDao;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RetryTaskLogDTO;
 import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
 

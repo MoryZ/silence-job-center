@@ -18,7 +18,7 @@ import com.old.silence.job.common.enums.JobOperationReason;
 import com.old.silence.job.common.enums.JobTaskBatchStatus;
 import com.old.silence.job.common.enums.JobTaskExecutorScene;
 import com.old.silence.job.common.enums.JobTaskStatus;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.common.util.DateUtils;
 import com.old.silence.job.server.domain.model.Job;
 import com.old.silence.job.server.domain.model.JobLogMessage;

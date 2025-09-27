@@ -13,7 +13,7 @@ import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
 import com.old.silence.job.server.job.task.dto.ReduceTaskDTO;
 import com.old.silence.job.server.job.task.support.JobTaskConverter;
 import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.util.Objects;
 

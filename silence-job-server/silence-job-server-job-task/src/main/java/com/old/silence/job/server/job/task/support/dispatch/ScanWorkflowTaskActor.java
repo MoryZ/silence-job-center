@@ -28,7 +28,7 @@ import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowDao;
 import com.old.silence.job.server.job.task.dto.WorkflowPartitionTaskDTO;
 import com.old.silence.job.server.job.task.dto.WorkflowTaskPrepareDTO;
 import com.old.silence.job.server.job.task.support.WorkflowTaskConverter;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.math.RoundingMode;
 import java.util.ArrayList;

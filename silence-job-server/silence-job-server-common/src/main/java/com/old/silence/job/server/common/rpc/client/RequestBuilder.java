@@ -7,7 +7,6 @@ import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.RpcType;
 import com.old.silence.job.server.common.config.SystemProperties;
 import com.old.silence.job.server.common.dto.RegisterNodeInfo;
-import com.old.silence.job.server.common.rpc.client.grpc.GrpcClientInvokeHandler;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

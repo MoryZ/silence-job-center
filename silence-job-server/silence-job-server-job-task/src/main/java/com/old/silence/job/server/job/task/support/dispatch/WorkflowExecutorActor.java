@@ -45,7 +45,7 @@ import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
 import com.old.silence.job.server.job.task.support.timer.JobTimerWheel;
 import com.old.silence.job.server.job.task.support.timer.WorkflowTimeoutCheckTask;
 import com.old.silence.job.server.job.task.support.timer.WorkflowTimerTask;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.math.BigInteger;
 import java.text.MessageFormat;

@@ -1,6 +1,8 @@
 package com.old.silence.job.common.enums;
 
-
+/**
+ * @author moryzang
+ */
 public enum RetryTaskExecutorSceneEnum {
     AUTO_RETRY(1, SystemTaskType.RETRY),
     MANUAL_RETRY(2, SystemTaskType.RETRY),

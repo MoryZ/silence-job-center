@@ -26,7 +26,7 @@ import com.old.silence.job.server.common.util.ClientInfoUtils;
 import com.old.silence.job.server.common.util.DateUtils;
 import com.old.silence.job.server.domain.model.RetryTask;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskDao;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.client.RetryRpcClient;
 import com.old.silence.job.server.retry.task.dto.RequestRetryExecutorDTO;
 import com.old.silence.job.server.retry.task.dto.RetryExecutorResultDTO;

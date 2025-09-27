@@ -19,7 +19,7 @@ import com.old.silence.job.server.job.task.support.JobTaskConverter;
 import com.old.silence.job.server.job.task.support.generator.batch.JobTaskBatchGenerator;
 import com.old.silence.job.server.job.task.support.handler.DistributedLockHandler;
 import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import static com.old.silence.job.common.enums.JobOperationReason.WORKFLOW_NODE_CLOSED_SKIP_EXECUTION;
 import static com.old.silence.job.common.enums.JobOperationReason.WORKFLOW_SUCCESSOR_SKIP_EXECUTION;

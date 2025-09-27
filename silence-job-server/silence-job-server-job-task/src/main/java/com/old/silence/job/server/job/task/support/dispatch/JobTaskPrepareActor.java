@@ -15,7 +15,7 @@ import com.old.silence.job.server.domain.model.JobTaskBatch;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
 import com.old.silence.job.server.job.task.dto.JobTaskPrepareDTO;
 import com.old.silence.job.server.job.task.support.JobPrepareHandler;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.util.List;
 

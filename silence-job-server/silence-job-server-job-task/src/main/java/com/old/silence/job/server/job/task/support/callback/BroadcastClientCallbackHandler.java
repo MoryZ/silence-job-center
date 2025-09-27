@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Sets;
 import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobTaskType;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.server.common.cache.CacheRegisterTable;
 import com.old.silence.job.server.common.dto.RegisterNodeInfo;

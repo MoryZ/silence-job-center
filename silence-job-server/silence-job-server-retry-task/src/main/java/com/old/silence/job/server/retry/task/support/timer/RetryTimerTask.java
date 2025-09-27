@@ -2,7 +2,7 @@ package com.old.silence.job.server.retry.task.support.timer;
 
 import io.netty.util.Timeout;
 import org.apache.pekko.actor.ActorRef;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RetryTaskExecuteDTO;
 import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
 

@@ -1,5 +1,8 @@
 package com.old.silence.job.common.enums;
 
+/**
+ * @author moryzang
+ */
 
 import com.old.silence.core.enums.DescribedEnumValue;
 

@@ -20,7 +20,7 @@ import java.util.Objects;
 
 import static com.old.silence.job.common.enums.RetryTaskStatus.NOT_COMPLETE;
 import static com.old.silence.job.common.enums.RetryTaskStatus.SUCCESS;
-import static com.old.silence.job.common.pekko.ActorGenerator.RETRY_TASK_PREPARE_ACTOR;
+import static com.old.silence.job.server.common.pekko.ActorGenerator.RETRY_TASK_PREPARE_ACTOR;
 
 
 @Component(RETRY_TASK_PREPARE_ACTOR)

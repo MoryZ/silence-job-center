@@ -28,7 +28,7 @@ import com.old.silence.job.server.exception.SilenceJobServerException;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.SceneConfigDao;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RequestCallbackExecutorDTO;
 import com.old.silence.job.server.retry.task.dto.RequestRetryExecutorDTO;
 import com.old.silence.job.server.retry.task.dto.RetryTaskExecuteDTO;

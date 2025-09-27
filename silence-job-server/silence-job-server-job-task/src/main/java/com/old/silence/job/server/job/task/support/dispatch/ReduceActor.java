@@ -27,7 +27,7 @@ import com.old.silence.job.server.job.task.support.generator.task.JobTaskGenerat
 import com.old.silence.job.server.job.task.support.generator.task.JobTaskGeneratorFactory;
 import com.old.silence.job.server.job.task.support.handler.DistributedLockHandler;
 import com.old.silence.job.server.job.task.support.handler.JobTaskBatchHandler;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.text.MessageFormat;
 import java.time.Duration;

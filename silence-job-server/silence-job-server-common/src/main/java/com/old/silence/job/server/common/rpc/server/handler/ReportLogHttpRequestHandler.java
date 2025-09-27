@@ -19,7 +19,7 @@ import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.log.enums.LogTypeEnum;
 import com.old.silence.job.server.common.handler.PostHttpRequestHandler;
 import com.old.silence.job.server.exception.SilenceJobServerException;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

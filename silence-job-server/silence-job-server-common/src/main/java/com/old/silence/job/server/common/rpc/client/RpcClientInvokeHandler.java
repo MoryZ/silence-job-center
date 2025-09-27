@@ -27,7 +27,6 @@ import com.old.silence.job.server.common.rpc.client.annotation.Body;
 import com.old.silence.job.server.common.rpc.client.annotation.Header;
 import com.old.silence.job.server.common.rpc.client.annotation.Mapping;
 import com.old.silence.job.server.common.rpc.client.annotation.Param;
-import com.old.silence.job.server.common.rpc.client.netty.NettyChannel;
 import com.old.silence.job.server.exception.SilenceJobServerException;
 
 import java.lang.reflect.InvocationHandler;

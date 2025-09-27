@@ -69,11 +69,6 @@
             <groupId>com.old.silence</groupId>
             <artifactId>silence-job-common-client-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.old.silence</groupId>
-            <artifactId>silence-job-server-common</artifactId>
-            <scope>compile</scope>
-        </dependency>
 
         <dependency>
             <groupId>com.old.silence</groupId>

@@ -47,7 +47,7 @@ import com.old.silence.job.server.job.task.support.alarm.event.WorkflowTaskFailA
 import com.old.silence.job.server.job.task.support.cache.MutableGraphCache;
 import com.old.silence.job.server.job.task.support.stop.JobTaskStopFactory;
 import com.old.silence.job.server.job.task.support.stop.TaskStopJobContext;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.io.IOException;
 import java.math.BigInteger;

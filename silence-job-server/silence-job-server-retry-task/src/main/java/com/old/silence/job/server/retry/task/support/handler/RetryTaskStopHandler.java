@@ -3,7 +3,7 @@ package com.old.silence.job.server.retry.task.support.handler;
 import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
 import com.old.silence.job.common.enums.RetryTaskStatus;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RequestRetryExecutorDTO;
 import com.old.silence.job.server.retry.task.dto.RetryExecutorResultDTO;
 import com.old.silence.job.server.retry.task.dto.TaskStopJobDTO;

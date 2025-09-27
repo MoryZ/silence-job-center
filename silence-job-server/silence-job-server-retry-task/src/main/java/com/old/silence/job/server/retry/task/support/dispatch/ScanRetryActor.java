@@ -29,7 +29,7 @@ import com.old.silence.job.server.domain.model.RetrySceneConfig;
 import com.old.silence.job.server.domain.service.AccessTemplate;
 import com.old.silence.job.server.infrastructure.persistence.dao.GroupConfigDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryDao;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 import com.old.silence.job.server.retry.task.dto.RetryPartitionTask;
 import com.old.silence.job.server.retry.task.dto.RetryTaskPrepareDTO;
 import com.old.silence.job.server.retry.task.support.RetryTaskConverter;

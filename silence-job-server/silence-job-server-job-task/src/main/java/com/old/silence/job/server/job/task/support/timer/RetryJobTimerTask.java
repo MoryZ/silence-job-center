@@ -5,7 +5,7 @@ import org.apache.pekko.actor.ActorRef;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.TimerTask;
 import com.old.silence.job.server.job.task.dto.RealJobExecutorDTO;
-import com.old.silence.job.common.pekko.ActorGenerator;
+import com.old.silence.job.server.common.pekko.ActorGenerator;
 
 import java.text.MessageFormat;
 import java.time.Instant;
