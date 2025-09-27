@@ -39,8 +39,7 @@ public abstract class AbstractJobAlarm<E extends ApplicationEvent> extends Abstr
         Map<BigInteger, JobAlarmInfo> jobAlarmInfoGroupMap = StreamUtils.toIdentityMap(jobAlarmInfoList, JobAlarmInfo::getId);
         // 查询数据库
         QueryWrapper<JobTaskBatch> wrapper = new QueryWrapper<JobTaskBatch>()
-                .in("batch.id", StreamUtils.toSet(jobAlarmInfoList, JobAlarmInfo::getId))
-                .eq("batch.deleted", 0);
+                .in("batch.id", StreamUtils.toSet(jobAlarmInfoList, JobAlarmInfo::getId));
 
         List<JobBatchResponseDO> jobBatchResponseDOList = jobTaskBatchDao.selectJobBatchListByIds(wrapper);
         for (JobBatchResponseDO jobBatchResponseDO : jobBatchResponseDOList) {

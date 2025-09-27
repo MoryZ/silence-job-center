@@ -5,7 +5,7 @@ import com.old.silence.job.common.enums.JobTaskStatus;
 
 import java.math.BigInteger;
 
-public class JobTaskQueryVO  {
+public class JobTaskQuery {
     private BigInteger jobId;
     private BigInteger taskBatchId;
     private BigInteger parentId;

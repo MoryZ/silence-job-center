@@ -84,7 +84,8 @@ public class JobTaskBatchGenerator {
         }
 
         // 无客户端节点-告警通知
-        if (JobTaskBatchStatus.CANCEL.equals(jobTaskBatch.getTaskBatchStatus()) && JobOperationReason.NOT_CLIENT.equals(jobTaskBatch.getOperationReason())) {
+        if (JobTaskBatchStatus.CANCEL.equals(jobTaskBatch.getTaskBatchStatus())
+                && JobOperationReason.NOT_CLIENT.equals(jobTaskBatch.getOperationReason())) {
             var jobTaskFailAlarmEventDTO = new JobTaskFailAlarmEventDTO();
             jobTaskFailAlarmEventDTO.setJobTaskBatchId(jobTaskBatch.getId());
             jobTaskFailAlarmEventDTO.setNotifyScene(JobNotifyScene.JOB_NO_CLIENT_NODES_ERROR);

@@ -1,6 +1,5 @@
 package com.old.silence.job.server.common.register;
 
-import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -35,8 +34,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-
-@Component(ClientRegister.BEAN_NAME)
 
 public class ClientRegister extends AbstractRegister {
     public static final String BEAN_NAME = "clientRegister";

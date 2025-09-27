@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.server.api.assembler.JobTaskResponseVOMapper;
 import com.old.silence.job.server.domain.model.JobTask;
-import com.old.silence.job.server.dto.JobTaskQueryVO;
+import com.old.silence.job.server.dto.JobTaskQuery;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskDao;
 import com.old.silence.job.server.vo.JobTaskResponseVO;
 import com.old.silence.core.util.CollectionUtils;
@@ -29,7 +29,7 @@ public class JobTaskService {
         this.jobTaskResponseVOMapper = jobTaskResponseVOMapper;
     }
 
-    public IPage<JobTaskResponseVO> getJobTaskPage(Page<JobTask> pageDTO, JobTaskQueryVO queryVO) {
+    public IPage<JobTaskResponseVO> getJobTaskPage(Page<JobTask> pageDTO, JobTaskQuery queryVO) {
 
         Page<JobTask> selectPage = jobTaskDao.selectPage(pageDTO,
                 new LambdaQueryWrapper<JobTask>()
@@ -45,7 +45,7 @@ public class JobTaskService {
         return selectPage.convert(jobTask -> bigIntegerJobTaskResponseVOMap.get(jobTask.getId()));
     }
 
-    public List<JobTaskResponseVO> getTreeJobTask(JobTaskQueryVO queryVO) {
+    public List<JobTaskResponseVO> getTreeJobTask(JobTaskQuery queryVO) {
         List<JobTask> taskList = jobTaskDao.selectList(
                 new LambdaQueryWrapper<JobTask>()
                         .eq(Objects.nonNull(queryVO.getParentId()), JobTask::getParentId, queryVO.getParentId())

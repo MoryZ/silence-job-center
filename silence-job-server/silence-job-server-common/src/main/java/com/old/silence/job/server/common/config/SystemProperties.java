@@ -346,29 +346,30 @@ public class SystemProperties {
         /**
          * 核心线程池
          */
-        private int corePoolSize = 16;
+        private int corePoolSize;
 
         /**
          * 最大线程数
          */
-        private int maximumPoolSize = 16;
+        private int maximumPoolSize;
 
         /**
          * 线程存活时间
          */
-        private long keepAliveTime = 1;
+        private long keepAliveTime;
 
         /**
          * 线程存活时间(单位)
          */
-        private TimeUnit timeUnit = TimeUnit.SECONDS;
+        private TimeUnit timeUnit;
 
         /**
          * 队列容量
          */
         private int queueCapacity = 10000;
 
-        public ThreadPoolConfig(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit timeUnit, int queueCapacity) {
+        public ThreadPoolConfig(int corePoolSize, int maximumPoolSize, long keepAliveTime,
+                                TimeUnit timeUnit, int queueCapacity) {
             this.corePoolSize = corePoolSize;
             this.maximumPoolSize = maximumPoolSize;
             this.keepAliveTime = keepAliveTime;

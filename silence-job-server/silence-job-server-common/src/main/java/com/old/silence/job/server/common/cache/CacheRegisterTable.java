@@ -120,7 +120,7 @@ public class CacheRegisterTable implements Lifecycle {
                     new LambdaQueryWrapper<ServerNode>()
                             .eq(ServerNode::getNamespaceId, namespaceId)
                             .eq(ServerNode::getGroupName, groupName));
-            for (final ServerNode node : serverNodes) {
+            for (ServerNode node : serverNodes) {
                 // 刷新全量本地缓存
                 CacheRegisterTable.addOrUpdate(node);
             }

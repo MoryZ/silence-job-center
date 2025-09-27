@@ -5,6 +5,7 @@ import cn.hutool.core.util.HashUtil;
 import cn.hutool.core.util.StrUtil;
 
 import java.math.BigInteger;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,9 +38,7 @@ import com.old.silence.job.server.common.util.PartitionTaskUtils;
 import com.old.silence.job.server.domain.model.GroupConfig;
 import com.old.silence.job.server.domain.model.Job;
 import com.old.silence.job.server.domain.model.JobSummary;
-import com.old.silence.job.server.domain.model.SystemUser;
 import com.old.silence.job.server.dto.ExportJobVO;
-import com.old.silence.job.server.dto.JobCommand;
 import com.old.silence.job.server.dto.JobTriggerVO;
 import com.old.silence.job.server.exception.SilenceJobServerException;
 import com.old.silence.job.server.handler.GroupHandler;
@@ -97,32 +96,21 @@ public class JobService {
     }
 
     
-    public IPage<JobResponseVO> getJobPage(Page<Job> pageDTO, QueryWrapper<Job> queryWrapper) {
+    public IPage<JobResponseVO> queryPage(Page<Job> page, QueryWrapper<Job> queryWrapper) {
+        Page<Job> jobPage = jobDao.selectPage(page, queryWrapper);
 
-        queryWrapper.eq("namespace_id", "namespaceId");
-        Page<Job> selectPage = jobDao.selectPage(pageDTO, queryWrapper);
+        return jobPage.convert(jobResponseVOMapper::convert);
 
-        var responseVOIPage = selectPage.convert(jobResponseVOMapper::convert);
-        List<JobResponseVO> jobResponseList = responseVOIPage.getRecords();
-
-        for (JobResponseVO jobResponseVO : jobResponseList) {
-            if (Objects.nonNull(jobResponseVO.getOwnerId())) {
-                SystemUser systemUser = systemUserDao.selectById(jobResponseVO.getOwnerId());
-                jobResponseVO.setOwnerName(systemUser.getUsername());
-            }
-        }
-        responseVOIPage.setRecords(jobResponseList);
-        return responseVOIPage;
     }
 
     
-    public JobResponseVO getJobDetail(BigInteger id) {
+    public JobResponseVO findById(BigInteger id) {
         Job job = jobDao.selectById(id);
         return jobResponseVOMapper.convert(job);
     }
 
     
-    public List<String> getTimeByCron(String cron) {
+    public List<Instant> getTimeByCron(String cron) {
         return CronUtils.getExecuteTimeByCron(cron, 5);
     }
 
@@ -143,8 +131,6 @@ public class JobService {
 
         // 判断常驻任务
         job.setResident(isResident(job));
-        job.setNamespaceId(job.getNamespaceId());
-
         // 工作流任务
         if (Objects.equals(job.getTriggerType().getValue(), SystemConstants.WORKFLOW_TRIGGER_TYPE.byteValue())) {
             job.setNextTriggerAt(0L);
@@ -172,18 +158,12 @@ public class JobService {
         }
 
         if (job.getTriggerType().getValue().intValue() == WaitStrategies.WaitStrategyEnum.FIXED.getValue()) {
-            if (Integer.parseInt(job.getTriggerInterval()) < 10) {
-                return true;
-            }
+            return Integer.parseInt(job.getTriggerInterval()) < 10;
         } else if (job.getTriggerType().getValue().intValue() == WaitStrategies.WaitStrategyEnum.CRON.getValue()) {
-            if (CronUtils.getExecuteInterval(job.getTriggerInterval()) < 10 * 1000) {
-                return true;
-            }
+            return CronUtils.getExecuteInterval(job.getTriggerInterval()) < 10 * 1000;
         } else {
             throw new SilenceJobServerException("未知触发类型");
         }
-
-        return false;
     }
 
     

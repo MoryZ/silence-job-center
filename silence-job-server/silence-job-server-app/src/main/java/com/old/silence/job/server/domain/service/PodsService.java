@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.common.enums.NodeType;
 import com.old.silence.job.common.model.ApiResult;
@@ -23,10 +24,11 @@ import com.old.silence.job.server.common.dto.DistributeInstance;
 import com.old.silence.job.server.common.dto.ServerNodeExtAttrs;
 import com.old.silence.job.server.common.register.ServerRegister;
 import com.old.silence.job.server.domain.model.ServerNode;
-import com.old.silence.job.server.dto.ServerNodeQueryVO;
+import com.old.silence.job.server.dto.ServerNodeQuery;
 import com.old.silence.job.server.infrastructure.persistence.dao.ServerNodeDao;
 import com.old.silence.job.server.vo.ServerNodeResponseVO;
 import com.old.silence.core.util.CollectionUtils;
+import com.old.silence.page.PageImpl;
 
 /**
  * @author moryzang
@@ -48,10 +50,10 @@ public class PodsService {
         this.serverNodeResponseVOMapper = serverNodeResponseVOMapper;
     }
 
-    public Page<ServerNodeResponseVO> pods(Page<ServerNode> pageDTO, ServerNodeQueryVO queryVO) {
+    public IPage<ServerNodeResponseVO> pods(Page<ServerNode> pageDTO, ServerNodeQuery queryVO) {
 
         LambdaQueryWrapper<ServerNode> serverNodeLambdaQueryWrapper = new LambdaQueryWrapper<ServerNode>()
-                .in(ServerNode::getNamespaceId, List.of(ServerRegister.NAMESPACE_ID))
+                .in(ServerNode::getNamespaceId, List.of("namespaceId", ServerRegister.NAMESPACE_ID))
                 .eq(StrUtil.isNotBlank(queryVO.getGroupName()), ServerNode::getGroupName, queryVO.getGroupName())
                 .ge(ServerNode::getExpireAt, Instant.now().minusSeconds(ServerRegister.DELAY_TIME + (ServerRegister.DELAY_TIME / 3)))
                 .orderByDesc(ServerNode::getNodeType);
@@ -87,6 +89,7 @@ public class PodsService {
                 SilenceJobLog.LOCAL.error("Failed to retrieve consumer group for node [{}:{}].", serverNodeResponseVO.getHostIp(), serverNodeExtAttrs.getWebPort());
             }
         }
-        return Page.of(0, 10);
+        return new PageImpl<>(responseVOList, serverNodePageDTO.getTotal());
     }
+
 }

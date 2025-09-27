@@ -20,10 +20,10 @@ import com.old.silence.job.server.util.ExportUtils;
 import com.old.silence.job.server.util.ImportUtils;
 import com.old.silence.job.server.vo.JobResponseVO;
 
-
 import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.time.Instant;
 import java.util.List;
 import java.util.Set;
 
@@ -44,23 +44,22 @@ public class JobResource {
     @GetMapping(value = "/jobs", params = {"pageNo", "pageSize"})
     public IPage<JobResponseVO> queryPage(Page<Job> page, JobQuery jobQuery) {
         var queryWrapper = QueryWrapperConverter.convert(jobQuery, Job.class);
-        return jobService.getJobPage(page, queryWrapper);
+        return jobService.queryPage(page, queryWrapper);
     }
 
     @GetMapping("/jobs")
     public List<JobResponseVO> findList(JobQuery jobQuery) {
         var queryWrapper = QueryWrapperConverter.convert(jobQuery, Job.class);
-
         return jobService.getJobList(queryWrapper);
     }
 
     @GetMapping("/jobs/{id}")
     public JobResponseVO findById(@PathVariable BigInteger id) {
-        return jobService.getJobDetail(id);
+        return jobService.findById(id);
     }
 
     @GetMapping("/jobs/cron")
-    public List<String> getTimeByCron(@RequestParam String cron) {
+    public List<Instant> getTimeByCron(@RequestParam String cron) {
         return jobService.getTimeByCron(cron);
     }
 

@@ -30,7 +30,7 @@ public class JobCommand {
     private String jobName;
 
     /**
-     * 重试状态 0、关闭、1、开启
+     * 重试状态 false、关闭、true、开启
      * {@link Boolean}
      */
     @NotNull(message = "jobStatus 不能为空")

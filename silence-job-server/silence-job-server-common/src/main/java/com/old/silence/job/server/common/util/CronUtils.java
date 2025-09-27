@@ -18,9 +18,9 @@ import java.util.Objects;
 
 public class CronUtils {
 
-    public static List<String> getExecuteTimeByCron(String cron, int nums) {
+    public static List<Instant> getExecuteTimeByCron(String cron, int nums) {
 
-        List<String> list = new ArrayList<>();
+        List<Instant> list = new ArrayList<>();
         Instant now = Instant.now();
         for (int i = 0; i < nums; i++) {
             Date nextValidTime;
@@ -31,7 +31,7 @@ public class CronUtils {
                     continue;
                 }
                 now = Instant.ofEpochSecond(nextValidTime.getTime() / 1000);
-                list.add(DateUtils.format(now, DateUtils.NORM_DATETIME_PATTERN));
+                list.add(now);
             } catch (ParseException ignored) {
             }
         }
@@ -40,11 +40,11 @@ public class CronUtils {
     }
 
     public static long getExecuteInterval(String cron) {
-        List<String> executeTimeByCron = getExecuteTimeByCron(cron, 2);
+        List<Instant> executeTimeByCron = getExecuteTimeByCron(cron, 2);
         Assert.isTrue(!executeTimeByCron.isEmpty(), () -> CommonErrors.INVALID_PARAMETER.createException("表达式解析有误.[{}]", cron));
         Assert.isTrue(executeTimeByCron.size() == 2, () -> CommonErrors.INVALID_PARAMETER.createException("表达式必须支持多次执行.[{}]", cron));
-        Instant first = Instant.parse(executeTimeByCron.get(0));
-        Instant second = Instant.parse(executeTimeByCron.get(1));
+        Instant first = executeTimeByCron.get(0);
+        Instant second = executeTimeByCron.get(1);
         Duration duration = Duration.between(first, second);
         return duration.toMillis();
     }

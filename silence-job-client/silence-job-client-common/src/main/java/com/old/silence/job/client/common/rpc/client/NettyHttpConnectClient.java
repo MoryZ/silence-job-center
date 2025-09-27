@@ -41,7 +41,7 @@ public class NettyHttpConnectClient implements Lifecycle {
     public void start() {
 
         try {
-            final NettyHttpConnectClient thisClient = this;
+            NettyHttpConnectClient thisClient = this;
             bootstrap.group(nioEventLoopGroup)
                     .channel(NioSocketChannel.class)
                     .remoteAddress(NettyChannel.getServerHost(), NettyChannel.getServerPort())

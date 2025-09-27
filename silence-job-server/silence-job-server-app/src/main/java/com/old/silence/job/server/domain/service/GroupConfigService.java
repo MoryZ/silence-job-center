@@ -235,9 +235,6 @@ public class GroupConfigService {
 
     
     public List<GroupConfig> getAllGroupNameList() {
-
-        
-
         return groupConfigDao.selectList(new LambdaQueryWrapper<GroupConfig>()
                 .eq(GroupConfig::getNamespaceId, "namespaceId"));
     }

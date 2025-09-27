@@ -47,7 +47,7 @@ public abstract class AbstractParamsHandler<H, R> extends AbstractRequestHandler
      * 修改时会直接覆盖之前的任务参数
      * 修改参数
      *
-     * @param argsStr
+     * @param argsStr 请求参数
      * @return
      */
     private H setArgsStr(Map<String, Object> argsStr) {

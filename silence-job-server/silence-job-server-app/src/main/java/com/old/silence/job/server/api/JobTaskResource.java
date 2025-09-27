@@ -8,14 +8,14 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.job.server.domain.model.JobTask;
 import com.old.silence.job.server.domain.service.JobTaskService;
-import com.old.silence.job.server.dto.JobTaskQueryVO;
+import com.old.silence.job.server.dto.JobTaskQuery;
 import com.old.silence.job.server.vo.JobTaskResponseVO;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/job/task")
+@RequestMapping("/api/v1")
 public class JobTaskResource {
     private final JobTaskService jobTaskService;
 
@@ -23,14 +23,14 @@ public class JobTaskResource {
         this.jobTaskService = jobTaskService;
     }
 
-    @GetMapping("/list")
-    public IPage<JobTaskResponseVO> getJobTaskPage(Page<JobTask> page, JobTaskQueryVO jobTaskQueryVO) {
-        return jobTaskService.getJobTaskPage(page, jobTaskQueryVO);
+    @GetMapping(value = "/jobTasks", params = {"pageNo", "pageSize"})
+    public IPage<JobTaskResponseVO> getJobTaskPage(Page<JobTask> page, JobTaskQuery jobTaskQuery) {
+        return jobTaskService.getJobTaskPage(page, jobTaskQuery);
     }
 
     @GetMapping("/tree/list")
-    public List<JobTaskResponseVO> getTreeJobTask(JobTaskQueryVO jobTaskQueryVO) {
-        return jobTaskService.getTreeJobTask(jobTaskQueryVO);
+    public List<JobTaskResponseVO> getTreeJobTask(JobTaskQuery jobTaskQuery) {
+        return jobTaskService.getTreeJobTask(jobTaskQuery);
     }
 
 }

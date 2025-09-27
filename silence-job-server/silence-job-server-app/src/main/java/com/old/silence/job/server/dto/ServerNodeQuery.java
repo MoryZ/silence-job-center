@@ -1,7 +1,7 @@
 package com.old.silence.job.server.dto;
 
 
-public class ServerNodeQueryVO  {
+public class ServerNodeQuery {
 
     private String groupName;
 
