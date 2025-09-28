@@ -1,4 +1,4 @@
-package com.old.silence.job.server.starter.event;
+package com.old.silence.job.server.event;
 
 import org.springframework.context.ApplicationEvent;
 

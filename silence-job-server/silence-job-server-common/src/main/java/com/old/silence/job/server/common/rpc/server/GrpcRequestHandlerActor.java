@@ -34,7 +34,6 @@ import java.util.Optional;
  */
 @Component(ActorGenerator.GRPC_REQUEST_HANDLER_ACTOR)
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-
 public class GrpcRequestHandlerActor extends AbstractActor {
 
     @Override

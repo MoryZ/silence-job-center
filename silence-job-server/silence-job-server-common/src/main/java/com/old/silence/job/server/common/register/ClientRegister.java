@@ -1,9 +1,6 @@
 package com.old.silence.job.server.common.register;
 
 import cn.hutool.core.util.StrUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.collect.Lists;
@@ -39,8 +36,7 @@ public class ClientRegister extends AbstractRegister {
     public static final String BEAN_NAME = "clientRegister";
     public static final int DELAY_TIME = 30;
     protected static final LinkedBlockingDeque<ServerNode> QUEUE = new LinkedBlockingDeque<>(1000);
-    @Autowired
-    @Lazy
+
     private RefreshNodeSchedule refreshNodeSchedule;
 
     protected ClientRegister(ServerNodeDao serverNodeDao) {
@@ -48,7 +44,7 @@ public class ClientRegister extends AbstractRegister {
     }
 
     @Override
-    public boolean supports(int type) {
+    public boolean supports(NodeType type) {
         return getNodeType().equals(type);
     }
 
@@ -106,7 +102,7 @@ public class ClientRegister extends AbstractRegister {
         List<ServerNode> expireNodes = ClientRegister.getExpireNodes();
         if (Objects.nonNull(expireNodes)) {
             // 进行本地续签
-            for (final ServerNode serverNode : expireNodes) {
+            for (ServerNode serverNode : expireNodes) {
                 serverNode.setExpireAt(Instant.now().plusSeconds(DELAY_TIME));
                 // 刷新全量本地缓存
                 CacheRegisterTable.addOrUpdate(serverNode);
@@ -117,7 +113,6 @@ public class ClientRegister extends AbstractRegister {
         return expireNodes;
     }
 
-    @Component
     public class RefreshNodeSchedule extends AbstractSchedule {
         private ThreadPoolExecutor refreshNodePool;
         @Override
@@ -246,5 +241,9 @@ public class ClientRegister extends AbstractRegister {
             refreshNodePool.allowCoreThreadTimeOut(true);
             taskScheduler.scheduleWithFixedDelay(this::execute, Instant.now(), Duration.parse("PT5S"));
         }
+    }
+
+    public void setRefreshNodeSchedule(RefreshNodeSchedule refreshNodeSchedule) {
+        this.refreshNodeSchedule = refreshNodeSchedule;
     }
 }

@@ -1,4 +1,4 @@
-package com.old.silence.job.server.starter.listener;
+package com.old.silence.job.server.listener;
 
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.helpers.MessageFormatter;

@@ -11,7 +11,7 @@ public interface Register {
      *
      * @param type 1. 客户端 2.服务端
      */
-    boolean supports(int type);
+    boolean supports(NodeType type);
 
     /**
      * 执行注册

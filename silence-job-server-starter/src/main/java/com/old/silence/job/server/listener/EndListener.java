@@ -1,4 +1,4 @@
-package com.old.silence.job.server.starter.listener;
+package com.old.silence.job.server.listener;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.ApplicationListener;

@@ -1,11 +1,11 @@
-package com.old.silence.job.server.starter.listener;
+package com.old.silence.job.server.listener;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import com.old.silence.job.server.starter.SilenceJobCenterApplication;
-import com.old.silence.job.server.starter.event.ServerStartupFailedEvent;
+import com.old.silence.job.server.SilenceJobCenterApplication;
+import com.old.silence.job.server.event.ServerStartupFailedEvent;
 
 /**
  * @author moryzang

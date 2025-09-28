@@ -1,4 +1,4 @@
-package com.old.silence.job.server.starter.config;
+package com.old.silence.job.server.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;

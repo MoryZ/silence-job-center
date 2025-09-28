@@ -31,7 +31,6 @@ import java.util.concurrent.TimeUnit;
  *
  */
 @Component
-
 public class CacheRegisterTable implements Lifecycle {
 
     private static final Cache<Pair<String/*groupName*/, String/*namespaceId*/>, ConcurrentMap<String, RegisterNodeInfo>> CACHE;
@@ -169,7 +168,6 @@ public class CacheRegisterTable implements Lifecycle {
     /**
      * 无缓存时添加 有缓存时更新
      *
-     * @return 缓存对象
      */
     public static synchronized void addOrUpdate(ServerNode serverNode) {
         ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(

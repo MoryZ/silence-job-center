@@ -58,7 +58,7 @@ public class ServerRegister extends AbstractRegister {
 
 
     @Override
-    public boolean supports(int type) {
+    public boolean supports(NodeType type) {
         return getNodeType().equals(type);
     }
 

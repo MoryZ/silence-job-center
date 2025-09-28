@@ -1,2 +1,2 @@
-com.old.silence.job.server.starter.config.JobServerNettyAutoConfiguration
-com.old.silence.job.server.starter.config.SecurityConfiguration
+com.old.silence.job.server.config.JobServerNettyAutoConfiguration
+com.old.silence.job.server.config.SecurityConfiguration

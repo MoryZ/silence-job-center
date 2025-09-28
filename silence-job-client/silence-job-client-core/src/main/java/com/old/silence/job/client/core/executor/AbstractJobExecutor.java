@@ -63,7 +63,6 @@ public abstract class AbstractJobExecutor implements IJobExecutor {
                 if (MapReduceStage.MAP.equals(jobContext.getMrStage())) {
                     jobArgs = buildMapJobArgs(jobContext);
                 } else if (MapReduceStage.REDUCE.equals(jobContext.getMrStage())) {
-
                     jobArgs = buildReduceJobArgs(jobContext);
                 } else {
                     jobArgs = buildMergeReduceJobArgs(jobContext);

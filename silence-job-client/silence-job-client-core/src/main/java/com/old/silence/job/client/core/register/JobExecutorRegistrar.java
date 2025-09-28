@@ -12,7 +12,6 @@ import com.old.silence.job.client.core.dto.JobExecutorInfo;
 import java.util.List;
 
 @Component
-
 public class JobExecutorRegistrar implements Lifecycle {
     private final List<Scanner> scanners;
 

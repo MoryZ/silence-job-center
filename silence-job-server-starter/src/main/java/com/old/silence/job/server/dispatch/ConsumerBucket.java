@@ -1,4 +1,4 @@
-package com.old.silence.job.server.starter.dispatch;
+package com.old.silence.job.server.dispatch;
 
 import java.util.Set;
 

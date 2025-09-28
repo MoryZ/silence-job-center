@@ -34,7 +34,6 @@ public class CacheConsumerGroup implements Lifecycle {
      * 无缓存时添加
      * 有缓存时更新
      *
-     * @return 缓存对象
      */
     public static synchronized void addOrUpdate(String groupName, String namespaceId) {
         Set<String> namespaceIds = Optional.ofNullable(CACHE.getIfPresent(groupName)).orElseGet(HashSet::new);

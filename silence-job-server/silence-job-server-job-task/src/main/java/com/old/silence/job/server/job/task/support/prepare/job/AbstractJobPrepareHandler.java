@@ -8,7 +8,6 @@ public abstract class AbstractJobPrepareHandler implements JobPrepareHandler {
 
     @Override
     public void handle(JobTaskPrepareDTO jobPrepareDTO) {
-
         doHandle(jobPrepareDTO);
     }
 

@@ -1,4 +1,4 @@
-package com.old.silence.job.server.starter.config;
+package com.old.silence.job.server.config;
 
 
 import org.slf4j.Logger;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.old.silence.job.server.common.rpc.server.GrpcServer;
 import com.old.silence.job.server.common.rpc.server.NettyHttpServer;
-import com.old.silence.job.server.starter.event.ServerStartupFailedEvent;
+import com.old.silence.job.server.event.ServerStartupFailedEvent;
 
 import java.util.concurrent.TimeUnit;
 

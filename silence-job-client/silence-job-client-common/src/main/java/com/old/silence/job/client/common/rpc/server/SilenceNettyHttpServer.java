@@ -21,6 +21,7 @@ import com.old.silence.job.client.common.rpc.client.NettyChannel;
 import com.old.silence.job.client.common.rpc.supports.handler.NettyHttpServerHandler;
 import com.old.silence.job.client.common.rpc.supports.handler.SilenceDispatcherRequestHandler;
 import com.old.silence.job.common.context.SilenceSpringContext;
+import com.old.silence.job.common.enums.RpcType;
 import com.old.silence.job.log.SilenceJobLog;
 
 /**
@@ -95,6 +96,9 @@ public class SilenceNettyHttpServer implements Runnable, Lifecycle {
 
     @Override
     public void start() {
+        if (RpcType.NETTY != silenceJobProperties.getRpcType()) {
+            return;
+        }
         thread = new Thread(this);
         thread.setDaemon(true);
         thread.start();

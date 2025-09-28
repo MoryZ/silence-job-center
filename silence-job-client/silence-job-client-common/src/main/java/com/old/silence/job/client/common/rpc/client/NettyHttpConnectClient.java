@@ -66,7 +66,6 @@ public class NettyHttpConnectClient implements Lifecycle {
     /**
      * 连接客户端
      *
-     * @return
      */
     public void connect() {
 
@@ -124,7 +123,7 @@ public class NettyHttpConnectClient implements Lifecycle {
     /**
      * 连接失败处理
      *
-     * @param cause
+     * @param cause d
      */
     private void exceptionHandler(Throwable cause) {
         if (cause instanceof ConnectException) {

@@ -1,4 +1,4 @@
-package com.old.silence.job.server.starter.schedule;
+package com.old.silence.job.server.schedule;
 
 import org.springframework.stereotype.Component;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
