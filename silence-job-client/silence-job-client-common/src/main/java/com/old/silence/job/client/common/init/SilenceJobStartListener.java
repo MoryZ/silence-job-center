@@ -28,7 +28,7 @@ public class SilenceJobStartListener implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         if (isStarted) {
             SilenceJobLog.LOCAL.info("silence-job client already started v{}", SilenceJobVersion.getVersion());
             return;
