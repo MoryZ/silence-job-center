@@ -117,7 +117,7 @@ public class JdkLog extends AbstractLog {
                 jdkLevel = Level.SEVERE;
                 break;
             default:
-                throw new Error(String.format("Can not identify level: %s", level));
+                throw new Error(StrUtil.format("Can not identify level: {}", level));
         }
         logIfEnabled(jdkLevel, fqcn, format, arguments);
     }
@@ -134,7 +134,7 @@ public class JdkLog extends AbstractLog {
      */
     private void logIfEnabled(Level level, String callerFQCN, String format, Object... arguments) {
         if (logger.isLoggable(level)) {
-            LogRecord record = new LogRecord(level, String.format(format, arguments));
+            LogRecord record = new LogRecord(level, StrUtil.format(format, arguments));
             record.setLoggerName(getName());
             record.setThrown(extractThrowable(arguments));
             fillCallerData(callerFQCN, record);

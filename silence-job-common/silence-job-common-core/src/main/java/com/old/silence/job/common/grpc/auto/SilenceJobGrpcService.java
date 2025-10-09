@@ -43,7 +43,7 @@ public final class SilenceJobGrpcService {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\036silence_job_grpc_service.proto\"p\n\010Meta" +
       "data\022\013\n\003uri\030\003 \001(\t\022\'\n\007headers\030\007 \003(\0132\026.Met" +
       "adata.HeadersEntry\032.\n\014HeadersEntry\022\013\n\003ke" +
@@ -51,9 +51,8 @@ public final class SilenceJobGrpcService {
       "eJobRequest\022\r\n\005reqId\030\001 \001(\003\022\033\n\010metadata\030\002" +
       " \001(\0132\t.Metadata\022\014\n\004body\030\003 \001(\t\"J\n\nGrpcRes" +
       "ult\022\r\n\005reqId\030\001 \001(\003\022\016\n\006status\030\002 \001(\005\022\017\n\007me" +
-      "ssage\030\003 \001(\t\022\014\n\004data\030\004 \001(\tB6\n2com.old.sil" +
-      "ence.job.common.grpc.autoP" +
-      "\001b\006proto3"
+      "ssage\030\003 \001(\t\022\014\n\004data\030\004 \001(\tB(\n$com.old.sil" +
+      "ence.job.common.grpc.autoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -64,25 +63,25 @@ public final class SilenceJobGrpcService {
     internal_static_Metadata_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Metadata_descriptor,
-        new String[] { "Uri", "Headers", });
+        new java.lang.String[] { "Uri", "Headers", });
     internal_static_Metadata_HeadersEntry_descriptor =
       internal_static_Metadata_descriptor.getNestedTypes().get(0);
     internal_static_Metadata_HeadersEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Metadata_HeadersEntry_descriptor,
-        new String[] { "Key", "Value", });
+        new java.lang.String[] { "Key", "Value", });
     internal_static_GrpcSilenceJobRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_GrpcSilenceJobRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GrpcSilenceJobRequest_descriptor,
-        new String[] { "ReqId", "Metadata", "Body", });
+        new java.lang.String[] { "ReqId", "Metadata", "Body", });
     internal_static_GrpcResult_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_GrpcResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GrpcResult_descriptor,
-        new String[] { "ReqId", "Status", "Message", "Data", });
+        new java.lang.String[] { "ReqId", "Status", "Message", "Data", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

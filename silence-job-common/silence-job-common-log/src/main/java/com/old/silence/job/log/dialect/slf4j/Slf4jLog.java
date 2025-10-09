@@ -8,6 +8,7 @@ import org.slf4j.spi.LocationAwareLogger;
 import com.old.silence.job.log.constant.LogFieldConstants;
 import com.old.silence.job.log.dialect.AbstractLog;
 
+import cn.hutool.core.util.StrUtil;
 import static com.old.silence.job.log.factory.LogFactory.extractThrowable;
 
 
@@ -170,7 +171,7 @@ public class Slf4jLog extends AbstractLog {
             case OFF:
                 break;
             default:
-                throw new Error(String.format("Can not identify level: %s", level));
+                throw new Error(StrUtil.format("Can not identify level: {}", level));
         }
     }
 

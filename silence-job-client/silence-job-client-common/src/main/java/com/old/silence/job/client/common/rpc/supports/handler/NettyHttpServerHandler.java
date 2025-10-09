@@ -45,7 +45,7 @@ public class NettyHttpServerHandler extends SimpleChannelInboundHandler<FullHttp
         HttpHeaders headers = fullHttpRequest.headers();
         Map<String, String> headerMap = new HashMap<>();
 
-        for (final Entry<String, String> header : headers) {
+        for (Entry<String, String> header : headers) {
             headerMap.put(header.getKey(), header.getValue());
         }
 

@@ -115,7 +115,7 @@ public class Log4jLog extends AbstractLog {
                 log4jLevel = Level.ERROR;
                 break;
             default:
-                throw new Error(String.format("Can not identify level: %s", level));
+                throw new Error(StrUtil.format("Can not identify level: {}", level));
         }
 
         if (logger.isEnabledFor(log4jLevel)) {
@@ -123,7 +123,7 @@ public class Log4jLog extends AbstractLog {
                 MDC.put(LogFieldConstants.MDC_REMOTE, remote.toString());
             }
 
-            logger.log(fqcn, log4jLevel, String.format(format, arguments), LogFactory.extractThrowable(arguments));
+            logger.log(fqcn, log4jLevel, StrUtil.format(format, arguments), LogFactory.extractThrowable(arguments));
         }
     }
 }

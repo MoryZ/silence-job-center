@@ -4,8 +4,6 @@ import com.old.silence.job.log.dialect.Log;
 import com.old.silence.job.log.factory.LogFactory;
 import com.old.silence.job.log.lang.LogCaller;
 import com.old.silence.job.log.level.Level;
-import com.old.silence.job.log.factory.LogFactory;
-import com.old.silence.job.log.lang.LogCaller;
 
 
 public abstract class AbstractLog {

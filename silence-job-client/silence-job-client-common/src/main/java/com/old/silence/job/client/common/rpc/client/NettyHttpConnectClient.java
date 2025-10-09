@@ -10,6 +10,7 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import com.old.silence.job.client.common.Lifecycle;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
 import com.old.silence.job.client.common.handler.ClientRegister;
@@ -24,6 +25,7 @@ import java.util.concurrent.TimeUnit;
  * Netty 客户端
  *
  */
+@Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class NettyHttpConnectClient implements Lifecycle {
     private final SilenceJobProperties silenceJobProperties;

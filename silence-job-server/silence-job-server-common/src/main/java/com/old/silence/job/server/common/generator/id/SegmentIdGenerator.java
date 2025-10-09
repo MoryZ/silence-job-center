@@ -1,6 +1,8 @@
 package com.old.silence.job.server.common.generator.id;
 
 import cn.hutool.core.lang.Pair;
+import cn.hutool.core.util.StrUtil;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.old.silence.core.util.CollectionUtils;
@@ -205,7 +207,7 @@ public class SegmentIdGenerator implements IdGenerator, Lifecycle {
             } else {
                 nextStep = nextStep / 2 >= buffer.getMinStep() ? nextStep / 2 : nextStep;
             }
-            SilenceJobLog.LOCAL.debug("leafKey[{}], step[{}], duration[{}mins], nextStep[{}]", key, buffer.getStep(), String.format("%.2f", ((double) duration / (1000 * 60))), nextStep);
+            SilenceJobLog.LOCAL.debug("leafKey[{}], step[{}], duration[{}mins], nextStep[{}]", key, buffer.getStep(), StrUtil.format("%.2f", ((double) duration / (1000 * 60))), nextStep);
             LambdaUpdateWrapper<SequenceAlloc> wrapper1 = new LambdaUpdateWrapper<SequenceAlloc>()
                     .setSql("max_id = max_id + " + nextStep)
                     .set(SequenceAlloc::getUpdatedDate, new Date())

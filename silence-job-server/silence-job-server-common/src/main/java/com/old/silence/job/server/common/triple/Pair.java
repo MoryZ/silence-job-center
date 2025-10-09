@@ -74,7 +74,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
         return "(" + getLeft() + ',' + getRight() + ')';
     }
 
-    public String toString(final String format) {
+    public String toString(String format) {
         return String.format(format, getLeft(), getRight());
     }
 }

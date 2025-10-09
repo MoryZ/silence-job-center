@@ -33,7 +33,7 @@ public interface GrpcSilenceJobRequestOrBuilder extends
    * <code>string body = 3;</code>
    * @return The body.
    */
-  String getBody();
+  java.lang.String getBody();
   /**
    * <code>string body = 3;</code>
    * @return The bytes for body.

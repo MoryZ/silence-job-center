@@ -1,5 +1,7 @@
 package com.old.silence.job.log.dialect;
 
+import cn.hutool.core.util.StrUtil;
+
 import com.old.silence.job.log.level.Level;
 
 import java.io.Serializable;
@@ -28,22 +30,22 @@ public abstract class AbstractLog implements Log, Serializable {
             case ERROR:
                 return isErrorEnabled();
             default:
-                throw new Error(String.format("Can not identify level: %s", level));
+                throw new Error(StrUtil.format("Can not identify level: {}", level));
         }
     }
 
     @Override
-    public void trace(final Boolean remote, final Throwable t) {
+    public void trace(Boolean remote, Throwable t) {
         trace(remote, "", t);
     }
 
     @Override
-    public void trace(final Boolean remote, final String msg) {
+    public void trace(Boolean remote, String msg) {
         trace(remote, FQCN, "", msg);
     }
 
     @Override
-    public void trace(final Boolean remote, final String msg, final Throwable t) {
+    public void trace(Boolean remote, String msg, Throwable t) {
         trace(remote, FQCN, msg, t);
     }
 
@@ -53,17 +55,17 @@ public abstract class AbstractLog implements Log, Serializable {
     }
 
     @Override
-    public void debug(final Boolean remote, final Throwable t) {
+    public void debug(Boolean remote, Throwable t) {
         debug(remote, "", t);
     }
 
     @Override
-    public void debug(final Boolean remote, final String msg, final Throwable t) {
+    public void debug(Boolean remote, String msg, Throwable t) {
         debug(remote, FQCN, msg, t);
     }
 
     @Override
-    public void debug(final Boolean remote, final String msg) {
+    public void debug(Boolean remote, String msg) {
         debug(remote, FQCN, "", msg);
     }
 
@@ -79,12 +81,12 @@ public abstract class AbstractLog implements Log, Serializable {
 
 
     @Override
-    public void info(final Boolean remote, final String msg, final Throwable t) {
+    public void info(Boolean remote, String msg, Throwable t) {
         info(remote, FQCN, msg, t);
     }
 
     @Override
-    public void info(final Boolean remote, final String msg) {
+    public void info(Boolean remote, String msg) {
         info(remote, FQCN, msg);
     }
 
@@ -99,17 +101,17 @@ public abstract class AbstractLog implements Log, Serializable {
     }
 
     @Override
-    public void error(final Boolean remote, final String msg, final Throwable t) {
+    public void error(Boolean remote, String msg, Throwable t) {
         error(remote, FQCN, msg, t);
     }
 
     @Override
-    public void error(final Boolean remote, final String msg) {
+    public void error(Boolean remote, String msg) {
         error(remote, FQCN, msg);
     }
 
     @Override
-    public void error(final Boolean remote, final Throwable t) {
+    public void error(Boolean remote, Throwable t) {
         error(remote, FQCN, "", t);
     }
 
@@ -119,17 +121,17 @@ public abstract class AbstractLog implements Log, Serializable {
     }
 
     @Override
-    public void warn(final Boolean remote, final String msg, final Throwable t) {
+    public void warn(Boolean remote, String msg, Throwable t) {
         warn(remote, FQCN, msg, t);
     }
 
     @Override
-    public void warn(final Boolean remote, final String msg) {
+    public void warn(Boolean remote, String msg) {
         warn(remote, FQCN, msg);
     }
 
     @Override
-    public void warn(final Boolean remote, final Throwable t) {
+    public void warn(Boolean remote, Throwable t) {
         warn(remote, FQCN, "", t);
     }
 

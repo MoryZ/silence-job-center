@@ -31,12 +31,18 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
+@Component(ClientRegister.BEAN_NAME)
 public class ClientRegister extends AbstractRegister {
     public static final String BEAN_NAME = "clientRegister";
     public static final int DELAY_TIME = 30;
     protected static final LinkedBlockingDeque<ServerNode> QUEUE = new LinkedBlockingDeque<>(1000);
 
+    @Autowired
+    @Lazy
     private RefreshNodeSchedule refreshNodeSchedule;
 
     protected ClientRegister(ServerNodeDao serverNodeDao) {
@@ -113,6 +119,7 @@ public class ClientRegister extends AbstractRegister {
         return expireNodes;
     }
 
+    @Component
     public class RefreshNodeSchedule extends AbstractSchedule {
         private ThreadPoolExecutor refreshNodePool;
         @Override
@@ -243,7 +250,4 @@ public class ClientRegister extends AbstractRegister {
         }
     }
 
-    public void setRefreshNodeSchedule(RefreshNodeSchedule refreshNodeSchedule) {
-        this.refreshNodeSchedule = refreshNodeSchedule;
-    }
 }

@@ -1,5 +1,9 @@
 package com.old.silence.job.common.client.dto.request;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.old.silence.core.enums.EnumValueDeserializer;
+import com.old.silence.core.enums.EnumValueSerializer;
 import com.old.silence.job.common.enums.ExecutorType;
 import com.old.silence.job.common.enums.JobTaskType;
 import com.old.silence.job.common.enums.MapReduceStage;
@@ -34,6 +38,8 @@ public class DispatchJobRequest {
     private Integer parallelNum;
 
     @NotNull(message = "executorType 不能为空")
+    @JsonDeserialize(using = EnumValueDeserializer.class)
+    @JsonSerialize(using = EnumValueSerializer.class)
     private ExecutorType executorType;
 
     @NotBlank(message = "executorInfo 不能为空")
@@ -47,6 +53,8 @@ public class DispatchJobRequest {
      */
     private String taskName;
 
+    @JsonDeserialize(using = EnumValueDeserializer.class)
+    @JsonSerialize(using = EnumValueSerializer.class)
     private MapReduceStage mrStage;
 
     private String argsStr;

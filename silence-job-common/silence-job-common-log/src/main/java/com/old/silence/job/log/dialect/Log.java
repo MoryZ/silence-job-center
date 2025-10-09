@@ -9,7 +9,6 @@ import com.old.silence.job.log.level.InfoLog;
 import com.old.silence.job.log.level.Level;
 import com.old.silence.job.log.level.TraceLog;
 import com.old.silence.job.log.level.WarnLog;
-import com.old.silence.job.log.level.InfoLog;
 
 /**
  * 日志统一接口

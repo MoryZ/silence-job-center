@@ -22,8 +22,6 @@ import java.util.Objects;
 
 
 @Component
-
-
 public class RunningWorkflowPrepareHandler extends AbstractWorkflowPrePareHandler {
 
 

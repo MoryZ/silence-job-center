@@ -1,14 +1,11 @@
 package com.old.silence.job.log.dialect.console;
 
 
-
-
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.StrUtil;
 
-import org.apache.commons.lang3.StringUtils;
 import com.old.silence.job.log.dialect.AbstractLog;
 import com.old.silence.job.log.level.Level;
 
@@ -34,7 +31,7 @@ public class ConsoleLog extends AbstractLog {
      * @param clazz 类
      */
     public ConsoleLog(Class<?> clazz) {
-        this.name = (null == clazz) ? StringUtils.EMPTY : clazz.getName();
+        this.name = (null == clazz) ? StrUtil.EMPTY : clazz.getName();
     }
 
     /**
@@ -129,7 +126,7 @@ public class ConsoleLog extends AbstractLog {
                 .set("date", DateUtil.now())
                 .set("level", level.toString())
                 .set("name", this.name)
-                .set("msg", String.format(format, arguments));
+                .set("msg", StrUtil.format(format, arguments));
 
         String logMsg = StrUtil.format(logFormat, dict);
 

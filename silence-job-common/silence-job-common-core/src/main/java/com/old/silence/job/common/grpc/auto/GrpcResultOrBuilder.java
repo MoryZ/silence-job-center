@@ -24,7 +24,7 @@ public interface GrpcResultOrBuilder extends
    * <code>string message = 3;</code>
    * @return The message.
    */
-  String getMessage();
+  java.lang.String getMessage();
   /**
    * <code>string message = 3;</code>
    * @return The bytes for message.
@@ -36,7 +36,7 @@ public interface GrpcResultOrBuilder extends
    * <code>string data = 4;</code>
    * @return The data.
    */
-  String getData();
+  java.lang.String getData();
   /**
    * <code>string data = 4;</code>
    * @return The bytes for data.

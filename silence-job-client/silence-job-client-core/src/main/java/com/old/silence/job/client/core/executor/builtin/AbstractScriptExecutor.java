@@ -228,7 +228,7 @@ public abstract class AbstractScriptExecutor {
     }
 
     private String formatResult(StringBuilder inputBuilder, StringBuilder errorBuilder) {
-        return String.format("[INPUT]: %s;[ERROR]: %s", inputBuilder, errorBuilder);
+        return StrUtil.format("[INPUT]: {};[ERROR]: {}", inputBuilder, errorBuilder);
     }
 
     private void closeQuietly(Closeable closeable) {

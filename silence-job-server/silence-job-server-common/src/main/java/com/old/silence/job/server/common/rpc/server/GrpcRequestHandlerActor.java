@@ -41,7 +41,7 @@ public class GrpcRequestHandlerActor extends AbstractActor {
         return receiveBuilder().match(GrpcRequest.class, grpcRequest -> {
             GrpcSilenceJobRequest grpcSilenceJobRequest = grpcRequest.getGrpcSilenceJobRequest();
             Metadata metadata = grpcSilenceJobRequest.getMetadata();
-            final String uri = metadata.getUri();
+            String uri = metadata.getUri();
             if (StrUtil.isBlank(uri)) {
                 SilenceJobLog.LOCAL.error("uri can not be null");
                 return;

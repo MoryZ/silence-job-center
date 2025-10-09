@@ -1,5 +1,7 @@
 package com.old.silence.job.log.dialect.log4j2;
 
+import cn.hutool.core.util.StrUtil;
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -116,7 +118,7 @@ public class Log4j2Log extends AbstractLog {
                 log4j2Level = Level.ERROR;
                 break;
             default:
-                throw new Error(String.format("Can not identify level: %s", level));
+                throw new Error(StrUtil.format("Can not identify level: {}", level));
         }
         logIfEnabled(log4j2Level, remote, fqcn, format, arguments);
     }
@@ -139,11 +141,11 @@ public class Log4j2Log extends AbstractLog {
                 MDC.put(LogFieldConstants.MDC_REMOTE, remote.toString());
             }
             if (this.logger instanceof AbstractLogger) {
-                ((AbstractLogger) this.logger).logIfEnabled(fqcn, level, null, String.format(msgTemplate, arguments),
+                ((AbstractLogger) this.logger).logIfEnabled(fqcn, level, null, StrUtil.format(msgTemplate, arguments),
                         LogFactory.extractThrowable(arguments));
             } else {
                 // FQCN无效
-                this.logger.log(level, String.format(msgTemplate, arguments), LogFactory.extractThrowable(arguments));
+                this.logger.log(level, StrUtil.format(msgTemplate, arguments), LogFactory.extractThrowable(arguments));
             }
         }
     }
