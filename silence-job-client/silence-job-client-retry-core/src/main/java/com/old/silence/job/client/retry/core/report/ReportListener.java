@@ -117,7 +117,7 @@ public class ReportListener implements Listener<RetryTaskDTO> {
                 return;
             }
             List<ConfigDTO.Notify.Recipient> recipients = Optional.ofNullable(notify.getRecipients()).orElse(new ArrayList<>());
-            for (final ConfigDTO.Notify.Recipient recipient : recipients) {
+            for (ConfigDTO.Notify.Recipient recipient : recipients) {
                 AlarmContext context = AlarmContext.build()
                         .text(reportErrorTextMessageFormatter,
                                 EnvironmentUtils.getActiveProfile(),

@@ -19,7 +19,7 @@ public class RetryJobTimerTask implements TimerTask<String> {
     }
 
     @Override
-    public void run(final Timeout timeout) throws Exception {
+    public void run(Timeout timeout) throws Exception {
         // 执行任务调度
         SilenceJobLog.LOCAL.debug("开始执行重试任务调度. 当前时间:[{}] taskId:[{}]", Instant.now(), jobExecutorDTO.getTaskBatchId());
         JobTimerWheel.clearCache(idempotentKey());

@@ -9,5 +9,5 @@ public interface LogStorage {
 
     LogTypeEnum logType();
 
-    void storage(final LogContentDTO logContentDTO, final LogMetaDTO logMetaDTO);
+    void storage(LogContentDTO logContentDTO, LogMetaDTO logMetaDTO);
 }

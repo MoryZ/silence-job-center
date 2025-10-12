@@ -12,6 +12,7 @@ import org.apache.pekko.actor.ActorRef;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.client.dto.ExecuteResult;
 import com.old.silence.job.common.enums.JobOperationReason;
@@ -79,7 +80,12 @@ public class JobHandler {
         jobTaskBatch.setTaskBatchStatus(JobTaskBatchStatus.RUNNING);
         // 重置状态原因
         jobTaskBatch.setOperationReason(JobOperationReason.NONE);
-        Assert.isTrue(jobTaskBatchDao.updateById(jobTaskBatch) > 0,
+
+        UpdateWrapper<JobTaskBatch> wrapper = new UpdateWrapper<>();
+        wrapper.eq("id", taskBatchId)
+                .set("task_batch_status", JobTaskBatchStatus.RUNNING)
+                .set("operation_reason", JobOperationReason.NONE);
+        Assert.isTrue(jobTaskBatchDao.update(wrapper) > 0,
                 () -> new SilenceJobServerException("update job batch to running failed."));
 
         Job job = jobDao.selectById(jobTaskBatch.getJobId());

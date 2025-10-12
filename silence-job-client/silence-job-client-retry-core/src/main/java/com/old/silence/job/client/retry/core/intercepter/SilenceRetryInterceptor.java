@@ -201,7 +201,7 @@ public class SilenceRetryInterceptor implements MethodInterceptor, AfterAdvice, 
         return null;
     }
 
-    private void initHeaders(final Retryable retryable) {
+    private void initHeaders(Retryable retryable) {
 
         SilenceJobHeaders silenceJobHeaders = new SilenceJobHeaders();
         silenceJobHeaders.setRetry(Boolean.TRUE);

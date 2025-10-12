@@ -46,7 +46,7 @@ public class RetryDeadLetterTaskAccess extends AbstractTaskAccess<RetryDeadLette
     }
 
     @Override
-    protected long doCount(final LambdaQueryWrapper<RetryDeadLetter> query) {
+    protected long doCount(LambdaQueryWrapper<RetryDeadLetter> query) {
         return retryDeadLetterDao.selectCount(query);
     }
 

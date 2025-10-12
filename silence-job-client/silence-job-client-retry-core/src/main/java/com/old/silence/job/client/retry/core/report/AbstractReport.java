@@ -29,7 +29,7 @@ public abstract class AbstractReport implements Report {
     protected SilenceJobProperties silenceJobProperties;
 
     @Override
-    public boolean report(String scene, final String targetClassName, final Object[] params) {
+    public boolean report(String scene, String targetClassName, Object[] params) {
         RetryerInfo retryerInfo = RetryerInfoCache.get(scene, targetClassName);
         Assert.notNull(retryerInfo, () -> new SilenceRetryClientException("retryerInfo is null"));
 
@@ -52,7 +52,7 @@ public abstract class AbstractReport implements Report {
      * @param args            参数
      * @return RetryTaskDTO 上报服务端对象
      */
-    protected RetryTaskDTO buildRetryTaskDTO(final String scene, final String targetClassName, final Object[] args) {
+    protected RetryTaskDTO buildRetryTaskDTO(String scene, String targetClassName, Object[] args) {
         RetryerInfo retryerInfo = RetryerInfoCache.get(scene, targetClassName);
         Method executorMethod = retryerInfo.getMethod();
 

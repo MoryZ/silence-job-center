@@ -1,22 +1,19 @@
 package com.old.silence.job.server.dto;
 
 
+import com.old.silence.data.commons.annotation.RelationalQueryProperty;
+import com.old.silence.data.commons.converter.Part;
 
-
-
-public class RetryQueryVO  {
-
+public class RetryDeadLetterQuery {
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private String groupName;
-
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private String sceneName;
-
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private String bizNo;
-
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private String idempotentId;
 
-    private Integer retryStatus;
-
-    private Long retryId;
 
     public String getGroupName() {
         return groupName;
@@ -50,19 +47,4 @@ public class RetryQueryVO  {
         this.idempotentId = idempotentId;
     }
 
-    public Integer getRetryStatus() {
-        return retryStatus;
-    }
-
-    public void setRetryStatus(Integer retryStatus) {
-        this.retryStatus = retryStatus;
-    }
-
-    public Long getRetryId() {
-        return retryId;
-    }
-
-    public void setRetryId(Long retryId) {
-        this.retryId = retryId;
-    }
 }

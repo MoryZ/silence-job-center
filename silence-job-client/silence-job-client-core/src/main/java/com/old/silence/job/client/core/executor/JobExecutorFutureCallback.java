@@ -63,7 +63,7 @@ public class JobExecutorFutureCallback implements FutureCallback<ExecuteResult> 
 
     private final JobContext jobContext;
 
-    public JobExecutorFutureCallback(final JobContext jobContext) {
+    public JobExecutorFutureCallback(JobContext jobContext) {
         this.jobContext = jobContext;
     }
 
@@ -99,7 +99,7 @@ public class JobExecutorFutureCallback implements FutureCallback<ExecuteResult> 
     }
 
     @Override
-    public void onFailure(final Throwable t) {
+    public void onFailure(Throwable t) {
         if (t instanceof CancellationException) {
             SilenceJobLog.LOCAL.debug("任务已经被取消，不做状态回传");
             return;

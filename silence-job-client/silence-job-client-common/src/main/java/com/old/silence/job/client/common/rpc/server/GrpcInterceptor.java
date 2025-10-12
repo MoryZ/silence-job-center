@@ -15,8 +15,8 @@ public class GrpcInterceptor implements ServerInterceptor {
     private static final Logger log = LoggerFactory.getLogger(GrpcInterceptor.class);
 
     @Override
-    public <ReqT, RespT> Listener<ReqT> interceptCall(final ServerCall<ReqT, RespT> serverCall, final Metadata metadata,
-        final ServerCallHandler<ReqT, RespT> serverCallHandler) {
+    public <ReqT, RespT> Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> serverCall, Metadata metadata,
+                                                      ServerCallHandler<ReqT, RespT> serverCallHandler) {
         String fullMethodName = serverCall.getMethodDescriptor().getFullMethodName();
         long start = System.currentTimeMillis();
 

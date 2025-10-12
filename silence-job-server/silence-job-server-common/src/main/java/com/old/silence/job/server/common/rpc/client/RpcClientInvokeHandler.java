@@ -85,7 +85,7 @@ public class RpcClientInvokeHandler implements InvocationHandler {
     }
 
     @Override
-    public ApiResult invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+    public ApiResult invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Mapping annotation = method.getAnnotation(Mapping.class);
         Assert.notNull(annotation, () -> new SilenceJobServerException("@Mapping cannot be null"));
 
@@ -97,7 +97,7 @@ public class RpcClientInvokeHandler implements InvocationHandler {
     }
 
     @NotNull
-    private ApiResult doFailoverHandler(final Method method, final Object[] args, final Mapping annotation)
+    private ApiResult doFailoverHandler(Method method, Object[] args, Mapping annotation)
             throws Throwable {
         Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName, namespaceId);
 

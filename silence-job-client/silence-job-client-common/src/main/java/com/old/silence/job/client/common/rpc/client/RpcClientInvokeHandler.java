@@ -40,7 +40,7 @@ public class RpcClientInvokeHandler<R extends ApiResult<Object>> implements Invo
     }
 
     @Override
-    public R invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+    public R invoke(Object proxy, Method method, Object[] args) throws Throwable {
         StopWatch sw = new StopWatch();
         Mapping annotation = method.getAnnotation(Mapping.class);
         SilenceJobRequest silenceJobRequest = new SilenceJobRequest(args);

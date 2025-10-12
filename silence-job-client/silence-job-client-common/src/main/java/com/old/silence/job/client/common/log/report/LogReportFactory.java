@@ -19,7 +19,7 @@ public final class LogReportFactory {
 
     public static LogReport get() {
 
-        for (final LogReport report : REPORTS) {
+        for (LogReport report : REPORTS) {
             if (report.supports()) {
                 return report;
             }

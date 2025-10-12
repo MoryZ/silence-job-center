@@ -12,7 +12,7 @@ import java.util.List;
  *
  */
 
-public class BatchDeleteRetryDeadLetterVO {
+public class BatchDeleteRetryDeadLetterCommand {
 
     /**
      * 重试表id

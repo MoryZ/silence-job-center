@@ -12,17 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.data.commons.converter.QueryWrapperConverter;
 import com.old.silence.job.server.domain.model.Retry;
 import com.old.silence.job.server.domain.service.RetryService;
 import com.old.silence.job.server.dto.BatchDeleteRetryTaskVO;
-import com.old.silence.job.server.dto.GenerateRetryIdempotentIdVO;
+import com.old.silence.job.server.dto.GenerateRetryIdempotentIdCommand;
 import com.old.silence.job.server.dto.ManualTriggerTaskRequestVO;
 import com.old.silence.job.server.dto.ParseLogsVO;
-import com.old.silence.job.server.dto.RetryQueryVO;
-import com.old.silence.job.server.dto.RetrySaveRequestVO;
+import com.old.silence.job.server.dto.RetryQuery;
+import com.old.silence.job.server.dto.RetrySaveRequestCommand;
 import com.old.silence.job.server.dto.RetryUpdateExecutorNameRequestVO;
 import com.old.silence.job.server.dto.RetryUpdateStatusRequestVO;
 import com.old.silence.job.server.vo.RetryResponseVO;
+
+import java.math.BigInteger;
 
 /**
  * 重试数据管理接口
@@ -40,18 +43,18 @@ public class RetryResource {
 
 
     @GetMapping(value = "/retries", params = {"pageNo", "pageSize"})
-    public IPage<RetryResponseVO> getRetryTaskPage(Page<Retry> page, RetryQueryVO queryVO) {
-        return retryService.getRetryPage(page, queryVO);
+    public IPage<RetryResponseVO> getRetryTaskPage(Page<Retry> page, RetryQuery retryQuery) {
+        var queryWrapper = QueryWrapperConverter.convert(retryQuery, Retry.class);
+        return retryService.getRetryPage(page, queryWrapper);
     }
 
     
     @GetMapping("/retries/{id}")
-    public RetryResponseVO getRetryTaskById(@RequestParam("groupName") String groupName,
-                                            @PathVariable Long id) {
-        return retryService.getRetryById(groupName, id);
+    public RetryResponseVO findById(@RequestParam String groupName,
+                                            @PathVariable BigInteger id) {
+        return retryService.findById(groupName, id);
     }
 
-    
     @PutMapping("/retries/updateStatus")
     public int updateRetryTaskStatus(@RequestBody RetryUpdateStatusRequestVO retryUpdateStatusRequestVO) {
         return retryService.updateRetryStatus(retryUpdateStatusRequestVO);
@@ -59,14 +62,14 @@ public class RetryResource {
 
     
     @PostMapping("/retries")
-    public int create(@RequestBody @Validated RetrySaveRequestVO retryTaskRequestVO) {
-        return retryService.saveRetryTask(retryTaskRequestVO);
+    public int create(@RequestBody @Validated RetrySaveRequestCommand retrySaveRequestCommand) {
+        return retryService.create(retrySaveRequestCommand);
     }
 
     
     @PostMapping("/retries/generate/idempotent-id")
-    public String idempotentIdGenerate(@RequestBody @Validated GenerateRetryIdempotentIdVO generateRetryIdempotentIdVO) {
-        return  retryService.idempotentIdGenerate(generateRetryIdempotentIdVO);
+    public String idempotentIdGenerate(@RequestBody @Validated GenerateRetryIdempotentIdCommand generateRetryIdempotentIdCommand) {
+        return  retryService.idempotentIdGenerate(generateRetryIdempotentIdCommand);
     }
 
     

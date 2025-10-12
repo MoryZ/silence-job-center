@@ -37,7 +37,7 @@ public class ShardingClientCallbackHandler extends AbstractClientCallbackHandler
     }
 
     @Override
-    protected void doCallback(final ClientCallbackContext context) {
+    protected void doCallback(ClientCallbackContext context) {
 
         JobExecutorResultDTO jobExecutorResultDTO = JobTaskConverter.INSTANCE.toJobExecutorResultDTO(context);
         jobExecutorResultDTO.setTaskId(context.getTaskId());

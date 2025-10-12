@@ -1,6 +1,8 @@
 package com.old.silence.job.server.vo;
 
 
+import com.old.silence.job.common.enums.BackoffType;
+import com.old.silence.job.common.enums.CbTriggerType;
 import com.old.silence.job.common.enums.JobBlockStrategy;
 import com.old.silence.job.common.enums.TriggerType;
 
@@ -21,7 +23,7 @@ public class SceneConfigResponseVO {
 
     private Integer maxRetryCount;
 
-    private TriggerType backOff;
+    private BackoffType backOff;
 
     private String triggerInterval;
 
@@ -52,7 +54,7 @@ public class SceneConfigResponseVO {
     /**
      * 回调触发类型
      */
-    private TriggerType cbTriggerType;
+    private CbTriggerType cbTriggerType;
 
     /**
      * 回调的最大执行次数
@@ -104,11 +106,11 @@ public class SceneConfigResponseVO {
         this.maxRetryCount = maxRetryCount;
     }
 
-    public TriggerType getBackOff() {
+    public BackoffType getBackOff() {
         return backOff;
     }
 
-    public void setBackOff(TriggerType backOff) {
+    public void setBackOff(BackoffType backOff) {
         this.backOff = backOff;
     }
 
@@ -192,11 +194,11 @@ public class SceneConfigResponseVO {
         this.cbStatus = cbStatus;
     }
 
-    public TriggerType getCbTriggerType() {
+    public CbTriggerType getCbTriggerType() {
         return cbTriggerType;
     }
 
-    public void setCbTriggerType(TriggerType cbTriggerType) {
+    public void setCbTriggerType(CbTriggerType cbTriggerType) {
         this.cbTriggerType = cbTriggerType;
     }
 

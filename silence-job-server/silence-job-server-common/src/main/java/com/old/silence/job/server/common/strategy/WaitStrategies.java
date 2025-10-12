@@ -66,11 +66,11 @@ public class WaitStrategies {
             this.delayLevel = delayLevel;
         }
 
-        public void setNextTriggerAt(final long nextTriggerAt) {
+        public void setNextTriggerAt(long nextTriggerAt) {
             this.nextTriggerAt = nextTriggerAt;
         }
 
-        public void setNextTriggerAt(final Instant nextTriggerAt) {
+        public void setNextTriggerAt(Instant nextTriggerAt) {
             this.nextTriggerAt = DateUtils.toEpochMilli(nextTriggerAt);
         }
     }

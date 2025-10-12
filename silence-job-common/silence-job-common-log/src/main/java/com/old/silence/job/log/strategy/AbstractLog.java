@@ -15,7 +15,7 @@ public abstract class AbstractLog {
         return isRemote;
     }
 
-    protected void setRemote(final Boolean remote) {
+    protected void setRemote(Boolean remote) {
         isRemote = remote;
     }
 

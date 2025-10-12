@@ -33,7 +33,7 @@ public class GetRegNodesPostHttpRequestHandler extends GetHttpRequestHandler {
         List<ServerNode> expireNodes = ClientRegister.getExpireNodes();
         if (Objects.nonNull(expireNodes)) {
             // 进行本地续签
-            for (final ServerNode serverNode : expireNodes) {
+            for (ServerNode serverNode : expireNodes) {
                 serverNode.setExpireAt(Instant.now().plusSeconds(DELAY_TIME));
                 // 刷新全量本地缓存
                 CacheRegisterTable.addOrUpdate(serverNode);

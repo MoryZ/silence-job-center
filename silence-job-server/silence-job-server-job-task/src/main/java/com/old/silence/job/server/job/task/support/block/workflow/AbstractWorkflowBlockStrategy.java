@@ -11,13 +11,13 @@ public abstract class AbstractWorkflowBlockStrategy implements BlockStrategy, In
 
     @Override
     @Transactional
-    public void block(final BlockStrategyContext context) {
+    public void block(BlockStrategyContext context) {
         WorkflowBlockStrategyContext workflowBlockStrategyContext = (WorkflowBlockStrategyContext) context;
 
         doBlock(workflowBlockStrategyContext);
     }
 
-    protected abstract void doBlock(final WorkflowBlockStrategyContext workflowBlockStrategyContext);
+    protected abstract void doBlock(WorkflowBlockStrategyContext workflowBlockStrategyContext);
 
     protected abstract JobBlockStrategy blockStrategyEnum();
 

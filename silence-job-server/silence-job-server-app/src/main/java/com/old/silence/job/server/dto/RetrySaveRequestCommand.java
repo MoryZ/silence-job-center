@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
  *
  */
 
-public class RetrySaveRequestVO {
+public class RetrySaveRequestCommand {
 
     /**
      * 组名称

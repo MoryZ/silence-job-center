@@ -323,7 +323,7 @@ public class SlidingWindow<T> {
      * 滑动窗口关闭
      */
     public void end() {
-        for (final Instant windowPeriod : saveData.keySet()) {
+        for (Instant windowPeriod : saveData.keySet()) {
             doHandlerListener(windowPeriod);
         }
     }

@@ -29,7 +29,7 @@ public class JobLogStorage implements LogStorage, InitializingBean {
     }
 
     @Override
-    public void storage(final LogContentDTO logContentDTO, final LogMetaDTO logMetaDTO) {
+    public void storage(LogContentDTO logContentDTO, LogMetaDTO logMetaDTO) {
 
         JobLogMetaDTO jobLogMetaDTO = (JobLogMetaDTO) logMetaDTO;
         JobLogDTO jobLogDTO = new JobLogDTO();

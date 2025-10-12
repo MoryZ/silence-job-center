@@ -193,7 +193,7 @@ public class ServerNodeBalance implements Lifecycle, Runnable {
                     Set<RegisterNodeInfo> expireNodeSet = concurrentMap.values().stream()
                             .filter(registerNodeInfo -> registerNodeInfo.getExpireAt().isBefore(Instant.now()))
                             .collect(Collectors.toSet());
-                    for (final RegisterNodeInfo registerNodeInfo : expireNodeSet) {
+                    for (RegisterNodeInfo registerNodeInfo : expireNodeSet) {
                         // 删除过期的节点信息
                         CacheRegisterTable.remove(registerNodeInfo.getGroupName(), registerNodeInfo.getNamespaceId(), registerNodeInfo.getHostId());
                     }

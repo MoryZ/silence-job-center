@@ -105,7 +105,7 @@ public class SilenceJobServerLogbackAppender<E> extends UnsynchronizedAppenderBa
      * @param logContentDTO 日志内容
      * @param logMetaDTO    日志元数据
      */
-    private void saveLog(final LogContentDTO logContentDTO, final LogMetaDTO logMetaDTO) {
+    private void saveLog(LogContentDTO logContentDTO, LogMetaDTO logMetaDTO) {
 
         LogStorage logStorage = LogStorageFactory.get(logMetaDTO.getLogType());
         if (Objects.nonNull(logStorage)) {

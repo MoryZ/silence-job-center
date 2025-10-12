@@ -28,14 +28,14 @@ public class JobBatchResource {
         this.jobBatchService = jobBatchService;
     }
 
-    @GetMapping("/jobBatches")
+    @GetMapping(value = "/jobBatches", params = {"pageNo","pageSize"})
     public IPage<JobBatchResponseVO> getJobBatchPage(Page<JobTaskBatch> page, JobBatchQuery jobQueryVO) {
         var queryWrapper = QueryWrapperConverter.convert(jobQueryVO, JobTaskBatch.class);
-        return jobBatchService.getJobBatchPage(page, queryWrapper);
+        return jobBatchService.queryPage(page, queryWrapper);
     }
 
     @GetMapping("/jobBatches/{id}")
-    public JobBatchResponseVO getJobBatchDetail(@PathVariable Long id) {
+    public JobBatchResponseVO getJobBatchDetail(@PathVariable BigInteger id) {
         return jobBatchService.getJobBatchDetail(id);
     }
 

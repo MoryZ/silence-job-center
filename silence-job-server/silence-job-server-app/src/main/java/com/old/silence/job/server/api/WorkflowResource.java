@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.core.util.CollectionUtils;
+import com.old.silence.job.server.api.assembler.WorkflowMapper;
 import com.old.silence.job.server.domain.model.Workflow;
 import com.old.silence.job.server.domain.service.WorkflowService;
 import com.old.silence.job.server.dto.CheckDecisionVO;
@@ -33,69 +35,84 @@ import java.util.Set;
 public class WorkflowResource {
 
     private final WorkflowService workflowService;
+    private final WorkflowMapper workflowMapper;
 
-    public WorkflowResource(WorkflowService workflowService) {
+    public WorkflowResource(WorkflowService workflowService, WorkflowMapper workflowMapper) {
         this.workflowService = workflowService;
+        this.workflowMapper = workflowMapper;
     }
 
-    @PostMapping("/workflows")
-    public Boolean saveWorkflow(@RequestBody @Validated WorkflowCommand workflowCommand) {
-        return workflowService.saveWorkflow(workflowCommand);
-    }
 
-    @GetMapping(value = "/workflows", params = {"pageNo", "pageSize"})
-    public IPage<WorkflowResponseVO> listPage(Page<Workflow> page, WorkflowQuery queryVO) {
-        return workflowService.listPage(page, queryVO);
-    }
-
-    @PutMapping
-    public Boolean updateWorkflow(@RequestBody @Validated WorkflowCommand workflowCommand) {
-        return workflowService.updateWorkflow(workflowCommand);
-    }
-
-    @GetMapping("{id}")
+    @GetMapping("/workflows/{id}")
     public WorkflowDetailResponseVO getWorkflowDetail(@PathVariable BigInteger id) throws IOException {
         return workflowService.getWorkflowDetail(id);
     }
 
-    @PutMapping("/update/status/{id}")
-    public Boolean updateStatus(@PathVariable BigInteger id) {
-        return workflowService.updateStatus(id);
+    @GetMapping(path = "/workflows", params={"!pageNo", "!pageSize"})
+    public List<WorkflowResponseVO> getWorkflowNameList(
+            @RequestParam(required = false) String keywords,
+            @RequestParam(required = false) BigInteger workflowId,
+            @RequestParam(required = false) String groupName) {
+        return workflowService.getWorkflowNameList(keywords, workflowId, groupName);
     }
 
-    @DeleteMapping("/ids")
-    public Boolean deleteByIds(@RequestBody @NotEmpty(message = "ids不能为空") Set<BigInteger> ids) {
-        return workflowService.deleteByIds(ids);
+    @GetMapping(value = "/workflows", params = {"pageNo", "pageSize"})
+    public IPage<WorkflowResponseVO> listPage(Page<Workflow> page, WorkflowQuery queryVO) {
+        return workflowService.queryPage(page, queryVO);
     }
 
-    @PostMapping("/trigger")
+    @PostMapping("/workflows")
+    public Boolean create(@RequestBody @Validated WorkflowCommand workflowCommand) throws Exception {
+        var workflow = workflowMapper.convert(workflowCommand);
+        return workflowService.create(workflow, workflowCommand.getNodeConfig());
+    }
+
+    @PostMapping("/workflows/trigger")
     public Boolean trigger(@RequestBody @Validated WorkflowTriggerVO triggerVO) {
         return workflowService.trigger(triggerVO);
     }
 
-    @GetMapping("/workflow-name/list")
-    public List<WorkflowResponseVO> getWorkflowNameList(
-            @RequestParam(value = "keywords", required = false) String keywords,
-            @RequestParam(value = "workflowId", required = false) BigInteger workflowId,
-            @RequestParam(value = "groupName", required = false) String groupName) {
-        return workflowService.getWorkflowNameList(keywords, workflowId, groupName);
-    }
-    @PostMapping("/check-node-expression")
+
+    @PostMapping("/workflows/check-node-expression")
     public Pair<Integer, Object> checkNodeExpression(@RequestBody @Validated CheckDecisionVO checkDecisionVO) {
         return workflowService.checkNodeExpression(checkDecisionVO);
     }
 
-    
-    @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void importScene(@RequestPart("file") MultipartFile file) throws IOException {
+
+    @PostMapping(value = "/workflows/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void importScene(@RequestPart("file") MultipartFile file) throws Exception {
         // 写入数据
-        workflowService.importWorkflowTask(ImportUtils.parseList(file, WorkflowCommand.class));
+        var workflowCommands = ImportUtils.parseList(file, WorkflowCommand.class);
+        var workflows = CollectionUtils.transformToList(workflowCommands, workflowMapper::convert);
+        workflowService.importWorkflowTask(workflows);
     }
 
-    
-    @PostMapping("/export")
+
+    @PostMapping("/workflows/export")
     public ResponseEntity<String> export(@RequestBody ExportWorkflowVO exportWorkflowVO) {
         return ExportUtils.doExport(workflowService.exportWorkflowTask(exportWorkflowVO));
+    }
+
+    @PutMapping("/workflows/{id}")
+    public Boolean update(@PathVariable BigInteger id, @RequestBody @Validated WorkflowCommand workflowCommand) {
+        var workflow = workflowMapper.convert(workflowCommand);
+        workflow.setId(id);
+        return workflowService.update(workflow, workflowCommand.getNodeConfig());
+    }
+
+    @PutMapping("/workflows/{id}/enable")
+    public Boolean enable(@PathVariable BigInteger id) {
+        return workflowService.updateStatus(id, true);
+    }
+
+    @PutMapping("/workflows/{id}/disable")
+    public Boolean disable(@PathVariable BigInteger id) {
+        return workflowService.updateStatus(id, false);
+    }
+
+    @DeleteMapping("/workflows")
+    public Boolean deleteByIds(@RequestBody @NotEmpty(message = "ids不能为空") Set<BigInteger> ids) {
+        return workflowService.deleteByIds(ids);
     }
 
 }

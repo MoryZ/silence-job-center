@@ -1,6 +1,7 @@
 package com.old.silence.job.server.domain.service;
 
 import java.math.BigInteger;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.enums.SystemTaskType;
 import com.old.silence.job.server.api.assembler.JobBatchResponseVOConverter;
@@ -22,7 +24,9 @@ import com.old.silence.job.server.handler.JobHandler;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.JobTaskBatchDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.WorkflowNodeDao;
+import com.old.silence.job.server.vo.JobBatchResponseDO;
 import com.old.silence.job.server.vo.JobBatchResponseVO;
+import com.old.silence.page.PageImpl;
 
 
 @Service
@@ -45,15 +49,16 @@ public class JobBatchService {
     }
 
 
-    public IPage<JobBatchResponseVO> getJobBatchPage(Page<JobTaskBatch> page, QueryWrapper<JobTaskBatch> queryWrapper) {
+    public IPage<JobBatchResponseVO> queryPage(Page<JobTaskBatch> page, QueryWrapper<JobTaskBatch> queryWrapper) {
 
-        //queryWrapper.eq("batch.namespace_id", "764d604ec6fc45f68cd92514c40e9e1a");
-        var jobTaskBatchPage = jobTaskBatchDao.selectPage(page, queryWrapper);
-        return jobTaskBatchPage.convert(jobBatchResponseVOConverter::convert);
+        List<JobBatchResponseDO> batchResponseDOList = jobTaskBatchDao.selectJobBatchPageList(page, queryWrapper);
+        var jobBatchResponseVOS = CollectionUtils.transformToList(batchResponseDOList, jobBatchResponseVOConverter::convert);
+
+        return new PageImpl<>(jobBatchResponseVOS, page.getTotal());
     }
 
 
-    public JobBatchResponseVO getJobBatchDetail(final Long id) {
+    public JobBatchResponseVO getJobBatchDetail(BigInteger id) {
         JobTaskBatch jobTaskBatch = jobTaskBatchDao.selectById(id);
         if (Objects.isNull(jobTaskBatch)) {
             return null;

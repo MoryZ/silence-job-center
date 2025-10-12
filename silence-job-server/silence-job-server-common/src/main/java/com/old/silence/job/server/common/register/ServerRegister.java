@@ -108,7 +108,7 @@ public class ServerRegister extends AbstractRegister {
                                 .eq(ServerNode::getNodeType, NodeType.CLIENT)
                                 .in(ServerNode::getNamespaceId, namespaceIdSets)
                                 .in(ServerNode::getGroupName, allConsumerGroupName.keySet()));
-                for (final ServerNode node : serverNodes) {
+                for (ServerNode node : serverNodes) {
                     // 刷新全量本地缓存
                     CacheRegisterTable.addOrUpdate(node);
                     // 刷新过期时间

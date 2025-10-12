@@ -170,7 +170,7 @@ public abstract class AbstractRetryStrategies implements RetryStrategy {
      * @param retryerInfo 定义重试场景的信息
      * @param params      执行参数
      */
-    protected boolean doReport(final RetryerInfo retryerInfo, final Object[] params) {
+    protected boolean doReport(RetryerInfo retryerInfo, Object[] params) {
 
         for (Report report : reports) {
             if (report.supports(retryerInfo.isAsync())) {

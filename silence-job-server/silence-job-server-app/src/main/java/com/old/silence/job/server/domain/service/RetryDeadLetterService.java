@@ -1,10 +1,8 @@
 package com.old.silence.job.server.domain.service;
 
 
-
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.HashUtil;
-import cn.hutool.core.util.StrUtil;
 
 import java.math.BigInteger;
 import java.time.Instant;
@@ -12,10 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.old.silence.core.util.CollectionUtils;
@@ -30,51 +30,50 @@ import com.old.silence.job.server.common.strategy.WaitStrategies.WaitStrategyEnu
 import com.old.silence.job.server.domain.model.Retry;
 import com.old.silence.job.server.domain.model.RetryDeadLetter;
 import com.old.silence.job.server.domain.model.RetrySceneConfig;
-import com.old.silence.job.server.domain.service.config.ConfigAccess;
-import com.old.silence.job.server.domain.service.task.TaskAccess;
-import com.old.silence.job.server.dto.BatchDeleteRetryDeadLetterVO;
-import com.old.silence.job.server.dto.BatchRollBackRetryDeadLetterVO;
-import com.old.silence.job.server.dto.RetryDeadLetterQueryVO;
+import com.old.silence.job.server.dto.BatchDeleteRetryDeadLetterCommand;
+import com.old.silence.job.server.dto.BatchRollBackRetryDeadLetterCommand;
 import com.old.silence.job.server.exception.SilenceJobServerException;
+import com.old.silence.job.server.infrastructure.persistence.dao.RetryDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.RetryDeadLetterDao;
+import com.old.silence.job.server.infrastructure.persistence.dao.RetrySceneConfigDao;
 import com.old.silence.job.server.retry.task.support.RetryTaskConverter;
 import com.old.silence.job.server.vo.RetryDeadLetterResponseVO;
 
 
 @Service
 public class RetryDeadLetterService {
-    private final AccessTemplate accessTemplate;
+    private final RetryDeadLetterDao retryDeadLetterDao;
+    private final RetrySceneConfigDao retrySceneConfigDao;
+    private final RetryDao retryDao;
     private final SystemProperties systemProperties;
     private final RetryDeadLetterResponseVOMapper retryDeadLetterResponseVOMapper;
 
-    public RetryDeadLetterService(AccessTemplate accessTemplate, SystemProperties systemProperties,
+    public RetryDeadLetterService(RetryDeadLetterDao retryDeadLetterDao, RetrySceneConfigDao retrySceneConfigDao,
+                                  RetryDao retryDao,
+                                  SystemProperties systemProperties,
                                   RetryDeadLetterResponseVOMapper retryDeadLetterResponseVOMapper) {
-        this.accessTemplate = accessTemplate;
+        this.retryDeadLetterDao = retryDeadLetterDao;
+        this.retrySceneConfigDao = retrySceneConfigDao;
+        this.retryDao = retryDao;
         this.systemProperties = systemProperties;
         this.retryDeadLetterResponseVOMapper = retryDeadLetterResponseVOMapper;
     }
 
    
-    public IPage<RetryDeadLetterResponseVO> getRetryDeadLetterPage(Page<RetryDeadLetter> pageDTO, RetryDeadLetterQueryVO queryVO) {
+    public IPage<RetryDeadLetterResponseVO> queryPage(Page<RetryDeadLetter> pageDTO, QueryWrapper<RetryDeadLetter> queryWrapper) {
 
         List<String> groupNames = List.of();
 
         String namespaceId = "namespaceId";
-        Page<RetryDeadLetter> retryDeadLetterPage = accessTemplate.getRetryDeadLetterAccess()
-                .listPage(pageDTO, new LambdaQueryWrapper<RetryDeadLetter>()
-                                .eq(RetryDeadLetter::getNamespaceId, namespaceId)
-                                .in(CollectionUtils.isNotEmpty(groupNames), RetryDeadLetter::getGroupName, groupNames)
-                                .eq(StrUtil.isNotBlank(queryVO.getSceneName()), RetryDeadLetter::getSceneName, queryVO.getSceneName())
-                                .eq(StrUtil.isNotBlank(queryVO.getBizNo()), RetryDeadLetter::getBizNo, queryVO.getBizNo())
-                                .eq(StrUtil.isNotBlank(queryVO.getIdempotentId()), RetryDeadLetter::getIdempotentId, queryVO.getIdempotentId())
-                                .orderByDesc(RetryDeadLetter::getId));
+        Page<RetryDeadLetter> retryDeadLetterPage = retryDeadLetterDao
+                .selectPage(pageDTO, queryWrapper);
 
         return retryDeadLetterPage.convert(retryDeadLetterResponseVOMapper::convert);
     }
 
    
-    public RetryDeadLetterResponseVO getRetryDeadLetterById(String groupName, BigInteger id) {
-        TaskAccess<RetryDeadLetter> retryDeadLetterAccess = accessTemplate.getRetryDeadLetterAccess();
-        RetryDeadLetter retryDeadLetter = retryDeadLetterAccess.one(new LambdaQueryWrapper<RetryDeadLetter>()
+    public RetryDeadLetterResponseVO findById(String groupName, BigInteger id) {
+        RetryDeadLetter retryDeadLetter = retryDeadLetterDao.selectOne(new LambdaQueryWrapper<RetryDeadLetter>()
                 .eq(RetryDeadLetter::getId, id)
                 .eq(RetryDeadLetter::getGroupName, groupName)
         );
@@ -83,26 +82,24 @@ public class RetryDeadLetterService {
 
    
     @Transactional
-    public int rollback(BatchRollBackRetryDeadLetterVO rollBackRetryDeadLetterVO) {
+    public int rollback(BatchRollBackRetryDeadLetterCommand rollBackRetryDeadLetterVO) {
 
         String namespaceId = "namespaceId";
 
         List<BigInteger> ids = rollBackRetryDeadLetterVO.getIds();
-        TaskAccess<RetryDeadLetter> retryDeadLetterAccess = accessTemplate.getRetryDeadLetterAccess();
-        List<RetryDeadLetter> retryDeadLetterList = retryDeadLetterAccess.list(
+        List<RetryDeadLetter> retryDeadLetterList = retryDeadLetterDao.selectList(
                 new LambdaQueryWrapper<RetryDeadLetter>().in(RetryDeadLetter::getId, ids));
 
         Assert.notEmpty(retryDeadLetterList, () -> new SilenceJobServerException("数据不存在"));
 
-        ConfigAccess<RetrySceneConfig> sceneConfigAccess = accessTemplate.getSceneConfigAccess();
-        Set<String> sceneNameSet = StreamUtils.toSet(retryDeadLetterList, RetryDeadLetter::getSceneName);
-        List<RetrySceneConfig> retrySceneConfigs = sceneConfigAccess.list(
+        Set<String> sceneNameSet = CollectionUtils.transformToSet(retryDeadLetterList, RetryDeadLetter::getSceneName);
+        List<RetrySceneConfig> retrySceneConfigs = retrySceneConfigDao.selectList(
                 new LambdaQueryWrapper<RetrySceneConfig>()
                         .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                         .in(RetrySceneConfig::getSceneName, sceneNameSet));
 
-        Map<String, RetrySceneConfig> sceneConfigMap = StreamUtils.toIdentityMap(retrySceneConfigs,
-                (sceneConfig) -> sceneConfig.getGroupName() + sceneConfig.getSceneName());
+        Map<String, RetrySceneConfig> sceneConfigMap = CollectionUtils.transformToMap(retrySceneConfigs,
+                (sceneConfig) -> sceneConfig.getGroupName() + sceneConfig.getSceneName(), Function.identity());
 
         List<Retry> waitRollbackList = new ArrayList<>();
         for (RetryDeadLetter retryDeadLetter : retryDeadLetterList) {
@@ -129,12 +126,11 @@ public class RetryDeadLetterService {
             waitRollbackList.add(retry);
         }
 
-        TaskAccess<Retry> retryTaskAccess = accessTemplate.getRetryAccess();
-        Assert.isTrue(waitRollbackList.size() == retryTaskAccess.insertBatch( waitRollbackList),
+        Assert.isTrue(waitRollbackList.size() == retryDao.insertBatch(waitRollbackList),
                 () -> new SilenceJobServerException("新增重试任务失败"));
 
         Set<BigInteger> waitDelRetryDeadLetterIdSet = StreamUtils.toSet(retryDeadLetterList, RetryDeadLetter::getId);
-        Assert.isTrue(waitDelRetryDeadLetterIdSet.size() == retryDeadLetterAccess.delete(
+        Assert.isTrue(waitDelRetryDeadLetterIdSet.size() == retryDeadLetterDao.delete(
                         new LambdaQueryWrapper<RetryDeadLetter>()
                                 .in(RetryDeadLetter::getId, waitDelRetryDeadLetterIdSet)),
                 () -> new SilenceJobServerException("删除死信队列数据失败"));
@@ -142,11 +138,10 @@ public class RetryDeadLetterService {
     }
 
    
-    public boolean batchDelete(BatchDeleteRetryDeadLetterVO deadLetterVO) {
-        TaskAccess<RetryDeadLetter> retryDeadLetterAccess = accessTemplate.getRetryDeadLetterAccess();
+    public boolean batchDelete(BatchDeleteRetryDeadLetterCommand deadLetterVO) {
         String namespaceId = "namespaceId";
 
-        Assert.isTrue(deadLetterVO.getIds().size() == retryDeadLetterAccess.delete(
+        Assert.isTrue(deadLetterVO.getIds().size() == retryDeadLetterDao.delete(
                         new LambdaQueryWrapper<RetryDeadLetter>()
                                 .eq(RetryDeadLetter::getNamespaceId, namespaceId)
                                 .in(RetryDeadLetter::getId, deadLetterVO.getIds())),

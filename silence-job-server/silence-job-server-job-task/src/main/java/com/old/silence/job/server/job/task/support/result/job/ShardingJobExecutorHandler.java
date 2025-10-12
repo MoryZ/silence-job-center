@@ -11,10 +11,10 @@ import com.old.silence.job.server.job.task.support.handler.WorkflowBatchHandler;
 public class ShardingJobExecutorHandler extends AbstractJobExecutorResultHandler {
 
     public ShardingJobExecutorHandler(
-            final JobTaskDao jobTaskDao,
-            final JobTaskBatchDao jobTaskBatchDao,
-            final WorkflowBatchHandler workflowBatchHandler,
-            final GroupConfigDao groupConfigDao) {
+            JobTaskDao jobTaskDao,
+            JobTaskBatchDao jobTaskBatchDao,
+            WorkflowBatchHandler workflowBatchHandler,
+            GroupConfigDao groupConfigDao) {
         super(jobTaskDao, jobTaskBatchDao, workflowBatchHandler, groupConfigDao);
     }
 
@@ -24,16 +24,16 @@ public class ShardingJobExecutorHandler extends AbstractJobExecutorResultHandler
     }
 
     @Override
-    protected void doHandleSuccess(final JobExecutorResultContext context) {
+    protected void doHandleSuccess(JobExecutorResultContext context) {
     }
 
     @Override
-    protected void doHandleStop(final JobExecutorResultContext context) {
+    protected void doHandleStop(JobExecutorResultContext context) {
 
     }
 
     @Override
-    protected void doHandleFail(final JobExecutorResultContext context) {
+    protected void doHandleFail(JobExecutorResultContext context) {
 
     }
 

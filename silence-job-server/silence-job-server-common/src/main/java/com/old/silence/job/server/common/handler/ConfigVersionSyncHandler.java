@@ -54,12 +54,12 @@ public class ConfigVersionSyncHandler implements Lifecycle, Runnable {
      * @param groupName   组
      * @param namespaceId 空间id
      */
-    public void syncVersion(String groupName, final String namespaceId) {
+    public void syncVersion(String groupName, String namespaceId) {
 
         try {
             Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName, namespaceId);
             // 同步版本到每个客户端节点
-            for (final RegisterNodeInfo registerNodeInfo : serverNodeSet) {
+            for (RegisterNodeInfo registerNodeInfo : serverNodeSet) {
                 ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName, namespaceId);
                 CommonRpcClient rpcClient = RequestBuilder.<CommonRpcClient, ApiResult>newBuilder()
                         .nodeInfo(registerNodeInfo)

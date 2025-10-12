@@ -70,12 +70,12 @@ public class GroupConfigResource {
 
     }
 
-    @PostMapping("/groupConfigs")
+    @PostMapping("/groupConfigs/findByNamespaces")
     public List<GroupConfigResponseVO> getAllGroupNameList(@RequestBody List<String> namespaceIds) {
         return groupConfigService.getAllGroupConfigList(namespaceIds);
     }
 
-    @PostMapping("/groups")
+    @PostMapping("/groupConfigs")
     public Boolean create(@RequestBody @Validated GroupConfigCommand groupConfigCommand) {
         var groupConfig = groupConfigMapper.convert(groupConfigCommand);
         return groupConfigService.create(groupConfig);

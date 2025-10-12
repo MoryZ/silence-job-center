@@ -64,7 +64,7 @@ public class MapTaskPostHttpRequestHandler extends PostHttpRequestHandler {
     }
 
     @Override
-    public boolean supports(final String path) {
+    public boolean supports(String path) {
         return SystemConstants.HTTP_PATH.BATCH_REPORT_JOB_MAP_TASK.equals(path);
     }
 
@@ -74,7 +74,7 @@ public class MapTaskPostHttpRequestHandler extends PostHttpRequestHandler {
     }
 
     @Override
-    public SilenceJobRpcResult doHandler(final String content, final UrlQuery query, final HttpHeaders headers) {
+    public SilenceJobRpcResult doHandler(String content, UrlQuery query, HttpHeaders headers) {
         SilenceJobLog.LOCAL.info("map task Request. content:[{}]", content);
         String groupName = HttpHeaderUtil.getGroupName(headers);
         String namespace = HttpHeaderUtil.getNamespace(headers);

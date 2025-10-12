@@ -37,7 +37,7 @@ public class MapReduceClientCallbackHandler extends AbstractClientCallbackHandle
     }
 
     @Override
-    protected void doCallback(final ClientCallbackContext context) {
+    protected void doCallback(ClientCallbackContext context) {
         JobTask jobTask = jobTaskDao.selectOne(new LambdaQueryWrapper<JobTask>()
                 .eq(JobTask::getId, context.getTaskId()));
         Assert.notNull(jobTask, () -> new SilenceJobServerException("job task is null"));

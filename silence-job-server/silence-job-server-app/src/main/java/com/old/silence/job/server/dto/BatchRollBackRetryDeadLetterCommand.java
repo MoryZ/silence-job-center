@@ -9,7 +9,7 @@ import java.util.List;
  *
  */
 
-public class BatchRollBackRetryDeadLetterVO {
+public class BatchRollBackRetryDeadLetterCommand {
 
     /**
      * 重试表id

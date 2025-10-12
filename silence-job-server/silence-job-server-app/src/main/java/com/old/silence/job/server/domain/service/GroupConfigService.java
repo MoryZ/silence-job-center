@@ -101,7 +101,6 @@ public class GroupConfigService {
 
         String namespaceId =  "namespaceId";
 
-        
         Assert.isTrue(groupConfigDao.selectCount(new LambdaQueryWrapper<GroupConfig>()
                         .eq(GroupConfig::getNamespaceId, namespaceId)
                         .eq(GroupConfig::getGroupName, groupConfig.getGroupName())) == 0,
@@ -197,7 +196,6 @@ public class GroupConfigService {
     
     public GroupConfigResponseVO getGroupConfigByGroupName(String groupName) {
 
-
         var groupConfig = groupConfigDao.selectOne(
                 new LambdaQueryWrapper<GroupConfig>()
                         .eq(GroupConfig::getNamespaceId, "namespaceId")
@@ -206,9 +204,7 @@ public class GroupConfigService {
     }
 
     
-    public List<GroupConfigResponseVO> getAllGroupConfigList(final List<String> namespaceIds) {
-
-        
+    public List<GroupConfigResponseVO> getAllGroupConfigList(List<String> namespaceIds) {
 
         List<GroupConfig> groupConfigs = groupConfigDao.selectList(
                 new LambdaQueryWrapper<GroupConfig>()
@@ -239,7 +235,6 @@ public class GroupConfigService {
                 .eq(GroupConfig::getNamespaceId, "namespaceId"));
     }
 
-    
     public List<String> getOnlinePods(String groupName) {
         List<ServerNode> serverNodes = serverNodeDao.selectList(
                 new LambdaQueryWrapper<ServerNode>()

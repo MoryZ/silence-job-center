@@ -2,6 +2,7 @@ package com.old.silence.job.client.core.client;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
+import com.old.silence.core.enums.EnumValueFactory;
 import com.old.silence.job.client.common.annotation.Mapping;
 import com.old.silence.job.client.common.annotation.SilenceEndPoint;
 import com.old.silence.job.client.common.log.support.SilenceJobLogManager;
@@ -20,6 +21,7 @@ import com.old.silence.job.client.core.executor.AnnotationMapReduceJobExecutor;
 import com.old.silence.job.client.core.log.JobLogMeta;
 import com.old.silence.job.common.client.dto.StopJobDTO;
 import com.old.silence.job.common.client.dto.request.DispatchJobRequest;
+import com.old.silence.job.common.enums.MapReduceStage;
 import com.old.silence.job.log.enums.LogTypeEnum;
 
 import com.old.silence.job.common.context.SilenceSpringContext;
@@ -60,7 +62,7 @@ public class JobEndPoint {
                         dispatchJob.getRetryCount());
             }
 
-            if (!ExecutorType.JAVA.equals(dispatchJob.getExecutorType())) {
+            if (!ExecutorType.JAVA.getValue().equals(dispatchJob.getExecutorType())) {
 
                 SilenceJobLog.REMOTE.error("不支持非Java类型的执行器. executorType:[{}]", dispatchJob.getExecutorType());
                 return new ApiResult<>("不支持非Java类型的执行器", Boolean.FALSE);
@@ -129,14 +131,14 @@ public class JobEndPoint {
         jobContext.setGroupName(dispatchJob.getGroupName());
         jobContext.setExecutorInfo(dispatchJob.getExecutorInfo());
         jobContext.setParallelNum(dispatchJob.getParallelNum());
-        jobContext.setTaskType(dispatchJob.getTaskType());
+        jobContext.setTaskType(EnumValueFactory.getRequired(JobTaskType.class, dispatchJob.getTaskType()));
         jobContext.setExecutorTimeout(dispatchJob.getExecutorTimeout());
         jobContext.setWorkflowNodeId(dispatchJob.getWorkflowNodeId());
         jobContext.setWorkflowTaskBatchId(dispatchJob.getWorkflowTaskBatchId());
         jobContext.setRetryStatus(dispatchJob.getRetryStatus());
         jobContext.setRetryScene(dispatchJob.getRetryScene());
         jobContext.setTaskName(dispatchJob.getTaskName());
-        jobContext.setMrStage(dispatchJob.getMrStage());
+        jobContext.setMrStage(EnumValueFactory.getRequired(MapReduceStage.class, dispatchJob.getMrStage()));
 
         if (StrUtil.isNotBlank(dispatchJob.getArgsStr())) {
             try {

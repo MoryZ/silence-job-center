@@ -91,7 +91,7 @@ public class ReportRetryInfoHttpRequestHandler extends PostHttpRequestHandler {
                     .withWaitStrategy(WaitStrategies.fixedWait(1, TimeUnit.SECONDS))
                     .withRetryListener(new RetryListener() {
                         @Override
-                        public <V> void onRetry(final Attempt<V> attempt) {
+                        public <V> void onRetry(Attempt<V> attempt) {
                             if (attempt.hasException()) {
                                 SilenceJobLog.LOCAL.error("数据上报发生异常执行重试. reqId:[{}] count:[{}]",
                                         retryRequest.getReqId(), attempt.getAttemptNumber(), attempt.getExceptionCause());

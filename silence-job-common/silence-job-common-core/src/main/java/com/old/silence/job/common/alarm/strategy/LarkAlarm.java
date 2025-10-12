@@ -75,7 +75,7 @@ public class LarkAlarm extends AbstractAlarm<AlarmContext> {
         return Collections.singletonList(map);
     }
 
-    private Map<String, Object> buildHeader(final String title) {
+    private Map<String, Object> buildHeader(String title) {
         Map<String, Object> map = new HashMap<>();
         map.put("template", "red");
 

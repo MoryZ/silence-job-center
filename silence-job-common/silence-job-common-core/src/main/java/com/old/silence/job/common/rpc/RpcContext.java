@@ -71,7 +71,7 @@ public final class RpcContext {
         }
 
         @Override
-        public void run(final Timeout timeout) throws Exception {
+        public void run(Timeout timeout) throws Exception {
             invoke(requestId, new SilenceJobRpcResult(500, "Request to remote interface timed out.", null, requestId), true);
         }
     }

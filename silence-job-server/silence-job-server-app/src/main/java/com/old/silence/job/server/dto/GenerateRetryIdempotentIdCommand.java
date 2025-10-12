@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
  *
  */
 
-public class GenerateRetryIdempotentIdVO {
+public class GenerateRetryIdempotentIdCommand {
     /**
      * 组名称
      */

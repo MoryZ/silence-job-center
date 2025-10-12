@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.old.silence.data.commons.converter.QueryWrapperConverter;
 import com.old.silence.job.server.domain.model.RetryDeadLetter;
 import com.old.silence.job.server.domain.service.RetryDeadLetterService;
-import com.old.silence.job.server.dto.BatchDeleteRetryDeadLetterVO;
-import com.old.silence.job.server.dto.BatchRollBackRetryDeadLetterVO;
-import com.old.silence.job.server.dto.RetryDeadLetterQueryVO;
+import com.old.silence.job.server.dto.BatchDeleteRetryDeadLetterCommand;
+import com.old.silence.job.server.dto.BatchRollBackRetryDeadLetterCommand;
+import com.old.silence.job.server.dto.RetryDeadLetterQuery;
 import com.old.silence.job.server.vo.RetryDeadLetterResponseVO;
-
 import java.math.BigInteger;
 
 
@@ -28,35 +28,34 @@ import java.math.BigInteger;
  */
 @RestController
 @RequestMapping("/api/v1")
-public class RetryDeadLetterController {
+public class RetryDeadLetterResource {
     private final RetryDeadLetterService retryDeadLetterService;
 
-    public RetryDeadLetterController(RetryDeadLetterService retryDeadLetterService) {
+    public RetryDeadLetterResource(RetryDeadLetterService retryDeadLetterService) {
         this.retryDeadLetterService = retryDeadLetterService;
     }
 
-
     @GetMapping(value = "/retryDeadLetters", params = {"pageNo", "pageSize"})
-    public IPage<RetryDeadLetterResponseVO> getRetryDeadLetterPage(Page<RetryDeadLetter> page, RetryDeadLetterQueryVO queryVO) {
-        return retryDeadLetterService.getRetryDeadLetterPage(page, queryVO);
+    public IPage<RetryDeadLetterResponseVO> queryPage(Page<RetryDeadLetter> page, RetryDeadLetterQuery retryDeadLetterQuery) {
+        var queryWrapper = QueryWrapperConverter.convert(retryDeadLetterQuery, RetryDeadLetter.class);
+        return retryDeadLetterService.queryPage(page, queryWrapper);
     }
 
-    
     @GetMapping("/retryDeadLetters/{id}")
-    public RetryDeadLetterResponseVO getRetryDeadLetterById(@RequestParam String groupName,
-                                                            @PathVariable BigInteger id) {
-        return retryDeadLetterService.getRetryDeadLetterById(groupName, id);
+    public RetryDeadLetterResponseVO findById(@RequestParam String groupName,
+                                              @PathVariable BigInteger id) {
+        return retryDeadLetterService.findById(groupName, id);
     }
 
     
     @PostMapping("/retryDeadLetters/batchRollback")
-    public int rollback(@RequestBody @Validated BatchRollBackRetryDeadLetterVO rollBackRetryDeadLetterVO) {
+    public int rollback(@RequestBody @Validated BatchRollBackRetryDeadLetterCommand rollBackRetryDeadLetterVO) {
         return retryDeadLetterService.rollback(rollBackRetryDeadLetterVO);
     }
 
     
     @DeleteMapping("/retryDeadLetters/batchDelete")
-    public boolean batchDelete(@RequestBody @Validated BatchDeleteRetryDeadLetterVO deadLetterVO) {
+    public boolean batchDelete(@RequestBody @Validated BatchDeleteRetryDeadLetterCommand deadLetterVO) {
         return retryDeadLetterService.batchDelete(deadLetterVO);
     }
 }

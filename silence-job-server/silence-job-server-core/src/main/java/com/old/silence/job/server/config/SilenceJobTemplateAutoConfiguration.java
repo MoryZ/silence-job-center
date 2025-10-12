@@ -1,6 +1,5 @@
 package com.old.silence.job.server.config;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan("com.old.silence.job.server.*")
-@MapperScan("com.old.silence.job.server.infrastructure.persistence.dao")
 public class SilenceJobTemplateAutoConfiguration {
 
 

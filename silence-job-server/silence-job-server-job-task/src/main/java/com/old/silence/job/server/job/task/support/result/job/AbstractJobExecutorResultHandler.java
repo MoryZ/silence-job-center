@@ -46,7 +46,7 @@ public abstract class AbstractJobExecutorResultHandler implements JobExecutorRes
     }
 
     @Override
-    public void handleResult(final JobExecutorResultContext context) {
+    public void handleResult(JobExecutorResultContext context) {
 
         List<JobTask> jobTasks = jobTaskDao.selectList(
                 new LambdaQueryWrapper<JobTask>()
@@ -99,7 +99,7 @@ public abstract class AbstractJobExecutorResultHandler implements JobExecutorRes
         }
     }
 
-    protected void openNextWorkflowNode(final JobExecutorResultContext context) {
+    protected void openNextWorkflowNode(JobExecutorResultContext context) {
         WorkflowNodeTaskExecuteDTO taskExecuteDTO = new WorkflowNodeTaskExecuteDTO();
         taskExecuteDTO.setWorkflowTaskBatchId(context.getWorkflowTaskBatchId());
         taskExecuteDTO.setTaskExecutorScene(JobTaskExecutorScene.AUTO_WORKFLOW);
@@ -139,10 +139,10 @@ public abstract class AbstractJobExecutorResultHandler implements JobExecutorRes
         instanceInterrupt.stop(stopJobContext);
     }
 
-    protected abstract void doHandleSuccess(final JobExecutorResultContext context);
+    protected abstract void doHandleSuccess(JobExecutorResultContext context);
 
-    protected abstract void doHandleStop(final JobExecutorResultContext context);
+    protected abstract void doHandleStop(JobExecutorResultContext context);
 
-    protected abstract void doHandleFail(final JobExecutorResultContext context);
+    protected abstract void doHandleFail(JobExecutorResultContext context);
 
 }

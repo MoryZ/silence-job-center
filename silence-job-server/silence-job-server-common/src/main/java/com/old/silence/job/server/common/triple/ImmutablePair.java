@@ -12,12 +12,12 @@ public final class ImmutablePair<L, R> extends Pair<L, R> {
     public final R right;
 
 
-    public static <L, R> ImmutablePair<L, R> of(final L left, final R right) {
+    public static <L, R> ImmutablePair<L, R> of(L left, R right) {
         return new ImmutablePair<L, R>(left, right);
     }
 
 
-    public ImmutablePair(final L left, final R right) {
+    public ImmutablePair(L left, R right) {
         super();
         this.left = left;
         this.right = right;
@@ -35,7 +35,7 @@ public final class ImmutablePair<L, R> extends Pair<L, R> {
     }
 
     @Override
-    public R setValue(final R value) {
+    public R setValue(R value) {
         throw new SilenceJobCommonException("非法操作");
 
     }

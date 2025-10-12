@@ -28,7 +28,7 @@ public class JobTaskResource {
         return jobTaskService.getJobTaskPage(page, jobTaskQuery);
     }
 
-    @GetMapping("/tree/list")
+    @GetMapping("/jobTasks/tree")
     public List<JobTaskResponseVO> getTreeJobTask(JobTaskQuery jobTaskQuery) {
         return jobTaskService.getTreeJobTask(jobTaskQuery);
     }

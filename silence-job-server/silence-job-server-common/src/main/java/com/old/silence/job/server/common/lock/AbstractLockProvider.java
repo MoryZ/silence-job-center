@@ -49,7 +49,7 @@ public abstract class AbstractLockProvider implements LockProvider {
 
     protected abstract boolean doLockAfter(LockConfig lockConfig);
 
-    protected boolean doLock(final LockConfig lockConfig) {
+    protected boolean doLock(LockConfig lockConfig) {
         return createLock(lockConfig);
     }
 
@@ -67,7 +67,7 @@ public abstract class AbstractLockProvider implements LockProvider {
 
     protected abstract void doUnlock(LockConfig lockConfig);
 
-    protected abstract boolean createLock(final LockConfig lockConfig);
+    protected abstract boolean createLock(LockConfig lockConfig);
 
-    protected abstract boolean renewal(final LockConfig lockConfig);
+    protected abstract boolean renewal(LockConfig lockConfig);
 }

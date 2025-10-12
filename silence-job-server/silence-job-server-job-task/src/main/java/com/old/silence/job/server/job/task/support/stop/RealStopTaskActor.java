@@ -39,7 +39,7 @@ public class RealStopTaskActor extends AbstractActor {
         }).build();
     }
 
-    private void doStop(final RealStopTaskInstanceDTO realStopTaskInstanceDTO) {
+    private void doStop(RealStopTaskInstanceDTO realStopTaskInstanceDTO) {
 
         // 检查客户端是否存在
         RegisterNodeInfo registerNodeInfo = CacheRegisterTable.getServerNode(

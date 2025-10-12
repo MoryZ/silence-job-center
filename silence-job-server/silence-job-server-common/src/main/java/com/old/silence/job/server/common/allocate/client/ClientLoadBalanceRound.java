@@ -15,7 +15,7 @@ public class ClientLoadBalanceRound implements ClientLoadBalance {
     private static long CACHE_VALID_TIME = 0;
 
     @Override
-    public String route(final String allocKey, final TreeSet<String> clientAllAddressSet) {
+    public String route(String allocKey, TreeSet<String> clientAllAddressSet) {
         // cache clear
         if (System.currentTimeMillis() > CACHE_VALID_TIME) {
             COUNTER.clear();

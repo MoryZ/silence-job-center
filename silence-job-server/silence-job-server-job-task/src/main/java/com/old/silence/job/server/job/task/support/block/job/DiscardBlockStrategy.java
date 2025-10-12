@@ -18,7 +18,7 @@ public class DiscardBlockStrategy extends AbstracJobBlockStrategy {
     }
 
     @Override
-    public void doBlock(final BlockStrategyContext context) {
+    public void doBlock(BlockStrategyContext context) {
         // 重新生成任务
         JobTaskBatchGeneratorContext jobTaskBatchGeneratorContext = JobTaskConverter.INSTANCE.toJobTaskGeneratorContext(context);
         jobTaskBatchGeneratorContext.setTaskBatchStatus(JobTaskBatchStatus.CANCEL);

@@ -79,7 +79,7 @@ public class SilenceDispatcherRequestHandler {
             Object[] deSerialize = (Object[]) deSerialize(JSON.toJSONString(args), endPointInfo.getMethod(),
                     httpRequest, httpResponse);
 
-            for (final HandlerInterceptor handlerInterceptor : handlerInterceptors) {
+            for (HandlerInterceptor handlerInterceptor : handlerInterceptors) {
                 if (!handlerInterceptor.preHandle(httpRequest, httpResponse, endPointInfo)) {
                     return silenceJobRpcResult;
                 }
@@ -93,7 +93,7 @@ public class SilenceDispatcherRequestHandler {
                         endPointInfo.getExecutor());
             }
 
-            for (final HandlerInterceptor handlerInterceptor : handlerInterceptors) {
+            for (HandlerInterceptor handlerInterceptor : handlerInterceptors) {
                 handlerInterceptor.postHandle(httpRequest, httpResponse, endPointInfo);
             }
         } catch (Exception ex) {
@@ -109,7 +109,7 @@ public class SilenceDispatcherRequestHandler {
                 silenceJobRpcResult.setCode(resultObj.getCode());
             }
 
-            for (final HandlerInterceptor handlerInterceptor : handlerInterceptors) {
+            for (HandlerInterceptor handlerInterceptor : handlerInterceptors) {
                 handlerInterceptor.afterCompletion(httpRequest, httpResponse, endPointInfo, e);
             }
         }
@@ -152,7 +152,7 @@ public class SilenceDispatcherRequestHandler {
             Object[] deSerialize = (Object[]) deSerialize(JSON.toJSONString(args), endPointInfo.getMethod(),
                 httpRequest, httpResponse);
 
-            for (final HandlerInterceptor handlerInterceptor : handlerInterceptors) {
+            for (HandlerInterceptor handlerInterceptor : handlerInterceptors) {
                 if (!handlerInterceptor.preHandle(httpRequest, httpResponse, endPointInfo)) {
                     return silenceJobRpcResult;
                 }
@@ -166,7 +166,7 @@ public class SilenceDispatcherRequestHandler {
                     endPointInfo.getExecutor());
             }
 
-            for (final HandlerInterceptor handlerInterceptor : handlerInterceptors) {
+            for (HandlerInterceptor handlerInterceptor : handlerInterceptors) {
                 handlerInterceptor.postHandle(httpRequest, httpResponse, endPointInfo);
             }
         } catch (Exception ex) {
@@ -182,7 +182,7 @@ public class SilenceDispatcherRequestHandler {
                 silenceJobRpcResult.setCode(resultObj.getCode());
             }
 
-            for (final HandlerInterceptor handlerInterceptor : handlerInterceptors) {
+            for (HandlerInterceptor handlerInterceptor : handlerInterceptors) {
                 handlerInterceptor.afterCompletion(httpRequest, httpResponse, endPointInfo, e);
             }
         }

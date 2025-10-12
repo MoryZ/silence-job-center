@@ -7,7 +7,7 @@ import com.github.rholder.retry.RetryListener;
 public class SimpleRetryListener implements RetryListener {
 
     @Override
-    public <V> void onRetry(final Attempt<V> attempt) {
+    public <V> void onRetry(Attempt<V> attempt) {
 
     }
 }

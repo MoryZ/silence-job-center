@@ -21,7 +21,7 @@ public class DiscardWorkflowBlockStrategy extends AbstractWorkflowBlockStrategy 
     }
 
     @Override
-    protected void doBlock(final WorkflowBlockStrategyContext workflowBlockStrategyContext) {
+    protected void doBlock(WorkflowBlockStrategyContext workflowBlockStrategyContext) {
 
 //        try {
 //            workflowBatchHandler.recoveryWorkflowExecutor(workflowBlockStrategyContext.getWorkflowTaskBatchId(), null);

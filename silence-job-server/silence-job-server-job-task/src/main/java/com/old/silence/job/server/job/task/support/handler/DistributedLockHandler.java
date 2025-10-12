@@ -48,7 +48,7 @@ public class DistributedLockHandler {
                 .withStopStrategy(StopStrategies.stopAfterAttempt(maxRetryTimes))
                 .withRetryListener(new RetryListener() {
                     @Override
-                    public <V> void onRetry(final Attempt<V> attempt) {
+                    public <V> void onRetry(Attempt<V> attempt) {
                         Object result = null;
                         if (attempt.hasResult()) {
                             try {

@@ -8,7 +8,7 @@ import com.old.silence.job.server.common.lock.persistence.LockStorageFactory;
 public class DisposableLockProvider extends AbstractLockProvider {
 
     @Override
-    protected boolean doLockAfter(final LockConfig lockConfig) {
+    protected boolean doLockAfter(LockConfig lockConfig) {
         return Boolean.FALSE;
     }
 

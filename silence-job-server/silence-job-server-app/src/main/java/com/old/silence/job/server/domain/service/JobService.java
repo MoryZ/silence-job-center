@@ -129,21 +129,23 @@ public class JobService {
     
     public boolean update(Job job) {
 
+        Job jobDb = jobDao.selectById(job.getId());
+
         // 判断常驻任务
         job.setResident(isResident(job));
         // 工作流任务
         if (Objects.equals(job.getTriggerType().getValue(), SystemConstants.WORKFLOW_TRIGGER_TYPE.byteValue())) {
             job.setNextTriggerAt(0L);
             // 非常驻任务 > 非常驻任务
-        } else if (! job.getResident() && ! job.getResident()) {
+        } else if (!jobDb.getResident() && ! job.getResident()) {
             job.setNextTriggerAt(calculateNextTriggerAt(job, DateUtils.toNowMilli()));
-        } else if (job.getResident() && !job.getResident()) {
+        } else if (jobDb.getResident() && !job.getResident()) {
             // 常驻任务的触发时间
             long time = Optional.ofNullable(ResidentTaskCache.get(job.getId()))
                     .orElse(DateUtils.toNowMilli());
             job.setNextTriggerAt(calculateNextTriggerAt(job, time));
             // 老的是不是常驻任务 新的是常驻任务 需要使用当前时间计算下次触发时间
-        } else if (!job.getResident()) {
+        } else if (!jobDb.getResident() && job.getResident()) {
             job.setNextTriggerAt(DateUtils.toNowMilli());
         }
 

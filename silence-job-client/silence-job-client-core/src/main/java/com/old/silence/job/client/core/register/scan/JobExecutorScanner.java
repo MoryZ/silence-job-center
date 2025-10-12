@@ -98,7 +98,7 @@ public class JobExecutorScanner implements Scanner, ApplicationContextAware {
                     Method reduceExecutor = null;
                     Method mergeReduceExecutor = null;
                     Method[] methods = bean.getClass().getMethods();
-                    for (final Method method1 : methods) {
+                    for (Method method1 : methods) {
                         Class<?>[] parameterTypes = method1.getParameterTypes();
                         MapExecutor mapExecutor = method1.getAnnotation(MapExecutor.class);
                         if (Objects.nonNull(mapExecutor)

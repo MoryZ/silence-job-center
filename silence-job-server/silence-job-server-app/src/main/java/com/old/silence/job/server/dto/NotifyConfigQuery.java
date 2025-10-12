@@ -1,13 +1,18 @@
 package com.old.silence.job.server.dto;
 
 
+import com.old.silence.data.commons.annotation.RelationalQueryProperty;
+import com.old.silence.data.commons.converter.Part;
 import com.old.silence.job.common.enums.SystemTaskType;
 
-public class NotifyConfigQueryVO  {
+public class NotifyConfigQuery {
+    @RelationalQueryProperty(type = Part.Type.CONTAINING)
     private String groupName;
-    private String sceneName;
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private SystemTaskType systemTaskType;
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private Boolean notifyStatus;
+    @RelationalQueryProperty(type = Part.Type.STARTING_WITH)
     private String notifyName;
 
     public String getGroupName() {
@@ -16,14 +21,6 @@ public class NotifyConfigQueryVO  {
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
-    }
-
-    public String getSceneName() {
-        return sceneName;
-    }
-
-    public void setSceneName(String sceneName) {
-        this.sceneName = sceneName;
     }
 
     public SystemTaskType getSystemTaskType() {

@@ -51,7 +51,7 @@ public class GrpcClientInvokeHandler<R extends ApiResult<Object>> implements Inv
     }
 
     @Override
-    public R invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+    public R invoke(Object proxy, Method method, Object[] args) throws Throwable {
         StopWatch sw = new StopWatch();
         Mapping annotation = method.getAnnotation(Mapping.class);
 
@@ -67,7 +67,7 @@ public class GrpcClientInvokeHandler<R extends ApiResult<Object>> implements Inv
             Futures.addCallback(future, new FutureCallback<>() {
 
                 @Override
-                public void onSuccess(final GrpcResult result) {
+                public void onSuccess(GrpcResult result) {
 
                     Object obj = JSON.parseObject( result.getData(), Object.class);
                     consumer.accept(
@@ -75,7 +75,7 @@ public class GrpcClientInvokeHandler<R extends ApiResult<Object>> implements Inv
                 }
 
                 @Override
-                public void onFailure(final Throwable t) {
+                public void onFailure(Throwable t) {
                     consumer.accept((R) new SilenceJobRpcResult(500, t.getMessage(), null, reqId));
                 }
             }, executorService);

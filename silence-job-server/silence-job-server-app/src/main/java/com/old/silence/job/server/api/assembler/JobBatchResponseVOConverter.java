@@ -30,6 +30,7 @@ public interface JobBatchResponseVOConverter extends Converter<JobBatchResponseD
     @Mapping(target = "executionAt", expression = "java(toLocalDateTime(jobBatch.getExecutionAt()))")
     @Mapping(source = "jobBatch.createdDate", target="createdDate")
     @Mapping(source = "jobBatch.updatedDate", target="updatedDate")
+    @Mapping(source = "job.taskType", target="taskType")
     JobBatchResponseVO convert(JobTaskBatch jobBatch, Job job);
 
     default Instant toLocalDateTime(Long nextTriggerAt) {

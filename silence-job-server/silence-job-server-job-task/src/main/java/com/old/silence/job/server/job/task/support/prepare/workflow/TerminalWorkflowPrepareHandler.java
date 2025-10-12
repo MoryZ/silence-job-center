@@ -29,7 +29,7 @@ public class TerminalWorkflowPrepareHandler extends AbstractWorkflowPrePareHandl
     }
 
     @Override
-    protected void doHandler(final WorkflowTaskPrepareDTO jobPrepareDTO) {
+    protected void doHandler(WorkflowTaskPrepareDTO jobPrepareDTO) {
         log.debug("无处理中的工作流数据. workflowId:[{}]", jobPrepareDTO.getWorkflowId());
         workflowBatchGenerator.generateJobTaskBatch(WorkflowTaskConverter.INSTANCE.toWorkflowTaskBatchGeneratorContext(jobPrepareDTO));
     }

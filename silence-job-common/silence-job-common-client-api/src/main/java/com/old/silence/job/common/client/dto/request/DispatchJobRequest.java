@@ -1,13 +1,5 @@
 package com.old.silence.job.common.client.dto.request;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.old.silence.core.enums.EnumValueDeserializer;
-import com.old.silence.core.enums.EnumValueSerializer;
-import com.old.silence.job.common.enums.ExecutorType;
-import com.old.silence.job.common.enums.JobTaskType;
-import com.old.silence.job.common.enums.MapReduceStage;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
@@ -29,7 +21,7 @@ public class DispatchJobRequest {
     private BigInteger taskId;
 
     @NotNull(message = "taskType 不能为空")
-    private JobTaskType taskType;
+    private Byte taskType;
 
     @NotBlank(message = "group 不能为空")
     private String groupName;
@@ -38,9 +30,7 @@ public class DispatchJobRequest {
     private Integer parallelNum;
 
     @NotNull(message = "executorType 不能为空")
-    @JsonDeserialize(using = EnumValueDeserializer.class)
-    @JsonSerialize(using = EnumValueSerializer.class)
-    private ExecutorType executorType;
+    private Byte executorType;
 
     @NotBlank(message = "executorInfo 不能为空")
     private String executorInfo;
@@ -53,9 +43,7 @@ public class DispatchJobRequest {
      */
     private String taskName;
 
-    @JsonDeserialize(using = EnumValueDeserializer.class)
-    @JsonSerialize(using = EnumValueSerializer.class)
-    private MapReduceStage mrStage;
+    private Byte mrStage;
 
     private String argsStr;
 
@@ -122,11 +110,11 @@ public class DispatchJobRequest {
         this.taskId = taskId;
     }
 
-    public JobTaskType getTaskType() {
+    public Byte getTaskType() {
         return taskType;
     }
 
-    public void setTaskType(JobTaskType taskType) {
+    public void setTaskType(Byte taskType) {
         this.taskType = taskType;
     }
 
@@ -146,11 +134,11 @@ public class DispatchJobRequest {
         this.parallelNum = parallelNum;
     }
 
-    public ExecutorType getExecutorType() {
+    public Byte getExecutorType() {
         return executorType;
     }
 
-    public void setExecutorType(ExecutorType executorType) {
+    public void setExecutorType(Byte executorType) {
         this.executorType = executorType;
     }
 
@@ -178,11 +166,11 @@ public class DispatchJobRequest {
         this.taskName = taskName;
     }
 
-    public MapReduceStage getMrStage() {
+    public Byte getMrStage() {
         return mrStage;
     }
 
-    public void setMrStage(MapReduceStage mrStage) {
+    public void setMrStage(Byte mrStage) {
         this.mrStage = mrStage;
     }
 

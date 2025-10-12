@@ -247,7 +247,7 @@ public class WorkflowBatchHandler {
         List<Job> jobs = jobDao.selectBatchIds(StreamUtils.toSet(jobTaskBatches, JobTaskBatch::getJobId));
 
         Map<BigInteger, Job> jobMap = StreamUtils.toIdentityMap(jobs, Job::getId);
-        for (final JobTaskBatch jobTaskBatch : jobTaskBatches) {
+        for (JobTaskBatch jobTaskBatch : jobTaskBatches) {
 
             Job job = jobMap.get(jobTaskBatch.getJobId());
             if (Objects.nonNull(job)) {
@@ -389,7 +389,7 @@ public class WorkflowBatchHandler {
                 .withStopStrategy(StopStrategies.stopAfterAttempt(3))
                 .withRetryListener(new RetryListener() {
                     @Override
-                    public <V> void onRetry(final Attempt<V> attempt) {
+                    public <V> void onRetry(Attempt<V> attempt) {
                         Object result = null;
                         if (attempt.hasResult()) {
                             try {

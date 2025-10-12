@@ -83,7 +83,7 @@ public class JobTaskBatchHandler {
         }
 
         JobExecutorResultContext context = JobTaskConverter.INSTANCE.toJobExecutorResultContext(completeJobBatchDTO);
-        for (final JobExecutorResultHandler jobExecutorResultHandler : jobExecutorResultHandlers) {
+        for (JobExecutorResultHandler jobExecutorResultHandler : jobExecutorResultHandlers) {
             if (completeJobBatchDTO.getTaskType().equals(jobExecutorResultHandler.getTaskInstanceType())) {
                 jobExecutorResultHandler.handleResult(context);
                 break;

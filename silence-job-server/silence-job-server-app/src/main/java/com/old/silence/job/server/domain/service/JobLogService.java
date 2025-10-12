@@ -90,7 +90,7 @@ public class JobLogService {
                         .orderByAsc(JobLogMessage::getRealTime)
         );
 
-        for (final JobLogMessage jobLogMessage : jobLogMessages) {
+        for (JobLogMessage jobLogMessage : jobLogMessages) {
 
             List<Map<String, String>> originalList = JSON.parseObject(jobLogMessage.getMessage(), List.class);
             int size = originalList.size() - fromIndex;

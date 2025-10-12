@@ -73,7 +73,7 @@ public class ClientRegister extends AbstractRegister {
     }
 
     @Override
-    protected void afterProcessor(final ServerNode serverNode) {
+    protected void afterProcessor(ServerNode serverNode) {
     }
 
     @Override

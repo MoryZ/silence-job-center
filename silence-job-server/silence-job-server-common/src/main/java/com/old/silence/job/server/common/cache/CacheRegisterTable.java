@@ -133,7 +133,7 @@ public class CacheRegisterTable implements Lifecycle {
         return new TreeSet<>(concurrentMap.values());
     }
 
-    private static Pair<String, String> getKey(final String groupName, final String namespaceId) {
+    private static Pair<String, String> getKey(String groupName, String namespaceId) {
         return Pair.of(groupName, namespaceId);
     }
 
@@ -199,7 +199,7 @@ public class CacheRegisterTable implements Lifecycle {
      *
      * @param concurrentMap 并发映射的节点信息
      */
-    private static void delExpireNode(final ConcurrentMap<String, RegisterNodeInfo> concurrentMap) {
+    private static void delExpireNode(ConcurrentMap<String, RegisterNodeInfo> concurrentMap) {
         concurrentMap.values().stream()
                 .filter(registerNodeInfo -> registerNodeInfo.getExpireAt().isBefore(
                         Instant.now().minusSeconds(ServerRegister.DELAY_TIME + (ServerRegister.DELAY_TIME / 3))))

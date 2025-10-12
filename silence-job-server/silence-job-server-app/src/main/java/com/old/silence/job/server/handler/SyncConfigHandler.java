@@ -57,7 +57,7 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
         try {
             Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName, namespaceId);
             // 同步版本到每个客户端节点
-            for (final RegisterNodeInfo registerNodeInfo : serverNodeSet) {
+            for (RegisterNodeInfo registerNodeInfo : serverNodeSet) {
                 ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName, namespaceId);
                 CommonRpcClient rpcClient = RequestBuilder.<CommonRpcClient, ApiResult>newBuilder()
                         .nodeInfo(registerNodeInfo)

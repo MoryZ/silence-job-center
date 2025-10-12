@@ -79,14 +79,14 @@ public class WorkflowHandler {
             if (predecessors.size() >= 2) {
                 // 查找predecessors的公共祖先节点
                 Map<BigInteger, Set<BigInteger>> sets = new HashMap<>();
-                for (final BigInteger predecessor : predecessors) {
+                for (BigInteger predecessor : predecessors) {
                     Set<BigInteger> set = Sets.newTreeSet();
                     sets.put(predecessor, set);
                     findCommonAncestor(predecessor, set, graph);
                 }
 
                 Set<BigInteger> intersection = sets.values().stream().findFirst().get();
-                for (final Set<BigInteger> value : sets.values()) {
+                for (Set<BigInteger> value : sets.values()) {
                     intersection = Sets.intersection(value, intersection);
                 }
 
@@ -151,7 +151,7 @@ public class WorkflowHandler {
             conditionNodes = conditionNodes.stream()
                     .sorted(Comparator.comparing(WorkflowCommand.NodeInfo::getPriorityLevel))
                     .collect(Collectors.toList());
-            for (final WorkflowCommand.NodeInfo nodeInfo : conditionNodes) {
+            for (WorkflowCommand.NodeInfo nodeInfo : conditionNodes) {
                 WorkflowNode workflowNode = workflowMapper.convert(nodeInfo);
                 workflowNode.setWorkflowId(workflowId);
                 workflowNode.setGroupName(groupName);

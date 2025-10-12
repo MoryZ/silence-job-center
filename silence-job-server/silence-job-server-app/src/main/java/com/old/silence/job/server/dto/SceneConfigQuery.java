@@ -1,9 +1,16 @@
 package com.old.silence.job.server.dto;
 
 
-public class SceneConfigQueryVO  {
+import com.old.silence.data.commons.annotation.RelationalQueryProperty;
+import com.old.silence.data.commons.converter.Part;
+
+public class SceneConfigQuery {
+
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private String groupName;
+    @RelationalQueryProperty(type = Part.Type.CONTAINING)
     private String sceneName;
+    @RelationalQueryProperty(type = Part.Type.SIMPLE_PROPERTY)
     private Boolean sceneStatus;
 
     public String getGroupName() {

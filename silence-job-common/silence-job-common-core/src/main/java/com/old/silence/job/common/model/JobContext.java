@@ -36,7 +36,7 @@ public class JobContext {
 
     private Integer executorTimeout;
 
-//    private String argsStr;
+    private String argsStr;
 
     /**
      * 重试场景 auto、manual
@@ -244,5 +244,13 @@ public class JobContext {
 
     public void setJobArgsHolder(JobArgsHolder jobArgsHolder) {
         this.jobArgsHolder = jobArgsHolder;
+    }
+
+    public String getArgsStr() {
+        return argsStr;
+    }
+
+    public void setArgsStr(String argsStr) {
+        this.argsStr = argsStr;
     }
 }

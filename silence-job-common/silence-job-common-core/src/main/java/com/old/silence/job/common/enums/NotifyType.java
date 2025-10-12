@@ -14,7 +14,7 @@ public enum NotifyType implements DescribedEnumValue<Byte> {
     EMAIL(2, "邮件"),
     WE_COM(3, "企业微信"),
     LARK(4, "飞书"),
-    WEBHOOK(4, "webhook"),
+    WEBHOOK(5, "webhook"),
     ;
 
 

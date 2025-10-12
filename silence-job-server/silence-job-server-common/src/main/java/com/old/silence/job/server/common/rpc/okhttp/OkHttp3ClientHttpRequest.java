@@ -56,7 +56,7 @@ class OkHttp3ClientHttpRequest extends AbstractClientHttpRequest {
     }
 
     @Override
-    protected OutputStream getBodyInternal(final HttpHeaders headers) throws IOException {
+    protected OutputStream getBodyInternal(HttpHeaders headers) throws IOException {
         Assert.state(this.body == null, "Invoke either getBody or setBody; not both");
 
         if (this.bodyStream == null) {
@@ -67,7 +67,7 @@ class OkHttp3ClientHttpRequest extends AbstractClientHttpRequest {
 
     @NotNull
     @Override
-    protected ClientHttpResponse executeInternal(final HttpHeaders headers) throws IOException {
+    protected ClientHttpResponse executeInternal(HttpHeaders headers) throws IOException {
 
         if (this.body == null && this.bodyStream != null) {
             this.body = outputStream -> this.bodyStream.writeTo(outputStream);

@@ -16,20 +16,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.google.common.collect.Lists;
 import com.old.silence.job.common.enums.RetryOperationReason;
 import com.old.silence.job.common.enums.RetryTaskStatus;
 import com.old.silence.job.log.constant.LogFieldConstants;
-import com.old.silence.job.server.api.assembler.RetryMapper;
 import com.old.silence.job.server.api.assembler.RetryTaskLogResponseVOMapper;
 import com.old.silence.job.server.api.assembler.RetryTaskResponseVOMapper;
 import com.old.silence.job.server.domain.model.Retry;
 import com.old.silence.job.server.domain.model.RetryTask;
 import com.old.silence.job.server.domain.model.RetryTaskLogMessage;
 import com.old.silence.job.server.dto.RetryTaskLogMessageQueryVO;
-import com.old.silence.job.server.dto.RetryTaskQueryVO;
 import com.old.silence.job.server.exception.SilenceJobServerException;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryDao;
 import com.old.silence.job.server.infrastructure.persistence.dao.RetryTaskDao;
@@ -64,23 +63,13 @@ public class RetryTaskService {
         this.retryTaskResponseVOMapper = retryTaskResponseVOMapper;
     }
 
-    public IPage<RetryTaskResponseVO> getRetryTaskLogPage(Page<RetryTask> pageDTO, RetryTaskQueryVO queryVO) {
+    public IPage<RetryTaskResponseVO> queryPage(Page<RetryTask> pageDTO, QueryWrapper<RetryTask> queryWrapper) {
 
         String namespaceId = "namespaceId";
 
         List<String> groupNames = List.of();
 
-        LambdaQueryWrapper<RetryTask> wrapper = new LambdaQueryWrapper<RetryTask>()
-                .eq(RetryTask::getNamespaceId, namespaceId)
-                .in(CollectionUtils.isNotEmpty(groupNames), RetryTask::getGroupName, groupNames)
-                .eq(StrUtil.isNotBlank(queryVO.getSceneName()), RetryTask::getSceneName, queryVO.getSceneName())
-                .eq(queryVO.getTaskStatus() != null, RetryTask::getTaskStatus, queryVO.getTaskStatus())
-                .eq(Objects.nonNull(queryVO.getRetryId()), RetryTask::getRetryId, queryVO.getRetryId())
-                .select(RetryTask::getGroupName, RetryTask::getId, RetryTask::getSceneName, RetryTask::getTaskStatus,
-                        RetryTask::getCreatedDate, RetryTask::getTaskType, RetryTask::getOperationReason, RetryTask::getRetryId)
-                .orderByDesc(RetryTask::getCreatedDate);
-
-        Page<RetryTask> retryTaskPageDTO = retryTaskDao.selectPage(pageDTO, wrapper);
+        Page<RetryTask> retryTaskPageDTO = retryTaskDao.selectPage(pageDTO, queryWrapper);
         return retryTaskPageDTO.convert(retryTaskLogResponseVOMapper::convert);
 
     }
@@ -139,7 +128,7 @@ public class RetryTaskService {
                         .orderByAsc(RetryTaskLogMessage::getRealTime)
         );
 
-        for (final RetryTaskLogMessage retryTaskLogMessage : jobLogMessages) {
+        for (RetryTaskLogMessage retryTaskLogMessage : jobLogMessages) {
 
             List<Map<String, String>> originalList = JSON.parseObject(retryTaskLogMessage.getMessage(), List.class);
             int size = originalList.size() - fromIndex;
@@ -203,8 +192,8 @@ public class RetryTaskService {
     }
 
     @Transactional
-    public boolean batchDelete(final Set<BigInteger> ids) {
-        String namespaceId = "111";
+    public boolean batchDelete(Set<BigInteger> ids) {
+        String namespaceId = "namespaceId";
 
         List<RetryTask> retryTasks = retryTaskDao.selectList(
                 new LambdaQueryWrapper<RetryTask>()
@@ -214,7 +203,7 @@ public class RetryTaskService {
         Assert.notEmpty(retryTasks, () -> new SilenceJobServerException("数据不存在"));
         Assert.isTrue(retryTasks.size() == ids.size(), () -> new SilenceJobServerException("数据不存在"));
 
-        for (final RetryTask retryTask : retryTasks) {
+        for (RetryTask retryTask : retryTasks) {
             retryTaskLogMessageDao.delete(
                     new LambdaQueryWrapper<RetryTaskLogMessage>()
                             .eq(RetryTaskLogMessage::getNamespaceId, namespaceId)

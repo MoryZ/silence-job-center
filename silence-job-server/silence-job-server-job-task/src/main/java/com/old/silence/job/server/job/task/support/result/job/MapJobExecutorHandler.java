@@ -25,16 +25,16 @@ public class MapJobExecutorHandler extends AbstractJobExecutorResultHandler {
     }
 
     @Override
-    protected void doHandleSuccess(final JobExecutorResultContext context) {
+    protected void doHandleSuccess(JobExecutorResultContext context) {
     }
 
     @Override
-    protected void doHandleStop(final JobExecutorResultContext context) {
+    protected void doHandleStop(JobExecutorResultContext context) {
 
     }
 
     @Override
-    protected void doHandleFail(final JobExecutorResultContext context) {
+    protected void doHandleFail(JobExecutorResultContext context) {
 
     }
 

@@ -141,7 +141,7 @@ public class SegmentIdGenerator implements IdGenerator, Lifecycle {
         }
     }
 
-    public String get(final String groupName, String namespaceId) {
+    public String get(String groupName, String namespaceId) {
         if (!initOK) {
             return Long.toString(EXCEPTION_ID_IDCACHE_INIT_FALSE);
         }

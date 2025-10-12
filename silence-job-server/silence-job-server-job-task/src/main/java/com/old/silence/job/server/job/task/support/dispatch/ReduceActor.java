@@ -93,7 +93,7 @@ public class ReduceActor extends AbstractActor {
         }).build();
     }
 
-    private void doReduce(final ReduceTaskDTO reduceTask) {
+    private void doReduce(ReduceTaskDTO reduceTask) {
 
         List<JobTask> jobTasks = jobTaskDao.selectList(
                 new LambdaQueryWrapper<JobTask>()

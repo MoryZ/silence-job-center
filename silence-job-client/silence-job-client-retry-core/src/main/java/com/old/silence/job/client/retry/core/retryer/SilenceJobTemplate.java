@@ -39,19 +39,19 @@ public class SilenceJobTemplate implements RetryOperations {
     }
 
     protected void setExecutorMethodClass(
-            final Class<? extends ExecutorMethod> executorMethodClass) {
+            Class<? extends ExecutorMethod> executorMethodClass) {
         this.executorMethodClass = executorMethodClass;
     }
 
-    protected void setScene(final String scene) {
+    protected void setScene(String scene) {
         this.scene = scene;
     }
 
-    protected void setParams(final Object[] params) {
+    protected void setParams(Object[] params) {
         this.params = params;
     }
 
-    protected void setRetryStrategy(final RetryStrategy retryStrategy) {
+    protected void setRetryStrategy(RetryStrategy retryStrategy) {
         this.retryStrategy = retryStrategy;
     }
 }

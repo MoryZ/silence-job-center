@@ -38,18 +38,18 @@ public class MapReduceJobExecutorHandler extends AbstractJobExecutorResultHandle
     }
 
     @Override
-    protected void doHandleSuccess(final JobExecutorResultContext context) {
+    protected void doHandleSuccess(JobExecutorResultContext context) {
         // 判断是否需要创建Reduce任务
         context.setCreateReduceTask(needReduceTask(context));
     }
 
     @Override
-    protected void doHandleStop(final JobExecutorResultContext context) {
+    protected void doHandleStop(JobExecutorResultContext context) {
 
     }
 
     @Override
-    protected void doHandleFail(final JobExecutorResultContext context) {
+    protected void doHandleFail(JobExecutorResultContext context) {
 
     }
 
@@ -68,7 +68,7 @@ public class MapReduceJobExecutorHandler extends AbstractJobExecutorResultHandle
      * @param context 需要执行批次完成所需的参数信息
      * @return true-需要reduce false-不需要reduce
      */
-    private boolean needReduceTask(final JobExecutorResultContext context) {
+    private boolean needReduceTask(JobExecutorResultContext context) {
         MapReduceStage mrStage;
 
         int reduceCount = 0;

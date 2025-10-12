@@ -1,7 +1,6 @@
 package com.old.silence.job.server.dto;
 
 
-
 import java.math.BigInteger;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -44,27 +43,27 @@ public class NotifyRecipientCommand {
         this.id = id;
     }
 
-    public @NotBlank(message = "接收人名称不能为空") String getRecipientName() {
+    public String getRecipientName() {
         return recipientName;
     }
 
-    public void setRecipientName(@NotBlank(message = "接收人名称不能为空") String recipientName) {
+    public void setRecipientName(String recipientName) {
         this.recipientName = recipientName;
     }
 
-    public @NotNull(message = "通知类型不能为空") NotifyType getNotifyType() {
+    public NotifyType getNotifyType() {
         return notifyType;
     }
 
-    public void setNotifyType(@NotNull(message = "通知类型不能为空") NotifyType notifyType) {
+    public void setNotifyType(NotifyType notifyType) {
         this.notifyType = notifyType;
     }
 
-    public @NotBlank(message = "配置属性不能为空") String getNotifyAttribute() {
+    public String getNotifyAttribute() {
         return notifyAttribute;
     }
 
-    public void setNotifyAttribute(@NotBlank(message = "配置属性不能为空") String notifyAttribute) {
+    public void setNotifyAttribute(String notifyAttribute) {
         this.notifyAttribute = notifyAttribute;
     }
 

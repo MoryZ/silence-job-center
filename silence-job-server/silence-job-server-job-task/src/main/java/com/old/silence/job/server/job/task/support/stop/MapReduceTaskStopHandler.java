@@ -25,8 +25,8 @@ public class MapReduceTaskStopHandler extends AbstractJobTaskStopHandler {
     }
 
     @Override
-    protected void doStop(final TaskStopJobContext context) {
-        for (final JobTask jobTask : context.getJobTasks()) {
+    protected void doStop(TaskStopJobContext context) {
+        for (JobTask jobTask : context.getJobTasks()) {
             RealStopTaskInstanceDTO taskInstanceDTO = JobTaskConverter.INSTANCE.toRealStopTaskInstanceDTO(context);
             taskInstanceDTO.setClientId(ClientInfoUtils.clientId(jobTask.getClientInfo()));
 

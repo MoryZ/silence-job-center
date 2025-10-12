@@ -9,7 +9,7 @@ import com.old.silence.job.server.common.lock.persistence.LockStorageFactory;
 public class ResidentLockProvider extends AbstractLockProvider {
 
     @Override
-    protected boolean doLockAfter(final LockConfig lockConfig) {
+    protected boolean doLockAfter(LockConfig lockConfig) {
         String lockName = lockConfig.getLockName();
         boolean lock;
         try {

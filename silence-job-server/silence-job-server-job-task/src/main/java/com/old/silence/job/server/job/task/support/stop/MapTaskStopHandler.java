@@ -19,7 +19,7 @@ public class MapTaskStopHandler extends MapReduceTaskStopHandler {
     }
 
     @Override
-    protected void doStop(final TaskStopJobContext context) {
+    protected void doStop(TaskStopJobContext context) {
         super.doStop(context);
     }
 }

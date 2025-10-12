@@ -274,7 +274,7 @@ public abstract class AbstractScriptExecutor {
                 SilenceJobLog.LOCAL.info("[FileUtils] [workspace] use custom workspace: {}", workspaceByDKey);
                 return workspaceByDKey;
             }
-            final String userHome = System.getProperty("user.home").concat("/silenceJob/worker");
+            String userHome = System.getProperty("user.home").concat("/silenceJob/worker");
             SilenceJobLog.LOCAL.info("[FileUtils] [workspace] use user.home as workspace: {}", userHome);
             return userHome;
         }

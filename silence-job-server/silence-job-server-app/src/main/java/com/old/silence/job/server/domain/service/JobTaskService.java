@@ -57,6 +57,9 @@ public class JobTaskService {
     }
 
     private List<JobTaskResponseVO> convertJobTaskList(List<JobTask> tasks) {
+        if (CollectionUtils.isEmpty(tasks)) {
+            return List.of();
+        }
 
         List<JobTaskResponseVO> jobTaskResponseVOs = CollectionUtils.transformToList(tasks, jobTaskResponseVOMapper::convert);
 

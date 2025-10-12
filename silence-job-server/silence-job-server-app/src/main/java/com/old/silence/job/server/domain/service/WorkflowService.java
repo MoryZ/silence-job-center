@@ -110,57 +110,55 @@ public class WorkflowService  {
         this.workflowMapper = workflowMapper;
     }
 
-    private static Long calculateNextTriggerAt(final WorkflowCommand workflowCommand, Long time) {
-        checkExecuteInterval(workflowCommand);
+    private static Long calculateNextTriggerAt(Workflow workflow, Long time) {
+        checkExecuteInterval(workflow);
 
-        WaitStrategy waitStrategy = WaitStrategies.WaitStrategyEnum.getWaitStrategy(workflowCommand.getTriggerType().getValue());
+        WaitStrategy waitStrategy = WaitStrategies.WaitStrategyEnum.getWaitStrategy(workflow.getTriggerType().getValue());
         WaitStrategies.WaitStrategyContext waitStrategyContext = new WaitStrategies.WaitStrategyContext();
-        waitStrategyContext.setTriggerInterval(workflowCommand.getTriggerInterval());
+        waitStrategyContext.setTriggerInterval(workflow.getTriggerInterval());
         waitStrategyContext.setNextTriggerAt(time);
         return waitStrategy.computeTriggerTime(waitStrategyContext);
     }
 
-    private static void checkExecuteInterval(WorkflowCommand requestVO) {
+    private static void checkExecuteInterval(Workflow workflow) {
         if (List.of(WaitStrategies.WaitStrategyEnum.FIXED.getValue(),
                         WaitStrategies.WaitStrategyEnum.RANDOM.getValue())
-                .contains(requestVO.getTriggerType().getValue().intValue())) {
-            if (Integer.parseInt(requestVO.getTriggerInterval()) < 10) {
+                .contains(workflow.getTriggerType().getValue().intValue())) {
+            if (Integer.parseInt(workflow.getTriggerInterval()) < 10) {
                 throw new SilenceJobServerException("触发间隔不得小于10");
             }
-        } else if (requestVO.getTriggerType().getValue().intValue() == WaitStrategies.WaitStrategyEnum.CRON.getValue()) {
-            if (CronUtils.getExecuteInterval(requestVO.getTriggerInterval()) < 10 * 1000) {
+        } else if (workflow.getTriggerType().getValue().intValue() == WaitStrategies.WaitStrategyEnum.CRON.getValue()) {
+            if (CronUtils.getExecuteInterval(workflow.getTriggerInterval()) < 10 * 1000) {
                 throw new SilenceJobServerException("触发间隔不得小于10");
             }
         }
     }
 
     @Transactional
-    public boolean saveWorkflow(WorkflowCommand workflowCommand) {
-        log.info("保存工作流信息：{}", JSON.toJSONString(workflowCommand));
+    public boolean create(Workflow workflow, WorkflowCommand.NodeConfig nodeConfig) throws Exception {
+        log.info("保存工作流信息：{}", JSON.toJSONString(workflow));
         MutableGraph<BigInteger> graph = createGraph();
 
         // 添加虚拟头节点
         graph.addNode(SystemConstants.ROOT);
 
         // 组装工作流信息
-        Workflow workflow = workflowMapper.convert(workflowCommand);
         workflow.setVersion(1);
-        workflow.setNextTriggerAt(calculateNextTriggerAt(workflowCommand, DateUtils.toNowMilli()));
+        workflow.setNextTriggerAt(calculateNextTriggerAt(workflow, DateUtils.toNowMilli()));
         workflow.setFlowInfo(StrUtil.EMPTY);
         workflow.setBucketIndex(
-                HashUtil.bkdrHash(workflowCommand.getGroupName() + workflowCommand.getWorkflowName())
+                HashUtil.bkdrHash(workflow.getGroupName() + workflow.getWorkflowName())
                         % systemProperties.getBucketTotal());
-        workflow.setNamespaceId("111");
+        workflow.setNamespaceId("namespaceId");
         workflow.setId(null);
         Assert.isTrue(1 == workflowDao.insert(workflow), () -> new SilenceJobServerException("新增工作流失败"));
 
         // 获取DAG节点配置
-        WorkflowCommand.NodeConfig nodeConfig = workflowCommand.getNodeConfig();
 
         // 递归构建图
         workflowHandler.buildGraph(Lists.newArrayList(SystemConstants.ROOT),
                 new LinkedBlockingDeque<>(),
-                workflowCommand.getGroupName(),
+                workflow.getGroupName(),
                 workflow.getId(), nodeConfig, graph,
                 workflow.getVersion());
         log.info("图构建完成. graph:[{}]", graph);
@@ -185,7 +183,7 @@ public class WorkflowService  {
         Workflow workflow = workflowDao.selectOne(
                 new LambdaQueryWrapper<Workflow>()
                         .eq(Workflow::getId, id)
-                        .eq(Workflow::getNamespaceId, "111")
+                        .eq(Workflow::getNamespaceId, "namespaceId")
         );
         if (Objects.isNull(workflow)) {
             return null;
@@ -195,14 +193,14 @@ public class WorkflowService  {
     }
 
     
-    public IPage<WorkflowResponseVO> listPage(Page<Workflow> pageDTO, WorkflowQuery queryVO) {
+    public IPage<WorkflowResponseVO> queryPage(Page<Workflow> pageDTO, WorkflowQuery queryVO) {
 
         List<String> groupNames = List.of();
 
         Page<Workflow> page = workflowDao.selectPage(pageDTO,
                 new LambdaQueryWrapper<Workflow>()
                         .eq(Workflow::getDeleted, 500)
-                        .eq(Workflow::getNamespaceId, "111")
+                        .eq(Workflow::getNamespaceId, "namespaceId")
                         .in(CollectionUtils.isNotEmpty(groupNames), Workflow::getGroupName, groupNames)
                         .like(StrUtil.isNotBlank(queryVO.getWorkflowName()), Workflow::getWorkflowName,
                                 queryVO.getWorkflowName())
@@ -214,11 +212,10 @@ public class WorkflowService  {
     }
 
     @Transactional
-    public Boolean updateWorkflow(WorkflowCommand workflowCommand) {
+    public Boolean update(Workflow workflow, WorkflowCommand.NodeConfig nodeConfig) {
 
-        Assert.notNull(workflowCommand.getId(), () -> new SilenceJobServerException("工作流ID不能为空"));
+        Assert.notNull(workflow.getId(), () -> new SilenceJobServerException("工作流ID不能为空"));
 
-        Workflow workflow = workflowDao.selectById(workflowCommand.getId());
         Assert.notNull(workflow, () -> new SilenceJobServerException("工作流不存在"));
 
         MutableGraph<BigInteger> graph = createGraph();
@@ -227,20 +224,17 @@ public class WorkflowService  {
         graph.addNode(SystemConstants.ROOT);
 
         // 获取DAG节点配置
-        WorkflowCommand.NodeConfig nodeConfig = workflowCommand.getNodeConfig();
 
         int version = workflow.getVersion();
         // 递归构建图
         workflowHandler.buildGraph(Lists.newArrayList(SystemConstants.ROOT), new LinkedBlockingDeque<>(),
-                workflowCommand.getGroupName(), workflowCommand.getId(), nodeConfig, graph, version + 1);
+                workflow.getGroupName(), workflow.getId(), nodeConfig, graph, version + 1);
 
         log.info("图构建完成. graph:[{}]", graph);
 
         // 保存图信息
-        workflow = workflowMapper.convert(workflowCommand);
-        workflow.setId(workflowCommand.getId());
         workflow.setVersion(version);
-        workflow.setNextTriggerAt(calculateNextTriggerAt(workflowCommand, DateUtils.toNowMilli()));
+        workflow.setNextTriggerAt(calculateNextTriggerAt(workflow, DateUtils.toNowMilli()));
         workflow.setFlowInfo(JSON.toJSONString(GraphUtils.serializeGraphToJson(graph)));
         // 不允许更新组
         workflow.setGroupName(null);
@@ -255,14 +249,14 @@ public class WorkflowService  {
     }
 
     
-    public Boolean updateStatus(BigInteger id) {
+    public Boolean updateStatus(BigInteger id, boolean workflowStatus) {
         Workflow workflow = workflowDao.selectOne(
                 new LambdaQueryWrapper<Workflow>()
                         .select(Workflow::getId, Workflow::getWorkflowStatus)
                         .eq(Workflow::getId, id));
         Assert.notNull(workflow, () -> new SilenceJobServerException("工作流不存在"));
 
-        workflow.setWorkflowStatus(workflow.getWorkflowStatus());
+        workflow.setWorkflowStatus(workflowStatus);
 
         return 1 == workflowDao.updateById(workflow);
     }
@@ -327,9 +321,8 @@ public class WorkflowService  {
 
     
     @Transactional(rollbackFor = Exception.class)
-    public void importWorkflowTask(List<WorkflowCommand> requests) {
-
-        batchSaveWorkflowTask(requests, "111");
+    public void importWorkflowTask(List<Workflow> requests) throws Exception {
+        batchSaveWorkflowTask(requests, "namespaceId");
     }
 
     
@@ -339,7 +332,7 @@ public class WorkflowService  {
         PartitionTaskUtils.process(startId -> {
             List<Workflow> workflowList = workflowDao.selectPage(new PageDTO<>(0, 100),
                     new LambdaQueryWrapper<Workflow>()
-                            .eq(Workflow::getNamespaceId, "111")
+                            .eq(Workflow::getNamespaceId, "namespaceId")
                             .eq(Workflow::getDeleted, 500)
                             .eq(StrUtil.isNotBlank(exportVO.getGroupName()), Workflow::getGroupName, exportVO.getGroupName())
                             .eq(Objects.nonNull(exportVO.getWorkflowStatus()), Workflow::getWorkflowStatus,
@@ -389,15 +382,14 @@ public class WorkflowService  {
         return Boolean.TRUE;
     }
 
-    private void batchSaveWorkflowTask(final List<WorkflowCommand> workflowCommandList, final String namespaceId) {
+    private void batchSaveWorkflowTask(List<Workflow> workflows, String namespaceId) throws Exception {
 
-        Set<String> groupNameSet = StreamUtils.toSet(workflowCommandList, WorkflowCommand::getGroupName);
+        Set<String> groupNameSet = CollectionUtils.transformToSet(workflows, Workflow::getGroupName);
         groupHandler.validateGroupExistence(groupNameSet, namespaceId);
 
-        for (final WorkflowCommand workflowCommand : workflowCommandList) {
-            checkExecuteInterval(workflowCommand);
-            workflowCommand.setId(null);
-            saveWorkflow(workflowCommand);
+        for (Workflow workflow : workflows) {
+            checkExecuteInterval(workflow);
+            create(workflow, null);
         }
     }
 

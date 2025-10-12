@@ -7,6 +7,7 @@ import org.mapstruct.factory.Mappers;
 import com.old.silence.job.common.client.dto.request.DispatchJobRequest;
 import com.old.silence.job.common.client.dto.request.DispatchJobResultRequest;
 import com.old.silence.job.common.client.dto.request.MapTaskRequest;
+import com.old.silence.job.common.enums.JobTaskStatus;
 import com.old.silence.job.common.server.dto.LogTaskDTO;
 import com.old.silence.job.server.common.dto.JobAlarmInfo;
 import com.old.silence.job.server.common.dto.JobLogMetaDTO;
@@ -60,9 +61,7 @@ public interface JobTaskConverter {
 
     TaskStopJobContext toStopJobContext(JobExecutorResultContext context);
 
-    @Mappings(
-            @Mapping(source = "id", target = "jobId")
-    )
+    @Mapping(source = "id", target = "jobId")
     TaskStopJobContext toStopJobContext(Job job);
 
     TaskStopJobContext toStopJobContext(JobTaskPrepareDTO context);
@@ -77,12 +76,20 @@ public interface JobTaskConverter {
 
     ClientCallbackContext toClientCallbackContext(RealJobExecutorDTO request);
 
-    @Mappings(
-            @Mapping(source = "id", target = "jobId")
-    )
+    @Mapping(source = "id", target = "jobId")
     ClientCallbackContext toClientCallbackContext(Job job);
 
+    @Mapping(target = "taskType", expression = "java(realJobExecutorDTO.getTaskType().getValue())")
+    @Mapping(target = "mrStage", expression = "java(toMrStage(realJobExecutorDTO))")
+    @Mapping(target = "executorType", expression = "java(realJobExecutorDTO.getExecutorType().getValue())")
     DispatchJobRequest toDispatchJobRequest(RealJobExecutorDTO realJobExecutorDTO);
+
+    default Byte toMrStage(RealJobExecutorDTO realJobExecutorDTO) {
+        if (realJobExecutorDTO.getExecutorType() != null) {
+            return realJobExecutorDTO.getExecutorType().getValue();
+        }
+        return null;
+    }
 
     @Mapping(source = "jobTask.groupName", target = "groupName")
     @Mapping(source = "jobTask.jobId", target = "jobId")

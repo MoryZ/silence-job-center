@@ -52,7 +52,7 @@ public abstract class AbstractRegister implements Register, Lifecycle {
 
         Set<String> hostIds = Sets.newHashSet();
         Set<String> hostIps = Sets.newHashSet();
-        for (final ServerNode serverNode : serverNodes) {
+        for (ServerNode serverNode : serverNodes) {
             serverNode.setExpireAt(getExpireAt());
              hostIds.add(serverNode.getHostId());
              hostIps.add(serverNode.getHostIp());
@@ -73,7 +73,7 @@ public abstract class AbstractRegister implements Register, Lifecycle {
 
         // 去重处理
         Set<Pair<String, String>> existed = Sets.newHashSet();
-        for (final ServerNode serverNode : serverNodes) {
+        for (ServerNode serverNode : serverNodes) {
             Pair<String, String> pair = Pair.of(serverNode.getHostId(), serverNode.getHostIp());
             if (existed.contains(pair)) {
                 continue;
@@ -106,7 +106,7 @@ public abstract class AbstractRegister implements Register, Lifecycle {
             SilenceJobLog.LOCAL.error("注册节点失败", e);
         }
 
-        for (final ServerNode serverNode : serverNodes) {
+        for (ServerNode serverNode : serverNodes) {
             // 刷新本地缓存过期时间
             CacheRegisterTable.refreshExpireAt(serverNode);
         }

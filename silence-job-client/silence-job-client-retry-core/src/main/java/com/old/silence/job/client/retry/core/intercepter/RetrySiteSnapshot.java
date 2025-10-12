@@ -251,7 +251,7 @@ public class RetrySiteSnapshot {
         }
 
         public static EnumStage valueOfStage(int stage) {
-            for (final EnumStage value : EnumStage.values()) {
+            for (EnumStage value : EnumStage.values()) {
                 if (value.getStage() == stage) {
                     return value;
                 }

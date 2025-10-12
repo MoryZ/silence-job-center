@@ -58,14 +58,14 @@ public abstract class AbstractTaskAccess<T> implements TaskAccess<T> {
 
     protected abstract T doOne(LambdaQueryWrapper<T> query);
 
-    protected abstract Page<T> doListPage(final Page<T> iPage, final LambdaQueryWrapper<T> query);
+    protected abstract Page<T> doListPage(Page<T> iPage, LambdaQueryWrapper<T> query);
 
     @Override
-    public long count(final LambdaQueryWrapper<T> query) {
+    public long count(LambdaQueryWrapper<T> query) {
         return doCount(query);
     }
 
-    protected abstract long doCount(final LambdaQueryWrapper<T> query);
+    protected abstract long doCount(LambdaQueryWrapper<T> query);
 
     protected abstract int doInsert(T t);
 

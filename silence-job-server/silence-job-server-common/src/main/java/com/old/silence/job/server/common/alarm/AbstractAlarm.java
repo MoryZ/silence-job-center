@@ -173,7 +173,7 @@ public abstract class AbstractAlarm<E extends ApplicationEvent, A extends AlarmI
             return;
         }
 
-        for (final RecipientInfo recipientInfo : notifyConfig.getRecipientInfos()) {
+        for (RecipientInfo recipientInfo : notifyConfig.getRecipientInfos()) {
             if (Objects.isNull(recipientInfo)) {
                 continue;
             }

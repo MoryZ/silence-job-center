@@ -20,7 +20,7 @@ public class OverlayWorkflowBlockStrategy extends AbstractWorkflowBlockStrategy 
     }
 
     @Override
-    protected void doBlock(final WorkflowBlockStrategyContext workflowBlockStrategyContext) {
+    protected void doBlock(WorkflowBlockStrategyContext workflowBlockStrategyContext) {
 
         // 停止当前批次
         workflowBatchHandler.stop(workflowBlockStrategyContext.getWorkflowTaskBatchId(), workflowBlockStrategyContext.getOperationReason());

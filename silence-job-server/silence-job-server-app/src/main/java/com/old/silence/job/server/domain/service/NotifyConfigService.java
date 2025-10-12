@@ -1,27 +1,25 @@
 package com.old.silence.job.server.domain.service;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.util.StrUtil;
 
 import java.math.BigInteger;
 import java.time.Instant;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.old.silence.job.common.enums.SystemTaskType;
 import com.old.silence.job.server.api.assembler.NotifyConfigResponseVOMapper;
 import com.old.silence.job.server.domain.model.NotifyConfig;
-import com.old.silence.job.server.domain.service.config.ConfigAccess;
-import com.old.silence.job.server.dto.NotifyConfigCommand;
-import com.old.silence.job.server.dto.NotifyConfigQueryVO;
 import com.old.silence.job.server.exception.SilenceJobServerException;
 import com.old.silence.job.server.handler.SyncConfigHandler;
+import com.old.silence.job.server.infrastructure.persistence.dao.NotifyConfigDao;
 import com.old.silence.job.server.vo.NotifyConfigResponseVO;
 import com.old.silence.core.util.CollectionUtils;
 
@@ -29,65 +27,54 @@ import com.old.silence.core.util.CollectionUtils;
 @Service
 public class NotifyConfigService {
 
-    private final AccessTemplate accessTemplate;
+    private final NotifyConfigDao notifyConfigDao;
     private final NotifyConfigResponseVOMapper notifyConfigResponseVOMapper;
 
-    public NotifyConfigService(AccessTemplate accessTemplate, NotifyConfigResponseVOMapper notifyConfigResponseVOMapper) {
-        this.accessTemplate = accessTemplate;
+    public NotifyConfigService(NotifyConfigDao notifyConfigDao, NotifyConfigResponseVOMapper notifyConfigResponseVOMapper) {
+        this.notifyConfigDao = notifyConfigDao;
         this.notifyConfigResponseVOMapper = notifyConfigResponseVOMapper;
     }
 
-    public IPage<NotifyConfigResponseVO> getNotifyConfigList(Page<NotifyConfig> pageDTO, NotifyConfigQueryVO queryVO) {
+    public IPage<NotifyConfigResponseVO> getNotifyConfigList(Page<NotifyConfig> pageDTO, QueryWrapper<NotifyConfig> queryWrapper) {
         List<String> groupNames = List.of();
+        queryWrapper.lambda().eq(NotifyConfig::getNamespaceId, "namespaceId");
+        queryWrapper.lambda().in(CollectionUtils.isNotEmpty(groupNames), NotifyConfig::getGroupName, groupNames);
 
-        Page<NotifyConfig> notifyConfigPage = accessTemplate.getNotifyConfigAccess().listPage(pageDTO,
-                        new LambdaQueryWrapper<NotifyConfig>()
-                                .eq(NotifyConfig::getNamespaceId, "111")
-                                .in(CollectionUtils.isNotEmpty(groupNames), NotifyConfig::getGroupName, groupNames)
-                                .eq(StrUtil.isNotBlank(queryVO.getGroupName()), NotifyConfig::getGroupName, queryVO.getGroupName())
-                                .eq(Objects.nonNull(queryVO.getNotifyStatus()), NotifyConfig::getNotifyStatus, queryVO.getNotifyStatus())
-                                .eq(Objects.nonNull(queryVO.getSystemTaskType()), NotifyConfig::getSystemTaskType, queryVO.getSystemTaskType())
-                                .likeRight(StrUtil.isNotBlank(queryVO.getNotifyName()), NotifyConfig::getNotifyName, queryVO.getNotifyName())
-                                .orderByDesc(NotifyConfig::getId));
+        Page<NotifyConfig> notifyConfigPage = notifyConfigDao.selectPage(pageDTO, queryWrapper);
 
     return notifyConfigPage.convert(notifyConfigResponseVOMapper::convert);
     }
 
-    public List<NotifyConfig> getNotifyConfigBySystemTaskTypeList(Integer systemTaskType) {
-        String namespaceId = "111";
-        List<NotifyConfig> notifyConfigList = accessTemplate.getNotifyConfigAccess().list(new LambdaQueryWrapper<NotifyConfig>()
+    public List<NotifyConfig> getNotifyConfigBySystemTaskTypeList(SystemTaskType systemTaskType) {
+        String namespaceId = "namespaceId";
+        return notifyConfigDao.selectList(new LambdaQueryWrapper<NotifyConfig>()
                 .select(NotifyConfig::getId, NotifyConfig::getNotifyName)
                 .eq(NotifyConfig::getNamespaceId, namespaceId)
                 .eq(NotifyConfig::getSystemTaskType, systemTaskType)
                 .orderByDesc(NotifyConfig::getId)
         );
-        return notifyConfigList;
     }
 
-    public Boolean saveNotify(NotifyConfig notifyConfig) {
-        notifyConfig.setCreatedDate(Instant.now());
+    public Boolean create(NotifyConfig notifyConfig) {
         notifyConfig.setNamespaceId("namespaceId");
-        ConfigAccess<NotifyConfig> notifyConfigAccess = accessTemplate.getNotifyConfigAccess();
 
-        Assert.isTrue(1 == notifyConfigAccess.insert(notifyConfig),
+        Assert.isTrue(1 == notifyConfigDao.insert(notifyConfig),
                 () -> new SilenceJobServerException("failed to insert notify. sceneConfig:[{}]",
                         JSON.toJSONString(notifyConfig)));
         return Boolean.TRUE;
     }
 
-    public Boolean updateNotify(NotifyConfig notifyConfig) {
+    public Boolean update(NotifyConfig notifyConfig) {
         Assert.notNull(notifyConfig.getId(), () -> new SilenceJobServerException("参数异常"));
 
-        // 防止被覆盖
-        notifyConfig.setNamespaceId(null);
-        Assert.isTrue(1 == accessTemplate.getNotifyConfigAccess().updateById(notifyConfig),
+        Assert.isTrue(1 == notifyConfigDao.updateById(notifyConfig),
                 () -> new SilenceJobServerException("failed to update notify. sceneConfig:[{}]",
                         JSON.toJSONString(notifyConfig)));
         return Boolean.TRUE;
     }
 
     public NotifyConfigResponseVO getNotifyConfigDetail(BigInteger id) {
-        NotifyConfig notifyConfig = accessTemplate.getNotifyConfigAccess().one(new LambdaQueryWrapper<NotifyConfig>()
+        NotifyConfig notifyConfig = notifyConfigDao.selectOne(new LambdaQueryWrapper<NotifyConfig>()
                 .eq(NotifyConfig::getId, id));
         return notifyConfigResponseVOMapper.convert(notifyConfig);
     }
@@ -95,7 +82,7 @@ public class NotifyConfigService {
     public Boolean updateStatus(BigInteger id, Boolean status) {
 
         String namespaceId = "namespaceId";
-        NotifyConfig notifyConfig = accessTemplate.getNotifyConfigAccess().one(
+        NotifyConfig notifyConfig = notifyConfigDao.selectOne(
                 new LambdaQueryWrapper<NotifyConfig>()
                         .eq(NotifyConfig::getId, id)
                         .eq(NotifyConfig::getNamespaceId, namespaceId)
@@ -108,8 +95,7 @@ public class NotifyConfigService {
         NotifyConfig config = new NotifyConfig();
         config.setNotifyStatus(status);
         config.setUpdatedDate(Instant.now());
-        int update = accessTemplate.getNotifyConfigAccess()
-                .update(config, new LambdaUpdateWrapper<NotifyConfig>()
+        int update = notifyConfigDao.update(config, new LambdaUpdateWrapper<NotifyConfig>()
                         .eq(NotifyConfig::getNamespaceId, namespaceId)
                         .eq(NotifyConfig::getId, id)
                 );
@@ -117,8 +103,7 @@ public class NotifyConfigService {
         return 1 == update;
     }
 
-    public Boolean batchDeleteNotify(final Set<Long> ids) {
-        return ids.size() == accessTemplate.getNotifyConfigAccess()
-                .delete(new LambdaQueryWrapper<NotifyConfig>().in(NotifyConfig::getId, ids));
+    public Boolean batchDeleteNotify(Set<BigInteger> ids) {
+        return ids.size() == notifyConfigDao.deleteBatchIds(ids);
     }
 }

@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.old.silence.core.util.CollectionUtils;
+import com.old.silence.data.commons.converter.QueryWrapperConverter;
 import com.old.silence.job.server.api.assembler.SceneConfigMapper;
 import com.old.silence.job.server.domain.model.RetrySceneConfig;
 import com.old.silence.job.server.domain.service.SceneConfigService;
 import com.old.silence.job.server.dto.ExportSceneCommand;
-import com.old.silence.job.server.dto.SceneConfigQueryVO;
+import com.old.silence.job.server.dto.SceneConfigQuery;
 import com.old.silence.job.server.dto.SceneConfigCommand;
 import com.old.silence.job.server.util.ExportUtils;
 import com.old.silence.job.server.util.ImportUtils;
@@ -42,41 +42,47 @@ public class SceneConfigResource {
 
 
     @GetMapping(value = "/sceneConfig", params = {"pageNo", "pageSize"})
-    public IPage<SceneConfigResponseVO> getSceneConfigPageList(Page<RetrySceneConfig> page, SceneConfigQueryVO queryVO) {
-        return sceneConfigService.getSceneConfigPageList(page, queryVO);
+    public IPage<SceneConfigResponseVO> getSceneConfigPageList(Page<RetrySceneConfig> page, SceneConfigQuery sceneConfigQuery) {
+        var queryWrapper = QueryWrapperConverter.convert(sceneConfigQuery, RetrySceneConfig.class);
+        return sceneConfigService.queryPage(page, queryWrapper);
     }
 
     
-    @GetMapping("/sceneConfig")
+    @GetMapping(value = "/sceneConfig", params = { "groupName", "!pageNo", "!pageSize"})
     public List<SceneConfigResponseVO> getSceneConfigList(@RequestParam String groupName) {
         return sceneConfigService.getSceneConfigList(groupName);
     }
 
     
     @GetMapping("/sceneConfig/{id}")
-    public SceneConfigResponseVO getSceneConfigDetail(@PathVariable BigInteger id) {
-        return sceneConfigService.getSceneConfigDetail(id);
+    public SceneConfigResponseVO findById(@PathVariable BigInteger id) {
+        return sceneConfigService.findById(id);
     }
 
     
-    @PutMapping("/sceneConfig/{id}/{status}")
-    public Boolean updateStatus(@PathVariable BigInteger id, @PathVariable Boolean status) {
-        return sceneConfigService.updateStatus(id, status);
+    @PutMapping("/sceneConfig/{id}/enable")
+    public Boolean enable(@PathVariable BigInteger id) {
+        return sceneConfigService.updateStatus(id, true);
+    }
+
+    @PutMapping("/sceneConfig/{id}/disable")
+    public Boolean disable(@PathVariable BigInteger id) {
+        return sceneConfigService.updateStatus(id, false);
     }
 
     
     @PostMapping("/sceneConfig")
-    public Boolean saveSceneConfig(@RequestBody @Validated SceneConfigCommand sceneConfigCommand) {
+    public Boolean create(@RequestBody @Validated SceneConfigCommand sceneConfigCommand) {
         var sceneConfig = sceneConfigMapper.convert(sceneConfigCommand);
-        return sceneConfigService.saveSceneConfig(sceneConfig);
+        return sceneConfigService.create(sceneConfig);
     }
 
     
     @PutMapping("/sceneConfig/{id}")
-    public Boolean updateSceneConfig(@PathVariable BigInteger id, @RequestBody @Validated SceneConfigCommand sceneConfigCommand) {
+    public Boolean update(@PathVariable BigInteger id, @RequestBody @Validated SceneConfigCommand sceneConfigCommand) {
         var retrySceneConfig = sceneConfigMapper.convert(sceneConfigCommand);
         retrySceneConfig.setId(id);
-        return sceneConfigService.updateSceneConfig(retrySceneConfig);
+        return sceneConfigService.update(retrySceneConfig);
     }
 
     

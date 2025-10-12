@@ -106,7 +106,7 @@ public class GrpcClientInvokeHandler implements InvocationHandler {
         // 最多调用size次
         int size = serverNodeSet.size();
         for (int count = 1; count <= size; count++) {
-            log.debug("Start request client. count:[{}] clientId:[{}] clientAddr:[{}:{}] serverIp:[{}]", count, hostId,
+            log.debug("Start request client. count:[{}] clientId:[{}] clientAddress:[{}:{}] serverIp:[{}]", count, hostId,
                 hostIp, hostPort, NetUtil.getLocalIpStr());
             if (retryListener instanceof SilenceJobRetryListener) {
                 // 传递修改之后的客户端节点信息

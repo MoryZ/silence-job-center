@@ -38,7 +38,7 @@ public class OpenApiUpdateJobRequestHandler extends PostHttpRequestHandler {
         this.jobDao = jobDao;
     }
 
-    private static Long calculateNextTriggerAt(final JobRequestVO jobRequestVO, Long time) {
+    private static Long calculateNextTriggerAt(JobRequestVO jobRequestVO, Long time) {
         if (Objects.equals(jobRequestVO.getTriggerType().getValue().intValue(), SystemConstants.WORKFLOW_TRIGGER_TYPE)) {
             return 0L;
         }

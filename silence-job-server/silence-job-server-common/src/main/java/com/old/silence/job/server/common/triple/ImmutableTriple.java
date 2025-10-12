@@ -10,11 +10,11 @@ public final class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
     private final M middle;
     private final R right;
 
-    public static <L, M, R> ImmutableTriple<L, M, R> of(final L left, final M middle, final R right) {
+    public static <L, M, R> ImmutableTriple<L, M, R> of(L left, M middle, R right) {
         return new ImmutableTriple<>(left, middle, right);
     }
 
-    public ImmutableTriple(final L left, final M middle, final R right) {
+    public ImmutableTriple(L left, M middle, R right) {
         super();
         this.left = left;
         this.middle = middle;

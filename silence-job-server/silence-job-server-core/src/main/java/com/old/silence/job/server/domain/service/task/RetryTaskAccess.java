@@ -48,7 +48,7 @@ public class RetryTaskAccess extends AbstractTaskAccess<Retry> {
     }
 
     @Override
-    protected long doCount(final LambdaQueryWrapper<Retry> query) {
+    protected long doCount(LambdaQueryWrapper<Retry> query) {
         return retryDao.selectCount(query);
     }
 

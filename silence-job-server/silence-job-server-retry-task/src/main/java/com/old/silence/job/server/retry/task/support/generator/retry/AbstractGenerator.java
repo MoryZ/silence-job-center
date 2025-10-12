@@ -9,6 +9,7 @@ import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.old.silence.core.enums.EnumValueFactory;
 import com.old.silence.core.util.CollectionUtils;
+import com.old.silence.job.common.enums.BackoffType;
 import com.old.silence.job.common.enums.DelayLevelEnum;
 import com.old.silence.job.common.enums.RetryStatus;
 import com.old.silence.job.common.enums.SystemTaskType;
@@ -200,7 +201,7 @@ public abstract class AbstractGenerator implements TaskGenerator {
         retrySceneConfig.setGroupName(groupName);
         retrySceneConfig.setSceneName(sceneName);
         retrySceneConfig.setSceneStatus(true);
-        retrySceneConfig.setBackOff(EnumValueFactory.getRequired(TriggerType.class, WaitStrategies.WaitStrategyEnum.DELAY_LEVEL.getValue()));
+        retrySceneConfig.setBackOff(EnumValueFactory.getRequired(BackoffType.class, WaitStrategies.WaitStrategyEnum.DELAY_LEVEL.getValue()));
         retrySceneConfig.setMaxRetryCount(DelayLevelEnum._21.getLevel());
         retrySceneConfig.setCbStatus(false);
         retrySceneConfig.setCbMaxCount(DelayLevelEnum._16.getLevel());

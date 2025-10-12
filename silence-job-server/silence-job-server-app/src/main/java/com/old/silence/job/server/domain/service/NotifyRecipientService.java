@@ -2,6 +2,7 @@ package com.old.silence.job.server.domain.service;
 
 import cn.hutool.core.util.StrUtil;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -22,7 +24,7 @@ import com.old.silence.job.server.common.dto.PartitionTask;
 import com.old.silence.job.server.common.util.PartitionTaskUtils;
 import com.old.silence.job.server.domain.model.NotifyRecipient;
 import com.old.silence.job.server.dto.ExportNotifyRecipientCommand;
-import com.old.silence.job.server.dto.NotifyRecipientQueryVO;
+import com.old.silence.job.server.dto.NotifyRecipientQuery;
 import com.old.silence.job.server.infrastructure.persistence.dao.NotifyRecipientDao;
 import com.old.silence.job.server.vo.CommonLabelValueResponseVO;
 import com.old.silence.job.server.vo.NotifyRecipientResponseVO;
@@ -42,17 +44,10 @@ public class NotifyRecipientService {
         this.notifyRecipientMapper = notifyRecipientMapper;
     }
 
-    public IPage<NotifyRecipientResponseVO> getNotifyRecipientPageList(Page<NotifyRecipient> pageDTO, NotifyRecipientQueryVO queryVO) {
-        String namespaceId = "namespaceId";
-        Page<NotifyRecipient> notifyRecipientPageDTO = notifyRecipientDao.selectPage(pageDTO,
-                new LambdaQueryWrapper<NotifyRecipient>()
-                        .eq(NotifyRecipient::getNamespaceId, namespaceId)
-                        .eq(Objects.nonNull(queryVO.getNotifyType()), NotifyRecipient::getNotifyType, queryVO.getNotifyType())
-                        .likeRight(StrUtil.isNotBlank(queryVO.getRecipientName()), NotifyRecipient::getRecipientName,
-                                queryVO.getRecipientName())
-                        .orderByDesc(NotifyRecipient::getCreatedDate));
+    public IPage<NotifyRecipientResponseVO> queryPage(Page<NotifyRecipient> page, QueryWrapper<NotifyRecipient> recipientQueryWrapper) {
+        Page<NotifyRecipient> notifyRecipientPage = notifyRecipientDao.selectPage(page, recipientQueryWrapper);
 
-        return notifyRecipientPageDTO.convert(notifyRecipientMapper::convert);
+        return notifyRecipientPage.convert(notifyRecipientMapper::convert);
     }
 
     public Boolean saveNotifyRecipient(NotifyRecipient notifyRecipient) {
@@ -73,12 +68,13 @@ public class NotifyRecipientService {
         List<NotifyRecipient> notifyRecipients = notifyRecipientDao.selectList(
                 new LambdaQueryWrapper<NotifyRecipient>()
                         .select(NotifyRecipient::getRecipientName, NotifyRecipient::getId)
-                        .eq(NotifyRecipient::getNamespaceId, namespaceId)
-        );
-        return CollectionUtils.transformToList(notifyRecipients, notifyRecipient -> new CommonLabelValueResponseVO(notifyRecipient.getRecipientName(), notifyRecipient.getId()));
+                        .eq(NotifyRecipient::getNamespaceId, namespaceId));
+
+        return CollectionUtils.transformToList(notifyRecipients, notifyRecipient ->
+                new CommonLabelValueResponseVO(notifyRecipient.getRecipientName(), notifyRecipient.getId()));
     }
 
-    public Boolean batchDeleteByIds(final Set<Long> ids) {
+    public Boolean batchDeleteByIds(Set<BigInteger> ids) {
         return ids.size() == notifyRecipientDao.deleteBatchIds(ids);
     }
 

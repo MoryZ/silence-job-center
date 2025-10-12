@@ -1,6 +1,8 @@
 package com.old.silence.job.server.dto;
 
 import com.old.silence.job.common.constant.SystemConstants;
+import com.old.silence.job.common.enums.BackoffType;
+import com.old.silence.job.common.enums.CbTriggerType;
 import com.old.silence.job.common.enums.RetryBlockStrategy;
 import com.old.silence.job.common.enums.TriggerType;
 
@@ -32,13 +34,13 @@ public class SceneConfigCommand {
     private Integer maxRetryCount;
 
     @NotNull(message = "退避策略不能为空 1、默认等级 2、固定间隔时间 3、CRON 表达式")
-    private TriggerType backOff;
+    private BackoffType backOff;
 
     @NotNull(message = "路由策略不能为空")
     private Integer routeKey;
 
     /**
-     * @see: RetryBlockStrategyEnum
+     * @see: RetryBlockStrategy
      */
     @NotNull(message = "阻塞策略不能为空")
     private RetryBlockStrategy blockStrategy;
@@ -87,7 +89,7 @@ public class SceneConfigCommand {
      * 回调触发类型
      */
     @NotNull(message = "回调触发类型不能为空")
-    private TriggerType cbTriggerType;
+    private CbTriggerType cbTriggerType;
 
     /**
      * 回调的最大执行次数
@@ -132,11 +134,11 @@ public class SceneConfigCommand {
         this.maxRetryCount = maxRetryCount;
     }
 
-    public TriggerType getBackOff() {
+    public BackoffType getBackOff() {
         return backOff;
     }
 
-    public void setBackOff(TriggerType backOff) {
+    public void setBackOff(BackoffType backOff) {
         this.backOff = backOff;
     }
 
@@ -212,11 +214,11 @@ public class SceneConfigCommand {
         this.cbStatus = cbStatus;
     }
 
-    public TriggerType getCbTriggerType() {
+    public CbTriggerType getCbTriggerType() {
         return cbTriggerType;
     }
 
-    public void setCbTriggerType(TriggerType cbTriggerType) {
+    public void setCbTriggerType(CbTriggerType cbTriggerType) {
         this.cbTriggerType = cbTriggerType;
     }
 
