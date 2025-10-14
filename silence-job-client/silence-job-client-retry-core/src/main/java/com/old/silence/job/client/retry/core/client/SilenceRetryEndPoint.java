@@ -42,7 +42,7 @@ import com.old.silence.job.common.model.IdempotentIdContext;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.log.enums.LogTypeEnum;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.Objects;

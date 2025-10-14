@@ -1,7 +1,8 @@
 package com.old.silence.job.common.alarm.email;
 
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
+
+import jakarta.mail.Authenticator;
+import jakarta.mail.PasswordAuthentication;
 
 /**
  * 用户名密码验证器

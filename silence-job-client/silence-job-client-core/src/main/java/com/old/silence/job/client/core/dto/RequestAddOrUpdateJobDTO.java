@@ -8,8 +8,8 @@ import com.old.silence.job.common.enums.TriggerType;
 import com.old.silence.job.common.enums.ExecutorType;
 import com.old.silence.job.common.enums.JobTaskType;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 
 import java.math.BigInteger;

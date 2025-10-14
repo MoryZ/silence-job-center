@@ -2,7 +2,7 @@ package com.old.silence.job.server.dto;
 
 import org.springframework.web.bind.annotation.PutMapping;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 
 public class SystemUpdateUserPasswordRequestVO {

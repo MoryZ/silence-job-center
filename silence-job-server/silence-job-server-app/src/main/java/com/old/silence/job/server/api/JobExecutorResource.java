@@ -2,7 +2,7 @@ package com.old.silence.job.server.api;
 
 import java.math.BigInteger;
 import java.util.Set;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

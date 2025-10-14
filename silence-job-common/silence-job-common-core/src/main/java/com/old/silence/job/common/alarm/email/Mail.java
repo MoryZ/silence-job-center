@@ -9,19 +9,25 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.FileDataSource;
+import jakarta.activation.FileTypeMap;
+import jakarta.mail.Address;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.SendFailedException;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimeUtility;
+import jakarta.mail.util.ByteArrayDataSource;
 
 import com.old.silence.job.common.util.MailUtils;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.activation.FileTypeMap;
-import javax.mail.*;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.internet.MimeUtility;
-import javax.mail.util.ByteArrayDataSource;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -374,8 +380,8 @@ public class Mail implements Builder<MimeMessage> {
         } catch (MessagingException e) {
             if (e instanceof SendFailedException) {
                 // 当地址无效时，显示更加详细的无效地址信息
-                final Address[] invalidAddresses = ((SendFailedException) e).getInvalidAddresses();
-                final String msg = StrUtil.format("Invalid Addresses: {}", ArrayUtil.toString(invalidAddresses));
+                Address[] invalidAddresses = ((SendFailedException) e).getInvalidAddresses();
+                String msg = StrUtil.format("Invalid Addresses: {}", ArrayUtil.toString(invalidAddresses));
                 throw new MailException(msg, e);
             }
             throw new MailException(e);

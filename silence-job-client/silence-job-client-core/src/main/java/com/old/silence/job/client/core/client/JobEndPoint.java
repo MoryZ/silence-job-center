@@ -34,7 +34,7 @@ import com.old.silence.job.log.SilenceJobLog;
 import com.google.common.collect.Maps;
 import com.old.silence.job.common.util.JsonUtils;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.Objects;

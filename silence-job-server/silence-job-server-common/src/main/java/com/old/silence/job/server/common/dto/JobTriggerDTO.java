@@ -1,7 +1,7 @@
 package com.old.silence.job.server.common.dto;
 
 import java.math.BigInteger;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 
 public class JobTriggerDTO {

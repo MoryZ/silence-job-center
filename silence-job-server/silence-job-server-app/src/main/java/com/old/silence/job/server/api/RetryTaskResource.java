@@ -20,7 +20,7 @@ import com.old.silence.job.server.dto.RetryTaskQuery;
 import com.old.silence.job.server.vo.RetryTaskLogMessageResponseVO;
 import com.old.silence.job.server.vo.RetryTaskResponseVO;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import java.math.BigInteger;
 import java.util.Set;
 

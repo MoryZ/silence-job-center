@@ -1,6 +1,6 @@
 package com.old.silence.job.server.common.vo;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigInteger;
 
 

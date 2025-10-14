@@ -2,7 +2,7 @@ package com.old.silence.job.server.dto;
 
 
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * 生成idempotentId模型

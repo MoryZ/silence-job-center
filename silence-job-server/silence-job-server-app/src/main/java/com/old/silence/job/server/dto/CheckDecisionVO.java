@@ -2,8 +2,8 @@ package com.old.silence.job.server.dto;
 
 import com.old.silence.job.common.enums.ExpressionTypeEnum;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 
 

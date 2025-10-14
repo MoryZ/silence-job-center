@@ -1,6 +1,6 @@
 package com.old.silence.job.common.client.dto;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 
 /**

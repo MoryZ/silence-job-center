@@ -1,6 +1,7 @@
 package com.old.silence.job.client.core.dto;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigInteger;
 
 

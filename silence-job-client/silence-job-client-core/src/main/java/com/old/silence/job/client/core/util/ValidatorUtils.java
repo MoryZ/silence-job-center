@@ -3,9 +3,9 @@ package com.old.silence.job.client.core.util;
 import cn.hutool.core.lang.Pair;
 import com.old.silence.job.client.common.exception.SilenceJobClientException;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 
 import java.util.Set;
 

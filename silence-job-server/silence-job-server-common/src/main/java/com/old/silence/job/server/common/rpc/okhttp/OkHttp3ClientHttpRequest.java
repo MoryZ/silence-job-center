@@ -45,7 +45,6 @@ class OkHttp3ClientHttpRequest extends AbstractClientHttpRequest {
         return this.method;
     }
 
-    @Override
     public String getMethodValue() {
         return this.method.name();
     }

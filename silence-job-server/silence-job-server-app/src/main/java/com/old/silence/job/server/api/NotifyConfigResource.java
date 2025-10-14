@@ -21,7 +21,7 @@ import com.old.silence.job.server.dto.NotifyConfigCommand;
 import com.old.silence.job.server.dto.NotifyConfigQuery;
 import com.old.silence.job.server.vo.NotifyConfigResponseVO;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;

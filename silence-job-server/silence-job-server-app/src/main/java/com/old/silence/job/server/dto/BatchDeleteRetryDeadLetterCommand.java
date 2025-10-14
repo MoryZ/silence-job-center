@@ -3,7 +3,7 @@ package com.old.silence.job.server.dto;
 
 
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import java.math.BigInteger;
 import java.util.List;
 

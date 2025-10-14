@@ -18,7 +18,7 @@ import com.old.silence.job.server.util.ExportUtils;
 import com.old.silence.job.server.util.ImportUtils;
 import com.old.silence.job.server.vo.SceneConfigResponseVO;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;

@@ -16,8 +16,8 @@ import com.old.silence.job.server.dto.WorkflowBatchQuery;
 import com.old.silence.job.server.vo.WorkflowBatchResponseVO;
 import com.old.silence.job.server.vo.WorkflowDetailResponseVO;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.math.BigInteger;
 import java.util.Set;
 

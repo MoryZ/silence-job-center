@@ -11,8 +11,8 @@ import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.model.SilenceJobHeaders;
 import com.old.silence.job.log.SilenceJobLog;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 服务间调用传递请求头和响应头
@@ -20,7 +20,6 @@ import java.util.Objects;
  */
 @Aspect
 @Component
-
 public class SilenceRetryHeaderAspect {
 
     public void before() {
