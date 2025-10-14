@@ -28,6 +28,19 @@
         </dependency>
 
         <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.mail</groupId>
+            <artifactId>jakarta.mail-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.angus</groupId>
+            <artifactId>jakarta.mail</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.googlecode.aviator</groupId>
             <artifactId>aviator</artifactId>
             <scope>provided</scope>
@@ -48,7 +61,6 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-common</artifactId>
-            <version>4.1.117.Final</version>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
@@ -65,13 +77,6 @@
         <dependency>
             <groupId>com.google.api.grpc</groupId>
             <artifactId>proto-google-common-protos</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.pekko</groupId>
-            <artifactId>pekko-actor_2.13</artifactId>
-            <version>1.2.0-M1</version>
-            <scope>compile</scope>
         </dependency>
 
         <!--    SilenceJob    -->
