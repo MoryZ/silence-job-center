@@ -67,13 +67,6 @@ silence-job:
   log-storage: 7 # 日志保存时间(单位: day)
   rpc-type: grpc
 
-threadpool:
-  config:
-    coreSize: 10
-    maxSize: 10
-    keepAliveTime: 3000
-    queueSize: 5000
-
 platform:
   system:
     identifier: JC
