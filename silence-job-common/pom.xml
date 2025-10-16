@@ -13,6 +13,11 @@
     <name>silence-job-common</name>
     <packaging>pom</packaging>
 
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
     <modules>
         <module>silence-job-common-client-api</module>
         <module>silence-job-common-core</module>
