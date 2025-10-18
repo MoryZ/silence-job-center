@@ -39,6 +39,89 @@ public interface SystemConstants {
      * 默认的调用链超时时间 单位毫秒(ms)
      */
     long DEFAULT_DDL = 60000L;
+    String LOGO = """
+               ..######..####.##.......########.##....##..######..########..........##..#######..########.
+            .##....##..##..##.......##.......###...##.##....##.##................##.##.....##.##.....##
+            .##........##..##.......##.......####..##.##.......##................##.##.....##.##.....##
+            ..######...##..##.......######...##.##.##.##.......######............##.##.....##.########.
+            .......##..##..##.......##.......##..####.##.......##..........##....##.##.....##.##.....##
+            .##....##..##..##.......##.......##...###.##....##.##..........##....##.##.....##.##.....##
+            ..######..####.########.########.##....##..######..########.....######...#######..########.
+               :: silence job ::                                 (v{})\s
+              \s""";
+    /**
+     * 调度时长
+     */
+    Long SCHEDULE_PERIOD = 10L;
+    /**
+     * 延迟30s为了尽可能保障集群节点都启动完成在进行rebalance
+     */
+    Long SCHEDULE_INITIAL_DELAY = 30L;
+    /**
+     * 默认名称空间
+     */
+    String DEFAULT_NAMESPACE = "764d604ec6fc45f68cd92514c40e9e1a";
+    /**
+     * 默认Token
+     */
+    String DEFAULT_TOKEN = "SJ_Wyz3dmsdbDOkDujOTSSoBjGQP1BMsVnj";
+    /**
+     * AT 所有人
+     */
+    String AT_ALL = "all";
+    /**
+     * 根节点
+     */
+    BigInteger ROOT = BigInteger.valueOf(-1L);
+    /**
+     * 系统内置的决策任务ID
+     */
+    BigInteger DECISION_JOB_ID = BigInteger.valueOf(-1000L);
+    /**
+     * 系统内置的回调任务ID
+     */
+    BigInteger CALLBACK_JOB_ID = BigInteger.valueOf(-2000L);
+    /**
+     * 客户端返回的非json对象，单值比如 "aa", 123等
+     */
+    String SINGLE_PARAM = "SINGLE_PARAM";
+    /**
+     * 工作流触发类型
+     * 仅表示定时任务类型为工作流
+     */
+    Integer WORKFLOW_TRIGGER_TYPE = 99;
+    /**
+     * silence job 认证Token
+     */
+    String SILENCE_JOB_AUTH_TOKEN = "SJ-TOKEN";
+    /**
+     * 日志类型字段
+     */
+    String JSON_FILED_LOG_TYPE = "logType";
+    /**
+     * Webhook告警、工作流回调请求密钥
+     */
+    String SECRET = "secret";
+    /**
+     * 组名、场景名、空间ID通用正则
+     */
+    String REGEXP = "^[A-Za-z0-9_-]{1,64}$";
+    /**
+     * 长时间格式
+     */
+    String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+    /**
+     *
+     */
+    String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
+    /**
+     * 短时间格式
+     */
+    String YYYY_MM_DD = "yyyy-MM-dd";
+    /**
+     * 动态分片的root节点
+     */
+    String ROOT_MAP = "ROOT_MAP";
 
     /**
      * 心跳
@@ -55,6 +138,7 @@ public interface SystemConstants {
          */
         String PONG = "PONG";
     }
+
 
     /**
      * 请求路径
@@ -160,105 +244,4 @@ public interface SystemConstants {
         String OPENAPI_DELETE_WORKFLOW = "/api/job/deleteWorkFlow";
 
     }
-
-    String LOGO = new StringBuilder()
-      .append("  ______                  _  __       _____      __       \n")
-      .append(".' ____ \\                (_)[  |     |_   _|    [  |      \n")
-      .append("| (___ \\_| _ .--.  ,--.  __  | |       | | .--.  | |.--.  \n")
-      .append("_.____`. [ `.-. |`'_\\ :[  | | |   _   | / .'`\\ \\| '/'`\\ \\\n")
-      .append("| \\____) | | | | |// | |,| | | |  | |__' | \\__. ||  \\__/ |\n")
-      .append("\\______.'[___||__]'-;__[___|___] `.____.''.__.'[__;.__.' \n")
-      .append(":: silence job ::                                 (v{}) \n").toString();
-
-    /**
-     * 调度时长
-     */
-    Long SCHEDULE_PERIOD = 10L;
-
-    /**
-     * 延迟30s为了尽可能保障集群节点都启动完成在进行rebalance
-     */
-    Long SCHEDULE_INITIAL_DELAY = 30L;
-
-    /**
-     * 默认名称空间
-     */
-    String DEFAULT_NAMESPACE = "764d604ec6fc45f68cd92514c40e9e1a";
-
-    /**
-     * 默认Token
-     */
-    String DEFAULT_TOKEN = "SJ_Wyz3dmsdbDOkDujOTSSoBjGQP1BMsVnj";
-
-    /**
-     * AT 所有人
-     */
-    String AT_ALL = "all";
-
-    /**
-     * 根节点
-     */
-    BigInteger ROOT = BigInteger.valueOf(-1L);
-
-    /**
-     * 系统内置的决策任务ID
-     */
-    BigInteger DECISION_JOB_ID = BigInteger.valueOf(-1000L);
-
-    /**
-     * 系统内置的回调任务ID
-     */
-    BigInteger CALLBACK_JOB_ID = BigInteger.valueOf(-2000L);
-
-    /**
-     * 客户端返回的非json对象，单值比如 "aa", 123等
-     */
-    String SINGLE_PARAM = "SINGLE_PARAM";
-
-    /**
-     * 工作流触发类型
-     * 仅表示定时任务类型为工作流
-     */
-    Integer WORKFLOW_TRIGGER_TYPE = 99;
-
-    /**
-     * silence job 认证Token
-     */
-    String SILENCE_JOB_AUTH_TOKEN = "SJ-TOKEN";
-
-    /**
-     * 日志类型字段
-     */
-    String JSON_FILED_LOG_TYPE = "logType";
-
-    /**
-     * Webhook告警、工作流回调请求密钥
-     */
-    String SECRET = "secret";
-
-    /**
-     * 组名、场景名、空间ID通用正则
-     */
-    String REGEXP = "^[A-Za-z0-9_-]{1,64}$";
-
-    /**
-     * 长时间格式
-     */
-    String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
-
-    /**
-     *
-     */
-    String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
-
-    /**
-     * 短时间格式
-     */
-    String YYYY_MM_DD = "yyyy-MM-dd";
-
-
-    /**
-     * 动态分片的root节点
-     */
-    String ROOT_MAP = "ROOT_MAP";
 }
