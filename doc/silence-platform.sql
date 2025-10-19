@@ -1,17 +1,17 @@
 /*
  Navicat Premium Dump SQL
 
- Source Server         : local
+ Source Server         : dev
  Source Server Type    : MySQL
- Source Server Version : 90000 (9.0.0)
- Source Host           : localhost:3306
+ Source Server Version : 80043 (8.0.43)
+ Source Host           : www.silence-ci.com:3306
  Source Schema         : silence-platform
 
  Target Server Type    : MySQL
- Target Server Version : 90000 (9.0.0)
+ Target Server Version : 80043 (8.0.43)
  File Encoding         : 65001
 
- Date: 14/10/2025 00:12:44
+ Date: 20/10/2025 00:47:00
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `config_component`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人员',
   `updated_date` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '组件表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '组件表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config_component
@@ -68,7 +68,7 @@ CREATE TABLE `config_environment`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人员',
   `updated_date` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '环境表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '环境表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config_environment
@@ -103,13 +103,13 @@ CREATE TABLE `config_item`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人员',
   `updated_date` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '配置表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '配置表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config_item
 -- ----------------------------
-INSERT INTO `config_item` VALUES (1, 1, 'application.yml', 1, 1, 1, '10.28.50.31', 'spring:\r\n  datasource:\r\n    url: jdbc:mysql://127.0.0.1:3306/silence-content?allowPublicKeyRetrieval=true&autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai\r\n    username: root\r\n    password: 123456\r\n    driverClassName: com.mysql.jdbc.Driver\r\n\r\nrocketmq:\r\n  name-server: 127.0.0.1:9876  # NameServer地址\r\n  producer:\r\n    group: silence-content-producer-group   # 生产者组名\r\n    send-message-timeout: 3000 # 发送超时时间(ms)\r\n  consumer:\r\n    group: silence-content-consumer-group   # 消费者组名\r\n    consume-thread-max: 20     ', 'spring:\r\n  datasource:\r\n    url: jdbc:mysql://localhost:3306/silence-content?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8\r\n    username: root\r\n    password: admin123456\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    hikari:\r\n      maximum-pool-size: 100\r\n  elasticsearch:\r\n    uris: http://14.103.187.231:9200', '15917fa43f7773d44a65d0070fced326', '老默', '2024-04-21 00:06:45', '老默', '2024-04-21 00:06:47');
-INSERT INTO `config_item` VALUES (2, 1, 'esg.properties', 2, 2, 2, '10.28.50.31', 'server.port=8081', 'server.port=8080', '76847eb03a7c34cea8f41da1553ec1b2', '老默', '2025-03-30 15:17:10', '老默', '2025-03-30 15:17:19');
+INSERT INTO `config_item` VALUES (1, 1, 'application.yml', 1, 1, 1, '10.28.50.31', 'spring:\r\n  datasource:\r\n    url: jdbc:mysql://localhost:3306/silence-content?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8\r\n    username: root\r\n    password: 123456\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    hikari:\r\n      maximum-pool-size: 100\r\n  elasticsearch:\r\n    uris: http://14.103.187.231:9200', 'spring:\r\n  datasource:\r\n    url: jdbc:mysql://localhost:3306/silence-content?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8\r\n    username: root\r\n    password: 123456\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    hikari:\r\n      maximum-pool-size: 100\r\n  elasticsearch:\r\n    uris: http://127.0.0.1:9200', 'fb1828764f8854763cad0c9bd3fcfb04', '老默', '2024-04-21 00:06:45', '老默', '2024-04-21 00:06:47');
+INSERT INTO `config_item` VALUES (2, 1, 'esg.properties', 2, 2, 2, '10.28.50.31', 'server.port=808011', 'server.port=8080111', 'd44be187e572c129d1c91a86fe2fb278', '老默', '2025-03-30 15:17:10', '老默', '2025-03-30 15:17:19');
 INSERT INTO `config_item` VALUES (3, 2, 'application.yml', 1, 2, 2, NULL, 'server:\n    port: 8082\n    servlet:\n        context-path: /\n\n', 'server:\n    port: 8082\n    servlet:\n        context-path: /\n\n', 'ca4d8a63ad1114dcae586794be27a167', NULL, NULL, NULL, NULL);
 INSERT INTO `config_item` VALUES (4, 3, 'application.yml', 1, 2, 2, NULL, 'server:\n    port: 38080\n    servlet:\n        context-path: /', 'server:\n    port: 38080\n    servlet:\n        context-path: /', '5266df774c5a083669090058e23ed536', NULL, NULL, NULL, NULL);
 
@@ -128,7 +128,7 @@ CREATE TABLE `config_item_history`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人员',
   `updated_date` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '配置版本表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '配置版本表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config_item_history
@@ -138,6 +138,7 @@ INSERT INTO `config_item_history` VALUES (2, 1, 'nacos.test: 111', 'nacos.test: 
 INSERT INTO `config_item_history` VALUES (3, 1, 'nacos.test: 222', 'nacos.test: 333', 2, '贺显', '2025-03-30 16:34:23', '徐洋洋', '2025-03-30 16:34:31');
 INSERT INTO `config_item_history` VALUES (4, 1, 'nacos.test: 333', 'nacos.test: 444', 2, '贺显', '2025-03-30 16:34:23', '严晓仪', '2025-03-30 16:34:31');
 INSERT INTO `config_item_history` VALUES (5, 1, 'nacos.test: 444', 'nacos.test: 555', 2, '贺显', '2025-03-30 16:34:23', '李羿楠', '2025-03-30 16:34:31');
+INSERT INTO `config_item_history` VALUES (6, 2, 'server.port=808011', 'server.port=8080111', 1, '张默默', '2025-10-20 00:36:25', '张默默', '2025-10-20 00:36:30');
 
 -- ----------------------------
 -- Table structure for config_item_release_history
@@ -155,7 +156,7 @@ CREATE TABLE `config_item_release_history`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人员',
   `updated_date` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '配置版本表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '配置版本表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config_item_release_history
@@ -179,7 +180,7 @@ CREATE TABLE `config_subsystem`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人员',
   `updated_date` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '子系统表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '子系统表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config_subsystem
@@ -207,7 +208,7 @@ CREATE TABLE `notice`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统通知表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of notice
@@ -234,22 +235,22 @@ CREATE TABLE `sj_distributed_lock`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `un_sj_distributed_lock_name`(`name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2612 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '锁定表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2682 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '锁定表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_distributed_lock
 -- ----------------------------
-INSERT INTO `sj_distributed_lock` VALUES (2599, 'clearOfflineNode', '2025-10-14 00:12:49.525', '2025-10-14 00:12:44.525', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2600, 'registerNode', '2025-10-14 00:12:49.525', '2025-10-14 00:12:44.525', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2601, 'retryErrorMoreThreshold', '2025-10-14 00:09:56.165', '2025-10-14 00:08:56.165', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2602, 'clearLog', '2025-10-13 23:59:55.194', '2025-10-13 23:58:55.194', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2603, 'retryLogMerge', '2025-10-13 23:59:55.194', '2025-10-13 23:58:55.194', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2604, 'retrySummaryDashboard', '2025-10-14 00:12:15.187', '2025-10-14 00:11:55.187', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2605, 'retryTaskMoreThreshold', '2025-10-14 00:09:56.187', '2025-10-14 00:08:56.187', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2606, 'jobClearLog', '2025-10-13 23:59:55.194', '2025-10-13 23:58:55.194', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2607, 'jobLogMerge', '2025-10-14 00:12:55.187', '2025-10-14 00:11:55.187', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2608, 'jobSummaryDashboard', '2025-10-14 00:12:15.187', '2025-10-14 00:11:55.187', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
-INSERT INTO `sj_distributed_lock` VALUES (2609, 'workflowJobSummarySchedule', '2025-10-14 00:12:15.187', '2025-10-14 00:11:55.187', '1977705578645954560', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
+INSERT INTO `sj_distributed_lock` VALUES (2671, 'registerNode', '2025-10-20 00:47:04.796', '2025-10-20 00:46:59.796', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2672, 'clearLog', '2025-10-19 23:18:51.762', '2025-10-19 23:17:51.762', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2673, 'clearOfflineNode', '2025-10-20 00:47:04.796', '2025-10-20 00:46:59.796', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2674, 'retryErrorMoreThreshold', '2025-10-20 00:38:52.721', '2025-10-20 00:37:52.721', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2675, 'retryLogMerge', '2025-10-20 00:18:51.773', '2025-10-20 00:17:51.773', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2676, 'retrySummaryDashboard', '2025-10-20 00:47:11.772', '2025-10-20 00:46:51.772', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2677, 'retryTaskMoreThreshold', '2025-10-20 00:38:52.729', '2025-10-20 00:37:52.729', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2678, 'jobClearLog', '2025-10-19 23:18:52.135', '2025-10-19 23:17:52.135', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2679, 'jobLogMerge', '2025-10-20 00:47:51.772', '2025-10-20 00:46:51.772', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2680, 'jobSummaryDashboard', '2025-10-20 00:47:11.772', '2025-10-20 00:46:51.772', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
+INSERT INTO `sj_distributed_lock` VALUES (2681, 'workflowJobSummarySchedule', '2025-10-20 00:47:11.772', '2025-10-20 00:46:51.772', '1979929971357294592', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:52');
 
 -- ----------------------------
 -- Table structure for sj_group_config
@@ -272,7 +273,7 @@ CREATE TABLE `sj_group_config`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '组配置' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '组配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_group_config
@@ -320,7 +321,7 @@ CREATE TABLE `sj_job`  (
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE,
   INDEX `idx_job_status_bucket_index`(`job_status` ASC, `bucket_index` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务信息' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务信息' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_job
@@ -378,7 +379,7 @@ CREATE TABLE `sj_job_log_message`  (
   INDEX `idx_task_batch_id_task_id`(`task_batch_id` ASC, `task_id` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '调度日志' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '调度日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_job_log_message
@@ -409,7 +410,7 @@ CREATE TABLE `sj_job_summary`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_trigger_at_system_task_type_business_id`(`trigger_at` ASC, `system_task_type` ASC, `business_id` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name_business_id`(`namespace_id` ASC, `group_name` ASC, `business_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = 'DashBoard_Job' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = 'DashBoard_Job' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_job_summary
@@ -451,19 +452,11 @@ CREATE TABLE `sj_job_task`  (
   INDEX `idx_task_batch_id_task_status`(`task_batch_id` ASC, `task_status` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 60 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务实例' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 60 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务实例' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_job_task
 -- ----------------------------
-INSERT INTO `sj_job_task` VALUES (41, 'namespaceId', 'das', 1, 50, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976177423907430400@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 14:47:07', '', '2025-10-09 14:47:07');
-INSERT INTO `sj_job_task` VALUES (42, 'namespaceId', 'das', 1, 51, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:14:49', '', '2025-10-09 15:14:49');
-INSERT INTO `sj_job_task` VALUES (43, 'namespaceId', 'das', 1, 52, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:15:34', '', '2025-10-09 15:15:34');
-INSERT INTO `sj_job_task` VALUES (44, 'namespaceId', 'das', 1, 53, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:16:00', '', '2025-10-09 15:16:00');
-INSERT INTO `sj_job_task` VALUES (45, 'namespaceId', 'das', 1, 54, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:17:25', '', '2025-10-09 15:17:25');
-INSERT INTO `sj_job_task` VALUES (46, 'namespaceId', 'das', 1, 55, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:18:22', '', '2025-10-09 15:18:22');
-INSERT INTO `sj_job_task` VALUES (47, 'namespaceId', 'das', 1, 56, 0, 5, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:19:01', '', '2025-10-09 15:19:01');
-INSERT INTO `sj_job_task` VALUES (48, 'namespaceId', 'das', 1, 57, 0, 4, 2, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:19:59', '', '2025-10-09 15:19:59');
 INSERT INTO `sj_job_task` VALUES (50, 'namespaceId', 'das', 1, 59, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:24:04', '', '2025-10-09 15:24:04');
 INSERT INTO `sj_job_task` VALUES (51, 'namespaceId', 'das', 1, 60, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:40:07', '', '2025-10-09 15:40:07');
 INSERT INTO `sj_job_task` VALUES (52, 'namespaceId', 'das', 1, 61, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976184413790564352@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 15:43:11', '', '2025-10-09 15:43:11');
@@ -473,7 +466,6 @@ INSERT INTO `sj_job_task` VALUES (55, 'namespaceId', 'das', 1, 64, 0, 4, 0, NULL
 INSERT INTO `sj_job_task` VALUES (56, 'namespaceId', 'das', 1, 65, 0, 5, 0, NULL, b'1', 'CLUSTER_TASK', '1976222517855428608@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 17:45:56', '', '2025-10-09 17:45:56');
 INSERT INTO `sj_job_task` VALUES (57, 'namespaceId', 'das', 1, 66, 0, 4, 0, NULL, b'1', 'CLUSTER_TASK', '1976224420777562112@127.0.0.1:17889', NULL, '', '{}', 2, '', '', '2025-10-09 17:53:23', '', '2025-10-09 17:53:23');
 INSERT INTO `sj_job_task` VALUES (58, 'namespaceId', 'das', 1, 67, 0, 3, 0, NULL, b'1', 'CLUSTER_TASK', '1976224420777562112@127.0.0.1:17889', NULL, '测试成功', '{}', 2, '', '', '2025-10-09 18:13:56', '', '2025-10-09 18:13:56');
-INSERT INTO `sj_job_task` VALUES (59, 'namespaceId', 'das', 1, 68, 0, 3, 0, NULL, b'1', 'CLUSTER_TASK', '1976277384753983488@127.0.0.1:17889', NULL, '测试成功', '{}', 2, '', '', '2025-10-10 00:17:47', '', '2025-10-10 00:17:47');
 
 -- ----------------------------
 -- Table structure for sj_job_task_batch
@@ -503,7 +495,7 @@ CREATE TABLE `sj_job_task_batch`  (
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE,
   INDEX `idx_workflow_task_batch_id_workflow_node_id`(`workflow_task_batch_id` ASC, `workflow_node_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务批次' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务批次' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_job_task_batch
@@ -517,16 +509,16 @@ INSERT INTO `sj_job_task_batch` VALUES (46, 'namespaceId', 'das', 1, 0, 0, 0, 4,
 INSERT INTO `sj_job_task_batch` VALUES (47, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759226582029, 3, '', '', 1, '', '2025-09-30 18:03:02', '', '2025-09-30 18:03:02');
 INSERT INTO `sj_job_task_batch` VALUES (48, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759226635327, 3, '', '', 1, '', '2025-09-30 18:03:55', '', '2025-09-30 18:03:55');
 INSERT INTO `sj_job_task_batch` VALUES (49, 'namespaceId', 'das', 1, 0, 0, 0, 5, 1, 1759226653027, 3, '', '', 1, '', '2025-09-30 18:04:13', '', '2025-09-30 18:04:14');
-INSERT INTO `sj_job_task_batch` VALUES (50, 'namespaceId', 'das', 1, 0, 0, 0, 2, 0, 1759992427598, 3, '', '', 0, '', '2025-10-09 14:47:07', '', '2025-10-09 14:47:07');
-INSERT INTO `sj_job_task_batch` VALUES (51, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994089596, 3, '', '', 0, '', '2025-10-09 15:14:49', '', '2025-10-09 15:14:50');
-INSERT INTO `sj_job_task_batch` VALUES (52, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994134792, 3, '', '', 0, '', '2025-10-09 15:15:35', '', '2025-10-09 15:15:35');
-INSERT INTO `sj_job_task_batch` VALUES (53, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994160997, 3, '', '', 0, '', '2025-10-09 15:16:01', '', '2025-10-09 15:16:01');
-INSERT INTO `sj_job_task_batch` VALUES (54, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994245991, 3, '', '', 0, '', '2025-10-09 15:17:26', '', '2025-10-09 15:17:26');
-INSERT INTO `sj_job_task_batch` VALUES (55, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994302001, 3, '', '', 0, '', '2025-10-09 15:18:22', '', '2025-10-09 15:18:22');
-INSERT INTO `sj_job_task_batch` VALUES (56, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994341091, 3, '', '', 0, '', '2025-10-09 15:19:01', '', '2025-10-09 15:19:24');
-INSERT INTO `sj_job_task_batch` VALUES (57, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994399093, 3, '', '', 0, '', '2025-10-09 15:19:59', '', '2025-10-10 12:14:05');
+INSERT INTO `sj_job_task_batch` VALUES (50, 'namespaceId', 'das', 1, 0, 0, 0, 2, 0, 1759992427598, 3, '', '', 1, '', '2025-10-09 14:47:07', '', '2025-10-09 14:47:07');
+INSERT INTO `sj_job_task_batch` VALUES (51, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994089596, 3, '', '', 1, '', '2025-10-09 15:14:49', '', '2025-10-09 15:14:50');
+INSERT INTO `sj_job_task_batch` VALUES (52, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994134792, 3, '', '', 1, '', '2025-10-09 15:15:35', '', '2025-10-09 15:15:35');
+INSERT INTO `sj_job_task_batch` VALUES (53, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994160997, 3, '', '', 1, '', '2025-10-09 15:16:01', '', '2025-10-09 15:16:01');
+INSERT INTO `sj_job_task_batch` VALUES (54, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994245991, 3, '', '', 1, '', '2025-10-09 15:17:26', '', '2025-10-09 15:17:26');
+INSERT INTO `sj_job_task_batch` VALUES (55, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994302001, 3, '', '', 1, '', '2025-10-09 15:18:22', '', '2025-10-09 15:18:22');
+INSERT INTO `sj_job_task_batch` VALUES (56, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994341091, 3, '', '', 1, '', '2025-10-09 15:19:01', '', '2025-10-09 15:19:24');
+INSERT INTO `sj_job_task_batch` VALUES (57, 'namespaceId', 'das', 1, 0, 0, 0, 4, 0, 1759994399093, 3, '', '', 1, '', '2025-10-09 15:19:59', '', '2025-10-10 12:14:05');
 INSERT INTO `sj_job_task_batch` VALUES (58, 'namespaceId', 'das', 1, 0, 0, 0, 5, 1, 1759994547590, 3, '', '', 1, '', '2025-10-09 15:22:28', '', '2025-10-09 15:22:28');
-INSERT INTO `sj_job_task_batch` VALUES (68, 'namespaceId', 'das', 1, 0, 0, 0, 3, 0, 1760026667841, 3, '', '', 0, '', '2025-10-10 00:17:48', '', '2025-10-10 00:17:48');
+INSERT INTO `sj_job_task_batch` VALUES (68, 'namespaceId', 'das', 1, 0, 0, 0, 3, 0, 1760026667841, 3, '', '', 1, '', '2025-10-10 00:17:48', '', '2025-10-10 00:17:48');
 
 -- ----------------------------
 -- Table structure for sj_namespace
@@ -545,7 +537,7 @@ CREATE TABLE `sj_namespace`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_unique_id`(`unique_id` ASC) USING BTREE,
   INDEX `idx_name`(`name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '命名空间' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '命名空间' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_namespace
@@ -577,7 +569,7 @@ CREATE TABLE `sj_notify_config`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_namespace_id_group_name_scene_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '通知配置' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '通知配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_notify_config
@@ -601,7 +593,7 @@ CREATE TABLE `sj_notify_recipient`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_namespace_id`(`namespace_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '告警通知接收人' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '告警通知接收人' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_notify_recipient
@@ -647,13 +639,13 @@ CREATE TABLE `sj_retry`  (
   INDEX `idx_biz_no`(`biz_no` ASC) USING BTREE,
   INDEX `idx_parent_id`(`parent_id` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '重试信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '重试信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_retry
 -- ----------------------------
-INSERT INTO `sj_retry` VALUES (1, 'namespaceId', 'das', 'sss666', '1111', 'dasdsadas', 'testJob', '{\"aaa\":\"1\"}', '', 1760372005213, 0, 0, 1, 45, 0, b'0', '', '2025-10-12 17:35:53', '', '2025-10-12 17:35:53');
-INSERT INTO `sj_retry` VALUES (3, 'namespaceId', 'das', 'sss666', 'dasdsada', 'dasdasd', 'dassdsa', '{}', '{}', 1760372005213, 0, 0, 1, 126, 0, b'0', '', '2025-10-12 19:06:15', '', '2025-10-12 19:06:15');
+INSERT INTO `sj_retry` VALUES (1, 'namespaceId', 'das', 'sss666', '1111', 'dasdsadas', 'testJob', '{\"aaa\":\"1\"}', '', 1760892441910, 0, 0, 1, 45, 0, b'0', '', '2025-10-12 17:35:53', '', '2025-10-12 17:35:53');
+INSERT INTO `sj_retry` VALUES (3, 'namespaceId', 'das', 'sss666', 'dasdsada', 'dasdasd', 'dassdsa', '{}', '{}', 1760892441910, 0, 0, 1, 126, 0, b'0', '', '2025-10-12 19:06:15', '', '2025-10-12 19:06:15');
 
 -- ----------------------------
 -- Table structure for sj_retry_dead_letter
@@ -678,7 +670,7 @@ CREATE TABLE `sj_retry_dead_letter`  (
   INDEX `idx_idempotent_id`(`idempotent_id` ASC) USING BTREE,
   INDEX `idx_biz_no`(`biz_no` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '死信队列表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '死信队列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_retry_dead_letter
@@ -713,7 +705,7 @@ CREATE TABLE `sj_retry_scene_config`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_namespace_id_group_name_scene_name`(`namespace_id` ASC, `group_name` ASC, `scene_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '场景配置' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '场景配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_retry_scene_config
@@ -743,7 +735,7 @@ CREATE TABLE `sj_retry_summary`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_scene_name_trigger_at`(`namespace_id` ASC, `group_name` ASC, `scene_name` ASC, `trigger_at` ASC) USING BTREE,
   INDEX `idx_trigger_at`(`trigger_at` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = 'DashBoard_Retry' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = 'DashBoard_Retry' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_retry_summary
@@ -774,7 +766,7 @@ CREATE TABLE `sj_retry_task`  (
   INDEX `task_status`(`task_status` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE,
   INDEX `idx_retry_id`(`retry_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 909 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '重试任务表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2831 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '重试任务表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_retry_task
@@ -1628,6 +1620,1928 @@ INSERT INTO `sj_retry_task` VALUES (905, 'namespaceId', 'das', 'sss666', 1, '', 
 INSERT INTO `sj_retry_task` VALUES (906, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-14 00:11:25', '', '2025-10-14 00:11:25');
 INSERT INTO `sj_retry_task` VALUES (907, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-14 00:12:25', '', '2025-10-14 00:12:25');
 INSERT INTO `sj_retry_task` VALUES (908, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-14 00:12:25', '', '2025-10-14 00:12:25');
+INSERT INTO `sj_retry_task` VALUES (909, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:28:52', '', '2025-10-18 11:28:52');
+INSERT INTO `sj_retry_task` VALUES (910, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:28:52', '', '2025-10-18 11:28:52');
+INSERT INTO `sj_retry_task` VALUES (911, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:29:52', '', '2025-10-18 11:29:52');
+INSERT INTO `sj_retry_task` VALUES (912, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:29:52', '', '2025-10-18 11:29:52');
+INSERT INTO `sj_retry_task` VALUES (913, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:30:52', '', '2025-10-18 11:30:52');
+INSERT INTO `sj_retry_task` VALUES (914, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:30:52', '', '2025-10-18 11:30:52');
+INSERT INTO `sj_retry_task` VALUES (915, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:32:54', '', '2025-10-18 11:32:54');
+INSERT INTO `sj_retry_task` VALUES (916, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:32:54', '', '2025-10-18 11:32:54');
+INSERT INTO `sj_retry_task` VALUES (917, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:33:54', '', '2025-10-18 11:33:54');
+INSERT INTO `sj_retry_task` VALUES (918, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:33:54', '', '2025-10-18 11:33:54');
+INSERT INTO `sj_retry_task` VALUES (919, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:34:54', '', '2025-10-18 11:34:54');
+INSERT INTO `sj_retry_task` VALUES (920, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:34:54', '', '2025-10-18 11:34:54');
+INSERT INTO `sj_retry_task` VALUES (921, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:35:54', '', '2025-10-18 11:35:54');
+INSERT INTO `sj_retry_task` VALUES (922, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:35:54', '', '2025-10-18 11:35:54');
+INSERT INTO `sj_retry_task` VALUES (923, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:36:54', '', '2025-10-18 11:36:54');
+INSERT INTO `sj_retry_task` VALUES (924, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:36:54', '', '2025-10-18 11:36:54');
+INSERT INTO `sj_retry_task` VALUES (925, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:37:54', '', '2025-10-18 11:37:54');
+INSERT INTO `sj_retry_task` VALUES (926, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:37:54', '', '2025-10-18 11:37:54');
+INSERT INTO `sj_retry_task` VALUES (927, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:38:54', '', '2025-10-18 11:38:54');
+INSERT INTO `sj_retry_task` VALUES (928, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:38:54', '', '2025-10-18 11:38:54');
+INSERT INTO `sj_retry_task` VALUES (929, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:39:54', '', '2025-10-18 11:39:54');
+INSERT INTO `sj_retry_task` VALUES (930, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:39:54', '', '2025-10-18 11:39:54');
+INSERT INTO `sj_retry_task` VALUES (931, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:40:54', '', '2025-10-18 11:40:54');
+INSERT INTO `sj_retry_task` VALUES (932, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:40:54', '', '2025-10-18 11:40:54');
+INSERT INTO `sj_retry_task` VALUES (933, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:41:54', '', '2025-10-18 11:41:54');
+INSERT INTO `sj_retry_task` VALUES (934, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:41:54', '', '2025-10-18 11:41:54');
+INSERT INTO `sj_retry_task` VALUES (935, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:42:54', '', '2025-10-18 11:42:54');
+INSERT INTO `sj_retry_task` VALUES (936, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:42:54', '', '2025-10-18 11:42:54');
+INSERT INTO `sj_retry_task` VALUES (937, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:43:54', '', '2025-10-18 11:43:54');
+INSERT INTO `sj_retry_task` VALUES (938, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:43:54', '', '2025-10-18 11:43:54');
+INSERT INTO `sj_retry_task` VALUES (939, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:45:12', '', '2025-10-18 11:45:12');
+INSERT INTO `sj_retry_task` VALUES (940, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:45:12', '', '2025-10-18 11:45:12');
+INSERT INTO `sj_retry_task` VALUES (941, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:46:12', '', '2025-10-18 11:46:12');
+INSERT INTO `sj_retry_task` VALUES (942, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:46:12', '', '2025-10-18 11:46:12');
+INSERT INTO `sj_retry_task` VALUES (943, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:47:12', '', '2025-10-18 11:47:12');
+INSERT INTO `sj_retry_task` VALUES (944, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:47:12', '', '2025-10-18 11:47:12');
+INSERT INTO `sj_retry_task` VALUES (945, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:48:12', '', '2025-10-18 11:48:12');
+INSERT INTO `sj_retry_task` VALUES (946, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:48:12', '', '2025-10-18 11:48:12');
+INSERT INTO `sj_retry_task` VALUES (947, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:49:12', '', '2025-10-18 11:49:12');
+INSERT INTO `sj_retry_task` VALUES (948, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:49:12', '', '2025-10-18 11:49:12');
+INSERT INTO `sj_retry_task` VALUES (949, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:50:12', '', '2025-10-18 11:50:12');
+INSERT INTO `sj_retry_task` VALUES (950, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:50:12', '', '2025-10-18 11:50:12');
+INSERT INTO `sj_retry_task` VALUES (951, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:51:12', '', '2025-10-18 11:51:12');
+INSERT INTO `sj_retry_task` VALUES (952, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:51:12', '', '2025-10-18 11:51:12');
+INSERT INTO `sj_retry_task` VALUES (953, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:52:12', '', '2025-10-18 11:52:12');
+INSERT INTO `sj_retry_task` VALUES (954, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:52:12', '', '2025-10-18 11:52:12');
+INSERT INTO `sj_retry_task` VALUES (955, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:53:12', '', '2025-10-18 11:53:12');
+INSERT INTO `sj_retry_task` VALUES (956, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:53:12', '', '2025-10-18 11:53:12');
+INSERT INTO `sj_retry_task` VALUES (957, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:54:12', '', '2025-10-18 11:54:12');
+INSERT INTO `sj_retry_task` VALUES (958, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:54:12', '', '2025-10-18 11:54:12');
+INSERT INTO `sj_retry_task` VALUES (959, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:55:12', '', '2025-10-18 11:55:12');
+INSERT INTO `sj_retry_task` VALUES (960, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:55:12', '', '2025-10-18 11:55:12');
+INSERT INTO `sj_retry_task` VALUES (961, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:56:12', '', '2025-10-18 11:56:12');
+INSERT INTO `sj_retry_task` VALUES (962, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:56:12', '', '2025-10-18 11:56:12');
+INSERT INTO `sj_retry_task` VALUES (963, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:57:12', '', '2025-10-18 11:57:12');
+INSERT INTO `sj_retry_task` VALUES (964, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:57:12', '', '2025-10-18 11:57:12');
+INSERT INTO `sj_retry_task` VALUES (965, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:58:12', '', '2025-10-18 11:58:12');
+INSERT INTO `sj_retry_task` VALUES (966, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:58:12', '', '2025-10-18 11:58:12');
+INSERT INTO `sj_retry_task` VALUES (967, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 11:59:12', '', '2025-10-18 11:59:12');
+INSERT INTO `sj_retry_task` VALUES (968, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 11:59:12', '', '2025-10-18 11:59:12');
+INSERT INTO `sj_retry_task` VALUES (969, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:00:12', '', '2025-10-18 12:00:12');
+INSERT INTO `sj_retry_task` VALUES (970, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:00:12', '', '2025-10-18 12:00:12');
+INSERT INTO `sj_retry_task` VALUES (971, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:01:12', '', '2025-10-18 12:01:12');
+INSERT INTO `sj_retry_task` VALUES (972, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:01:12', '', '2025-10-18 12:01:12');
+INSERT INTO `sj_retry_task` VALUES (973, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:02:12', '', '2025-10-18 12:02:12');
+INSERT INTO `sj_retry_task` VALUES (974, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:02:12', '', '2025-10-18 12:02:12');
+INSERT INTO `sj_retry_task` VALUES (975, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:03:12', '', '2025-10-18 12:03:12');
+INSERT INTO `sj_retry_task` VALUES (976, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:03:12', '', '2025-10-18 12:03:12');
+INSERT INTO `sj_retry_task` VALUES (977, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:04:12', '', '2025-10-18 12:04:12');
+INSERT INTO `sj_retry_task` VALUES (978, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:04:12', '', '2025-10-18 12:04:12');
+INSERT INTO `sj_retry_task` VALUES (979, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:05:12', '', '2025-10-18 12:05:12');
+INSERT INTO `sj_retry_task` VALUES (980, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:05:12', '', '2025-10-18 12:05:12');
+INSERT INTO `sj_retry_task` VALUES (981, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:06:12', '', '2025-10-18 12:06:12');
+INSERT INTO `sj_retry_task` VALUES (982, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:06:12', '', '2025-10-18 12:06:12');
+INSERT INTO `sj_retry_task` VALUES (983, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:07:12', '', '2025-10-18 12:07:12');
+INSERT INTO `sj_retry_task` VALUES (984, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:07:12', '', '2025-10-18 12:07:12');
+INSERT INTO `sj_retry_task` VALUES (985, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:08:12', '', '2025-10-18 12:08:12');
+INSERT INTO `sj_retry_task` VALUES (986, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:08:12', '', '2025-10-18 12:08:12');
+INSERT INTO `sj_retry_task` VALUES (987, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:09:12', '', '2025-10-18 12:09:12');
+INSERT INTO `sj_retry_task` VALUES (988, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:09:12', '', '2025-10-18 12:09:12');
+INSERT INTO `sj_retry_task` VALUES (989, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:10:12', '', '2025-10-18 12:10:12');
+INSERT INTO `sj_retry_task` VALUES (990, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:10:12', '', '2025-10-18 12:10:12');
+INSERT INTO `sj_retry_task` VALUES (991, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:11:12', '', '2025-10-18 12:11:12');
+INSERT INTO `sj_retry_task` VALUES (992, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:11:12', '', '2025-10-18 12:11:12');
+INSERT INTO `sj_retry_task` VALUES (993, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:12:12', '', '2025-10-18 12:12:12');
+INSERT INTO `sj_retry_task` VALUES (994, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:12:12', '', '2025-10-18 12:12:12');
+INSERT INTO `sj_retry_task` VALUES (995, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:13:12', '', '2025-10-18 12:13:12');
+INSERT INTO `sj_retry_task` VALUES (996, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:13:12', '', '2025-10-18 12:13:12');
+INSERT INTO `sj_retry_task` VALUES (997, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:14:12', '', '2025-10-18 12:14:12');
+INSERT INTO `sj_retry_task` VALUES (998, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:14:12', '', '2025-10-18 12:14:12');
+INSERT INTO `sj_retry_task` VALUES (999, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:15:12', '', '2025-10-18 12:15:12');
+INSERT INTO `sj_retry_task` VALUES (1000, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:15:12', '', '2025-10-18 12:15:12');
+INSERT INTO `sj_retry_task` VALUES (1001, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:16:12', '', '2025-10-18 12:16:12');
+INSERT INTO `sj_retry_task` VALUES (1002, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:16:12', '', '2025-10-18 12:16:12');
+INSERT INTO `sj_retry_task` VALUES (1003, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:17:12', '', '2025-10-18 12:17:12');
+INSERT INTO `sj_retry_task` VALUES (1004, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:17:12', '', '2025-10-18 12:17:12');
+INSERT INTO `sj_retry_task` VALUES (1005, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:18:12', '', '2025-10-18 12:18:12');
+INSERT INTO `sj_retry_task` VALUES (1006, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:18:12', '', '2025-10-18 12:18:12');
+INSERT INTO `sj_retry_task` VALUES (1007, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:19:12', '', '2025-10-18 12:19:12');
+INSERT INTO `sj_retry_task` VALUES (1008, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:19:12', '', '2025-10-18 12:19:12');
+INSERT INTO `sj_retry_task` VALUES (1009, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:20:12', '', '2025-10-18 12:20:12');
+INSERT INTO `sj_retry_task` VALUES (1010, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:20:12', '', '2025-10-18 12:20:12');
+INSERT INTO `sj_retry_task` VALUES (1011, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:21:12', '', '2025-10-18 12:21:12');
+INSERT INTO `sj_retry_task` VALUES (1012, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:21:12', '', '2025-10-18 12:21:12');
+INSERT INTO `sj_retry_task` VALUES (1013, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:22:12', '', '2025-10-18 12:22:12');
+INSERT INTO `sj_retry_task` VALUES (1014, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:22:12', '', '2025-10-18 12:22:12');
+INSERT INTO `sj_retry_task` VALUES (1015, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:23:12', '', '2025-10-18 12:23:12');
+INSERT INTO `sj_retry_task` VALUES (1016, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:23:12', '', '2025-10-18 12:23:12');
+INSERT INTO `sj_retry_task` VALUES (1017, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:24:12', '', '2025-10-18 12:24:12');
+INSERT INTO `sj_retry_task` VALUES (1018, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:24:12', '', '2025-10-18 12:24:12');
+INSERT INTO `sj_retry_task` VALUES (1019, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:25:12', '', '2025-10-18 12:25:12');
+INSERT INTO `sj_retry_task` VALUES (1020, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:25:12', '', '2025-10-18 12:25:12');
+INSERT INTO `sj_retry_task` VALUES (1021, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:26:12', '', '2025-10-18 12:26:12');
+INSERT INTO `sj_retry_task` VALUES (1022, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:26:12', '', '2025-10-18 12:26:12');
+INSERT INTO `sj_retry_task` VALUES (1023, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:27:12', '', '2025-10-18 12:27:12');
+INSERT INTO `sj_retry_task` VALUES (1024, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:27:12', '', '2025-10-18 12:27:12');
+INSERT INTO `sj_retry_task` VALUES (1025, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:28:12', '', '2025-10-18 12:28:12');
+INSERT INTO `sj_retry_task` VALUES (1026, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:28:12', '', '2025-10-18 12:28:12');
+INSERT INTO `sj_retry_task` VALUES (1027, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:29:12', '', '2025-10-18 12:29:12');
+INSERT INTO `sj_retry_task` VALUES (1028, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:29:12', '', '2025-10-18 12:29:12');
+INSERT INTO `sj_retry_task` VALUES (1029, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:30:12', '', '2025-10-18 12:30:12');
+INSERT INTO `sj_retry_task` VALUES (1030, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:30:12', '', '2025-10-18 12:30:12');
+INSERT INTO `sj_retry_task` VALUES (1031, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:31:12', '', '2025-10-18 12:31:12');
+INSERT INTO `sj_retry_task` VALUES (1032, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:31:12', '', '2025-10-18 12:31:12');
+INSERT INTO `sj_retry_task` VALUES (1033, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:32:12', '', '2025-10-18 12:32:12');
+INSERT INTO `sj_retry_task` VALUES (1034, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:32:12', '', '2025-10-18 12:32:12');
+INSERT INTO `sj_retry_task` VALUES (1035, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:33:12', '', '2025-10-18 12:33:12');
+INSERT INTO `sj_retry_task` VALUES (1036, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:33:12', '', '2025-10-18 12:33:12');
+INSERT INTO `sj_retry_task` VALUES (1037, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:34:12', '', '2025-10-18 12:34:12');
+INSERT INTO `sj_retry_task` VALUES (1038, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:34:12', '', '2025-10-18 12:34:12');
+INSERT INTO `sj_retry_task` VALUES (1039, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:35:12', '', '2025-10-18 12:35:12');
+INSERT INTO `sj_retry_task` VALUES (1040, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:35:12', '', '2025-10-18 12:35:12');
+INSERT INTO `sj_retry_task` VALUES (1041, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:36:12', '', '2025-10-18 12:36:12');
+INSERT INTO `sj_retry_task` VALUES (1042, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:36:12', '', '2025-10-18 12:36:12');
+INSERT INTO `sj_retry_task` VALUES (1043, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:37:12', '', '2025-10-18 12:37:12');
+INSERT INTO `sj_retry_task` VALUES (1044, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:37:12', '', '2025-10-18 12:37:12');
+INSERT INTO `sj_retry_task` VALUES (1045, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:38:12', '', '2025-10-18 12:38:12');
+INSERT INTO `sj_retry_task` VALUES (1046, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:38:12', '', '2025-10-18 12:38:12');
+INSERT INTO `sj_retry_task` VALUES (1047, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:39:12', '', '2025-10-18 12:39:12');
+INSERT INTO `sj_retry_task` VALUES (1048, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:39:12', '', '2025-10-18 12:39:12');
+INSERT INTO `sj_retry_task` VALUES (1049, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:40:12', '', '2025-10-18 12:40:12');
+INSERT INTO `sj_retry_task` VALUES (1050, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:40:12', '', '2025-10-18 12:40:12');
+INSERT INTO `sj_retry_task` VALUES (1051, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:41:12', '', '2025-10-18 12:41:12');
+INSERT INTO `sj_retry_task` VALUES (1052, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:41:12', '', '2025-10-18 12:41:12');
+INSERT INTO `sj_retry_task` VALUES (1053, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:42:12', '', '2025-10-18 12:42:12');
+INSERT INTO `sj_retry_task` VALUES (1054, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:42:12', '', '2025-10-18 12:42:12');
+INSERT INTO `sj_retry_task` VALUES (1055, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:43:12', '', '2025-10-18 12:43:12');
+INSERT INTO `sj_retry_task` VALUES (1056, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:43:12', '', '2025-10-18 12:43:12');
+INSERT INTO `sj_retry_task` VALUES (1057, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:44:12', '', '2025-10-18 12:44:12');
+INSERT INTO `sj_retry_task` VALUES (1058, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:44:12', '', '2025-10-18 12:44:12');
+INSERT INTO `sj_retry_task` VALUES (1059, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:45:12', '', '2025-10-18 12:45:12');
+INSERT INTO `sj_retry_task` VALUES (1060, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:45:12', '', '2025-10-18 12:45:12');
+INSERT INTO `sj_retry_task` VALUES (1061, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:46:12', '', '2025-10-18 12:46:12');
+INSERT INTO `sj_retry_task` VALUES (1062, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:46:12', '', '2025-10-18 12:46:12');
+INSERT INTO `sj_retry_task` VALUES (1063, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:47:12', '', '2025-10-18 12:47:12');
+INSERT INTO `sj_retry_task` VALUES (1064, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:47:12', '', '2025-10-18 12:47:12');
+INSERT INTO `sj_retry_task` VALUES (1065, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:48:12', '', '2025-10-18 12:48:12');
+INSERT INTO `sj_retry_task` VALUES (1066, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:48:12', '', '2025-10-18 12:48:12');
+INSERT INTO `sj_retry_task` VALUES (1067, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:49:12', '', '2025-10-18 12:49:12');
+INSERT INTO `sj_retry_task` VALUES (1068, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:49:12', '', '2025-10-18 12:49:12');
+INSERT INTO `sj_retry_task` VALUES (1069, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:50:12', '', '2025-10-18 12:50:12');
+INSERT INTO `sj_retry_task` VALUES (1070, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:50:12', '', '2025-10-18 12:50:12');
+INSERT INTO `sj_retry_task` VALUES (1071, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:51:12', '', '2025-10-18 12:51:12');
+INSERT INTO `sj_retry_task` VALUES (1072, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:51:12', '', '2025-10-18 12:51:12');
+INSERT INTO `sj_retry_task` VALUES (1073, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:52:12', '', '2025-10-18 12:52:12');
+INSERT INTO `sj_retry_task` VALUES (1074, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:52:12', '', '2025-10-18 12:52:12');
+INSERT INTO `sj_retry_task` VALUES (1075, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:53:12', '', '2025-10-18 12:53:12');
+INSERT INTO `sj_retry_task` VALUES (1076, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:53:12', '', '2025-10-18 12:53:12');
+INSERT INTO `sj_retry_task` VALUES (1077, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:54:12', '', '2025-10-18 12:54:12');
+INSERT INTO `sj_retry_task` VALUES (1078, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:54:12', '', '2025-10-18 12:54:12');
+INSERT INTO `sj_retry_task` VALUES (1079, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:55:12', '', '2025-10-18 12:55:12');
+INSERT INTO `sj_retry_task` VALUES (1080, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:55:12', '', '2025-10-18 12:55:12');
+INSERT INTO `sj_retry_task` VALUES (1081, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:56:12', '', '2025-10-18 12:56:12');
+INSERT INTO `sj_retry_task` VALUES (1082, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:56:12', '', '2025-10-18 12:56:12');
+INSERT INTO `sj_retry_task` VALUES (1083, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:57:12', '', '2025-10-18 12:57:12');
+INSERT INTO `sj_retry_task` VALUES (1084, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:57:12', '', '2025-10-18 12:57:12');
+INSERT INTO `sj_retry_task` VALUES (1085, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:58:12', '', '2025-10-18 12:58:12');
+INSERT INTO `sj_retry_task` VALUES (1086, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:58:12', '', '2025-10-18 12:58:12');
+INSERT INTO `sj_retry_task` VALUES (1087, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 12:59:12', '', '2025-10-18 12:59:12');
+INSERT INTO `sj_retry_task` VALUES (1088, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 12:59:12', '', '2025-10-18 12:59:12');
+INSERT INTO `sj_retry_task` VALUES (1089, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:00:12', '', '2025-10-18 13:00:12');
+INSERT INTO `sj_retry_task` VALUES (1090, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:00:12', '', '2025-10-18 13:00:12');
+INSERT INTO `sj_retry_task` VALUES (1091, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:01:12', '', '2025-10-18 13:01:12');
+INSERT INTO `sj_retry_task` VALUES (1092, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:01:12', '', '2025-10-18 13:01:12');
+INSERT INTO `sj_retry_task` VALUES (1093, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:02:12', '', '2025-10-18 13:02:12');
+INSERT INTO `sj_retry_task` VALUES (1094, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:02:12', '', '2025-10-18 13:02:12');
+INSERT INTO `sj_retry_task` VALUES (1095, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:03:12', '', '2025-10-18 13:03:12');
+INSERT INTO `sj_retry_task` VALUES (1096, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:03:12', '', '2025-10-18 13:03:12');
+INSERT INTO `sj_retry_task` VALUES (1097, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:04:12', '', '2025-10-18 13:04:12');
+INSERT INTO `sj_retry_task` VALUES (1098, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:04:12', '', '2025-10-18 13:04:12');
+INSERT INTO `sj_retry_task` VALUES (1099, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:05:12', '', '2025-10-18 13:05:12');
+INSERT INTO `sj_retry_task` VALUES (1100, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:05:12', '', '2025-10-18 13:05:12');
+INSERT INTO `sj_retry_task` VALUES (1101, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:06:12', '', '2025-10-18 13:06:12');
+INSERT INTO `sj_retry_task` VALUES (1102, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:06:12', '', '2025-10-18 13:06:12');
+INSERT INTO `sj_retry_task` VALUES (1103, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:07:12', '', '2025-10-18 13:07:12');
+INSERT INTO `sj_retry_task` VALUES (1104, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:07:12', '', '2025-10-18 13:07:12');
+INSERT INTO `sj_retry_task` VALUES (1105, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:08:12', '', '2025-10-18 13:08:12');
+INSERT INTO `sj_retry_task` VALUES (1106, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:08:12', '', '2025-10-18 13:08:12');
+INSERT INTO `sj_retry_task` VALUES (1107, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:09:12', '', '2025-10-18 13:09:12');
+INSERT INTO `sj_retry_task` VALUES (1108, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:09:12', '', '2025-10-18 13:09:12');
+INSERT INTO `sj_retry_task` VALUES (1109, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:10:12', '', '2025-10-18 13:10:12');
+INSERT INTO `sj_retry_task` VALUES (1110, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:10:12', '', '2025-10-18 13:10:12');
+INSERT INTO `sj_retry_task` VALUES (1111, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:11:12', '', '2025-10-18 13:11:12');
+INSERT INTO `sj_retry_task` VALUES (1112, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:11:12', '', '2025-10-18 13:11:12');
+INSERT INTO `sj_retry_task` VALUES (1113, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:12:12', '', '2025-10-18 13:12:12');
+INSERT INTO `sj_retry_task` VALUES (1114, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:12:12', '', '2025-10-18 13:12:12');
+INSERT INTO `sj_retry_task` VALUES (1115, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:13:12', '', '2025-10-18 13:13:12');
+INSERT INTO `sj_retry_task` VALUES (1116, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:13:12', '', '2025-10-18 13:13:12');
+INSERT INTO `sj_retry_task` VALUES (1117, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:14:12', '', '2025-10-18 13:14:12');
+INSERT INTO `sj_retry_task` VALUES (1118, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:14:12', '', '2025-10-18 13:14:12');
+INSERT INTO `sj_retry_task` VALUES (1119, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:15:12', '', '2025-10-18 13:15:12');
+INSERT INTO `sj_retry_task` VALUES (1120, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:15:12', '', '2025-10-18 13:15:12');
+INSERT INTO `sj_retry_task` VALUES (1121, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:16:12', '', '2025-10-18 13:16:12');
+INSERT INTO `sj_retry_task` VALUES (1122, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:16:12', '', '2025-10-18 13:16:12');
+INSERT INTO `sj_retry_task` VALUES (1123, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:17:12', '', '2025-10-18 13:17:12');
+INSERT INTO `sj_retry_task` VALUES (1124, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:17:12', '', '2025-10-18 13:17:12');
+INSERT INTO `sj_retry_task` VALUES (1125, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:18:12', '', '2025-10-18 13:18:12');
+INSERT INTO `sj_retry_task` VALUES (1126, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:18:12', '', '2025-10-18 13:18:12');
+INSERT INTO `sj_retry_task` VALUES (1127, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:19:12', '', '2025-10-18 13:19:12');
+INSERT INTO `sj_retry_task` VALUES (1128, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:19:12', '', '2025-10-18 13:19:12');
+INSERT INTO `sj_retry_task` VALUES (1129, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:20:12', '', '2025-10-18 13:20:12');
+INSERT INTO `sj_retry_task` VALUES (1130, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:20:12', '', '2025-10-18 13:20:12');
+INSERT INTO `sj_retry_task` VALUES (1131, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:21:12', '', '2025-10-18 13:21:12');
+INSERT INTO `sj_retry_task` VALUES (1132, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:21:12', '', '2025-10-18 13:21:12');
+INSERT INTO `sj_retry_task` VALUES (1133, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:22:12', '', '2025-10-18 13:22:12');
+INSERT INTO `sj_retry_task` VALUES (1134, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:22:12', '', '2025-10-18 13:22:12');
+INSERT INTO `sj_retry_task` VALUES (1135, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:23:12', '', '2025-10-18 13:23:12');
+INSERT INTO `sj_retry_task` VALUES (1136, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:23:12', '', '2025-10-18 13:23:12');
+INSERT INTO `sj_retry_task` VALUES (1137, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:24:12', '', '2025-10-18 13:24:12');
+INSERT INTO `sj_retry_task` VALUES (1138, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:24:12', '', '2025-10-18 13:24:12');
+INSERT INTO `sj_retry_task` VALUES (1139, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:25:12', '', '2025-10-18 13:25:12');
+INSERT INTO `sj_retry_task` VALUES (1140, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:25:12', '', '2025-10-18 13:25:12');
+INSERT INTO `sj_retry_task` VALUES (1141, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:26:12', '', '2025-10-18 13:26:12');
+INSERT INTO `sj_retry_task` VALUES (1142, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:26:12', '', '2025-10-18 13:26:12');
+INSERT INTO `sj_retry_task` VALUES (1143, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:27:12', '', '2025-10-18 13:27:12');
+INSERT INTO `sj_retry_task` VALUES (1144, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:27:12', '', '2025-10-18 13:27:12');
+INSERT INTO `sj_retry_task` VALUES (1145, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:28:12', '', '2025-10-18 13:28:12');
+INSERT INTO `sj_retry_task` VALUES (1146, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:28:12', '', '2025-10-18 13:28:12');
+INSERT INTO `sj_retry_task` VALUES (1147, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:29:12', '', '2025-10-18 13:29:12');
+INSERT INTO `sj_retry_task` VALUES (1148, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:29:12', '', '2025-10-18 13:29:12');
+INSERT INTO `sj_retry_task` VALUES (1149, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:30:12', '', '2025-10-18 13:30:12');
+INSERT INTO `sj_retry_task` VALUES (1150, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:30:12', '', '2025-10-18 13:30:12');
+INSERT INTO `sj_retry_task` VALUES (1151, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:31:12', '', '2025-10-18 13:31:12');
+INSERT INTO `sj_retry_task` VALUES (1152, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:31:12', '', '2025-10-18 13:31:12');
+INSERT INTO `sj_retry_task` VALUES (1153, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:32:12', '', '2025-10-18 13:32:12');
+INSERT INTO `sj_retry_task` VALUES (1154, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:32:12', '', '2025-10-18 13:32:12');
+INSERT INTO `sj_retry_task` VALUES (1155, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:33:12', '', '2025-10-18 13:33:12');
+INSERT INTO `sj_retry_task` VALUES (1156, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:33:12', '', '2025-10-18 13:33:12');
+INSERT INTO `sj_retry_task` VALUES (1157, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:34:12', '', '2025-10-18 13:34:12');
+INSERT INTO `sj_retry_task` VALUES (1158, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:34:12', '', '2025-10-18 13:34:12');
+INSERT INTO `sj_retry_task` VALUES (1159, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:35:12', '', '2025-10-18 13:35:12');
+INSERT INTO `sj_retry_task` VALUES (1160, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:35:12', '', '2025-10-18 13:35:12');
+INSERT INTO `sj_retry_task` VALUES (1161, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:36:12', '', '2025-10-18 13:36:12');
+INSERT INTO `sj_retry_task` VALUES (1162, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:36:12', '', '2025-10-18 13:36:12');
+INSERT INTO `sj_retry_task` VALUES (1163, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:37:12', '', '2025-10-18 13:37:12');
+INSERT INTO `sj_retry_task` VALUES (1164, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:37:12', '', '2025-10-18 13:37:12');
+INSERT INTO `sj_retry_task` VALUES (1165, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:38:12', '', '2025-10-18 13:38:12');
+INSERT INTO `sj_retry_task` VALUES (1166, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:38:12', '', '2025-10-18 13:38:12');
+INSERT INTO `sj_retry_task` VALUES (1167, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:39:12', '', '2025-10-18 13:39:12');
+INSERT INTO `sj_retry_task` VALUES (1168, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:39:12', '', '2025-10-18 13:39:12');
+INSERT INTO `sj_retry_task` VALUES (1169, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:40:12', '', '2025-10-18 13:40:12');
+INSERT INTO `sj_retry_task` VALUES (1170, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:40:12', '', '2025-10-18 13:40:12');
+INSERT INTO `sj_retry_task` VALUES (1171, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:41:12', '', '2025-10-18 13:41:12');
+INSERT INTO `sj_retry_task` VALUES (1172, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:41:12', '', '2025-10-18 13:41:12');
+INSERT INTO `sj_retry_task` VALUES (1173, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:42:12', '', '2025-10-18 13:42:12');
+INSERT INTO `sj_retry_task` VALUES (1174, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:42:12', '', '2025-10-18 13:42:12');
+INSERT INTO `sj_retry_task` VALUES (1175, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:43:12', '', '2025-10-18 13:43:12');
+INSERT INTO `sj_retry_task` VALUES (1176, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:43:12', '', '2025-10-18 13:43:12');
+INSERT INTO `sj_retry_task` VALUES (1177, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:44:12', '', '2025-10-18 13:44:12');
+INSERT INTO `sj_retry_task` VALUES (1178, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:44:12', '', '2025-10-18 13:44:12');
+INSERT INTO `sj_retry_task` VALUES (1179, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:45:12', '', '2025-10-18 13:45:12');
+INSERT INTO `sj_retry_task` VALUES (1180, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:45:12', '', '2025-10-18 13:45:12');
+INSERT INTO `sj_retry_task` VALUES (1181, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:46:12', '', '2025-10-18 13:46:12');
+INSERT INTO `sj_retry_task` VALUES (1182, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:46:12', '', '2025-10-18 13:46:12');
+INSERT INTO `sj_retry_task` VALUES (1183, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:47:12', '', '2025-10-18 13:47:12');
+INSERT INTO `sj_retry_task` VALUES (1184, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:47:12', '', '2025-10-18 13:47:12');
+INSERT INTO `sj_retry_task` VALUES (1185, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:48:12', '', '2025-10-18 13:48:12');
+INSERT INTO `sj_retry_task` VALUES (1186, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:48:12', '', '2025-10-18 13:48:12');
+INSERT INTO `sj_retry_task` VALUES (1187, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:49:12', '', '2025-10-18 13:49:12');
+INSERT INTO `sj_retry_task` VALUES (1188, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:49:12', '', '2025-10-18 13:49:12');
+INSERT INTO `sj_retry_task` VALUES (1189, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:50:12', '', '2025-10-18 13:50:12');
+INSERT INTO `sj_retry_task` VALUES (1190, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:50:12', '', '2025-10-18 13:50:12');
+INSERT INTO `sj_retry_task` VALUES (1191, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:51:12', '', '2025-10-18 13:51:12');
+INSERT INTO `sj_retry_task` VALUES (1192, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:51:12', '', '2025-10-18 13:51:12');
+INSERT INTO `sj_retry_task` VALUES (1193, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:52:12', '', '2025-10-18 13:52:12');
+INSERT INTO `sj_retry_task` VALUES (1194, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:52:12', '', '2025-10-18 13:52:12');
+INSERT INTO `sj_retry_task` VALUES (1195, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:53:12', '', '2025-10-18 13:53:12');
+INSERT INTO `sj_retry_task` VALUES (1196, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:53:12', '', '2025-10-18 13:53:12');
+INSERT INTO `sj_retry_task` VALUES (1197, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:54:12', '', '2025-10-18 13:54:12');
+INSERT INTO `sj_retry_task` VALUES (1198, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:54:12', '', '2025-10-18 13:54:12');
+INSERT INTO `sj_retry_task` VALUES (1199, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:55:12', '', '2025-10-18 13:55:12');
+INSERT INTO `sj_retry_task` VALUES (1200, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:55:12', '', '2025-10-18 13:55:12');
+INSERT INTO `sj_retry_task` VALUES (1201, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:56:12', '', '2025-10-18 13:56:12');
+INSERT INTO `sj_retry_task` VALUES (1202, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:56:12', '', '2025-10-18 13:56:12');
+INSERT INTO `sj_retry_task` VALUES (1203, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:57:12', '', '2025-10-18 13:57:12');
+INSERT INTO `sj_retry_task` VALUES (1204, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:57:12', '', '2025-10-18 13:57:12');
+INSERT INTO `sj_retry_task` VALUES (1205, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:58:12', '', '2025-10-18 13:58:12');
+INSERT INTO `sj_retry_task` VALUES (1206, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:58:12', '', '2025-10-18 13:58:12');
+INSERT INTO `sj_retry_task` VALUES (1207, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 13:59:12', '', '2025-10-18 13:59:12');
+INSERT INTO `sj_retry_task` VALUES (1208, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 13:59:12', '', '2025-10-18 13:59:12');
+INSERT INTO `sj_retry_task` VALUES (1209, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:00:12', '', '2025-10-18 14:00:12');
+INSERT INTO `sj_retry_task` VALUES (1210, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:00:12', '', '2025-10-18 14:00:12');
+INSERT INTO `sj_retry_task` VALUES (1211, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:01:12', '', '2025-10-18 14:01:12');
+INSERT INTO `sj_retry_task` VALUES (1212, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:01:12', '', '2025-10-18 14:01:12');
+INSERT INTO `sj_retry_task` VALUES (1213, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:02:12', '', '2025-10-18 14:02:12');
+INSERT INTO `sj_retry_task` VALUES (1214, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:02:12', '', '2025-10-18 14:02:12');
+INSERT INTO `sj_retry_task` VALUES (1215, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:03:12', '', '2025-10-18 14:03:12');
+INSERT INTO `sj_retry_task` VALUES (1216, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:03:12', '', '2025-10-18 14:03:12');
+INSERT INTO `sj_retry_task` VALUES (1217, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:04:12', '', '2025-10-18 14:04:12');
+INSERT INTO `sj_retry_task` VALUES (1218, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:04:12', '', '2025-10-18 14:04:12');
+INSERT INTO `sj_retry_task` VALUES (1219, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:05:12', '', '2025-10-18 14:05:12');
+INSERT INTO `sj_retry_task` VALUES (1220, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:05:12', '', '2025-10-18 14:05:12');
+INSERT INTO `sj_retry_task` VALUES (1221, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:06:12', '', '2025-10-18 14:06:12');
+INSERT INTO `sj_retry_task` VALUES (1222, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:06:12', '', '2025-10-18 14:06:12');
+INSERT INTO `sj_retry_task` VALUES (1223, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-18 14:07:12', '', '2025-10-18 14:07:12');
+INSERT INTO `sj_retry_task` VALUES (1224, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-18 14:07:12', '', '2025-10-18 14:07:12');
+INSERT INTO `sj_retry_task` VALUES (1225, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 10:55:33', '', '2025-10-19 10:55:33');
+INSERT INTO `sj_retry_task` VALUES (1226, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 10:55:33', '', '2025-10-19 10:55:33');
+INSERT INTO `sj_retry_task` VALUES (1227, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 10:56:33', '', '2025-10-19 10:56:33');
+INSERT INTO `sj_retry_task` VALUES (1228, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 10:56:33', '', '2025-10-19 10:56:33');
+INSERT INTO `sj_retry_task` VALUES (1229, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 10:57:33', '', '2025-10-19 10:57:33');
+INSERT INTO `sj_retry_task` VALUES (1230, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 10:57:33', '', '2025-10-19 10:57:33');
+INSERT INTO `sj_retry_task` VALUES (1231, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 10:58:33', '', '2025-10-19 10:58:33');
+INSERT INTO `sj_retry_task` VALUES (1232, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 10:58:33', '', '2025-10-19 10:58:33');
+INSERT INTO `sj_retry_task` VALUES (1233, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 10:59:33', '', '2025-10-19 10:59:33');
+INSERT INTO `sj_retry_task` VALUES (1234, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 10:59:33', '', '2025-10-19 10:59:33');
+INSERT INTO `sj_retry_task` VALUES (1235, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:00:33', '', '2025-10-19 11:00:33');
+INSERT INTO `sj_retry_task` VALUES (1236, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:00:33', '', '2025-10-19 11:00:33');
+INSERT INTO `sj_retry_task` VALUES (1237, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:01:33', '', '2025-10-19 11:01:33');
+INSERT INTO `sj_retry_task` VALUES (1238, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:01:33', '', '2025-10-19 11:01:33');
+INSERT INTO `sj_retry_task` VALUES (1239, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:02:33', '', '2025-10-19 11:02:33');
+INSERT INTO `sj_retry_task` VALUES (1240, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:02:33', '', '2025-10-19 11:02:33');
+INSERT INTO `sj_retry_task` VALUES (1241, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:03:33', '', '2025-10-19 11:03:33');
+INSERT INTO `sj_retry_task` VALUES (1242, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:03:33', '', '2025-10-19 11:03:33');
+INSERT INTO `sj_retry_task` VALUES (1243, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:04:33', '', '2025-10-19 11:04:33');
+INSERT INTO `sj_retry_task` VALUES (1244, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:04:33', '', '2025-10-19 11:04:33');
+INSERT INTO `sj_retry_task` VALUES (1245, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:05:34', '', '2025-10-19 11:05:34');
+INSERT INTO `sj_retry_task` VALUES (1246, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:05:34', '', '2025-10-19 11:05:34');
+INSERT INTO `sj_retry_task` VALUES (1247, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:06:33', '', '2025-10-19 11:06:33');
+INSERT INTO `sj_retry_task` VALUES (1248, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:06:33', '', '2025-10-19 11:06:33');
+INSERT INTO `sj_retry_task` VALUES (1249, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:07:33', '', '2025-10-19 11:07:33');
+INSERT INTO `sj_retry_task` VALUES (1250, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:07:33', '', '2025-10-19 11:07:33');
+INSERT INTO `sj_retry_task` VALUES (1251, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:08:33', '', '2025-10-19 11:08:33');
+INSERT INTO `sj_retry_task` VALUES (1252, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:08:33', '', '2025-10-19 11:08:33');
+INSERT INTO `sj_retry_task` VALUES (1253, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:09:33', '', '2025-10-19 11:09:33');
+INSERT INTO `sj_retry_task` VALUES (1254, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:09:33', '', '2025-10-19 11:09:33');
+INSERT INTO `sj_retry_task` VALUES (1255, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:10:33', '', '2025-10-19 11:10:33');
+INSERT INTO `sj_retry_task` VALUES (1256, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:10:33', '', '2025-10-19 11:10:33');
+INSERT INTO `sj_retry_task` VALUES (1257, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:11:33', '', '2025-10-19 11:11:33');
+INSERT INTO `sj_retry_task` VALUES (1258, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:11:33', '', '2025-10-19 11:11:33');
+INSERT INTO `sj_retry_task` VALUES (1259, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:12:33', '', '2025-10-19 11:12:33');
+INSERT INTO `sj_retry_task` VALUES (1260, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:12:33', '', '2025-10-19 11:12:33');
+INSERT INTO `sj_retry_task` VALUES (1261, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:13:33', '', '2025-10-19 11:13:33');
+INSERT INTO `sj_retry_task` VALUES (1262, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:13:33', '', '2025-10-19 11:13:33');
+INSERT INTO `sj_retry_task` VALUES (1263, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:14:33', '', '2025-10-19 11:14:33');
+INSERT INTO `sj_retry_task` VALUES (1264, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:14:33', '', '2025-10-19 11:14:33');
+INSERT INTO `sj_retry_task` VALUES (1265, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:15:33', '', '2025-10-19 11:15:33');
+INSERT INTO `sj_retry_task` VALUES (1266, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:15:33', '', '2025-10-19 11:15:33');
+INSERT INTO `sj_retry_task` VALUES (1267, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:16:33', '', '2025-10-19 11:16:33');
+INSERT INTO `sj_retry_task` VALUES (1268, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:16:33', '', '2025-10-19 11:16:33');
+INSERT INTO `sj_retry_task` VALUES (1269, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:17:33', '', '2025-10-19 11:17:33');
+INSERT INTO `sj_retry_task` VALUES (1270, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:17:33', '', '2025-10-19 11:17:33');
+INSERT INTO `sj_retry_task` VALUES (1271, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:18:33', '', '2025-10-19 11:18:33');
+INSERT INTO `sj_retry_task` VALUES (1272, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:18:33', '', '2025-10-19 11:18:33');
+INSERT INTO `sj_retry_task` VALUES (1273, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:19:33', '', '2025-10-19 11:19:33');
+INSERT INTO `sj_retry_task` VALUES (1274, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:19:33', '', '2025-10-19 11:19:33');
+INSERT INTO `sj_retry_task` VALUES (1275, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:20:33', '', '2025-10-19 11:20:33');
+INSERT INTO `sj_retry_task` VALUES (1276, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:20:33', '', '2025-10-19 11:20:33');
+INSERT INTO `sj_retry_task` VALUES (1277, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:21:33', '', '2025-10-19 11:21:33');
+INSERT INTO `sj_retry_task` VALUES (1278, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:21:33', '', '2025-10-19 11:21:33');
+INSERT INTO `sj_retry_task` VALUES (1279, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:22:33', '', '2025-10-19 11:22:33');
+INSERT INTO `sj_retry_task` VALUES (1280, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:22:33', '', '2025-10-19 11:22:33');
+INSERT INTO `sj_retry_task` VALUES (1281, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:23:34', '', '2025-10-19 11:23:34');
+INSERT INTO `sj_retry_task` VALUES (1282, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:23:34', '', '2025-10-19 11:23:34');
+INSERT INTO `sj_retry_task` VALUES (1283, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:24:33', '', '2025-10-19 11:24:33');
+INSERT INTO `sj_retry_task` VALUES (1284, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:24:33', '', '2025-10-19 11:24:33');
+INSERT INTO `sj_retry_task` VALUES (1285, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:25:33', '', '2025-10-19 11:25:33');
+INSERT INTO `sj_retry_task` VALUES (1286, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:25:33', '', '2025-10-19 11:25:33');
+INSERT INTO `sj_retry_task` VALUES (1287, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:26:33', '', '2025-10-19 11:26:33');
+INSERT INTO `sj_retry_task` VALUES (1288, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:26:33', '', '2025-10-19 11:26:33');
+INSERT INTO `sj_retry_task` VALUES (1289, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:27:33', '', '2025-10-19 11:27:33');
+INSERT INTO `sj_retry_task` VALUES (1290, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:27:33', '', '2025-10-19 11:27:33');
+INSERT INTO `sj_retry_task` VALUES (1291, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:28:33', '', '2025-10-19 11:28:33');
+INSERT INTO `sj_retry_task` VALUES (1292, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:28:33', '', '2025-10-19 11:28:33');
+INSERT INTO `sj_retry_task` VALUES (1293, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:29:33', '', '2025-10-19 11:29:33');
+INSERT INTO `sj_retry_task` VALUES (1294, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:29:33', '', '2025-10-19 11:29:33');
+INSERT INTO `sj_retry_task` VALUES (1295, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:30:33', '', '2025-10-19 11:30:33');
+INSERT INTO `sj_retry_task` VALUES (1296, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:30:33', '', '2025-10-19 11:30:33');
+INSERT INTO `sj_retry_task` VALUES (1297, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:31:33', '', '2025-10-19 11:31:33');
+INSERT INTO `sj_retry_task` VALUES (1298, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:31:33', '', '2025-10-19 11:31:33');
+INSERT INTO `sj_retry_task` VALUES (1299, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:32:33', '', '2025-10-19 11:32:33');
+INSERT INTO `sj_retry_task` VALUES (1300, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:32:33', '', '2025-10-19 11:32:33');
+INSERT INTO `sj_retry_task` VALUES (1301, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:33:33', '', '2025-10-19 11:33:33');
+INSERT INTO `sj_retry_task` VALUES (1302, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:33:33', '', '2025-10-19 11:33:33');
+INSERT INTO `sj_retry_task` VALUES (1303, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:34:33', '', '2025-10-19 11:34:33');
+INSERT INTO `sj_retry_task` VALUES (1304, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:34:33', '', '2025-10-19 11:34:33');
+INSERT INTO `sj_retry_task` VALUES (1305, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:35:33', '', '2025-10-19 11:35:33');
+INSERT INTO `sj_retry_task` VALUES (1306, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:35:33', '', '2025-10-19 11:35:33');
+INSERT INTO `sj_retry_task` VALUES (1307, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:36:34', '', '2025-10-19 11:36:34');
+INSERT INTO `sj_retry_task` VALUES (1308, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:36:34', '', '2025-10-19 11:36:34');
+INSERT INTO `sj_retry_task` VALUES (1309, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:37:33', '', '2025-10-19 11:37:33');
+INSERT INTO `sj_retry_task` VALUES (1310, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:37:33', '', '2025-10-19 11:37:33');
+INSERT INTO `sj_retry_task` VALUES (1311, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:38:33', '', '2025-10-19 11:38:33');
+INSERT INTO `sj_retry_task` VALUES (1312, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:38:33', '', '2025-10-19 11:38:33');
+INSERT INTO `sj_retry_task` VALUES (1313, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:39:33', '', '2025-10-19 11:39:33');
+INSERT INTO `sj_retry_task` VALUES (1314, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:39:33', '', '2025-10-19 11:39:33');
+INSERT INTO `sj_retry_task` VALUES (1315, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:40:33', '', '2025-10-19 11:40:33');
+INSERT INTO `sj_retry_task` VALUES (1316, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:40:33', '', '2025-10-19 11:40:33');
+INSERT INTO `sj_retry_task` VALUES (1317, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:41:33', '', '2025-10-19 11:41:33');
+INSERT INTO `sj_retry_task` VALUES (1318, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:41:33', '', '2025-10-19 11:41:33');
+INSERT INTO `sj_retry_task` VALUES (1319, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:42:33', '', '2025-10-19 11:42:33');
+INSERT INTO `sj_retry_task` VALUES (1320, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:42:33', '', '2025-10-19 11:42:33');
+INSERT INTO `sj_retry_task` VALUES (1321, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:43:33', '', '2025-10-19 11:43:33');
+INSERT INTO `sj_retry_task` VALUES (1322, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:43:33', '', '2025-10-19 11:43:33');
+INSERT INTO `sj_retry_task` VALUES (1323, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:44:33', '', '2025-10-19 11:44:33');
+INSERT INTO `sj_retry_task` VALUES (1324, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:44:33', '', '2025-10-19 11:44:33');
+INSERT INTO `sj_retry_task` VALUES (1325, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:45:33', '', '2025-10-19 11:45:33');
+INSERT INTO `sj_retry_task` VALUES (1326, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:45:33', '', '2025-10-19 11:45:33');
+INSERT INTO `sj_retry_task` VALUES (1327, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:46:33', '', '2025-10-19 11:46:33');
+INSERT INTO `sj_retry_task` VALUES (1328, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:46:33', '', '2025-10-19 11:46:33');
+INSERT INTO `sj_retry_task` VALUES (1329, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:47:34', '', '2025-10-19 11:47:34');
+INSERT INTO `sj_retry_task` VALUES (1330, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:47:34', '', '2025-10-19 11:47:34');
+INSERT INTO `sj_retry_task` VALUES (1331, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:48:33', '', '2025-10-19 11:48:33');
+INSERT INTO `sj_retry_task` VALUES (1332, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:48:33', '', '2025-10-19 11:48:33');
+INSERT INTO `sj_retry_task` VALUES (1333, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:49:33', '', '2025-10-19 11:49:33');
+INSERT INTO `sj_retry_task` VALUES (1334, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:49:33', '', '2025-10-19 11:49:33');
+INSERT INTO `sj_retry_task` VALUES (1335, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:50:33', '', '2025-10-19 11:50:33');
+INSERT INTO `sj_retry_task` VALUES (1336, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:50:33', '', '2025-10-19 11:50:33');
+INSERT INTO `sj_retry_task` VALUES (1337, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:51:33', '', '2025-10-19 11:51:33');
+INSERT INTO `sj_retry_task` VALUES (1338, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:51:33', '', '2025-10-19 11:51:33');
+INSERT INTO `sj_retry_task` VALUES (1339, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:52:33', '', '2025-10-19 11:52:33');
+INSERT INTO `sj_retry_task` VALUES (1340, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:52:33', '', '2025-10-19 11:52:33');
+INSERT INTO `sj_retry_task` VALUES (1341, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:53:33', '', '2025-10-19 11:53:33');
+INSERT INTO `sj_retry_task` VALUES (1342, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:53:33', '', '2025-10-19 11:53:33');
+INSERT INTO `sj_retry_task` VALUES (1343, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:54:33', '', '2025-10-19 11:54:33');
+INSERT INTO `sj_retry_task` VALUES (1344, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:54:33', '', '2025-10-19 11:54:33');
+INSERT INTO `sj_retry_task` VALUES (1345, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:55:33', '', '2025-10-19 11:55:33');
+INSERT INTO `sj_retry_task` VALUES (1346, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:55:33', '', '2025-10-19 11:55:33');
+INSERT INTO `sj_retry_task` VALUES (1347, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:56:33', '', '2025-10-19 11:56:33');
+INSERT INTO `sj_retry_task` VALUES (1348, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:56:33', '', '2025-10-19 11:56:33');
+INSERT INTO `sj_retry_task` VALUES (1349, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:57:33', '', '2025-10-19 11:57:33');
+INSERT INTO `sj_retry_task` VALUES (1350, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:57:33', '', '2025-10-19 11:57:33');
+INSERT INTO `sj_retry_task` VALUES (1351, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:58:33', '', '2025-10-19 11:58:33');
+INSERT INTO `sj_retry_task` VALUES (1352, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:58:33', '', '2025-10-19 11:58:33');
+INSERT INTO `sj_retry_task` VALUES (1353, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 11:59:33', '', '2025-10-19 11:59:33');
+INSERT INTO `sj_retry_task` VALUES (1354, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 11:59:33', '', '2025-10-19 11:59:33');
+INSERT INTO `sj_retry_task` VALUES (1355, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:00:34', '', '2025-10-19 12:00:34');
+INSERT INTO `sj_retry_task` VALUES (1356, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:00:34', '', '2025-10-19 12:00:34');
+INSERT INTO `sj_retry_task` VALUES (1357, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:01:33', '', '2025-10-19 12:01:33');
+INSERT INTO `sj_retry_task` VALUES (1358, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:01:33', '', '2025-10-19 12:01:33');
+INSERT INTO `sj_retry_task` VALUES (1359, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:02:33', '', '2025-10-19 12:02:33');
+INSERT INTO `sj_retry_task` VALUES (1360, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:02:33', '', '2025-10-19 12:02:33');
+INSERT INTO `sj_retry_task` VALUES (1361, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:03:33', '', '2025-10-19 12:03:33');
+INSERT INTO `sj_retry_task` VALUES (1362, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:03:33', '', '2025-10-19 12:03:33');
+INSERT INTO `sj_retry_task` VALUES (1363, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:04:33', '', '2025-10-19 12:04:33');
+INSERT INTO `sj_retry_task` VALUES (1364, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:04:33', '', '2025-10-19 12:04:33');
+INSERT INTO `sj_retry_task` VALUES (1365, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:05:33', '', '2025-10-19 12:05:33');
+INSERT INTO `sj_retry_task` VALUES (1366, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:05:33', '', '2025-10-19 12:05:33');
+INSERT INTO `sj_retry_task` VALUES (1367, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:06:33', '', '2025-10-19 12:06:33');
+INSERT INTO `sj_retry_task` VALUES (1368, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:06:33', '', '2025-10-19 12:06:33');
+INSERT INTO `sj_retry_task` VALUES (1369, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:07:33', '', '2025-10-19 12:07:33');
+INSERT INTO `sj_retry_task` VALUES (1370, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:07:33', '', '2025-10-19 12:07:33');
+INSERT INTO `sj_retry_task` VALUES (1371, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:08:33', '', '2025-10-19 12:08:33');
+INSERT INTO `sj_retry_task` VALUES (1372, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:08:33', '', '2025-10-19 12:08:33');
+INSERT INTO `sj_retry_task` VALUES (1373, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:09:33', '', '2025-10-19 12:09:33');
+INSERT INTO `sj_retry_task` VALUES (1374, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:09:33', '', '2025-10-19 12:09:33');
+INSERT INTO `sj_retry_task` VALUES (1375, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:10:33', '', '2025-10-19 12:10:33');
+INSERT INTO `sj_retry_task` VALUES (1376, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:10:33', '', '2025-10-19 12:10:33');
+INSERT INTO `sj_retry_task` VALUES (1377, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:11:33', '', '2025-10-19 12:11:33');
+INSERT INTO `sj_retry_task` VALUES (1378, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:11:33', '', '2025-10-19 12:11:33');
+INSERT INTO `sj_retry_task` VALUES (1379, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:12:33', '', '2025-10-19 12:12:33');
+INSERT INTO `sj_retry_task` VALUES (1380, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:12:33', '', '2025-10-19 12:12:33');
+INSERT INTO `sj_retry_task` VALUES (1381, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:13:34', '', '2025-10-19 12:13:34');
+INSERT INTO `sj_retry_task` VALUES (1382, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:13:34', '', '2025-10-19 12:13:34');
+INSERT INTO `sj_retry_task` VALUES (1383, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:14:33', '', '2025-10-19 12:14:33');
+INSERT INTO `sj_retry_task` VALUES (1384, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:14:33', '', '2025-10-19 12:14:33');
+INSERT INTO `sj_retry_task` VALUES (1385, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:15:33', '', '2025-10-19 12:15:33');
+INSERT INTO `sj_retry_task` VALUES (1386, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:15:33', '', '2025-10-19 12:15:33');
+INSERT INTO `sj_retry_task` VALUES (1387, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:16:33', '', '2025-10-19 12:16:33');
+INSERT INTO `sj_retry_task` VALUES (1388, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:16:33', '', '2025-10-19 12:16:33');
+INSERT INTO `sj_retry_task` VALUES (1389, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:17:33', '', '2025-10-19 12:17:33');
+INSERT INTO `sj_retry_task` VALUES (1390, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:17:33', '', '2025-10-19 12:17:33');
+INSERT INTO `sj_retry_task` VALUES (1391, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:18:33', '', '2025-10-19 12:18:33');
+INSERT INTO `sj_retry_task` VALUES (1392, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:18:33', '', '2025-10-19 12:18:33');
+INSERT INTO `sj_retry_task` VALUES (1393, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:19:33', '', '2025-10-19 12:19:33');
+INSERT INTO `sj_retry_task` VALUES (1394, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:19:33', '', '2025-10-19 12:19:33');
+INSERT INTO `sj_retry_task` VALUES (1395, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:20:33', '', '2025-10-19 12:20:33');
+INSERT INTO `sj_retry_task` VALUES (1396, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:20:33', '', '2025-10-19 12:20:33');
+INSERT INTO `sj_retry_task` VALUES (1397, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:21:33', '', '2025-10-19 12:21:33');
+INSERT INTO `sj_retry_task` VALUES (1398, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:21:33', '', '2025-10-19 12:21:33');
+INSERT INTO `sj_retry_task` VALUES (1399, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:22:33', '', '2025-10-19 12:22:33');
+INSERT INTO `sj_retry_task` VALUES (1400, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:22:33', '', '2025-10-19 12:22:33');
+INSERT INTO `sj_retry_task` VALUES (1401, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:23:33', '', '2025-10-19 12:23:33');
+INSERT INTO `sj_retry_task` VALUES (1402, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:23:33', '', '2025-10-19 12:23:33');
+INSERT INTO `sj_retry_task` VALUES (1403, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:24:33', '', '2025-10-19 12:24:33');
+INSERT INTO `sj_retry_task` VALUES (1404, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:24:33', '', '2025-10-19 12:24:33');
+INSERT INTO `sj_retry_task` VALUES (1405, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:25:33', '', '2025-10-19 12:25:33');
+INSERT INTO `sj_retry_task` VALUES (1406, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:25:33', '', '2025-10-19 12:25:33');
+INSERT INTO `sj_retry_task` VALUES (1407, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:26:33', '', '2025-10-19 12:26:33');
+INSERT INTO `sj_retry_task` VALUES (1408, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:26:33', '', '2025-10-19 12:26:33');
+INSERT INTO `sj_retry_task` VALUES (1409, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:27:33', '', '2025-10-19 12:27:33');
+INSERT INTO `sj_retry_task` VALUES (1410, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:27:33', '', '2025-10-19 12:27:33');
+INSERT INTO `sj_retry_task` VALUES (1411, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:28:33', '', '2025-10-19 12:28:33');
+INSERT INTO `sj_retry_task` VALUES (1412, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:28:33', '', '2025-10-19 12:28:33');
+INSERT INTO `sj_retry_task` VALUES (1413, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:29:33', '', '2025-10-19 12:29:33');
+INSERT INTO `sj_retry_task` VALUES (1414, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:29:33', '', '2025-10-19 12:29:33');
+INSERT INTO `sj_retry_task` VALUES (1415, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:30:33', '', '2025-10-19 12:30:33');
+INSERT INTO `sj_retry_task` VALUES (1416, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:30:33', '', '2025-10-19 12:30:33');
+INSERT INTO `sj_retry_task` VALUES (1417, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:31:33', '', '2025-10-19 12:31:33');
+INSERT INTO `sj_retry_task` VALUES (1418, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:31:33', '', '2025-10-19 12:31:33');
+INSERT INTO `sj_retry_task` VALUES (1419, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:32:33', '', '2025-10-19 12:32:33');
+INSERT INTO `sj_retry_task` VALUES (1420, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:32:33', '', '2025-10-19 12:32:33');
+INSERT INTO `sj_retry_task` VALUES (1421, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:33:33', '', '2025-10-19 12:33:33');
+INSERT INTO `sj_retry_task` VALUES (1422, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:33:33', '', '2025-10-19 12:33:33');
+INSERT INTO `sj_retry_task` VALUES (1423, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:34:33', '', '2025-10-19 12:34:33');
+INSERT INTO `sj_retry_task` VALUES (1424, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:34:33', '', '2025-10-19 12:34:33');
+INSERT INTO `sj_retry_task` VALUES (1425, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:35:33', '', '2025-10-19 12:35:33');
+INSERT INTO `sj_retry_task` VALUES (1426, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:35:33', '', '2025-10-19 12:35:33');
+INSERT INTO `sj_retry_task` VALUES (1427, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:36:33', '', '2025-10-19 12:36:33');
+INSERT INTO `sj_retry_task` VALUES (1428, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:36:33', '', '2025-10-19 12:36:33');
+INSERT INTO `sj_retry_task` VALUES (1429, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:37:33', '', '2025-10-19 12:37:33');
+INSERT INTO `sj_retry_task` VALUES (1430, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:37:33', '', '2025-10-19 12:37:33');
+INSERT INTO `sj_retry_task` VALUES (1431, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:38:33', '', '2025-10-19 12:38:33');
+INSERT INTO `sj_retry_task` VALUES (1432, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:38:33', '', '2025-10-19 12:38:33');
+INSERT INTO `sj_retry_task` VALUES (1433, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:39:33', '', '2025-10-19 12:39:33');
+INSERT INTO `sj_retry_task` VALUES (1434, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:39:33', '', '2025-10-19 12:39:33');
+INSERT INTO `sj_retry_task` VALUES (1435, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:40:33', '', '2025-10-19 12:40:33');
+INSERT INTO `sj_retry_task` VALUES (1436, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:40:33', '', '2025-10-19 12:40:33');
+INSERT INTO `sj_retry_task` VALUES (1437, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:41:33', '', '2025-10-19 12:41:33');
+INSERT INTO `sj_retry_task` VALUES (1438, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:41:33', '', '2025-10-19 12:41:33');
+INSERT INTO `sj_retry_task` VALUES (1439, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:42:33', '', '2025-10-19 12:42:33');
+INSERT INTO `sj_retry_task` VALUES (1440, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:42:33', '', '2025-10-19 12:42:33');
+INSERT INTO `sj_retry_task` VALUES (1441, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:43:33', '', '2025-10-19 12:43:33');
+INSERT INTO `sj_retry_task` VALUES (1442, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:43:33', '', '2025-10-19 12:43:33');
+INSERT INTO `sj_retry_task` VALUES (1443, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:44:33', '', '2025-10-19 12:44:33');
+INSERT INTO `sj_retry_task` VALUES (1444, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:44:33', '', '2025-10-19 12:44:33');
+INSERT INTO `sj_retry_task` VALUES (1445, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:45:33', '', '2025-10-19 12:45:33');
+INSERT INTO `sj_retry_task` VALUES (1446, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:45:33', '', '2025-10-19 12:45:33');
+INSERT INTO `sj_retry_task` VALUES (1447, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:46:33', '', '2025-10-19 12:46:33');
+INSERT INTO `sj_retry_task` VALUES (1448, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:46:33', '', '2025-10-19 12:46:33');
+INSERT INTO `sj_retry_task` VALUES (1449, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:47:33', '', '2025-10-19 12:47:33');
+INSERT INTO `sj_retry_task` VALUES (1450, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:47:33', '', '2025-10-19 12:47:33');
+INSERT INTO `sj_retry_task` VALUES (1451, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:48:33', '', '2025-10-19 12:48:33');
+INSERT INTO `sj_retry_task` VALUES (1452, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:48:33', '', '2025-10-19 12:48:33');
+INSERT INTO `sj_retry_task` VALUES (1453, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:49:33', '', '2025-10-19 12:49:33');
+INSERT INTO `sj_retry_task` VALUES (1454, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:49:33', '', '2025-10-19 12:49:33');
+INSERT INTO `sj_retry_task` VALUES (1455, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:50:34', '', '2025-10-19 12:50:34');
+INSERT INTO `sj_retry_task` VALUES (1456, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:50:34', '', '2025-10-19 12:50:34');
+INSERT INTO `sj_retry_task` VALUES (1457, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:51:33', '', '2025-10-19 12:51:33');
+INSERT INTO `sj_retry_task` VALUES (1458, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:51:33', '', '2025-10-19 12:51:33');
+INSERT INTO `sj_retry_task` VALUES (1459, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:52:33', '', '2025-10-19 12:52:33');
+INSERT INTO `sj_retry_task` VALUES (1460, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:52:33', '', '2025-10-19 12:52:33');
+INSERT INTO `sj_retry_task` VALUES (1461, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:53:33', '', '2025-10-19 12:53:33');
+INSERT INTO `sj_retry_task` VALUES (1462, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:53:33', '', '2025-10-19 12:53:33');
+INSERT INTO `sj_retry_task` VALUES (1463, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:54:33', '', '2025-10-19 12:54:33');
+INSERT INTO `sj_retry_task` VALUES (1464, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:54:33', '', '2025-10-19 12:54:33');
+INSERT INTO `sj_retry_task` VALUES (1465, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:55:33', '', '2025-10-19 12:55:33');
+INSERT INTO `sj_retry_task` VALUES (1466, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:55:33', '', '2025-10-19 12:55:33');
+INSERT INTO `sj_retry_task` VALUES (1467, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:56:33', '', '2025-10-19 12:56:33');
+INSERT INTO `sj_retry_task` VALUES (1468, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:56:33', '', '2025-10-19 12:56:33');
+INSERT INTO `sj_retry_task` VALUES (1469, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:57:33', '', '2025-10-19 12:57:33');
+INSERT INTO `sj_retry_task` VALUES (1470, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:57:33', '', '2025-10-19 12:57:33');
+INSERT INTO `sj_retry_task` VALUES (1471, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:58:33', '', '2025-10-19 12:58:33');
+INSERT INTO `sj_retry_task` VALUES (1472, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:58:33', '', '2025-10-19 12:58:33');
+INSERT INTO `sj_retry_task` VALUES (1473, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 12:59:33', '', '2025-10-19 12:59:33');
+INSERT INTO `sj_retry_task` VALUES (1474, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 12:59:33', '', '2025-10-19 12:59:33');
+INSERT INTO `sj_retry_task` VALUES (1475, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:00:33', '', '2025-10-19 13:00:33');
+INSERT INTO `sj_retry_task` VALUES (1476, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:00:33', '', '2025-10-19 13:00:33');
+INSERT INTO `sj_retry_task` VALUES (1477, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:01:33', '', '2025-10-19 13:01:33');
+INSERT INTO `sj_retry_task` VALUES (1478, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:01:33', '', '2025-10-19 13:01:33');
+INSERT INTO `sj_retry_task` VALUES (1479, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:02:33', '', '2025-10-19 13:02:33');
+INSERT INTO `sj_retry_task` VALUES (1480, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:02:33', '', '2025-10-19 13:02:33');
+INSERT INTO `sj_retry_task` VALUES (1481, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:03:33', '', '2025-10-19 13:03:33');
+INSERT INTO `sj_retry_task` VALUES (1482, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:03:33', '', '2025-10-19 13:03:33');
+INSERT INTO `sj_retry_task` VALUES (1483, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:04:33', '', '2025-10-19 13:04:33');
+INSERT INTO `sj_retry_task` VALUES (1484, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:04:33', '', '2025-10-19 13:04:33');
+INSERT INTO `sj_retry_task` VALUES (1485, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:05:34', '', '2025-10-19 13:05:34');
+INSERT INTO `sj_retry_task` VALUES (1486, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:05:34', '', '2025-10-19 13:05:34');
+INSERT INTO `sj_retry_task` VALUES (1487, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:06:33', '', '2025-10-19 13:06:33');
+INSERT INTO `sj_retry_task` VALUES (1488, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:06:33', '', '2025-10-19 13:06:33');
+INSERT INTO `sj_retry_task` VALUES (1489, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:07:33', '', '2025-10-19 13:07:33');
+INSERT INTO `sj_retry_task` VALUES (1490, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:07:33', '', '2025-10-19 13:07:33');
+INSERT INTO `sj_retry_task` VALUES (1491, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:08:33', '', '2025-10-19 13:08:33');
+INSERT INTO `sj_retry_task` VALUES (1492, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:08:33', '', '2025-10-19 13:08:33');
+INSERT INTO `sj_retry_task` VALUES (1493, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:09:33', '', '2025-10-19 13:09:33');
+INSERT INTO `sj_retry_task` VALUES (1494, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:09:33', '', '2025-10-19 13:09:33');
+INSERT INTO `sj_retry_task` VALUES (1495, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:10:33', '', '2025-10-19 13:10:33');
+INSERT INTO `sj_retry_task` VALUES (1496, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:10:33', '', '2025-10-19 13:10:33');
+INSERT INTO `sj_retry_task` VALUES (1497, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:11:33', '', '2025-10-19 13:11:33');
+INSERT INTO `sj_retry_task` VALUES (1498, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:11:33', '', '2025-10-19 13:11:33');
+INSERT INTO `sj_retry_task` VALUES (1499, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:12:33', '', '2025-10-19 13:12:33');
+INSERT INTO `sj_retry_task` VALUES (1500, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:12:33', '', '2025-10-19 13:12:33');
+INSERT INTO `sj_retry_task` VALUES (1501, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:13:33', '', '2025-10-19 13:13:33');
+INSERT INTO `sj_retry_task` VALUES (1502, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:13:33', '', '2025-10-19 13:13:33');
+INSERT INTO `sj_retry_task` VALUES (1503, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:14:33', '', '2025-10-19 13:14:33');
+INSERT INTO `sj_retry_task` VALUES (1504, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:14:33', '', '2025-10-19 13:14:33');
+INSERT INTO `sj_retry_task` VALUES (1505, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:15:33', '', '2025-10-19 13:15:33');
+INSERT INTO `sj_retry_task` VALUES (1506, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:15:33', '', '2025-10-19 13:15:33');
+INSERT INTO `sj_retry_task` VALUES (1507, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:16:33', '', '2025-10-19 13:16:33');
+INSERT INTO `sj_retry_task` VALUES (1508, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:16:33', '', '2025-10-19 13:16:33');
+INSERT INTO `sj_retry_task` VALUES (1509, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:17:33', '', '2025-10-19 13:17:33');
+INSERT INTO `sj_retry_task` VALUES (1510, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:17:33', '', '2025-10-19 13:17:33');
+INSERT INTO `sj_retry_task` VALUES (1511, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:18:33', '', '2025-10-19 13:18:33');
+INSERT INTO `sj_retry_task` VALUES (1512, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:18:33', '', '2025-10-19 13:18:33');
+INSERT INTO `sj_retry_task` VALUES (1513, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:19:33', '', '2025-10-19 13:19:33');
+INSERT INTO `sj_retry_task` VALUES (1514, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:19:33', '', '2025-10-19 13:19:33');
+INSERT INTO `sj_retry_task` VALUES (1515, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:20:33', '', '2025-10-19 13:20:33');
+INSERT INTO `sj_retry_task` VALUES (1516, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:20:33', '', '2025-10-19 13:20:33');
+INSERT INTO `sj_retry_task` VALUES (1517, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:21:33', '', '2025-10-19 13:21:33');
+INSERT INTO `sj_retry_task` VALUES (1518, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:21:33', '', '2025-10-19 13:21:33');
+INSERT INTO `sj_retry_task` VALUES (1519, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:22:33', '', '2025-10-19 13:22:33');
+INSERT INTO `sj_retry_task` VALUES (1520, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:22:33', '', '2025-10-19 13:22:33');
+INSERT INTO `sj_retry_task` VALUES (1521, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:23:33', '', '2025-10-19 13:23:33');
+INSERT INTO `sj_retry_task` VALUES (1522, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:23:33', '', '2025-10-19 13:23:33');
+INSERT INTO `sj_retry_task` VALUES (1523, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:24:33', '', '2025-10-19 13:24:33');
+INSERT INTO `sj_retry_task` VALUES (1524, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:24:33', '', '2025-10-19 13:24:33');
+INSERT INTO `sj_retry_task` VALUES (1525, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:25:33', '', '2025-10-19 13:25:33');
+INSERT INTO `sj_retry_task` VALUES (1526, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:25:33', '', '2025-10-19 13:25:33');
+INSERT INTO `sj_retry_task` VALUES (1527, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:26:33', '', '2025-10-19 13:26:33');
+INSERT INTO `sj_retry_task` VALUES (1528, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:26:33', '', '2025-10-19 13:26:33');
+INSERT INTO `sj_retry_task` VALUES (1529, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:27:34', '', '2025-10-19 13:27:34');
+INSERT INTO `sj_retry_task` VALUES (1530, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:27:34', '', '2025-10-19 13:27:34');
+INSERT INTO `sj_retry_task` VALUES (1531, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:28:33', '', '2025-10-19 13:28:33');
+INSERT INTO `sj_retry_task` VALUES (1532, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:28:33', '', '2025-10-19 13:28:33');
+INSERT INTO `sj_retry_task` VALUES (1533, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:29:33', '', '2025-10-19 13:29:33');
+INSERT INTO `sj_retry_task` VALUES (1534, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:29:33', '', '2025-10-19 13:29:33');
+INSERT INTO `sj_retry_task` VALUES (1535, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:30:33', '', '2025-10-19 13:30:33');
+INSERT INTO `sj_retry_task` VALUES (1536, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:30:33', '', '2025-10-19 13:30:33');
+INSERT INTO `sj_retry_task` VALUES (1537, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:31:33', '', '2025-10-19 13:31:33');
+INSERT INTO `sj_retry_task` VALUES (1538, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:31:33', '', '2025-10-19 13:31:33');
+INSERT INTO `sj_retry_task` VALUES (1539, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:32:33', '', '2025-10-19 13:32:33');
+INSERT INTO `sj_retry_task` VALUES (1540, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:32:33', '', '2025-10-19 13:32:33');
+INSERT INTO `sj_retry_task` VALUES (1541, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:33:33', '', '2025-10-19 13:33:33');
+INSERT INTO `sj_retry_task` VALUES (1542, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:33:33', '', '2025-10-19 13:33:33');
+INSERT INTO `sj_retry_task` VALUES (1543, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:34:33', '', '2025-10-19 13:34:33');
+INSERT INTO `sj_retry_task` VALUES (1544, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:34:33', '', '2025-10-19 13:34:33');
+INSERT INTO `sj_retry_task` VALUES (1545, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:35:33', '', '2025-10-19 13:35:33');
+INSERT INTO `sj_retry_task` VALUES (1546, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:35:33', '', '2025-10-19 13:35:33');
+INSERT INTO `sj_retry_task` VALUES (1547, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:36:33', '', '2025-10-19 13:36:33');
+INSERT INTO `sj_retry_task` VALUES (1548, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:36:33', '', '2025-10-19 13:36:33');
+INSERT INTO `sj_retry_task` VALUES (1549, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:37:33', '', '2025-10-19 13:37:33');
+INSERT INTO `sj_retry_task` VALUES (1550, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:37:33', '', '2025-10-19 13:37:33');
+INSERT INTO `sj_retry_task` VALUES (1551, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:38:33', '', '2025-10-19 13:38:33');
+INSERT INTO `sj_retry_task` VALUES (1552, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:38:33', '', '2025-10-19 13:38:33');
+INSERT INTO `sj_retry_task` VALUES (1553, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:39:33', '', '2025-10-19 13:39:33');
+INSERT INTO `sj_retry_task` VALUES (1554, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:39:33', '', '2025-10-19 13:39:33');
+INSERT INTO `sj_retry_task` VALUES (1555, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:40:33', '', '2025-10-19 13:40:33');
+INSERT INTO `sj_retry_task` VALUES (1556, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:40:33', '', '2025-10-19 13:40:33');
+INSERT INTO `sj_retry_task` VALUES (1557, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:41:33', '', '2025-10-19 13:41:33');
+INSERT INTO `sj_retry_task` VALUES (1558, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:41:33', '', '2025-10-19 13:41:33');
+INSERT INTO `sj_retry_task` VALUES (1559, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:42:34', '', '2025-10-19 13:42:34');
+INSERT INTO `sj_retry_task` VALUES (1560, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:42:34', '', '2025-10-19 13:42:34');
+INSERT INTO `sj_retry_task` VALUES (1561, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:43:33', '', '2025-10-19 13:43:33');
+INSERT INTO `sj_retry_task` VALUES (1562, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:43:33', '', '2025-10-19 13:43:33');
+INSERT INTO `sj_retry_task` VALUES (1563, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:44:33', '', '2025-10-19 13:44:33');
+INSERT INTO `sj_retry_task` VALUES (1564, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:44:33', '', '2025-10-19 13:44:33');
+INSERT INTO `sj_retry_task` VALUES (1565, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:45:33', '', '2025-10-19 13:45:33');
+INSERT INTO `sj_retry_task` VALUES (1566, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:45:33', '', '2025-10-19 13:45:33');
+INSERT INTO `sj_retry_task` VALUES (1567, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:46:33', '', '2025-10-19 13:46:33');
+INSERT INTO `sj_retry_task` VALUES (1568, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:46:33', '', '2025-10-19 13:46:33');
+INSERT INTO `sj_retry_task` VALUES (1569, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:47:33', '', '2025-10-19 13:47:33');
+INSERT INTO `sj_retry_task` VALUES (1570, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:47:33', '', '2025-10-19 13:47:33');
+INSERT INTO `sj_retry_task` VALUES (1571, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:48:33', '', '2025-10-19 13:48:33');
+INSERT INTO `sj_retry_task` VALUES (1572, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:48:33', '', '2025-10-19 13:48:33');
+INSERT INTO `sj_retry_task` VALUES (1573, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:49:33', '', '2025-10-19 13:49:33');
+INSERT INTO `sj_retry_task` VALUES (1574, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:49:33', '', '2025-10-19 13:49:33');
+INSERT INTO `sj_retry_task` VALUES (1575, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:50:33', '', '2025-10-19 13:50:33');
+INSERT INTO `sj_retry_task` VALUES (1576, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:50:33', '', '2025-10-19 13:50:33');
+INSERT INTO `sj_retry_task` VALUES (1577, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:51:33', '', '2025-10-19 13:51:33');
+INSERT INTO `sj_retry_task` VALUES (1578, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:51:33', '', '2025-10-19 13:51:33');
+INSERT INTO `sj_retry_task` VALUES (1579, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:52:33', '', '2025-10-19 13:52:33');
+INSERT INTO `sj_retry_task` VALUES (1580, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:52:33', '', '2025-10-19 13:52:33');
+INSERT INTO `sj_retry_task` VALUES (1581, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:53:33', '', '2025-10-19 13:53:33');
+INSERT INTO `sj_retry_task` VALUES (1582, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:53:33', '', '2025-10-19 13:53:33');
+INSERT INTO `sj_retry_task` VALUES (1583, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:54:33', '', '2025-10-19 13:54:33');
+INSERT INTO `sj_retry_task` VALUES (1584, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:54:33', '', '2025-10-19 13:54:33');
+INSERT INTO `sj_retry_task` VALUES (1585, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:55:33', '', '2025-10-19 13:55:33');
+INSERT INTO `sj_retry_task` VALUES (1586, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:55:33', '', '2025-10-19 13:55:33');
+INSERT INTO `sj_retry_task` VALUES (1587, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:56:33', '', '2025-10-19 13:56:33');
+INSERT INTO `sj_retry_task` VALUES (1588, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:56:33', '', '2025-10-19 13:56:33');
+INSERT INTO `sj_retry_task` VALUES (1589, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:57:33', '', '2025-10-19 13:57:33');
+INSERT INTO `sj_retry_task` VALUES (1590, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:57:33', '', '2025-10-19 13:57:33');
+INSERT INTO `sj_retry_task` VALUES (1591, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:58:33', '', '2025-10-19 13:58:33');
+INSERT INTO `sj_retry_task` VALUES (1592, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:58:33', '', '2025-10-19 13:58:33');
+INSERT INTO `sj_retry_task` VALUES (1593, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 13:59:33', '', '2025-10-19 13:59:33');
+INSERT INTO `sj_retry_task` VALUES (1594, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 13:59:33', '', '2025-10-19 13:59:33');
+INSERT INTO `sj_retry_task` VALUES (1595, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:00:33', '', '2025-10-19 14:00:33');
+INSERT INTO `sj_retry_task` VALUES (1596, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:00:33', '', '2025-10-19 14:00:33');
+INSERT INTO `sj_retry_task` VALUES (1597, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:01:33', '', '2025-10-19 14:01:33');
+INSERT INTO `sj_retry_task` VALUES (1598, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:01:33', '', '2025-10-19 14:01:33');
+INSERT INTO `sj_retry_task` VALUES (1599, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:02:33', '', '2025-10-19 14:02:33');
+INSERT INTO `sj_retry_task` VALUES (1600, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:02:33', '', '2025-10-19 14:02:33');
+INSERT INTO `sj_retry_task` VALUES (1601, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:03:33', '', '2025-10-19 14:03:33');
+INSERT INTO `sj_retry_task` VALUES (1602, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:03:33', '', '2025-10-19 14:03:33');
+INSERT INTO `sj_retry_task` VALUES (1603, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:04:33', '', '2025-10-19 14:04:33');
+INSERT INTO `sj_retry_task` VALUES (1604, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:04:33', '', '2025-10-19 14:04:33');
+INSERT INTO `sj_retry_task` VALUES (1605, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:05:33', '', '2025-10-19 14:05:33');
+INSERT INTO `sj_retry_task` VALUES (1606, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:05:33', '', '2025-10-19 14:05:33');
+INSERT INTO `sj_retry_task` VALUES (1607, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:06:33', '', '2025-10-19 14:06:33');
+INSERT INTO `sj_retry_task` VALUES (1608, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:06:33', '', '2025-10-19 14:06:33');
+INSERT INTO `sj_retry_task` VALUES (1609, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:07:33', '', '2025-10-19 14:07:33');
+INSERT INTO `sj_retry_task` VALUES (1610, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:07:33', '', '2025-10-19 14:07:33');
+INSERT INTO `sj_retry_task` VALUES (1611, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:08:33', '', '2025-10-19 14:08:33');
+INSERT INTO `sj_retry_task` VALUES (1612, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:08:33', '', '2025-10-19 14:08:33');
+INSERT INTO `sj_retry_task` VALUES (1613, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:09:33', '', '2025-10-19 14:09:33');
+INSERT INTO `sj_retry_task` VALUES (1614, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:09:33', '', '2025-10-19 14:09:33');
+INSERT INTO `sj_retry_task` VALUES (1615, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:10:33', '', '2025-10-19 14:10:33');
+INSERT INTO `sj_retry_task` VALUES (1616, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:10:33', '', '2025-10-19 14:10:33');
+INSERT INTO `sj_retry_task` VALUES (1617, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:11:33', '', '2025-10-19 14:11:33');
+INSERT INTO `sj_retry_task` VALUES (1618, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:11:33', '', '2025-10-19 14:11:33');
+INSERT INTO `sj_retry_task` VALUES (1619, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:12:33', '', '2025-10-19 14:12:33');
+INSERT INTO `sj_retry_task` VALUES (1620, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:12:33', '', '2025-10-19 14:12:33');
+INSERT INTO `sj_retry_task` VALUES (1621, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:13:33', '', '2025-10-19 14:13:33');
+INSERT INTO `sj_retry_task` VALUES (1622, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:13:33', '', '2025-10-19 14:13:33');
+INSERT INTO `sj_retry_task` VALUES (1623, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:14:33', '', '2025-10-19 14:14:33');
+INSERT INTO `sj_retry_task` VALUES (1624, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:14:33', '', '2025-10-19 14:14:33');
+INSERT INTO `sj_retry_task` VALUES (1625, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:15:33', '', '2025-10-19 14:15:33');
+INSERT INTO `sj_retry_task` VALUES (1626, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:15:33', '', '2025-10-19 14:15:33');
+INSERT INTO `sj_retry_task` VALUES (1627, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:16:33', '', '2025-10-19 14:16:33');
+INSERT INTO `sj_retry_task` VALUES (1628, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:16:33', '', '2025-10-19 14:16:33');
+INSERT INTO `sj_retry_task` VALUES (1629, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:17:33', '', '2025-10-19 14:17:33');
+INSERT INTO `sj_retry_task` VALUES (1630, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:17:33', '', '2025-10-19 14:17:33');
+INSERT INTO `sj_retry_task` VALUES (1631, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:18:33', '', '2025-10-19 14:18:33');
+INSERT INTO `sj_retry_task` VALUES (1632, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:18:33', '', '2025-10-19 14:18:33');
+INSERT INTO `sj_retry_task` VALUES (1633, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:19:33', '', '2025-10-19 14:19:33');
+INSERT INTO `sj_retry_task` VALUES (1634, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:19:33', '', '2025-10-19 14:19:33');
+INSERT INTO `sj_retry_task` VALUES (1635, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:20:33', '', '2025-10-19 14:20:33');
+INSERT INTO `sj_retry_task` VALUES (1636, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:20:33', '', '2025-10-19 14:20:33');
+INSERT INTO `sj_retry_task` VALUES (1637, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:21:33', '', '2025-10-19 14:21:33');
+INSERT INTO `sj_retry_task` VALUES (1638, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:21:33', '', '2025-10-19 14:21:33');
+INSERT INTO `sj_retry_task` VALUES (1639, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:22:33', '', '2025-10-19 14:22:33');
+INSERT INTO `sj_retry_task` VALUES (1640, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:22:33', '', '2025-10-19 14:22:33');
+INSERT INTO `sj_retry_task` VALUES (1641, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:23:33', '', '2025-10-19 14:23:33');
+INSERT INTO `sj_retry_task` VALUES (1642, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:23:33', '', '2025-10-19 14:23:33');
+INSERT INTO `sj_retry_task` VALUES (1643, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:24:33', '', '2025-10-19 14:24:33');
+INSERT INTO `sj_retry_task` VALUES (1644, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:24:33', '', '2025-10-19 14:24:33');
+INSERT INTO `sj_retry_task` VALUES (1645, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:25:33', '', '2025-10-19 14:25:33');
+INSERT INTO `sj_retry_task` VALUES (1646, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:25:33', '', '2025-10-19 14:25:33');
+INSERT INTO `sj_retry_task` VALUES (1647, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:26:33', '', '2025-10-19 14:26:33');
+INSERT INTO `sj_retry_task` VALUES (1648, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:26:33', '', '2025-10-19 14:26:33');
+INSERT INTO `sj_retry_task` VALUES (1649, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:27:33', '', '2025-10-19 14:27:33');
+INSERT INTO `sj_retry_task` VALUES (1650, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:27:33', '', '2025-10-19 14:27:33');
+INSERT INTO `sj_retry_task` VALUES (1651, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:28:33', '', '2025-10-19 14:28:33');
+INSERT INTO `sj_retry_task` VALUES (1652, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:28:33', '', '2025-10-19 14:28:33');
+INSERT INTO `sj_retry_task` VALUES (1653, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:29:34', '', '2025-10-19 14:29:34');
+INSERT INTO `sj_retry_task` VALUES (1654, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:29:34', '', '2025-10-19 14:29:34');
+INSERT INTO `sj_retry_task` VALUES (1655, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:30:33', '', '2025-10-19 14:30:33');
+INSERT INTO `sj_retry_task` VALUES (1656, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:30:33', '', '2025-10-19 14:30:33');
+INSERT INTO `sj_retry_task` VALUES (1657, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:31:33', '', '2025-10-19 14:31:33');
+INSERT INTO `sj_retry_task` VALUES (1658, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:31:33', '', '2025-10-19 14:31:33');
+INSERT INTO `sj_retry_task` VALUES (1659, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:32:33', '', '2025-10-19 14:32:33');
+INSERT INTO `sj_retry_task` VALUES (1660, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:32:33', '', '2025-10-19 14:32:33');
+INSERT INTO `sj_retry_task` VALUES (1661, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:33:33', '', '2025-10-19 14:33:33');
+INSERT INTO `sj_retry_task` VALUES (1662, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:33:33', '', '2025-10-19 14:33:33');
+INSERT INTO `sj_retry_task` VALUES (1663, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:34:33', '', '2025-10-19 14:34:33');
+INSERT INTO `sj_retry_task` VALUES (1664, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:34:33', '', '2025-10-19 14:34:33');
+INSERT INTO `sj_retry_task` VALUES (1665, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:35:33', '', '2025-10-19 14:35:33');
+INSERT INTO `sj_retry_task` VALUES (1666, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:35:33', '', '2025-10-19 14:35:33');
+INSERT INTO `sj_retry_task` VALUES (1667, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:36:33', '', '2025-10-19 14:36:33');
+INSERT INTO `sj_retry_task` VALUES (1668, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:36:33', '', '2025-10-19 14:36:33');
+INSERT INTO `sj_retry_task` VALUES (1669, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:37:33', '', '2025-10-19 14:37:33');
+INSERT INTO `sj_retry_task` VALUES (1670, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:37:33', '', '2025-10-19 14:37:33');
+INSERT INTO `sj_retry_task` VALUES (1671, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:38:33', '', '2025-10-19 14:38:33');
+INSERT INTO `sj_retry_task` VALUES (1672, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:38:33', '', '2025-10-19 14:38:33');
+INSERT INTO `sj_retry_task` VALUES (1673, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:39:33', '', '2025-10-19 14:39:33');
+INSERT INTO `sj_retry_task` VALUES (1674, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:39:33', '', '2025-10-19 14:39:33');
+INSERT INTO `sj_retry_task` VALUES (1675, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:40:33', '', '2025-10-19 14:40:33');
+INSERT INTO `sj_retry_task` VALUES (1676, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:40:33', '', '2025-10-19 14:40:33');
+INSERT INTO `sj_retry_task` VALUES (1677, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:41:33', '', '2025-10-19 14:41:33');
+INSERT INTO `sj_retry_task` VALUES (1678, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:41:33', '', '2025-10-19 14:41:33');
+INSERT INTO `sj_retry_task` VALUES (1679, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:42:33', '', '2025-10-19 14:42:33');
+INSERT INTO `sj_retry_task` VALUES (1680, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:42:33', '', '2025-10-19 14:42:33');
+INSERT INTO `sj_retry_task` VALUES (1681, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:43:33', '', '2025-10-19 14:43:33');
+INSERT INTO `sj_retry_task` VALUES (1682, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:43:33', '', '2025-10-19 14:43:33');
+INSERT INTO `sj_retry_task` VALUES (1683, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:44:33', '', '2025-10-19 14:44:33');
+INSERT INTO `sj_retry_task` VALUES (1684, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:44:33', '', '2025-10-19 14:44:33');
+INSERT INTO `sj_retry_task` VALUES (1685, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:45:33', '', '2025-10-19 14:45:33');
+INSERT INTO `sj_retry_task` VALUES (1686, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:45:33', '', '2025-10-19 14:45:33');
+INSERT INTO `sj_retry_task` VALUES (1687, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:46:33', '', '2025-10-19 14:46:33');
+INSERT INTO `sj_retry_task` VALUES (1688, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:46:33', '', '2025-10-19 14:46:33');
+INSERT INTO `sj_retry_task` VALUES (1689, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:47:33', '', '2025-10-19 14:47:33');
+INSERT INTO `sj_retry_task` VALUES (1690, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:47:33', '', '2025-10-19 14:47:33');
+INSERT INTO `sj_retry_task` VALUES (1691, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:48:33', '', '2025-10-19 14:48:33');
+INSERT INTO `sj_retry_task` VALUES (1692, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:48:33', '', '2025-10-19 14:48:33');
+INSERT INTO `sj_retry_task` VALUES (1693, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:49:33', '', '2025-10-19 14:49:33');
+INSERT INTO `sj_retry_task` VALUES (1694, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:49:33', '', '2025-10-19 14:49:33');
+INSERT INTO `sj_retry_task` VALUES (1695, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:50:33', '', '2025-10-19 14:50:33');
+INSERT INTO `sj_retry_task` VALUES (1696, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:50:33', '', '2025-10-19 14:50:33');
+INSERT INTO `sj_retry_task` VALUES (1697, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:51:33', '', '2025-10-19 14:51:33');
+INSERT INTO `sj_retry_task` VALUES (1698, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:51:33', '', '2025-10-19 14:51:33');
+INSERT INTO `sj_retry_task` VALUES (1699, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:52:33', '', '2025-10-19 14:52:33');
+INSERT INTO `sj_retry_task` VALUES (1700, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:52:33', '', '2025-10-19 14:52:33');
+INSERT INTO `sj_retry_task` VALUES (1701, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:53:33', '', '2025-10-19 14:53:33');
+INSERT INTO `sj_retry_task` VALUES (1702, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:53:33', '', '2025-10-19 14:53:33');
+INSERT INTO `sj_retry_task` VALUES (1703, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:54:33', '', '2025-10-19 14:54:33');
+INSERT INTO `sj_retry_task` VALUES (1704, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:54:33', '', '2025-10-19 14:54:33');
+INSERT INTO `sj_retry_task` VALUES (1705, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:55:33', '', '2025-10-19 14:55:33');
+INSERT INTO `sj_retry_task` VALUES (1706, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:55:33', '', '2025-10-19 14:55:33');
+INSERT INTO `sj_retry_task` VALUES (1707, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:56:33', '', '2025-10-19 14:56:33');
+INSERT INTO `sj_retry_task` VALUES (1708, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:56:33', '', '2025-10-19 14:56:33');
+INSERT INTO `sj_retry_task` VALUES (1709, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:57:33', '', '2025-10-19 14:57:33');
+INSERT INTO `sj_retry_task` VALUES (1710, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:57:33', '', '2025-10-19 14:57:33');
+INSERT INTO `sj_retry_task` VALUES (1711, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:58:33', '', '2025-10-19 14:58:33');
+INSERT INTO `sj_retry_task` VALUES (1712, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:58:33', '', '2025-10-19 14:58:33');
+INSERT INTO `sj_retry_task` VALUES (1713, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 14:59:33', '', '2025-10-19 14:59:33');
+INSERT INTO `sj_retry_task` VALUES (1714, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 14:59:33', '', '2025-10-19 14:59:33');
+INSERT INTO `sj_retry_task` VALUES (1715, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:00:33', '', '2025-10-19 15:00:33');
+INSERT INTO `sj_retry_task` VALUES (1716, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:00:33', '', '2025-10-19 15:00:33');
+INSERT INTO `sj_retry_task` VALUES (1717, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:01:33', '', '2025-10-19 15:01:33');
+INSERT INTO `sj_retry_task` VALUES (1718, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:01:33', '', '2025-10-19 15:01:33');
+INSERT INTO `sj_retry_task` VALUES (1719, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:02:33', '', '2025-10-19 15:02:33');
+INSERT INTO `sj_retry_task` VALUES (1720, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:02:33', '', '2025-10-19 15:02:33');
+INSERT INTO `sj_retry_task` VALUES (1721, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:03:33', '', '2025-10-19 15:03:33');
+INSERT INTO `sj_retry_task` VALUES (1722, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:03:33', '', '2025-10-19 15:03:33');
+INSERT INTO `sj_retry_task` VALUES (1723, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:04:33', '', '2025-10-19 15:04:33');
+INSERT INTO `sj_retry_task` VALUES (1724, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:04:33', '', '2025-10-19 15:04:33');
+INSERT INTO `sj_retry_task` VALUES (1725, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:05:33', '', '2025-10-19 15:05:33');
+INSERT INTO `sj_retry_task` VALUES (1726, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:05:33', '', '2025-10-19 15:05:33');
+INSERT INTO `sj_retry_task` VALUES (1727, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:06:33', '', '2025-10-19 15:06:33');
+INSERT INTO `sj_retry_task` VALUES (1728, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:06:33', '', '2025-10-19 15:06:33');
+INSERT INTO `sj_retry_task` VALUES (1729, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:07:33', '', '2025-10-19 15:07:33');
+INSERT INTO `sj_retry_task` VALUES (1730, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:07:33', '', '2025-10-19 15:07:33');
+INSERT INTO `sj_retry_task` VALUES (1731, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:08:33', '', '2025-10-19 15:08:33');
+INSERT INTO `sj_retry_task` VALUES (1732, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:08:33', '', '2025-10-19 15:08:33');
+INSERT INTO `sj_retry_task` VALUES (1733, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:09:33', '', '2025-10-19 15:09:33');
+INSERT INTO `sj_retry_task` VALUES (1734, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:09:33', '', '2025-10-19 15:09:33');
+INSERT INTO `sj_retry_task` VALUES (1735, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:10:33', '', '2025-10-19 15:10:33');
+INSERT INTO `sj_retry_task` VALUES (1736, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:10:33', '', '2025-10-19 15:10:33');
+INSERT INTO `sj_retry_task` VALUES (1737, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:11:33', '', '2025-10-19 15:11:33');
+INSERT INTO `sj_retry_task` VALUES (1738, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:11:33', '', '2025-10-19 15:11:33');
+INSERT INTO `sj_retry_task` VALUES (1739, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:12:33', '', '2025-10-19 15:12:33');
+INSERT INTO `sj_retry_task` VALUES (1740, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:12:33', '', '2025-10-19 15:12:33');
+INSERT INTO `sj_retry_task` VALUES (1741, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:13:33', '', '2025-10-19 15:13:33');
+INSERT INTO `sj_retry_task` VALUES (1742, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:13:33', '', '2025-10-19 15:13:33');
+INSERT INTO `sj_retry_task` VALUES (1743, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:14:33', '', '2025-10-19 15:14:33');
+INSERT INTO `sj_retry_task` VALUES (1744, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:14:33', '', '2025-10-19 15:14:33');
+INSERT INTO `sj_retry_task` VALUES (1745, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:15:33', '', '2025-10-19 15:15:33');
+INSERT INTO `sj_retry_task` VALUES (1746, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:15:33', '', '2025-10-19 15:15:33');
+INSERT INTO `sj_retry_task` VALUES (1747, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:16:33', '', '2025-10-19 15:16:33');
+INSERT INTO `sj_retry_task` VALUES (1748, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:16:33', '', '2025-10-19 15:16:33');
+INSERT INTO `sj_retry_task` VALUES (1749, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:17:33', '', '2025-10-19 15:17:33');
+INSERT INTO `sj_retry_task` VALUES (1750, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:17:33', '', '2025-10-19 15:17:33');
+INSERT INTO `sj_retry_task` VALUES (1751, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:18:33', '', '2025-10-19 15:18:33');
+INSERT INTO `sj_retry_task` VALUES (1752, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:18:33', '', '2025-10-19 15:18:33');
+INSERT INTO `sj_retry_task` VALUES (1753, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:19:33', '', '2025-10-19 15:19:33');
+INSERT INTO `sj_retry_task` VALUES (1754, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:19:33', '', '2025-10-19 15:19:33');
+INSERT INTO `sj_retry_task` VALUES (1755, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:20:33', '', '2025-10-19 15:20:33');
+INSERT INTO `sj_retry_task` VALUES (1756, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:20:33', '', '2025-10-19 15:20:33');
+INSERT INTO `sj_retry_task` VALUES (1757, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:21:33', '', '2025-10-19 15:21:33');
+INSERT INTO `sj_retry_task` VALUES (1758, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:21:33', '', '2025-10-19 15:21:33');
+INSERT INTO `sj_retry_task` VALUES (1759, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:22:33', '', '2025-10-19 15:22:33');
+INSERT INTO `sj_retry_task` VALUES (1760, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:22:33', '', '2025-10-19 15:22:33');
+INSERT INTO `sj_retry_task` VALUES (1761, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:23:33', '', '2025-10-19 15:23:33');
+INSERT INTO `sj_retry_task` VALUES (1762, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:23:33', '', '2025-10-19 15:23:33');
+INSERT INTO `sj_retry_task` VALUES (1763, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:24:33', '', '2025-10-19 15:24:33');
+INSERT INTO `sj_retry_task` VALUES (1764, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:24:33', '', '2025-10-19 15:24:33');
+INSERT INTO `sj_retry_task` VALUES (1765, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:25:33', '', '2025-10-19 15:25:33');
+INSERT INTO `sj_retry_task` VALUES (1766, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:25:33', '', '2025-10-19 15:25:33');
+INSERT INTO `sj_retry_task` VALUES (1767, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:26:33', '', '2025-10-19 15:26:33');
+INSERT INTO `sj_retry_task` VALUES (1768, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:26:33', '', '2025-10-19 15:26:33');
+INSERT INTO `sj_retry_task` VALUES (1769, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:27:33', '', '2025-10-19 15:27:33');
+INSERT INTO `sj_retry_task` VALUES (1770, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:27:33', '', '2025-10-19 15:27:33');
+INSERT INTO `sj_retry_task` VALUES (1771, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:28:33', '', '2025-10-19 15:28:33');
+INSERT INTO `sj_retry_task` VALUES (1772, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:28:33', '', '2025-10-19 15:28:33');
+INSERT INTO `sj_retry_task` VALUES (1773, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:29:33', '', '2025-10-19 15:29:33');
+INSERT INTO `sj_retry_task` VALUES (1774, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:29:33', '', '2025-10-19 15:29:33');
+INSERT INTO `sj_retry_task` VALUES (1775, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:30:33', '', '2025-10-19 15:30:33');
+INSERT INTO `sj_retry_task` VALUES (1776, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:30:33', '', '2025-10-19 15:30:33');
+INSERT INTO `sj_retry_task` VALUES (1777, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:31:33', '', '2025-10-19 15:31:33');
+INSERT INTO `sj_retry_task` VALUES (1778, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:31:33', '', '2025-10-19 15:31:33');
+INSERT INTO `sj_retry_task` VALUES (1779, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:32:33', '', '2025-10-19 15:32:33');
+INSERT INTO `sj_retry_task` VALUES (1780, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:32:33', '', '2025-10-19 15:32:33');
+INSERT INTO `sj_retry_task` VALUES (1781, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:33:33', '', '2025-10-19 15:33:33');
+INSERT INTO `sj_retry_task` VALUES (1782, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:33:33', '', '2025-10-19 15:33:33');
+INSERT INTO `sj_retry_task` VALUES (1783, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:34:33', '', '2025-10-19 15:34:33');
+INSERT INTO `sj_retry_task` VALUES (1784, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:34:33', '', '2025-10-19 15:34:33');
+INSERT INTO `sj_retry_task` VALUES (1785, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:35:33', '', '2025-10-19 15:35:33');
+INSERT INTO `sj_retry_task` VALUES (1786, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:35:33', '', '2025-10-19 15:35:33');
+INSERT INTO `sj_retry_task` VALUES (1787, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:36:33', '', '2025-10-19 15:36:33');
+INSERT INTO `sj_retry_task` VALUES (1788, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:36:33', '', '2025-10-19 15:36:33');
+INSERT INTO `sj_retry_task` VALUES (1789, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:37:33', '', '2025-10-19 15:37:33');
+INSERT INTO `sj_retry_task` VALUES (1790, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:37:33', '', '2025-10-19 15:37:33');
+INSERT INTO `sj_retry_task` VALUES (1791, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:38:33', '', '2025-10-19 15:38:33');
+INSERT INTO `sj_retry_task` VALUES (1792, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:38:33', '', '2025-10-19 15:38:33');
+INSERT INTO `sj_retry_task` VALUES (1793, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:39:33', '', '2025-10-19 15:39:33');
+INSERT INTO `sj_retry_task` VALUES (1794, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:39:33', '', '2025-10-19 15:39:33');
+INSERT INTO `sj_retry_task` VALUES (1795, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:40:33', '', '2025-10-19 15:40:33');
+INSERT INTO `sj_retry_task` VALUES (1796, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:40:33', '', '2025-10-19 15:40:33');
+INSERT INTO `sj_retry_task` VALUES (1797, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:41:33', '', '2025-10-19 15:41:33');
+INSERT INTO `sj_retry_task` VALUES (1798, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:41:33', '', '2025-10-19 15:41:33');
+INSERT INTO `sj_retry_task` VALUES (1799, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:42:33', '', '2025-10-19 15:42:33');
+INSERT INTO `sj_retry_task` VALUES (1800, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:42:33', '', '2025-10-19 15:42:33');
+INSERT INTO `sj_retry_task` VALUES (1801, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:43:33', '', '2025-10-19 15:43:33');
+INSERT INTO `sj_retry_task` VALUES (1802, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:43:33', '', '2025-10-19 15:43:33');
+INSERT INTO `sj_retry_task` VALUES (1803, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:44:33', '', '2025-10-19 15:44:33');
+INSERT INTO `sj_retry_task` VALUES (1804, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:44:33', '', '2025-10-19 15:44:33');
+INSERT INTO `sj_retry_task` VALUES (1805, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:45:33', '', '2025-10-19 15:45:33');
+INSERT INTO `sj_retry_task` VALUES (1806, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:45:33', '', '2025-10-19 15:45:33');
+INSERT INTO `sj_retry_task` VALUES (1807, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:46:33', '', '2025-10-19 15:46:33');
+INSERT INTO `sj_retry_task` VALUES (1808, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:46:33', '', '2025-10-19 15:46:33');
+INSERT INTO `sj_retry_task` VALUES (1809, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:47:33', '', '2025-10-19 15:47:33');
+INSERT INTO `sj_retry_task` VALUES (1810, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:47:33', '', '2025-10-19 15:47:33');
+INSERT INTO `sj_retry_task` VALUES (1811, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:48:33', '', '2025-10-19 15:48:33');
+INSERT INTO `sj_retry_task` VALUES (1812, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:48:33', '', '2025-10-19 15:48:33');
+INSERT INTO `sj_retry_task` VALUES (1813, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:49:33', '', '2025-10-19 15:49:33');
+INSERT INTO `sj_retry_task` VALUES (1814, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:49:33', '', '2025-10-19 15:49:33');
+INSERT INTO `sj_retry_task` VALUES (1815, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:50:33', '', '2025-10-19 15:50:33');
+INSERT INTO `sj_retry_task` VALUES (1816, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:50:33', '', '2025-10-19 15:50:33');
+INSERT INTO `sj_retry_task` VALUES (1817, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:51:33', '', '2025-10-19 15:51:33');
+INSERT INTO `sj_retry_task` VALUES (1818, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:51:33', '', '2025-10-19 15:51:33');
+INSERT INTO `sj_retry_task` VALUES (1819, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:52:33', '', '2025-10-19 15:52:33');
+INSERT INTO `sj_retry_task` VALUES (1820, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:52:33', '', '2025-10-19 15:52:33');
+INSERT INTO `sj_retry_task` VALUES (1821, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:53:33', '', '2025-10-19 15:53:33');
+INSERT INTO `sj_retry_task` VALUES (1822, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:53:33', '', '2025-10-19 15:53:33');
+INSERT INTO `sj_retry_task` VALUES (1823, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:54:33', '', '2025-10-19 15:54:33');
+INSERT INTO `sj_retry_task` VALUES (1824, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:54:33', '', '2025-10-19 15:54:33');
+INSERT INTO `sj_retry_task` VALUES (1825, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:55:33', '', '2025-10-19 15:55:33');
+INSERT INTO `sj_retry_task` VALUES (1826, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:55:33', '', '2025-10-19 15:55:33');
+INSERT INTO `sj_retry_task` VALUES (1827, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:56:34', '', '2025-10-19 15:56:34');
+INSERT INTO `sj_retry_task` VALUES (1828, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:56:34', '', '2025-10-19 15:56:34');
+INSERT INTO `sj_retry_task` VALUES (1829, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:57:34', '', '2025-10-19 15:57:34');
+INSERT INTO `sj_retry_task` VALUES (1830, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:57:34', '', '2025-10-19 15:57:34');
+INSERT INTO `sj_retry_task` VALUES (1831, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:58:33', '', '2025-10-19 15:58:33');
+INSERT INTO `sj_retry_task` VALUES (1832, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:58:33', '', '2025-10-19 15:58:33');
+INSERT INTO `sj_retry_task` VALUES (1833, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 15:59:33', '', '2025-10-19 15:59:33');
+INSERT INTO `sj_retry_task` VALUES (1834, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 15:59:33', '', '2025-10-19 15:59:33');
+INSERT INTO `sj_retry_task` VALUES (1835, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:00:33', '', '2025-10-19 16:00:33');
+INSERT INTO `sj_retry_task` VALUES (1836, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:00:33', '', '2025-10-19 16:00:33');
+INSERT INTO `sj_retry_task` VALUES (1837, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:01:33', '', '2025-10-19 16:01:33');
+INSERT INTO `sj_retry_task` VALUES (1838, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:01:33', '', '2025-10-19 16:01:33');
+INSERT INTO `sj_retry_task` VALUES (1839, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:02:33', '', '2025-10-19 16:02:33');
+INSERT INTO `sj_retry_task` VALUES (1840, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:02:33', '', '2025-10-19 16:02:33');
+INSERT INTO `sj_retry_task` VALUES (1841, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:03:33', '', '2025-10-19 16:03:33');
+INSERT INTO `sj_retry_task` VALUES (1842, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:03:33', '', '2025-10-19 16:03:33');
+INSERT INTO `sj_retry_task` VALUES (1843, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:04:33', '', '2025-10-19 16:04:33');
+INSERT INTO `sj_retry_task` VALUES (1844, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:04:33', '', '2025-10-19 16:04:33');
+INSERT INTO `sj_retry_task` VALUES (1845, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:05:33', '', '2025-10-19 16:05:33');
+INSERT INTO `sj_retry_task` VALUES (1846, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:05:33', '', '2025-10-19 16:05:33');
+INSERT INTO `sj_retry_task` VALUES (1847, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:06:34', '', '2025-10-19 16:06:34');
+INSERT INTO `sj_retry_task` VALUES (1848, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:06:34', '', '2025-10-19 16:06:34');
+INSERT INTO `sj_retry_task` VALUES (1849, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:07:33', '', '2025-10-19 16:07:33');
+INSERT INTO `sj_retry_task` VALUES (1850, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:07:33', '', '2025-10-19 16:07:33');
+INSERT INTO `sj_retry_task` VALUES (1851, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:08:33', '', '2025-10-19 16:08:33');
+INSERT INTO `sj_retry_task` VALUES (1852, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:08:33', '', '2025-10-19 16:08:33');
+INSERT INTO `sj_retry_task` VALUES (1853, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:09:33', '', '2025-10-19 16:09:33');
+INSERT INTO `sj_retry_task` VALUES (1854, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:09:33', '', '2025-10-19 16:09:33');
+INSERT INTO `sj_retry_task` VALUES (1855, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:10:33', '', '2025-10-19 16:10:33');
+INSERT INTO `sj_retry_task` VALUES (1856, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:10:33', '', '2025-10-19 16:10:33');
+INSERT INTO `sj_retry_task` VALUES (1857, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:11:33', '', '2025-10-19 16:11:33');
+INSERT INTO `sj_retry_task` VALUES (1858, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:11:33', '', '2025-10-19 16:11:33');
+INSERT INTO `sj_retry_task` VALUES (1859, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:12:33', '', '2025-10-19 16:12:33');
+INSERT INTO `sj_retry_task` VALUES (1860, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:12:33', '', '2025-10-19 16:12:33');
+INSERT INTO `sj_retry_task` VALUES (1861, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:13:33', '', '2025-10-19 16:13:33');
+INSERT INTO `sj_retry_task` VALUES (1862, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:13:33', '', '2025-10-19 16:13:33');
+INSERT INTO `sj_retry_task` VALUES (1863, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:14:33', '', '2025-10-19 16:14:33');
+INSERT INTO `sj_retry_task` VALUES (1864, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:14:33', '', '2025-10-19 16:14:33');
+INSERT INTO `sj_retry_task` VALUES (1865, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:15:33', '', '2025-10-19 16:15:33');
+INSERT INTO `sj_retry_task` VALUES (1866, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:15:33', '', '2025-10-19 16:15:33');
+INSERT INTO `sj_retry_task` VALUES (1867, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:16:33', '', '2025-10-19 16:16:33');
+INSERT INTO `sj_retry_task` VALUES (1868, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:16:33', '', '2025-10-19 16:16:33');
+INSERT INTO `sj_retry_task` VALUES (1869, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:17:33', '', '2025-10-19 16:17:33');
+INSERT INTO `sj_retry_task` VALUES (1870, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:17:33', '', '2025-10-19 16:17:33');
+INSERT INTO `sj_retry_task` VALUES (1871, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:18:33', '', '2025-10-19 16:18:33');
+INSERT INTO `sj_retry_task` VALUES (1872, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:18:33', '', '2025-10-19 16:18:33');
+INSERT INTO `sj_retry_task` VALUES (1873, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:19:33', '', '2025-10-19 16:19:33');
+INSERT INTO `sj_retry_task` VALUES (1874, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:19:33', '', '2025-10-19 16:19:33');
+INSERT INTO `sj_retry_task` VALUES (1875, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:20:33', '', '2025-10-19 16:20:33');
+INSERT INTO `sj_retry_task` VALUES (1876, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:20:33', '', '2025-10-19 16:20:33');
+INSERT INTO `sj_retry_task` VALUES (1877, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:21:33', '', '2025-10-19 16:21:33');
+INSERT INTO `sj_retry_task` VALUES (1878, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:21:33', '', '2025-10-19 16:21:33');
+INSERT INTO `sj_retry_task` VALUES (1879, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:22:33', '', '2025-10-19 16:22:33');
+INSERT INTO `sj_retry_task` VALUES (1880, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:22:33', '', '2025-10-19 16:22:33');
+INSERT INTO `sj_retry_task` VALUES (1881, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:23:33', '', '2025-10-19 16:23:33');
+INSERT INTO `sj_retry_task` VALUES (1882, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:23:33', '', '2025-10-19 16:23:33');
+INSERT INTO `sj_retry_task` VALUES (1883, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:24:33', '', '2025-10-19 16:24:33');
+INSERT INTO `sj_retry_task` VALUES (1884, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:24:33', '', '2025-10-19 16:24:33');
+INSERT INTO `sj_retry_task` VALUES (1885, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:25:33', '', '2025-10-19 16:25:33');
+INSERT INTO `sj_retry_task` VALUES (1886, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:25:33', '', '2025-10-19 16:25:33');
+INSERT INTO `sj_retry_task` VALUES (1887, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:26:33', '', '2025-10-19 16:26:33');
+INSERT INTO `sj_retry_task` VALUES (1888, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:26:33', '', '2025-10-19 16:26:33');
+INSERT INTO `sj_retry_task` VALUES (1889, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:27:33', '', '2025-10-19 16:27:33');
+INSERT INTO `sj_retry_task` VALUES (1890, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:27:33', '', '2025-10-19 16:27:33');
+INSERT INTO `sj_retry_task` VALUES (1891, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:28:33', '', '2025-10-19 16:28:33');
+INSERT INTO `sj_retry_task` VALUES (1892, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:28:33', '', '2025-10-19 16:28:33');
+INSERT INTO `sj_retry_task` VALUES (1893, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:29:33', '', '2025-10-19 16:29:33');
+INSERT INTO `sj_retry_task` VALUES (1894, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:29:33', '', '2025-10-19 16:29:33');
+INSERT INTO `sj_retry_task` VALUES (1895, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:30:33', '', '2025-10-19 16:30:33');
+INSERT INTO `sj_retry_task` VALUES (1896, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:30:33', '', '2025-10-19 16:30:33');
+INSERT INTO `sj_retry_task` VALUES (1897, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:31:33', '', '2025-10-19 16:31:33');
+INSERT INTO `sj_retry_task` VALUES (1898, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:31:33', '', '2025-10-19 16:31:33');
+INSERT INTO `sj_retry_task` VALUES (1899, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:32:33', '', '2025-10-19 16:32:33');
+INSERT INTO `sj_retry_task` VALUES (1900, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:32:33', '', '2025-10-19 16:32:33');
+INSERT INTO `sj_retry_task` VALUES (1901, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:33:33', '', '2025-10-19 16:33:33');
+INSERT INTO `sj_retry_task` VALUES (1902, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:33:33', '', '2025-10-19 16:33:33');
+INSERT INTO `sj_retry_task` VALUES (1903, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:34:33', '', '2025-10-19 16:34:33');
+INSERT INTO `sj_retry_task` VALUES (1904, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:34:33', '', '2025-10-19 16:34:33');
+INSERT INTO `sj_retry_task` VALUES (1905, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:35:33', '', '2025-10-19 16:35:33');
+INSERT INTO `sj_retry_task` VALUES (1906, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:35:33', '', '2025-10-19 16:35:33');
+INSERT INTO `sj_retry_task` VALUES (1907, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:36:33', '', '2025-10-19 16:36:33');
+INSERT INTO `sj_retry_task` VALUES (1908, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:36:33', '', '2025-10-19 16:36:33');
+INSERT INTO `sj_retry_task` VALUES (1909, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:37:34', '', '2025-10-19 16:37:34');
+INSERT INTO `sj_retry_task` VALUES (1910, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:37:34', '', '2025-10-19 16:37:34');
+INSERT INTO `sj_retry_task` VALUES (1911, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:38:33', '', '2025-10-19 16:38:33');
+INSERT INTO `sj_retry_task` VALUES (1912, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:38:33', '', '2025-10-19 16:38:33');
+INSERT INTO `sj_retry_task` VALUES (1913, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:39:33', '', '2025-10-19 16:39:33');
+INSERT INTO `sj_retry_task` VALUES (1914, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:39:33', '', '2025-10-19 16:39:33');
+INSERT INTO `sj_retry_task` VALUES (1915, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:40:33', '', '2025-10-19 16:40:33');
+INSERT INTO `sj_retry_task` VALUES (1916, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:40:33', '', '2025-10-19 16:40:33');
+INSERT INTO `sj_retry_task` VALUES (1917, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:41:33', '', '2025-10-19 16:41:33');
+INSERT INTO `sj_retry_task` VALUES (1918, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:41:33', '', '2025-10-19 16:41:33');
+INSERT INTO `sj_retry_task` VALUES (1919, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:42:34', '', '2025-10-19 16:42:34');
+INSERT INTO `sj_retry_task` VALUES (1920, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:42:34', '', '2025-10-19 16:42:34');
+INSERT INTO `sj_retry_task` VALUES (1921, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:43:33', '', '2025-10-19 16:43:33');
+INSERT INTO `sj_retry_task` VALUES (1922, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:43:33', '', '2025-10-19 16:43:33');
+INSERT INTO `sj_retry_task` VALUES (1923, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:44:33', '', '2025-10-19 16:44:33');
+INSERT INTO `sj_retry_task` VALUES (1924, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:44:33', '', '2025-10-19 16:44:33');
+INSERT INTO `sj_retry_task` VALUES (1925, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:45:33', '', '2025-10-19 16:45:33');
+INSERT INTO `sj_retry_task` VALUES (1926, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:45:33', '', '2025-10-19 16:45:33');
+INSERT INTO `sj_retry_task` VALUES (1927, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:46:33', '', '2025-10-19 16:46:33');
+INSERT INTO `sj_retry_task` VALUES (1928, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:46:33', '', '2025-10-19 16:46:33');
+INSERT INTO `sj_retry_task` VALUES (1929, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:47:33', '', '2025-10-19 16:47:33');
+INSERT INTO `sj_retry_task` VALUES (1930, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:47:33', '', '2025-10-19 16:47:33');
+INSERT INTO `sj_retry_task` VALUES (1931, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:48:33', '', '2025-10-19 16:48:33');
+INSERT INTO `sj_retry_task` VALUES (1932, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:48:33', '', '2025-10-19 16:48:33');
+INSERT INTO `sj_retry_task` VALUES (1933, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:49:33', '', '2025-10-19 16:49:33');
+INSERT INTO `sj_retry_task` VALUES (1934, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:49:33', '', '2025-10-19 16:49:33');
+INSERT INTO `sj_retry_task` VALUES (1935, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:50:33', '', '2025-10-19 16:50:33');
+INSERT INTO `sj_retry_task` VALUES (1936, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:50:33', '', '2025-10-19 16:50:33');
+INSERT INTO `sj_retry_task` VALUES (1937, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:51:33', '', '2025-10-19 16:51:33');
+INSERT INTO `sj_retry_task` VALUES (1938, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:51:33', '', '2025-10-19 16:51:33');
+INSERT INTO `sj_retry_task` VALUES (1939, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:52:33', '', '2025-10-19 16:52:33');
+INSERT INTO `sj_retry_task` VALUES (1940, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:52:33', '', '2025-10-19 16:52:33');
+INSERT INTO `sj_retry_task` VALUES (1941, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:53:33', '', '2025-10-19 16:53:33');
+INSERT INTO `sj_retry_task` VALUES (1942, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:53:33', '', '2025-10-19 16:53:33');
+INSERT INTO `sj_retry_task` VALUES (1943, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:54:33', '', '2025-10-19 16:54:33');
+INSERT INTO `sj_retry_task` VALUES (1944, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:54:33', '', '2025-10-19 16:54:33');
+INSERT INTO `sj_retry_task` VALUES (1945, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:55:33', '', '2025-10-19 16:55:33');
+INSERT INTO `sj_retry_task` VALUES (1946, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:55:33', '', '2025-10-19 16:55:33');
+INSERT INTO `sj_retry_task` VALUES (1947, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:56:33', '', '2025-10-19 16:56:33');
+INSERT INTO `sj_retry_task` VALUES (1948, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:56:33', '', '2025-10-19 16:56:33');
+INSERT INTO `sj_retry_task` VALUES (1949, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:57:33', '', '2025-10-19 16:57:33');
+INSERT INTO `sj_retry_task` VALUES (1950, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:57:33', '', '2025-10-19 16:57:33');
+INSERT INTO `sj_retry_task` VALUES (1951, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:58:33', '', '2025-10-19 16:58:33');
+INSERT INTO `sj_retry_task` VALUES (1952, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:58:33', '', '2025-10-19 16:58:33');
+INSERT INTO `sj_retry_task` VALUES (1953, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 16:59:33', '', '2025-10-19 16:59:33');
+INSERT INTO `sj_retry_task` VALUES (1954, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 16:59:33', '', '2025-10-19 16:59:33');
+INSERT INTO `sj_retry_task` VALUES (1955, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:00:33', '', '2025-10-19 17:00:33');
+INSERT INTO `sj_retry_task` VALUES (1956, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:00:33', '', '2025-10-19 17:00:33');
+INSERT INTO `sj_retry_task` VALUES (1957, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:01:33', '', '2025-10-19 17:01:33');
+INSERT INTO `sj_retry_task` VALUES (1958, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:01:33', '', '2025-10-19 17:01:33');
+INSERT INTO `sj_retry_task` VALUES (1959, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:02:33', '', '2025-10-19 17:02:33');
+INSERT INTO `sj_retry_task` VALUES (1960, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:02:33', '', '2025-10-19 17:02:33');
+INSERT INTO `sj_retry_task` VALUES (1961, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:03:33', '', '2025-10-19 17:03:33');
+INSERT INTO `sj_retry_task` VALUES (1962, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:03:33', '', '2025-10-19 17:03:33');
+INSERT INTO `sj_retry_task` VALUES (1963, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:04:33', '', '2025-10-19 17:04:33');
+INSERT INTO `sj_retry_task` VALUES (1964, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:04:33', '', '2025-10-19 17:04:33');
+INSERT INTO `sj_retry_task` VALUES (1965, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:05:33', '', '2025-10-19 17:05:33');
+INSERT INTO `sj_retry_task` VALUES (1966, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:05:33', '', '2025-10-19 17:05:33');
+INSERT INTO `sj_retry_task` VALUES (1967, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:06:33', '', '2025-10-19 17:06:33');
+INSERT INTO `sj_retry_task` VALUES (1968, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:06:33', '', '2025-10-19 17:06:33');
+INSERT INTO `sj_retry_task` VALUES (1969, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:07:33', '', '2025-10-19 17:07:33');
+INSERT INTO `sj_retry_task` VALUES (1970, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:07:33', '', '2025-10-19 17:07:33');
+INSERT INTO `sj_retry_task` VALUES (1971, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:08:33', '', '2025-10-19 17:08:33');
+INSERT INTO `sj_retry_task` VALUES (1972, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:08:33', '', '2025-10-19 17:08:33');
+INSERT INTO `sj_retry_task` VALUES (1973, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:09:33', '', '2025-10-19 17:09:33');
+INSERT INTO `sj_retry_task` VALUES (1974, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:09:33', '', '2025-10-19 17:09:33');
+INSERT INTO `sj_retry_task` VALUES (1975, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:10:33', '', '2025-10-19 17:10:33');
+INSERT INTO `sj_retry_task` VALUES (1976, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:10:33', '', '2025-10-19 17:10:33');
+INSERT INTO `sj_retry_task` VALUES (1977, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:11:33', '', '2025-10-19 17:11:33');
+INSERT INTO `sj_retry_task` VALUES (1978, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:11:33', '', '2025-10-19 17:11:33');
+INSERT INTO `sj_retry_task` VALUES (1979, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:12:33', '', '2025-10-19 17:12:33');
+INSERT INTO `sj_retry_task` VALUES (1980, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:12:33', '', '2025-10-19 17:12:33');
+INSERT INTO `sj_retry_task` VALUES (1981, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:13:33', '', '2025-10-19 17:13:33');
+INSERT INTO `sj_retry_task` VALUES (1982, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:13:33', '', '2025-10-19 17:13:33');
+INSERT INTO `sj_retry_task` VALUES (1983, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:14:33', '', '2025-10-19 17:14:33');
+INSERT INTO `sj_retry_task` VALUES (1984, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:14:33', '', '2025-10-19 17:14:33');
+INSERT INTO `sj_retry_task` VALUES (1985, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:15:33', '', '2025-10-19 17:15:33');
+INSERT INTO `sj_retry_task` VALUES (1986, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:15:33', '', '2025-10-19 17:15:33');
+INSERT INTO `sj_retry_task` VALUES (1987, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:16:33', '', '2025-10-19 17:16:33');
+INSERT INTO `sj_retry_task` VALUES (1988, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:16:33', '', '2025-10-19 17:16:33');
+INSERT INTO `sj_retry_task` VALUES (1989, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:17:33', '', '2025-10-19 17:17:33');
+INSERT INTO `sj_retry_task` VALUES (1990, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:17:33', '', '2025-10-19 17:17:33');
+INSERT INTO `sj_retry_task` VALUES (1991, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:18:33', '', '2025-10-19 17:18:33');
+INSERT INTO `sj_retry_task` VALUES (1992, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:18:33', '', '2025-10-19 17:18:33');
+INSERT INTO `sj_retry_task` VALUES (1993, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:19:33', '', '2025-10-19 17:19:33');
+INSERT INTO `sj_retry_task` VALUES (1994, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:19:33', '', '2025-10-19 17:19:33');
+INSERT INTO `sj_retry_task` VALUES (1995, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:20:33', '', '2025-10-19 17:20:33');
+INSERT INTO `sj_retry_task` VALUES (1996, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:20:33', '', '2025-10-19 17:20:33');
+INSERT INTO `sj_retry_task` VALUES (1997, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:21:33', '', '2025-10-19 17:21:33');
+INSERT INTO `sj_retry_task` VALUES (1998, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:21:33', '', '2025-10-19 17:21:33');
+INSERT INTO `sj_retry_task` VALUES (1999, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:22:33', '', '2025-10-19 17:22:33');
+INSERT INTO `sj_retry_task` VALUES (2000, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:22:33', '', '2025-10-19 17:22:33');
+INSERT INTO `sj_retry_task` VALUES (2001, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:23:33', '', '2025-10-19 17:23:33');
+INSERT INTO `sj_retry_task` VALUES (2002, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:23:33', '', '2025-10-19 17:23:33');
+INSERT INTO `sj_retry_task` VALUES (2003, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:24:33', '', '2025-10-19 17:24:33');
+INSERT INTO `sj_retry_task` VALUES (2004, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:24:33', '', '2025-10-19 17:24:33');
+INSERT INTO `sj_retry_task` VALUES (2005, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:25:33', '', '2025-10-19 17:25:33');
+INSERT INTO `sj_retry_task` VALUES (2006, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:25:33', '', '2025-10-19 17:25:33');
+INSERT INTO `sj_retry_task` VALUES (2007, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:26:33', '', '2025-10-19 17:26:33');
+INSERT INTO `sj_retry_task` VALUES (2008, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:26:33', '', '2025-10-19 17:26:33');
+INSERT INTO `sj_retry_task` VALUES (2009, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:27:33', '', '2025-10-19 17:27:33');
+INSERT INTO `sj_retry_task` VALUES (2010, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:27:33', '', '2025-10-19 17:27:33');
+INSERT INTO `sj_retry_task` VALUES (2011, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:28:33', '', '2025-10-19 17:28:33');
+INSERT INTO `sj_retry_task` VALUES (2012, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:28:33', '', '2025-10-19 17:28:33');
+INSERT INTO `sj_retry_task` VALUES (2013, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:29:33', '', '2025-10-19 17:29:33');
+INSERT INTO `sj_retry_task` VALUES (2014, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:29:33', '', '2025-10-19 17:29:33');
+INSERT INTO `sj_retry_task` VALUES (2015, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:30:33', '', '2025-10-19 17:30:33');
+INSERT INTO `sj_retry_task` VALUES (2016, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:30:33', '', '2025-10-19 17:30:33');
+INSERT INTO `sj_retry_task` VALUES (2017, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:31:33', '', '2025-10-19 17:31:33');
+INSERT INTO `sj_retry_task` VALUES (2018, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:31:33', '', '2025-10-19 17:31:33');
+INSERT INTO `sj_retry_task` VALUES (2019, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:32:33', '', '2025-10-19 17:32:33');
+INSERT INTO `sj_retry_task` VALUES (2020, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:32:33', '', '2025-10-19 17:32:33');
+INSERT INTO `sj_retry_task` VALUES (2021, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:33:33', '', '2025-10-19 17:33:33');
+INSERT INTO `sj_retry_task` VALUES (2022, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:33:33', '', '2025-10-19 17:33:33');
+INSERT INTO `sj_retry_task` VALUES (2023, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:34:33', '', '2025-10-19 17:34:33');
+INSERT INTO `sj_retry_task` VALUES (2024, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:34:33', '', '2025-10-19 17:34:33');
+INSERT INTO `sj_retry_task` VALUES (2025, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:35:33', '', '2025-10-19 17:35:33');
+INSERT INTO `sj_retry_task` VALUES (2026, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:35:33', '', '2025-10-19 17:35:33');
+INSERT INTO `sj_retry_task` VALUES (2027, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:36:33', '', '2025-10-19 17:36:33');
+INSERT INTO `sj_retry_task` VALUES (2028, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:36:33', '', '2025-10-19 17:36:33');
+INSERT INTO `sj_retry_task` VALUES (2029, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:37:33', '', '2025-10-19 17:37:33');
+INSERT INTO `sj_retry_task` VALUES (2030, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:37:33', '', '2025-10-19 17:37:33');
+INSERT INTO `sj_retry_task` VALUES (2031, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:38:33', '', '2025-10-19 17:38:33');
+INSERT INTO `sj_retry_task` VALUES (2032, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:38:33', '', '2025-10-19 17:38:33');
+INSERT INTO `sj_retry_task` VALUES (2033, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:39:33', '', '2025-10-19 17:39:33');
+INSERT INTO `sj_retry_task` VALUES (2034, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:39:33', '', '2025-10-19 17:39:33');
+INSERT INTO `sj_retry_task` VALUES (2035, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:40:33', '', '2025-10-19 17:40:33');
+INSERT INTO `sj_retry_task` VALUES (2036, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:40:33', '', '2025-10-19 17:40:33');
+INSERT INTO `sj_retry_task` VALUES (2037, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:41:33', '', '2025-10-19 17:41:33');
+INSERT INTO `sj_retry_task` VALUES (2038, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:41:33', '', '2025-10-19 17:41:33');
+INSERT INTO `sj_retry_task` VALUES (2039, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:42:33', '', '2025-10-19 17:42:33');
+INSERT INTO `sj_retry_task` VALUES (2040, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:42:33', '', '2025-10-19 17:42:33');
+INSERT INTO `sj_retry_task` VALUES (2041, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:43:33', '', '2025-10-19 17:43:33');
+INSERT INTO `sj_retry_task` VALUES (2042, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:43:33', '', '2025-10-19 17:43:33');
+INSERT INTO `sj_retry_task` VALUES (2043, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:44:33', '', '2025-10-19 17:44:33');
+INSERT INTO `sj_retry_task` VALUES (2044, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:44:33', '', '2025-10-19 17:44:33');
+INSERT INTO `sj_retry_task` VALUES (2045, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:45:33', '', '2025-10-19 17:45:33');
+INSERT INTO `sj_retry_task` VALUES (2046, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:45:33', '', '2025-10-19 17:45:33');
+INSERT INTO `sj_retry_task` VALUES (2047, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:46:33', '', '2025-10-19 17:46:33');
+INSERT INTO `sj_retry_task` VALUES (2048, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:46:33', '', '2025-10-19 17:46:33');
+INSERT INTO `sj_retry_task` VALUES (2049, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:47:33', '', '2025-10-19 17:47:33');
+INSERT INTO `sj_retry_task` VALUES (2050, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:47:33', '', '2025-10-19 17:47:33');
+INSERT INTO `sj_retry_task` VALUES (2051, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:48:33', '', '2025-10-19 17:48:33');
+INSERT INTO `sj_retry_task` VALUES (2052, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:48:33', '', '2025-10-19 17:48:33');
+INSERT INTO `sj_retry_task` VALUES (2053, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:49:33', '', '2025-10-19 17:49:33');
+INSERT INTO `sj_retry_task` VALUES (2054, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:49:33', '', '2025-10-19 17:49:33');
+INSERT INTO `sj_retry_task` VALUES (2055, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:50:33', '', '2025-10-19 17:50:33');
+INSERT INTO `sj_retry_task` VALUES (2056, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:50:33', '', '2025-10-19 17:50:33');
+INSERT INTO `sj_retry_task` VALUES (2057, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:51:33', '', '2025-10-19 17:51:33');
+INSERT INTO `sj_retry_task` VALUES (2058, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:51:33', '', '2025-10-19 17:51:33');
+INSERT INTO `sj_retry_task` VALUES (2059, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 17:52:33', '', '2025-10-19 17:52:33');
+INSERT INTO `sj_retry_task` VALUES (2060, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 17:52:33', '', '2025-10-19 17:52:33');
+INSERT INTO `sj_retry_task` VALUES (2061, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:21:58', '', '2025-10-19 18:21:58');
+INSERT INTO `sj_retry_task` VALUES (2062, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:21:58', '', '2025-10-19 18:21:58');
+INSERT INTO `sj_retry_task` VALUES (2063, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:22:58', '', '2025-10-19 18:22:58');
+INSERT INTO `sj_retry_task` VALUES (2064, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:22:58', '', '2025-10-19 18:22:58');
+INSERT INTO `sj_retry_task` VALUES (2065, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:23:58', '', '2025-10-19 18:23:58');
+INSERT INTO `sj_retry_task` VALUES (2066, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:23:58', '', '2025-10-19 18:23:58');
+INSERT INTO `sj_retry_task` VALUES (2067, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:24:58', '', '2025-10-19 18:24:58');
+INSERT INTO `sj_retry_task` VALUES (2068, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:24:58', '', '2025-10-19 18:24:58');
+INSERT INTO `sj_retry_task` VALUES (2069, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:25:57', '', '2025-10-19 18:25:57');
+INSERT INTO `sj_retry_task` VALUES (2070, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:25:57', '', '2025-10-19 18:25:57');
+INSERT INTO `sj_retry_task` VALUES (2071, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:26:58', '', '2025-10-19 18:26:58');
+INSERT INTO `sj_retry_task` VALUES (2072, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:26:58', '', '2025-10-19 18:26:58');
+INSERT INTO `sj_retry_task` VALUES (2073, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:27:57', '', '2025-10-19 18:27:57');
+INSERT INTO `sj_retry_task` VALUES (2074, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:27:57', '', '2025-10-19 18:27:57');
+INSERT INTO `sj_retry_task` VALUES (2075, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:28:57', '', '2025-10-19 18:28:57');
+INSERT INTO `sj_retry_task` VALUES (2076, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:28:57', '', '2025-10-19 18:28:57');
+INSERT INTO `sj_retry_task` VALUES (2077, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:29:58', '', '2025-10-19 18:29:58');
+INSERT INTO `sj_retry_task` VALUES (2078, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:29:58', '', '2025-10-19 18:29:58');
+INSERT INTO `sj_retry_task` VALUES (2079, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:30:58', '', '2025-10-19 18:30:58');
+INSERT INTO `sj_retry_task` VALUES (2080, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:30:58', '', '2025-10-19 18:30:58');
+INSERT INTO `sj_retry_task` VALUES (2081, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:31:57', '', '2025-10-19 18:31:57');
+INSERT INTO `sj_retry_task` VALUES (2082, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:31:57', '', '2025-10-19 18:31:57');
+INSERT INTO `sj_retry_task` VALUES (2083, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:32:58', '', '2025-10-19 18:32:58');
+INSERT INTO `sj_retry_task` VALUES (2084, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:32:58', '', '2025-10-19 18:32:58');
+INSERT INTO `sj_retry_task` VALUES (2085, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:33:57', '', '2025-10-19 18:33:57');
+INSERT INTO `sj_retry_task` VALUES (2086, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:33:57', '', '2025-10-19 18:33:57');
+INSERT INTO `sj_retry_task` VALUES (2087, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:34:58', '', '2025-10-19 18:34:58');
+INSERT INTO `sj_retry_task` VALUES (2088, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:34:58', '', '2025-10-19 18:34:58');
+INSERT INTO `sj_retry_task` VALUES (2089, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:35:58', '', '2025-10-19 18:35:58');
+INSERT INTO `sj_retry_task` VALUES (2090, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:35:58', '', '2025-10-19 18:35:58');
+INSERT INTO `sj_retry_task` VALUES (2091, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:36:57', '', '2025-10-19 18:36:57');
+INSERT INTO `sj_retry_task` VALUES (2092, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:36:57', '', '2025-10-19 18:36:57');
+INSERT INTO `sj_retry_task` VALUES (2093, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:37:58', '', '2025-10-19 18:37:58');
+INSERT INTO `sj_retry_task` VALUES (2094, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:37:58', '', '2025-10-19 18:37:58');
+INSERT INTO `sj_retry_task` VALUES (2095, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:38:57', '', '2025-10-19 18:38:57');
+INSERT INTO `sj_retry_task` VALUES (2096, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:38:57', '', '2025-10-19 18:38:57');
+INSERT INTO `sj_retry_task` VALUES (2097, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:39:58', '', '2025-10-19 18:39:58');
+INSERT INTO `sj_retry_task` VALUES (2098, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:39:58', '', '2025-10-19 18:39:58');
+INSERT INTO `sj_retry_task` VALUES (2099, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:40:57', '', '2025-10-19 18:40:57');
+INSERT INTO `sj_retry_task` VALUES (2100, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:40:57', '', '2025-10-19 18:40:57');
+INSERT INTO `sj_retry_task` VALUES (2101, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:41:58', '', '2025-10-19 18:41:58');
+INSERT INTO `sj_retry_task` VALUES (2102, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:41:58', '', '2025-10-19 18:41:58');
+INSERT INTO `sj_retry_task` VALUES (2103, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:42:58', '', '2025-10-19 18:42:58');
+INSERT INTO `sj_retry_task` VALUES (2104, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:42:58', '', '2025-10-19 18:42:58');
+INSERT INTO `sj_retry_task` VALUES (2105, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:43:58', '', '2025-10-19 18:43:58');
+INSERT INTO `sj_retry_task` VALUES (2106, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:43:58', '', '2025-10-19 18:43:58');
+INSERT INTO `sj_retry_task` VALUES (2107, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:44:57', '', '2025-10-19 18:44:57');
+INSERT INTO `sj_retry_task` VALUES (2108, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:44:57', '', '2025-10-19 18:44:57');
+INSERT INTO `sj_retry_task` VALUES (2109, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:45:57', '', '2025-10-19 18:45:57');
+INSERT INTO `sj_retry_task` VALUES (2110, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:45:57', '', '2025-10-19 18:45:57');
+INSERT INTO `sj_retry_task` VALUES (2111, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:46:58', '', '2025-10-19 18:46:58');
+INSERT INTO `sj_retry_task` VALUES (2112, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:46:58', '', '2025-10-19 18:46:58');
+INSERT INTO `sj_retry_task` VALUES (2113, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:47:58', '', '2025-10-19 18:47:58');
+INSERT INTO `sj_retry_task` VALUES (2114, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:47:58', '', '2025-10-19 18:47:58');
+INSERT INTO `sj_retry_task` VALUES (2115, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:48:58', '', '2025-10-19 18:48:58');
+INSERT INTO `sj_retry_task` VALUES (2116, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:48:58', '', '2025-10-19 18:48:58');
+INSERT INTO `sj_retry_task` VALUES (2117, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:49:58', '', '2025-10-19 18:49:58');
+INSERT INTO `sj_retry_task` VALUES (2118, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:49:58', '', '2025-10-19 18:49:58');
+INSERT INTO `sj_retry_task` VALUES (2119, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:50:58', '', '2025-10-19 18:50:58');
+INSERT INTO `sj_retry_task` VALUES (2120, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:50:58', '', '2025-10-19 18:50:58');
+INSERT INTO `sj_retry_task` VALUES (2121, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:51:58', '', '2025-10-19 18:51:58');
+INSERT INTO `sj_retry_task` VALUES (2122, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:51:58', '', '2025-10-19 18:51:58');
+INSERT INTO `sj_retry_task` VALUES (2123, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:52:57', '', '2025-10-19 18:52:57');
+INSERT INTO `sj_retry_task` VALUES (2124, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:52:57', '', '2025-10-19 18:52:57');
+INSERT INTO `sj_retry_task` VALUES (2125, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:53:58', '', '2025-10-19 18:53:58');
+INSERT INTO `sj_retry_task` VALUES (2126, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:53:58', '', '2025-10-19 18:53:58');
+INSERT INTO `sj_retry_task` VALUES (2127, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:54:57', '', '2025-10-19 18:54:57');
+INSERT INTO `sj_retry_task` VALUES (2128, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:54:57', '', '2025-10-19 18:54:57');
+INSERT INTO `sj_retry_task` VALUES (2129, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:55:58', '', '2025-10-19 18:55:58');
+INSERT INTO `sj_retry_task` VALUES (2130, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:55:58', '', '2025-10-19 18:55:58');
+INSERT INTO `sj_retry_task` VALUES (2131, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:56:58', '', '2025-10-19 18:56:58');
+INSERT INTO `sj_retry_task` VALUES (2132, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:56:58', '', '2025-10-19 18:56:58');
+INSERT INTO `sj_retry_task` VALUES (2133, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:57:58', '', '2025-10-19 18:57:58');
+INSERT INTO `sj_retry_task` VALUES (2134, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:57:58', '', '2025-10-19 18:57:58');
+INSERT INTO `sj_retry_task` VALUES (2135, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:58:58', '', '2025-10-19 18:58:58');
+INSERT INTO `sj_retry_task` VALUES (2136, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:58:58', '', '2025-10-19 18:58:58');
+INSERT INTO `sj_retry_task` VALUES (2137, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 18:59:58', '', '2025-10-19 18:59:58');
+INSERT INTO `sj_retry_task` VALUES (2138, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 18:59:58', '', '2025-10-19 18:59:58');
+INSERT INTO `sj_retry_task` VALUES (2139, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:00:57', '', '2025-10-19 19:00:57');
+INSERT INTO `sj_retry_task` VALUES (2140, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:00:57', '', '2025-10-19 19:00:57');
+INSERT INTO `sj_retry_task` VALUES (2141, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:01:58', '', '2025-10-19 19:01:58');
+INSERT INTO `sj_retry_task` VALUES (2142, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:01:58', '', '2025-10-19 19:01:58');
+INSERT INTO `sj_retry_task` VALUES (2143, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:02:57', '', '2025-10-19 19:02:57');
+INSERT INTO `sj_retry_task` VALUES (2144, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:02:57', '', '2025-10-19 19:02:57');
+INSERT INTO `sj_retry_task` VALUES (2145, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:03:57', '', '2025-10-19 19:03:57');
+INSERT INTO `sj_retry_task` VALUES (2146, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:03:57', '', '2025-10-19 19:03:57');
+INSERT INTO `sj_retry_task` VALUES (2147, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:04:57', '', '2025-10-19 19:04:57');
+INSERT INTO `sj_retry_task` VALUES (2148, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:04:57', '', '2025-10-19 19:04:57');
+INSERT INTO `sj_retry_task` VALUES (2149, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:05:57', '', '2025-10-19 19:05:57');
+INSERT INTO `sj_retry_task` VALUES (2150, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:05:57', '', '2025-10-19 19:05:57');
+INSERT INTO `sj_retry_task` VALUES (2151, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:06:57', '', '2025-10-19 19:06:57');
+INSERT INTO `sj_retry_task` VALUES (2152, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:06:57', '', '2025-10-19 19:06:57');
+INSERT INTO `sj_retry_task` VALUES (2153, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:07:57', '', '2025-10-19 19:07:57');
+INSERT INTO `sj_retry_task` VALUES (2154, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:07:57', '', '2025-10-19 19:07:57');
+INSERT INTO `sj_retry_task` VALUES (2155, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:08:57', '', '2025-10-19 19:08:57');
+INSERT INTO `sj_retry_task` VALUES (2156, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:08:57', '', '2025-10-19 19:08:57');
+INSERT INTO `sj_retry_task` VALUES (2157, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:09:58', '', '2025-10-19 19:09:58');
+INSERT INTO `sj_retry_task` VALUES (2158, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:09:58', '', '2025-10-19 19:09:58');
+INSERT INTO `sj_retry_task` VALUES (2159, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:10:58', '', '2025-10-19 19:10:58');
+INSERT INTO `sj_retry_task` VALUES (2160, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:10:58', '', '2025-10-19 19:10:58');
+INSERT INTO `sj_retry_task` VALUES (2161, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:11:58', '', '2025-10-19 19:11:58');
+INSERT INTO `sj_retry_task` VALUES (2162, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:11:58', '', '2025-10-19 19:11:58');
+INSERT INTO `sj_retry_task` VALUES (2163, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:12:57', '', '2025-10-19 19:12:57');
+INSERT INTO `sj_retry_task` VALUES (2164, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:12:57', '', '2025-10-19 19:12:57');
+INSERT INTO `sj_retry_task` VALUES (2165, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:13:58', '', '2025-10-19 19:13:58');
+INSERT INTO `sj_retry_task` VALUES (2166, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:13:58', '', '2025-10-19 19:13:58');
+INSERT INTO `sj_retry_task` VALUES (2167, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:14:57', '', '2025-10-19 19:14:57');
+INSERT INTO `sj_retry_task` VALUES (2168, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:14:57', '', '2025-10-19 19:14:57');
+INSERT INTO `sj_retry_task` VALUES (2169, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:15:58', '', '2025-10-19 19:15:58');
+INSERT INTO `sj_retry_task` VALUES (2170, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:15:58', '', '2025-10-19 19:15:58');
+INSERT INTO `sj_retry_task` VALUES (2171, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:16:57', '', '2025-10-19 19:16:57');
+INSERT INTO `sj_retry_task` VALUES (2172, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:16:57', '', '2025-10-19 19:16:57');
+INSERT INTO `sj_retry_task` VALUES (2173, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:17:58', '', '2025-10-19 19:17:58');
+INSERT INTO `sj_retry_task` VALUES (2174, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:17:58', '', '2025-10-19 19:17:58');
+INSERT INTO `sj_retry_task` VALUES (2175, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:18:57', '', '2025-10-19 19:18:57');
+INSERT INTO `sj_retry_task` VALUES (2176, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:18:57', '', '2025-10-19 19:18:57');
+INSERT INTO `sj_retry_task` VALUES (2177, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:19:58', '', '2025-10-19 19:19:58');
+INSERT INTO `sj_retry_task` VALUES (2178, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:19:58', '', '2025-10-19 19:19:58');
+INSERT INTO `sj_retry_task` VALUES (2179, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:20:57', '', '2025-10-19 19:20:57');
+INSERT INTO `sj_retry_task` VALUES (2180, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:20:57', '', '2025-10-19 19:20:57');
+INSERT INTO `sj_retry_task` VALUES (2181, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:21:58', '', '2025-10-19 19:21:58');
+INSERT INTO `sj_retry_task` VALUES (2182, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:21:58', '', '2025-10-19 19:21:58');
+INSERT INTO `sj_retry_task` VALUES (2183, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:22:58', '', '2025-10-19 19:22:58');
+INSERT INTO `sj_retry_task` VALUES (2184, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:22:58', '', '2025-10-19 19:22:58');
+INSERT INTO `sj_retry_task` VALUES (2185, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:23:57', '', '2025-10-19 19:23:57');
+INSERT INTO `sj_retry_task` VALUES (2186, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:23:57', '', '2025-10-19 19:23:57');
+INSERT INTO `sj_retry_task` VALUES (2187, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:24:58', '', '2025-10-19 19:24:58');
+INSERT INTO `sj_retry_task` VALUES (2188, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:24:58', '', '2025-10-19 19:24:58');
+INSERT INTO `sj_retry_task` VALUES (2189, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:25:57', '', '2025-10-19 19:25:57');
+INSERT INTO `sj_retry_task` VALUES (2190, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:25:57', '', '2025-10-19 19:25:57');
+INSERT INTO `sj_retry_task` VALUES (2191, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:26:57', '', '2025-10-19 19:26:57');
+INSERT INTO `sj_retry_task` VALUES (2192, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:26:57', '', '2025-10-19 19:26:57');
+INSERT INTO `sj_retry_task` VALUES (2193, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:27:57', '', '2025-10-19 19:27:57');
+INSERT INTO `sj_retry_task` VALUES (2194, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:27:57', '', '2025-10-19 19:27:57');
+INSERT INTO `sj_retry_task` VALUES (2195, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:28:57', '', '2025-10-19 19:28:57');
+INSERT INTO `sj_retry_task` VALUES (2196, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:28:57', '', '2025-10-19 19:28:57');
+INSERT INTO `sj_retry_task` VALUES (2197, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:29:57', '', '2025-10-19 19:29:57');
+INSERT INTO `sj_retry_task` VALUES (2198, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:29:57', '', '2025-10-19 19:29:57');
+INSERT INTO `sj_retry_task` VALUES (2199, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:30:58', '', '2025-10-19 19:30:58');
+INSERT INTO `sj_retry_task` VALUES (2200, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:30:58', '', '2025-10-19 19:30:58');
+INSERT INTO `sj_retry_task` VALUES (2201, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:31:58', '', '2025-10-19 19:31:58');
+INSERT INTO `sj_retry_task` VALUES (2202, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:31:58', '', '2025-10-19 19:31:58');
+INSERT INTO `sj_retry_task` VALUES (2203, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:32:57', '', '2025-10-19 19:32:57');
+INSERT INTO `sj_retry_task` VALUES (2204, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:32:57', '', '2025-10-19 19:32:57');
+INSERT INTO `sj_retry_task` VALUES (2205, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:33:57', '', '2025-10-19 19:33:57');
+INSERT INTO `sj_retry_task` VALUES (2206, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:33:57', '', '2025-10-19 19:33:57');
+INSERT INTO `sj_retry_task` VALUES (2207, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:34:58', '', '2025-10-19 19:34:58');
+INSERT INTO `sj_retry_task` VALUES (2208, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:34:58', '', '2025-10-19 19:34:58');
+INSERT INTO `sj_retry_task` VALUES (2209, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:35:58', '', '2025-10-19 19:35:58');
+INSERT INTO `sj_retry_task` VALUES (2210, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:35:58', '', '2025-10-19 19:35:58');
+INSERT INTO `sj_retry_task` VALUES (2211, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:36:58', '', '2025-10-19 19:36:58');
+INSERT INTO `sj_retry_task` VALUES (2212, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:36:58', '', '2025-10-19 19:36:58');
+INSERT INTO `sj_retry_task` VALUES (2213, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:37:57', '', '2025-10-19 19:37:57');
+INSERT INTO `sj_retry_task` VALUES (2214, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:37:57', '', '2025-10-19 19:37:57');
+INSERT INTO `sj_retry_task` VALUES (2215, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:38:58', '', '2025-10-19 19:38:58');
+INSERT INTO `sj_retry_task` VALUES (2216, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:38:58', '', '2025-10-19 19:38:58');
+INSERT INTO `sj_retry_task` VALUES (2217, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:39:57', '', '2025-10-19 19:39:57');
+INSERT INTO `sj_retry_task` VALUES (2218, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:39:57', '', '2025-10-19 19:39:57');
+INSERT INTO `sj_retry_task` VALUES (2219, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:40:57', '', '2025-10-19 19:40:57');
+INSERT INTO `sj_retry_task` VALUES (2220, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:40:57', '', '2025-10-19 19:40:57');
+INSERT INTO `sj_retry_task` VALUES (2221, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:41:58', '', '2025-10-19 19:41:58');
+INSERT INTO `sj_retry_task` VALUES (2222, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:41:58', '', '2025-10-19 19:41:58');
+INSERT INTO `sj_retry_task` VALUES (2223, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:42:57', '', '2025-10-19 19:42:57');
+INSERT INTO `sj_retry_task` VALUES (2224, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:42:57', '', '2025-10-19 19:42:57');
+INSERT INTO `sj_retry_task` VALUES (2225, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:43:57', '', '2025-10-19 19:43:57');
+INSERT INTO `sj_retry_task` VALUES (2226, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:43:57', '', '2025-10-19 19:43:57');
+INSERT INTO `sj_retry_task` VALUES (2227, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:44:57', '', '2025-10-19 19:44:57');
+INSERT INTO `sj_retry_task` VALUES (2228, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:44:57', '', '2025-10-19 19:44:57');
+INSERT INTO `sj_retry_task` VALUES (2229, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:45:57', '', '2025-10-19 19:45:57');
+INSERT INTO `sj_retry_task` VALUES (2230, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:45:57', '', '2025-10-19 19:45:57');
+INSERT INTO `sj_retry_task` VALUES (2231, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:46:58', '', '2025-10-19 19:46:58');
+INSERT INTO `sj_retry_task` VALUES (2232, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:46:58', '', '2025-10-19 19:46:58');
+INSERT INTO `sj_retry_task` VALUES (2233, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:47:58', '', '2025-10-19 19:47:58');
+INSERT INTO `sj_retry_task` VALUES (2234, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:47:58', '', '2025-10-19 19:47:58');
+INSERT INTO `sj_retry_task` VALUES (2235, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:48:58', '', '2025-10-19 19:48:58');
+INSERT INTO `sj_retry_task` VALUES (2236, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:48:58', '', '2025-10-19 19:48:58');
+INSERT INTO `sj_retry_task` VALUES (2237, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:49:58', '', '2025-10-19 19:49:58');
+INSERT INTO `sj_retry_task` VALUES (2238, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:49:58', '', '2025-10-19 19:49:58');
+INSERT INTO `sj_retry_task` VALUES (2239, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:50:57', '', '2025-10-19 19:50:57');
+INSERT INTO `sj_retry_task` VALUES (2240, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:50:57', '', '2025-10-19 19:50:57');
+INSERT INTO `sj_retry_task` VALUES (2241, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:51:57', '', '2025-10-19 19:51:57');
+INSERT INTO `sj_retry_task` VALUES (2242, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:51:57', '', '2025-10-19 19:51:57');
+INSERT INTO `sj_retry_task` VALUES (2243, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:52:57', '', '2025-10-19 19:52:57');
+INSERT INTO `sj_retry_task` VALUES (2244, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:52:57', '', '2025-10-19 19:52:57');
+INSERT INTO `sj_retry_task` VALUES (2245, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:53:58', '', '2025-10-19 19:53:58');
+INSERT INTO `sj_retry_task` VALUES (2246, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:53:58', '', '2025-10-19 19:53:58');
+INSERT INTO `sj_retry_task` VALUES (2247, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:54:57', '', '2025-10-19 19:54:57');
+INSERT INTO `sj_retry_task` VALUES (2248, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:54:57', '', '2025-10-19 19:54:57');
+INSERT INTO `sj_retry_task` VALUES (2249, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:55:58', '', '2025-10-19 19:55:58');
+INSERT INTO `sj_retry_task` VALUES (2250, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:55:58', '', '2025-10-19 19:55:58');
+INSERT INTO `sj_retry_task` VALUES (2251, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:56:58', '', '2025-10-19 19:56:58');
+INSERT INTO `sj_retry_task` VALUES (2252, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:56:58', '', '2025-10-19 19:56:58');
+INSERT INTO `sj_retry_task` VALUES (2253, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:57:57', '', '2025-10-19 19:57:57');
+INSERT INTO `sj_retry_task` VALUES (2254, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:57:57', '', '2025-10-19 19:57:57');
+INSERT INTO `sj_retry_task` VALUES (2255, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:58:57', '', '2025-10-19 19:58:57');
+INSERT INTO `sj_retry_task` VALUES (2256, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:58:57', '', '2025-10-19 19:58:57');
+INSERT INTO `sj_retry_task` VALUES (2257, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 19:59:58', '', '2025-10-19 19:59:58');
+INSERT INTO `sj_retry_task` VALUES (2258, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 19:59:58', '', '2025-10-19 19:59:58');
+INSERT INTO `sj_retry_task` VALUES (2259, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:00:58', '', '2025-10-19 20:00:58');
+INSERT INTO `sj_retry_task` VALUES (2260, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:00:58', '', '2025-10-19 20:00:58');
+INSERT INTO `sj_retry_task` VALUES (2261, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:01:57', '', '2025-10-19 20:01:57');
+INSERT INTO `sj_retry_task` VALUES (2262, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:01:57', '', '2025-10-19 20:01:57');
+INSERT INTO `sj_retry_task` VALUES (2263, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:02:58', '', '2025-10-19 20:02:58');
+INSERT INTO `sj_retry_task` VALUES (2264, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:02:58', '', '2025-10-19 20:02:58');
+INSERT INTO `sj_retry_task` VALUES (2265, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:03:58', '', '2025-10-19 20:03:58');
+INSERT INTO `sj_retry_task` VALUES (2266, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:03:58', '', '2025-10-19 20:03:58');
+INSERT INTO `sj_retry_task` VALUES (2267, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:04:58', '', '2025-10-19 20:04:58');
+INSERT INTO `sj_retry_task` VALUES (2268, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:04:58', '', '2025-10-19 20:04:58');
+INSERT INTO `sj_retry_task` VALUES (2269, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:05:58', '', '2025-10-19 20:05:58');
+INSERT INTO `sj_retry_task` VALUES (2270, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:05:58', '', '2025-10-19 20:05:58');
+INSERT INTO `sj_retry_task` VALUES (2271, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:06:58', '', '2025-10-19 20:06:58');
+INSERT INTO `sj_retry_task` VALUES (2272, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:06:58', '', '2025-10-19 20:06:58');
+INSERT INTO `sj_retry_task` VALUES (2273, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:07:57', '', '2025-10-19 20:07:57');
+INSERT INTO `sj_retry_task` VALUES (2274, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:07:57', '', '2025-10-19 20:07:57');
+INSERT INTO `sj_retry_task` VALUES (2275, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:08:57', '', '2025-10-19 20:08:57');
+INSERT INTO `sj_retry_task` VALUES (2276, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:08:57', '', '2025-10-19 20:08:57');
+INSERT INTO `sj_retry_task` VALUES (2277, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:09:58', '', '2025-10-19 20:09:58');
+INSERT INTO `sj_retry_task` VALUES (2278, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:09:58', '', '2025-10-19 20:09:58');
+INSERT INTO `sj_retry_task` VALUES (2279, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:10:58', '', '2025-10-19 20:10:58');
+INSERT INTO `sj_retry_task` VALUES (2280, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:10:58', '', '2025-10-19 20:10:58');
+INSERT INTO `sj_retry_task` VALUES (2281, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:11:58', '', '2025-10-19 20:11:58');
+INSERT INTO `sj_retry_task` VALUES (2282, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:11:58', '', '2025-10-19 20:11:58');
+INSERT INTO `sj_retry_task` VALUES (2283, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:12:57', '', '2025-10-19 20:12:57');
+INSERT INTO `sj_retry_task` VALUES (2284, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:12:57', '', '2025-10-19 20:12:57');
+INSERT INTO `sj_retry_task` VALUES (2285, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:13:57', '', '2025-10-19 20:13:57');
+INSERT INTO `sj_retry_task` VALUES (2286, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:13:57', '', '2025-10-19 20:13:57');
+INSERT INTO `sj_retry_task` VALUES (2287, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:14:57', '', '2025-10-19 20:14:57');
+INSERT INTO `sj_retry_task` VALUES (2288, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:14:57', '', '2025-10-19 20:14:57');
+INSERT INTO `sj_retry_task` VALUES (2289, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:15:57', '', '2025-10-19 20:15:57');
+INSERT INTO `sj_retry_task` VALUES (2290, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:15:57', '', '2025-10-19 20:15:57');
+INSERT INTO `sj_retry_task` VALUES (2291, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:16:57', '', '2025-10-19 20:16:57');
+INSERT INTO `sj_retry_task` VALUES (2292, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:16:57', '', '2025-10-19 20:16:57');
+INSERT INTO `sj_retry_task` VALUES (2293, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:17:58', '', '2025-10-19 20:17:58');
+INSERT INTO `sj_retry_task` VALUES (2294, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:17:58', '', '2025-10-19 20:17:58');
+INSERT INTO `sj_retry_task` VALUES (2295, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:18:58', '', '2025-10-19 20:18:58');
+INSERT INTO `sj_retry_task` VALUES (2296, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:18:58', '', '2025-10-19 20:18:58');
+INSERT INTO `sj_retry_task` VALUES (2297, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:19:57', '', '2025-10-19 20:19:57');
+INSERT INTO `sj_retry_task` VALUES (2298, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:19:57', '', '2025-10-19 20:19:57');
+INSERT INTO `sj_retry_task` VALUES (2299, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:20:57', '', '2025-10-19 20:20:57');
+INSERT INTO `sj_retry_task` VALUES (2300, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:20:57', '', '2025-10-19 20:20:57');
+INSERT INTO `sj_retry_task` VALUES (2301, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:21:57', '', '2025-10-19 20:21:57');
+INSERT INTO `sj_retry_task` VALUES (2302, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:21:57', '', '2025-10-19 20:21:57');
+INSERT INTO `sj_retry_task` VALUES (2303, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:22:58', '', '2025-10-19 20:22:58');
+INSERT INTO `sj_retry_task` VALUES (2304, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:22:58', '', '2025-10-19 20:22:58');
+INSERT INTO `sj_retry_task` VALUES (2305, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:23:57', '', '2025-10-19 20:23:57');
+INSERT INTO `sj_retry_task` VALUES (2306, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:23:57', '', '2025-10-19 20:23:57');
+INSERT INTO `sj_retry_task` VALUES (2307, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:24:58', '', '2025-10-19 20:24:58');
+INSERT INTO `sj_retry_task` VALUES (2308, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:24:58', '', '2025-10-19 20:24:58');
+INSERT INTO `sj_retry_task` VALUES (2309, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:25:58', '', '2025-10-19 20:25:58');
+INSERT INTO `sj_retry_task` VALUES (2310, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:25:58', '', '2025-10-19 20:25:58');
+INSERT INTO `sj_retry_task` VALUES (2311, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:26:57', '', '2025-10-19 20:26:57');
+INSERT INTO `sj_retry_task` VALUES (2312, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:26:57', '', '2025-10-19 20:26:57');
+INSERT INTO `sj_retry_task` VALUES (2313, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:27:57', '', '2025-10-19 20:27:57');
+INSERT INTO `sj_retry_task` VALUES (2314, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:27:57', '', '2025-10-19 20:27:57');
+INSERT INTO `sj_retry_task` VALUES (2315, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:28:57', '', '2025-10-19 20:28:57');
+INSERT INTO `sj_retry_task` VALUES (2316, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:28:57', '', '2025-10-19 20:28:57');
+INSERT INTO `sj_retry_task` VALUES (2317, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:29:57', '', '2025-10-19 20:29:57');
+INSERT INTO `sj_retry_task` VALUES (2318, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:29:57', '', '2025-10-19 20:29:57');
+INSERT INTO `sj_retry_task` VALUES (2319, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:30:57', '', '2025-10-19 20:30:57');
+INSERT INTO `sj_retry_task` VALUES (2320, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:30:57', '', '2025-10-19 20:30:57');
+INSERT INTO `sj_retry_task` VALUES (2321, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:31:58', '', '2025-10-19 20:31:58');
+INSERT INTO `sj_retry_task` VALUES (2322, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:31:58', '', '2025-10-19 20:31:58');
+INSERT INTO `sj_retry_task` VALUES (2323, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:32:57', '', '2025-10-19 20:32:57');
+INSERT INTO `sj_retry_task` VALUES (2324, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:32:57', '', '2025-10-19 20:32:57');
+INSERT INTO `sj_retry_task` VALUES (2325, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:33:58', '', '2025-10-19 20:33:58');
+INSERT INTO `sj_retry_task` VALUES (2326, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:33:58', '', '2025-10-19 20:33:58');
+INSERT INTO `sj_retry_task` VALUES (2327, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:34:58', '', '2025-10-19 20:34:58');
+INSERT INTO `sj_retry_task` VALUES (2328, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:34:58', '', '2025-10-19 20:34:58');
+INSERT INTO `sj_retry_task` VALUES (2329, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:35:57', '', '2025-10-19 20:35:57');
+INSERT INTO `sj_retry_task` VALUES (2330, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:35:57', '', '2025-10-19 20:35:57');
+INSERT INTO `sj_retry_task` VALUES (2331, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:36:57', '', '2025-10-19 20:36:57');
+INSERT INTO `sj_retry_task` VALUES (2332, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:36:57', '', '2025-10-19 20:36:57');
+INSERT INTO `sj_retry_task` VALUES (2333, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:37:58', '', '2025-10-19 20:37:58');
+INSERT INTO `sj_retry_task` VALUES (2334, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:37:58', '', '2025-10-19 20:37:58');
+INSERT INTO `sj_retry_task` VALUES (2335, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:38:58', '', '2025-10-19 20:38:58');
+INSERT INTO `sj_retry_task` VALUES (2336, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:38:58', '', '2025-10-19 20:38:58');
+INSERT INTO `sj_retry_task` VALUES (2337, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:39:58', '', '2025-10-19 20:39:58');
+INSERT INTO `sj_retry_task` VALUES (2338, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:39:58', '', '2025-10-19 20:39:58');
+INSERT INTO `sj_retry_task` VALUES (2339, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:40:58', '', '2025-10-19 20:40:58');
+INSERT INTO `sj_retry_task` VALUES (2340, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:40:58', '', '2025-10-19 20:40:58');
+INSERT INTO `sj_retry_task` VALUES (2341, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:41:58', '', '2025-10-19 20:41:58');
+INSERT INTO `sj_retry_task` VALUES (2342, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:41:58', '', '2025-10-19 20:41:58');
+INSERT INTO `sj_retry_task` VALUES (2343, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:42:57', '', '2025-10-19 20:42:57');
+INSERT INTO `sj_retry_task` VALUES (2344, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:42:57', '', '2025-10-19 20:42:57');
+INSERT INTO `sj_retry_task` VALUES (2345, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:43:58', '', '2025-10-19 20:43:58');
+INSERT INTO `sj_retry_task` VALUES (2346, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:43:58', '', '2025-10-19 20:43:58');
+INSERT INTO `sj_retry_task` VALUES (2347, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:44:57', '', '2025-10-19 20:44:57');
+INSERT INTO `sj_retry_task` VALUES (2348, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:44:57', '', '2025-10-19 20:44:57');
+INSERT INTO `sj_retry_task` VALUES (2349, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:45:57', '', '2025-10-19 20:45:57');
+INSERT INTO `sj_retry_task` VALUES (2350, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:45:57', '', '2025-10-19 20:45:57');
+INSERT INTO `sj_retry_task` VALUES (2351, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:46:58', '', '2025-10-19 20:46:58');
+INSERT INTO `sj_retry_task` VALUES (2352, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:46:58', '', '2025-10-19 20:46:58');
+INSERT INTO `sj_retry_task` VALUES (2353, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:47:57', '', '2025-10-19 20:47:57');
+INSERT INTO `sj_retry_task` VALUES (2354, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:47:57', '', '2025-10-19 20:47:57');
+INSERT INTO `sj_retry_task` VALUES (2355, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:48:58', '', '2025-10-19 20:48:58');
+INSERT INTO `sj_retry_task` VALUES (2356, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:48:58', '', '2025-10-19 20:48:58');
+INSERT INTO `sj_retry_task` VALUES (2357, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:49:58', '', '2025-10-19 20:49:58');
+INSERT INTO `sj_retry_task` VALUES (2358, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:49:58', '', '2025-10-19 20:49:58');
+INSERT INTO `sj_retry_task` VALUES (2359, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:50:57', '', '2025-10-19 20:50:57');
+INSERT INTO `sj_retry_task` VALUES (2360, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:50:57', '', '2025-10-19 20:50:57');
+INSERT INTO `sj_retry_task` VALUES (2361, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:51:57', '', '2025-10-19 20:51:57');
+INSERT INTO `sj_retry_task` VALUES (2362, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:51:57', '', '2025-10-19 20:51:57');
+INSERT INTO `sj_retry_task` VALUES (2363, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:52:58', '', '2025-10-19 20:52:58');
+INSERT INTO `sj_retry_task` VALUES (2364, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:52:58', '', '2025-10-19 20:52:58');
+INSERT INTO `sj_retry_task` VALUES (2365, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:53:58', '', '2025-10-19 20:53:58');
+INSERT INTO `sj_retry_task` VALUES (2366, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:53:58', '', '2025-10-19 20:53:58');
+INSERT INTO `sj_retry_task` VALUES (2367, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:54:58', '', '2025-10-19 20:54:58');
+INSERT INTO `sj_retry_task` VALUES (2368, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:54:58', '', '2025-10-19 20:54:58');
+INSERT INTO `sj_retry_task` VALUES (2369, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:55:57', '', '2025-10-19 20:55:57');
+INSERT INTO `sj_retry_task` VALUES (2370, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:55:57', '', '2025-10-19 20:55:57');
+INSERT INTO `sj_retry_task` VALUES (2371, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:56:57', '', '2025-10-19 20:56:57');
+INSERT INTO `sj_retry_task` VALUES (2372, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:56:57', '', '2025-10-19 20:56:57');
+INSERT INTO `sj_retry_task` VALUES (2373, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:57:57', '', '2025-10-19 20:57:57');
+INSERT INTO `sj_retry_task` VALUES (2374, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:57:57', '', '2025-10-19 20:57:57');
+INSERT INTO `sj_retry_task` VALUES (2375, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:58:57', '', '2025-10-19 20:58:57');
+INSERT INTO `sj_retry_task` VALUES (2376, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:58:57', '', '2025-10-19 20:58:57');
+INSERT INTO `sj_retry_task` VALUES (2377, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 20:59:57', '', '2025-10-19 20:59:57');
+INSERT INTO `sj_retry_task` VALUES (2378, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 20:59:57', '', '2025-10-19 20:59:57');
+INSERT INTO `sj_retry_task` VALUES (2379, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:00:57', '', '2025-10-19 21:00:57');
+INSERT INTO `sj_retry_task` VALUES (2380, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:00:57', '', '2025-10-19 21:00:57');
+INSERT INTO `sj_retry_task` VALUES (2381, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:01:57', '', '2025-10-19 21:01:57');
+INSERT INTO `sj_retry_task` VALUES (2382, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:01:57', '', '2025-10-19 21:01:57');
+INSERT INTO `sj_retry_task` VALUES (2383, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:02:57', '', '2025-10-19 21:02:57');
+INSERT INTO `sj_retry_task` VALUES (2384, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:02:57', '', '2025-10-19 21:02:57');
+INSERT INTO `sj_retry_task` VALUES (2385, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:03:57', '', '2025-10-19 21:03:57');
+INSERT INTO `sj_retry_task` VALUES (2386, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:03:57', '', '2025-10-19 21:03:57');
+INSERT INTO `sj_retry_task` VALUES (2387, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:04:57', '', '2025-10-19 21:04:57');
+INSERT INTO `sj_retry_task` VALUES (2388, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:04:57', '', '2025-10-19 21:04:57');
+INSERT INTO `sj_retry_task` VALUES (2389, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:05:57', '', '2025-10-19 21:05:57');
+INSERT INTO `sj_retry_task` VALUES (2390, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:05:57', '', '2025-10-19 21:05:57');
+INSERT INTO `sj_retry_task` VALUES (2391, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:06:57', '', '2025-10-19 21:06:57');
+INSERT INTO `sj_retry_task` VALUES (2392, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:06:57', '', '2025-10-19 21:06:57');
+INSERT INTO `sj_retry_task` VALUES (2393, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:07:57', '', '2025-10-19 21:07:57');
+INSERT INTO `sj_retry_task` VALUES (2394, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:07:57', '', '2025-10-19 21:07:57');
+INSERT INTO `sj_retry_task` VALUES (2395, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:08:57', '', '2025-10-19 21:08:57');
+INSERT INTO `sj_retry_task` VALUES (2396, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:08:57', '', '2025-10-19 21:08:57');
+INSERT INTO `sj_retry_task` VALUES (2397, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:09:57', '', '2025-10-19 21:09:57');
+INSERT INTO `sj_retry_task` VALUES (2398, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:09:57', '', '2025-10-19 21:09:57');
+INSERT INTO `sj_retry_task` VALUES (2399, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:10:57', '', '2025-10-19 21:10:57');
+INSERT INTO `sj_retry_task` VALUES (2400, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:10:57', '', '2025-10-19 21:10:57');
+INSERT INTO `sj_retry_task` VALUES (2401, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:11:57', '', '2025-10-19 21:11:57');
+INSERT INTO `sj_retry_task` VALUES (2402, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:11:57', '', '2025-10-19 21:11:57');
+INSERT INTO `sj_retry_task` VALUES (2403, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:12:57', '', '2025-10-19 21:12:57');
+INSERT INTO `sj_retry_task` VALUES (2404, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:12:57', '', '2025-10-19 21:12:57');
+INSERT INTO `sj_retry_task` VALUES (2405, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:13:57', '', '2025-10-19 21:13:57');
+INSERT INTO `sj_retry_task` VALUES (2406, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:13:57', '', '2025-10-19 21:13:57');
+INSERT INTO `sj_retry_task` VALUES (2407, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:14:57', '', '2025-10-19 21:14:57');
+INSERT INTO `sj_retry_task` VALUES (2408, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:14:57', '', '2025-10-19 21:14:57');
+INSERT INTO `sj_retry_task` VALUES (2409, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:15:57', '', '2025-10-19 21:15:57');
+INSERT INTO `sj_retry_task` VALUES (2410, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:15:57', '', '2025-10-19 21:15:57');
+INSERT INTO `sj_retry_task` VALUES (2411, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:16:57', '', '2025-10-19 21:16:57');
+INSERT INTO `sj_retry_task` VALUES (2412, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:16:57', '', '2025-10-19 21:16:57');
+INSERT INTO `sj_retry_task` VALUES (2413, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:17:57', '', '2025-10-19 21:17:57');
+INSERT INTO `sj_retry_task` VALUES (2414, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:17:57', '', '2025-10-19 21:17:57');
+INSERT INTO `sj_retry_task` VALUES (2415, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:18:57', '', '2025-10-19 21:18:57');
+INSERT INTO `sj_retry_task` VALUES (2416, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:18:57', '', '2025-10-19 21:18:57');
+INSERT INTO `sj_retry_task` VALUES (2417, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:19:57', '', '2025-10-19 21:19:57');
+INSERT INTO `sj_retry_task` VALUES (2418, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:19:57', '', '2025-10-19 21:19:57');
+INSERT INTO `sj_retry_task` VALUES (2419, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:20:57', '', '2025-10-19 21:20:57');
+INSERT INTO `sj_retry_task` VALUES (2420, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:20:57', '', '2025-10-19 21:20:57');
+INSERT INTO `sj_retry_task` VALUES (2421, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:21:57', '', '2025-10-19 21:21:57');
+INSERT INTO `sj_retry_task` VALUES (2422, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:21:57', '', '2025-10-19 21:21:57');
+INSERT INTO `sj_retry_task` VALUES (2423, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:22:57', '', '2025-10-19 21:22:57');
+INSERT INTO `sj_retry_task` VALUES (2424, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:22:57', '', '2025-10-19 21:22:57');
+INSERT INTO `sj_retry_task` VALUES (2425, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:23:57', '', '2025-10-19 21:23:57');
+INSERT INTO `sj_retry_task` VALUES (2426, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:23:57', '', '2025-10-19 21:23:57');
+INSERT INTO `sj_retry_task` VALUES (2427, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:24:57', '', '2025-10-19 21:24:57');
+INSERT INTO `sj_retry_task` VALUES (2428, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:24:57', '', '2025-10-19 21:24:57');
+INSERT INTO `sj_retry_task` VALUES (2429, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:25:57', '', '2025-10-19 21:25:57');
+INSERT INTO `sj_retry_task` VALUES (2430, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:25:57', '', '2025-10-19 21:25:57');
+INSERT INTO `sj_retry_task` VALUES (2431, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:26:57', '', '2025-10-19 21:26:57');
+INSERT INTO `sj_retry_task` VALUES (2432, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:26:57', '', '2025-10-19 21:26:57');
+INSERT INTO `sj_retry_task` VALUES (2433, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:27:57', '', '2025-10-19 21:27:57');
+INSERT INTO `sj_retry_task` VALUES (2434, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:27:57', '', '2025-10-19 21:27:57');
+INSERT INTO `sj_retry_task` VALUES (2435, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:28:57', '', '2025-10-19 21:28:57');
+INSERT INTO `sj_retry_task` VALUES (2436, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:28:57', '', '2025-10-19 21:28:57');
+INSERT INTO `sj_retry_task` VALUES (2437, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:29:57', '', '2025-10-19 21:29:57');
+INSERT INTO `sj_retry_task` VALUES (2438, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:29:57', '', '2025-10-19 21:29:57');
+INSERT INTO `sj_retry_task` VALUES (2439, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:30:57', '', '2025-10-19 21:30:57');
+INSERT INTO `sj_retry_task` VALUES (2440, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:30:57', '', '2025-10-19 21:30:57');
+INSERT INTO `sj_retry_task` VALUES (2441, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:31:57', '', '2025-10-19 21:31:57');
+INSERT INTO `sj_retry_task` VALUES (2442, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:31:57', '', '2025-10-19 21:31:57');
+INSERT INTO `sj_retry_task` VALUES (2443, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:32:57', '', '2025-10-19 21:32:57');
+INSERT INTO `sj_retry_task` VALUES (2444, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:32:57', '', '2025-10-19 21:32:57');
+INSERT INTO `sj_retry_task` VALUES (2445, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:33:57', '', '2025-10-19 21:33:57');
+INSERT INTO `sj_retry_task` VALUES (2446, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:33:57', '', '2025-10-19 21:33:57');
+INSERT INTO `sj_retry_task` VALUES (2447, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:34:57', '', '2025-10-19 21:34:57');
+INSERT INTO `sj_retry_task` VALUES (2448, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:34:57', '', '2025-10-19 21:34:57');
+INSERT INTO `sj_retry_task` VALUES (2449, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:35:57', '', '2025-10-19 21:35:57');
+INSERT INTO `sj_retry_task` VALUES (2450, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:35:57', '', '2025-10-19 21:35:57');
+INSERT INTO `sj_retry_task` VALUES (2451, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:36:57', '', '2025-10-19 21:36:57');
+INSERT INTO `sj_retry_task` VALUES (2452, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:36:57', '', '2025-10-19 21:36:57');
+INSERT INTO `sj_retry_task` VALUES (2453, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:37:57', '', '2025-10-19 21:37:57');
+INSERT INTO `sj_retry_task` VALUES (2454, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:37:57', '', '2025-10-19 21:37:57');
+INSERT INTO `sj_retry_task` VALUES (2455, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:38:57', '', '2025-10-19 21:38:57');
+INSERT INTO `sj_retry_task` VALUES (2456, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:38:57', '', '2025-10-19 21:38:57');
+INSERT INTO `sj_retry_task` VALUES (2457, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:39:57', '', '2025-10-19 21:39:57');
+INSERT INTO `sj_retry_task` VALUES (2458, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:39:57', '', '2025-10-19 21:39:57');
+INSERT INTO `sj_retry_task` VALUES (2459, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:40:57', '', '2025-10-19 21:40:57');
+INSERT INTO `sj_retry_task` VALUES (2460, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:40:57', '', '2025-10-19 21:40:57');
+INSERT INTO `sj_retry_task` VALUES (2461, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:41:57', '', '2025-10-19 21:41:57');
+INSERT INTO `sj_retry_task` VALUES (2462, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:41:57', '', '2025-10-19 21:41:57');
+INSERT INTO `sj_retry_task` VALUES (2463, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:42:57', '', '2025-10-19 21:42:57');
+INSERT INTO `sj_retry_task` VALUES (2464, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:42:57', '', '2025-10-19 21:42:57');
+INSERT INTO `sj_retry_task` VALUES (2465, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:43:57', '', '2025-10-19 21:43:57');
+INSERT INTO `sj_retry_task` VALUES (2466, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:43:57', '', '2025-10-19 21:43:57');
+INSERT INTO `sj_retry_task` VALUES (2467, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:44:57', '', '2025-10-19 21:44:57');
+INSERT INTO `sj_retry_task` VALUES (2468, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:44:57', '', '2025-10-19 21:44:57');
+INSERT INTO `sj_retry_task` VALUES (2469, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:45:57', '', '2025-10-19 21:45:57');
+INSERT INTO `sj_retry_task` VALUES (2470, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:45:57', '', '2025-10-19 21:45:57');
+INSERT INTO `sj_retry_task` VALUES (2471, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:46:57', '', '2025-10-19 21:46:57');
+INSERT INTO `sj_retry_task` VALUES (2472, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:46:57', '', '2025-10-19 21:46:57');
+INSERT INTO `sj_retry_task` VALUES (2473, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:47:58', '', '2025-10-19 21:47:58');
+INSERT INTO `sj_retry_task` VALUES (2474, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:47:58', '', '2025-10-19 21:47:58');
+INSERT INTO `sj_retry_task` VALUES (2475, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:48:57', '', '2025-10-19 21:48:57');
+INSERT INTO `sj_retry_task` VALUES (2476, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:48:57', '', '2025-10-19 21:48:57');
+INSERT INTO `sj_retry_task` VALUES (2477, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:49:57', '', '2025-10-19 21:49:57');
+INSERT INTO `sj_retry_task` VALUES (2478, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:49:57', '', '2025-10-19 21:49:57');
+INSERT INTO `sj_retry_task` VALUES (2479, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:50:57', '', '2025-10-19 21:50:57');
+INSERT INTO `sj_retry_task` VALUES (2480, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:50:57', '', '2025-10-19 21:50:57');
+INSERT INTO `sj_retry_task` VALUES (2481, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:51:57', '', '2025-10-19 21:51:57');
+INSERT INTO `sj_retry_task` VALUES (2482, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:51:57', '', '2025-10-19 21:51:57');
+INSERT INTO `sj_retry_task` VALUES (2483, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:52:58', '', '2025-10-19 21:52:58');
+INSERT INTO `sj_retry_task` VALUES (2484, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:52:58', '', '2025-10-19 21:52:58');
+INSERT INTO `sj_retry_task` VALUES (2485, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:53:57', '', '2025-10-19 21:53:57');
+INSERT INTO `sj_retry_task` VALUES (2486, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:53:57', '', '2025-10-19 21:53:57');
+INSERT INTO `sj_retry_task` VALUES (2487, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:54:58', '', '2025-10-19 21:54:58');
+INSERT INTO `sj_retry_task` VALUES (2488, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:54:58', '', '2025-10-19 21:54:58');
+INSERT INTO `sj_retry_task` VALUES (2489, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:55:57', '', '2025-10-19 21:55:57');
+INSERT INTO `sj_retry_task` VALUES (2490, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:55:57', '', '2025-10-19 21:55:57');
+INSERT INTO `sj_retry_task` VALUES (2491, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:56:58', '', '2025-10-19 21:56:58');
+INSERT INTO `sj_retry_task` VALUES (2492, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:56:58', '', '2025-10-19 21:56:58');
+INSERT INTO `sj_retry_task` VALUES (2493, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:57:57', '', '2025-10-19 21:57:57');
+INSERT INTO `sj_retry_task` VALUES (2494, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:57:57', '', '2025-10-19 21:57:57');
+INSERT INTO `sj_retry_task` VALUES (2495, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:58:57', '', '2025-10-19 21:58:57');
+INSERT INTO `sj_retry_task` VALUES (2496, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:58:57', '', '2025-10-19 21:58:57');
+INSERT INTO `sj_retry_task` VALUES (2497, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 21:59:57', '', '2025-10-19 21:59:57');
+INSERT INTO `sj_retry_task` VALUES (2498, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 21:59:57', '', '2025-10-19 21:59:57');
+INSERT INTO `sj_retry_task` VALUES (2499, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:00:58', '', '2025-10-19 22:00:58');
+INSERT INTO `sj_retry_task` VALUES (2500, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:00:58', '', '2025-10-19 22:00:58');
+INSERT INTO `sj_retry_task` VALUES (2501, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:01:57', '', '2025-10-19 22:01:57');
+INSERT INTO `sj_retry_task` VALUES (2502, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:01:57', '', '2025-10-19 22:01:57');
+INSERT INTO `sj_retry_task` VALUES (2503, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:02:57', '', '2025-10-19 22:02:57');
+INSERT INTO `sj_retry_task` VALUES (2504, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:02:57', '', '2025-10-19 22:02:57');
+INSERT INTO `sj_retry_task` VALUES (2505, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:03:57', '', '2025-10-19 22:03:57');
+INSERT INTO `sj_retry_task` VALUES (2506, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:03:57', '', '2025-10-19 22:03:57');
+INSERT INTO `sj_retry_task` VALUES (2507, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:04:57', '', '2025-10-19 22:04:57');
+INSERT INTO `sj_retry_task` VALUES (2508, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:04:57', '', '2025-10-19 22:04:57');
+INSERT INTO `sj_retry_task` VALUES (2509, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:05:58', '', '2025-10-19 22:05:58');
+INSERT INTO `sj_retry_task` VALUES (2510, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:05:58', '', '2025-10-19 22:05:58');
+INSERT INTO `sj_retry_task` VALUES (2511, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:06:58', '', '2025-10-19 22:06:58');
+INSERT INTO `sj_retry_task` VALUES (2512, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:06:58', '', '2025-10-19 22:06:58');
+INSERT INTO `sj_retry_task` VALUES (2513, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:07:57', '', '2025-10-19 22:07:57');
+INSERT INTO `sj_retry_task` VALUES (2514, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:07:57', '', '2025-10-19 22:07:57');
+INSERT INTO `sj_retry_task` VALUES (2515, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:08:58', '', '2025-10-19 22:08:58');
+INSERT INTO `sj_retry_task` VALUES (2516, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:08:58', '', '2025-10-19 22:08:58');
+INSERT INTO `sj_retry_task` VALUES (2517, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:09:58', '', '2025-10-19 22:09:58');
+INSERT INTO `sj_retry_task` VALUES (2518, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:09:58', '', '2025-10-19 22:09:58');
+INSERT INTO `sj_retry_task` VALUES (2519, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:10:57', '', '2025-10-19 22:10:57');
+INSERT INTO `sj_retry_task` VALUES (2520, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:10:57', '', '2025-10-19 22:10:57');
+INSERT INTO `sj_retry_task` VALUES (2521, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:11:57', '', '2025-10-19 22:11:57');
+INSERT INTO `sj_retry_task` VALUES (2522, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:11:57', '', '2025-10-19 22:11:57');
+INSERT INTO `sj_retry_task` VALUES (2523, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:12:58', '', '2025-10-19 22:12:58');
+INSERT INTO `sj_retry_task` VALUES (2524, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:12:58', '', '2025-10-19 22:12:58');
+INSERT INTO `sj_retry_task` VALUES (2525, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:13:58', '', '2025-10-19 22:13:58');
+INSERT INTO `sj_retry_task` VALUES (2526, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:13:58', '', '2025-10-19 22:13:58');
+INSERT INTO `sj_retry_task` VALUES (2527, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:14:58', '', '2025-10-19 22:14:58');
+INSERT INTO `sj_retry_task` VALUES (2528, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:14:58', '', '2025-10-19 22:14:58');
+INSERT INTO `sj_retry_task` VALUES (2529, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:15:57', '', '2025-10-19 22:15:57');
+INSERT INTO `sj_retry_task` VALUES (2530, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:15:57', '', '2025-10-19 22:15:57');
+INSERT INTO `sj_retry_task` VALUES (2531, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:16:57', '', '2025-10-19 22:16:57');
+INSERT INTO `sj_retry_task` VALUES (2532, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:16:57', '', '2025-10-19 22:16:57');
+INSERT INTO `sj_retry_task` VALUES (2533, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:17:58', '', '2025-10-19 22:17:58');
+INSERT INTO `sj_retry_task` VALUES (2534, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:17:58', '', '2025-10-19 22:17:58');
+INSERT INTO `sj_retry_task` VALUES (2535, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:18:58', '', '2025-10-19 22:18:58');
+INSERT INTO `sj_retry_task` VALUES (2536, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:18:58', '', '2025-10-19 22:18:58');
+INSERT INTO `sj_retry_task` VALUES (2537, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:19:57', '', '2025-10-19 22:19:57');
+INSERT INTO `sj_retry_task` VALUES (2538, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:19:57', '', '2025-10-19 22:19:57');
+INSERT INTO `sj_retry_task` VALUES (2539, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:20:57', '', '2025-10-19 22:20:57');
+INSERT INTO `sj_retry_task` VALUES (2540, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:20:57', '', '2025-10-19 22:20:57');
+INSERT INTO `sj_retry_task` VALUES (2541, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:21:57', '', '2025-10-19 22:21:57');
+INSERT INTO `sj_retry_task` VALUES (2542, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:21:57', '', '2025-10-19 22:21:57');
+INSERT INTO `sj_retry_task` VALUES (2543, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:22:57', '', '2025-10-19 22:22:57');
+INSERT INTO `sj_retry_task` VALUES (2544, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:22:57', '', '2025-10-19 22:22:57');
+INSERT INTO `sj_retry_task` VALUES (2545, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:23:58', '', '2025-10-19 22:23:58');
+INSERT INTO `sj_retry_task` VALUES (2546, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:23:58', '', '2025-10-19 22:23:58');
+INSERT INTO `sj_retry_task` VALUES (2547, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:24:58', '', '2025-10-19 22:24:58');
+INSERT INTO `sj_retry_task` VALUES (2548, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:24:58', '', '2025-10-19 22:24:58');
+INSERT INTO `sj_retry_task` VALUES (2549, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:25:57', '', '2025-10-19 22:25:57');
+INSERT INTO `sj_retry_task` VALUES (2550, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:25:57', '', '2025-10-19 22:25:57');
+INSERT INTO `sj_retry_task` VALUES (2551, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:26:57', '', '2025-10-19 22:26:57');
+INSERT INTO `sj_retry_task` VALUES (2552, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:26:57', '', '2025-10-19 22:26:57');
+INSERT INTO `sj_retry_task` VALUES (2553, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:27:57', '', '2025-10-19 22:27:57');
+INSERT INTO `sj_retry_task` VALUES (2554, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:27:57', '', '2025-10-19 22:27:57');
+INSERT INTO `sj_retry_task` VALUES (2555, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:28:58', '', '2025-10-19 22:28:58');
+INSERT INTO `sj_retry_task` VALUES (2556, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:28:58', '', '2025-10-19 22:28:58');
+INSERT INTO `sj_retry_task` VALUES (2557, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:29:57', '', '2025-10-19 22:29:57');
+INSERT INTO `sj_retry_task` VALUES (2558, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:29:57', '', '2025-10-19 22:29:57');
+INSERT INTO `sj_retry_task` VALUES (2559, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:30:58', '', '2025-10-19 22:30:58');
+INSERT INTO `sj_retry_task` VALUES (2560, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:30:58', '', '2025-10-19 22:30:58');
+INSERT INTO `sj_retry_task` VALUES (2561, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:31:58', '', '2025-10-19 22:31:58');
+INSERT INTO `sj_retry_task` VALUES (2562, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:31:58', '', '2025-10-19 22:31:58');
+INSERT INTO `sj_retry_task` VALUES (2563, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:32:58', '', '2025-10-19 22:32:58');
+INSERT INTO `sj_retry_task` VALUES (2564, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:32:58', '', '2025-10-19 22:32:58');
+INSERT INTO `sj_retry_task` VALUES (2565, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:33:57', '', '2025-10-19 22:33:57');
+INSERT INTO `sj_retry_task` VALUES (2566, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:33:57', '', '2025-10-19 22:33:57');
+INSERT INTO `sj_retry_task` VALUES (2567, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:34:57', '', '2025-10-19 22:34:57');
+INSERT INTO `sj_retry_task` VALUES (2568, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:34:57', '', '2025-10-19 22:34:57');
+INSERT INTO `sj_retry_task` VALUES (2569, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:35:57', '', '2025-10-19 22:35:57');
+INSERT INTO `sj_retry_task` VALUES (2570, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:35:57', '', '2025-10-19 22:35:57');
+INSERT INTO `sj_retry_task` VALUES (2571, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:36:57', '', '2025-10-19 22:36:57');
+INSERT INTO `sj_retry_task` VALUES (2572, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:36:57', '', '2025-10-19 22:36:57');
+INSERT INTO `sj_retry_task` VALUES (2573, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:37:57', '', '2025-10-19 22:37:57');
+INSERT INTO `sj_retry_task` VALUES (2574, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:37:57', '', '2025-10-19 22:37:57');
+INSERT INTO `sj_retry_task` VALUES (2575, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:38:57', '', '2025-10-19 22:38:57');
+INSERT INTO `sj_retry_task` VALUES (2576, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:38:57', '', '2025-10-19 22:38:57');
+INSERT INTO `sj_retry_task` VALUES (2577, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:39:57', '', '2025-10-19 22:39:57');
+INSERT INTO `sj_retry_task` VALUES (2578, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:39:57', '', '2025-10-19 22:39:57');
+INSERT INTO `sj_retry_task` VALUES (2579, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:40:57', '', '2025-10-19 22:40:57');
+INSERT INTO `sj_retry_task` VALUES (2580, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:40:57', '', '2025-10-19 22:40:57');
+INSERT INTO `sj_retry_task` VALUES (2581, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:41:57', '', '2025-10-19 22:41:57');
+INSERT INTO `sj_retry_task` VALUES (2582, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:41:57', '', '2025-10-19 22:41:57');
+INSERT INTO `sj_retry_task` VALUES (2583, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:42:57', '', '2025-10-19 22:42:57');
+INSERT INTO `sj_retry_task` VALUES (2584, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:42:57', '', '2025-10-19 22:42:57');
+INSERT INTO `sj_retry_task` VALUES (2585, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:43:57', '', '2025-10-19 22:43:57');
+INSERT INTO `sj_retry_task` VALUES (2586, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:43:57', '', '2025-10-19 22:43:57');
+INSERT INTO `sj_retry_task` VALUES (2587, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:44:57', '', '2025-10-19 22:44:57');
+INSERT INTO `sj_retry_task` VALUES (2588, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:44:57', '', '2025-10-19 22:44:57');
+INSERT INTO `sj_retry_task` VALUES (2589, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:45:58', '', '2025-10-19 22:45:58');
+INSERT INTO `sj_retry_task` VALUES (2590, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:45:58', '', '2025-10-19 22:45:58');
+INSERT INTO `sj_retry_task` VALUES (2591, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:46:57', '', '2025-10-19 22:46:57');
+INSERT INTO `sj_retry_task` VALUES (2592, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:46:57', '', '2025-10-19 22:46:57');
+INSERT INTO `sj_retry_task` VALUES (2593, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:47:57', '', '2025-10-19 22:47:57');
+INSERT INTO `sj_retry_task` VALUES (2594, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:47:57', '', '2025-10-19 22:47:57');
+INSERT INTO `sj_retry_task` VALUES (2595, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:48:58', '', '2025-10-19 22:48:58');
+INSERT INTO `sj_retry_task` VALUES (2596, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:48:58', '', '2025-10-19 22:48:58');
+INSERT INTO `sj_retry_task` VALUES (2597, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:49:57', '', '2025-10-19 22:49:57');
+INSERT INTO `sj_retry_task` VALUES (2598, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:49:57', '', '2025-10-19 22:49:57');
+INSERT INTO `sj_retry_task` VALUES (2599, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:50:58', '', '2025-10-19 22:50:58');
+INSERT INTO `sj_retry_task` VALUES (2600, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:50:58', '', '2025-10-19 22:50:58');
+INSERT INTO `sj_retry_task` VALUES (2601, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:51:57', '', '2025-10-19 22:51:57');
+INSERT INTO `sj_retry_task` VALUES (2602, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:51:57', '', '2025-10-19 22:51:57');
+INSERT INTO `sj_retry_task` VALUES (2603, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:52:58', '', '2025-10-19 22:52:58');
+INSERT INTO `sj_retry_task` VALUES (2604, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:52:58', '', '2025-10-19 22:52:58');
+INSERT INTO `sj_retry_task` VALUES (2605, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:53:57', '', '2025-10-19 22:53:57');
+INSERT INTO `sj_retry_task` VALUES (2606, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:53:57', '', '2025-10-19 22:53:57');
+INSERT INTO `sj_retry_task` VALUES (2607, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:54:57', '', '2025-10-19 22:54:57');
+INSERT INTO `sj_retry_task` VALUES (2608, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:54:57', '', '2025-10-19 22:54:57');
+INSERT INTO `sj_retry_task` VALUES (2609, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:55:57', '', '2025-10-19 22:55:57');
+INSERT INTO `sj_retry_task` VALUES (2610, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:55:57', '', '2025-10-19 22:55:57');
+INSERT INTO `sj_retry_task` VALUES (2611, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:56:57', '', '2025-10-19 22:56:57');
+INSERT INTO `sj_retry_task` VALUES (2612, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:56:57', '', '2025-10-19 22:56:57');
+INSERT INTO `sj_retry_task` VALUES (2613, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:57:57', '', '2025-10-19 22:57:57');
+INSERT INTO `sj_retry_task` VALUES (2614, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:57:57', '', '2025-10-19 22:57:57');
+INSERT INTO `sj_retry_task` VALUES (2615, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:58:57', '', '2025-10-19 22:58:57');
+INSERT INTO `sj_retry_task` VALUES (2616, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:58:57', '', '2025-10-19 22:58:57');
+INSERT INTO `sj_retry_task` VALUES (2617, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 22:59:58', '', '2025-10-19 22:59:58');
+INSERT INTO `sj_retry_task` VALUES (2618, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 22:59:58', '', '2025-10-19 22:59:58');
+INSERT INTO `sj_retry_task` VALUES (2619, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:00:58', '', '2025-10-19 23:00:58');
+INSERT INTO `sj_retry_task` VALUES (2620, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:00:58', '', '2025-10-19 23:00:58');
+INSERT INTO `sj_retry_task` VALUES (2621, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:01:57', '', '2025-10-19 23:01:57');
+INSERT INTO `sj_retry_task` VALUES (2622, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:01:57', '', '2025-10-19 23:01:57');
+INSERT INTO `sj_retry_task` VALUES (2623, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:02:58', '', '2025-10-19 23:02:58');
+INSERT INTO `sj_retry_task` VALUES (2624, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:02:58', '', '2025-10-19 23:02:58');
+INSERT INTO `sj_retry_task` VALUES (2625, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:03:57', '', '2025-10-19 23:03:57');
+INSERT INTO `sj_retry_task` VALUES (2626, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:03:57', '', '2025-10-19 23:03:57');
+INSERT INTO `sj_retry_task` VALUES (2627, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:04:57', '', '2025-10-19 23:04:57');
+INSERT INTO `sj_retry_task` VALUES (2628, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:04:57', '', '2025-10-19 23:04:57');
+INSERT INTO `sj_retry_task` VALUES (2629, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:05:57', '', '2025-10-19 23:05:57');
+INSERT INTO `sj_retry_task` VALUES (2630, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:05:57', '', '2025-10-19 23:05:57');
+INSERT INTO `sj_retry_task` VALUES (2631, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:06:57', '', '2025-10-19 23:06:57');
+INSERT INTO `sj_retry_task` VALUES (2632, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:06:57', '', '2025-10-19 23:06:57');
+INSERT INTO `sj_retry_task` VALUES (2633, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:07:57', '', '2025-10-19 23:07:57');
+INSERT INTO `sj_retry_task` VALUES (2634, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:07:57', '', '2025-10-19 23:07:57');
+INSERT INTO `sj_retry_task` VALUES (2635, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:08:57', '', '2025-10-19 23:08:57');
+INSERT INTO `sj_retry_task` VALUES (2636, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:08:57', '', '2025-10-19 23:08:57');
+INSERT INTO `sj_retry_task` VALUES (2637, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:09:57', '', '2025-10-19 23:09:57');
+INSERT INTO `sj_retry_task` VALUES (2638, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:09:57', '', '2025-10-19 23:09:57');
+INSERT INTO `sj_retry_task` VALUES (2639, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:10:57', '', '2025-10-19 23:10:57');
+INSERT INTO `sj_retry_task` VALUES (2640, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:10:57', '', '2025-10-19 23:10:57');
+INSERT INTO `sj_retry_task` VALUES (2641, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:11:57', '', '2025-10-19 23:11:57');
+INSERT INTO `sj_retry_task` VALUES (2642, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:11:57', '', '2025-10-19 23:11:57');
+INSERT INTO `sj_retry_task` VALUES (2643, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:12:57', '', '2025-10-19 23:12:57');
+INSERT INTO `sj_retry_task` VALUES (2644, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:12:57', '', '2025-10-19 23:12:57');
+INSERT INTO `sj_retry_task` VALUES (2645, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:13:57', '', '2025-10-19 23:13:57');
+INSERT INTO `sj_retry_task` VALUES (2646, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:13:57', '', '2025-10-19 23:13:57');
+INSERT INTO `sj_retry_task` VALUES (2647, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:14:57', '', '2025-10-19 23:14:57');
+INSERT INTO `sj_retry_task` VALUES (2648, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:14:57', '', '2025-10-19 23:14:57');
+INSERT INTO `sj_retry_task` VALUES (2649, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:15:57', '', '2025-10-19 23:15:57');
+INSERT INTO `sj_retry_task` VALUES (2650, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:15:57', '', '2025-10-19 23:15:57');
+INSERT INTO `sj_retry_task` VALUES (2651, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:16:57', '', '2025-10-19 23:16:57');
+INSERT INTO `sj_retry_task` VALUES (2652, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:16:57', '', '2025-10-19 23:16:57');
+INSERT INTO `sj_retry_task` VALUES (2653, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:18:16', '', '2025-10-19 23:18:16');
+INSERT INTO `sj_retry_task` VALUES (2654, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:18:16', '', '2025-10-19 23:18:16');
+INSERT INTO `sj_retry_task` VALUES (2655, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:19:16', '', '2025-10-19 23:19:16');
+INSERT INTO `sj_retry_task` VALUES (2656, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:19:16', '', '2025-10-19 23:19:16');
+INSERT INTO `sj_retry_task` VALUES (2657, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:20:16', '', '2025-10-19 23:20:16');
+INSERT INTO `sj_retry_task` VALUES (2658, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:20:16', '', '2025-10-19 23:20:16');
+INSERT INTO `sj_retry_task` VALUES (2659, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:21:16', '', '2025-10-19 23:21:16');
+INSERT INTO `sj_retry_task` VALUES (2660, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:21:16', '', '2025-10-19 23:21:16');
+INSERT INTO `sj_retry_task` VALUES (2661, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:22:16', '', '2025-10-19 23:22:16');
+INSERT INTO `sj_retry_task` VALUES (2662, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:22:16', '', '2025-10-19 23:22:16');
+INSERT INTO `sj_retry_task` VALUES (2663, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:23:16', '', '2025-10-19 23:23:16');
+INSERT INTO `sj_retry_task` VALUES (2664, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:23:16', '', '2025-10-19 23:23:16');
+INSERT INTO `sj_retry_task` VALUES (2665, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:24:16', '', '2025-10-19 23:24:16');
+INSERT INTO `sj_retry_task` VALUES (2666, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:24:16', '', '2025-10-19 23:24:16');
+INSERT INTO `sj_retry_task` VALUES (2667, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:25:16', '', '2025-10-19 23:25:16');
+INSERT INTO `sj_retry_task` VALUES (2668, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:25:16', '', '2025-10-19 23:25:16');
+INSERT INTO `sj_retry_task` VALUES (2669, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:26:17', '', '2025-10-19 23:26:17');
+INSERT INTO `sj_retry_task` VALUES (2670, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:26:17', '', '2025-10-19 23:26:17');
+INSERT INTO `sj_retry_task` VALUES (2671, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:27:16', '', '2025-10-19 23:27:16');
+INSERT INTO `sj_retry_task` VALUES (2672, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:27:16', '', '2025-10-19 23:27:16');
+INSERT INTO `sj_retry_task` VALUES (2673, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:28:16', '', '2025-10-19 23:28:16');
+INSERT INTO `sj_retry_task` VALUES (2674, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:28:16', '', '2025-10-19 23:28:16');
+INSERT INTO `sj_retry_task` VALUES (2675, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:29:16', '', '2025-10-19 23:29:16');
+INSERT INTO `sj_retry_task` VALUES (2676, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:29:16', '', '2025-10-19 23:29:16');
+INSERT INTO `sj_retry_task` VALUES (2677, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:30:16', '', '2025-10-19 23:30:16');
+INSERT INTO `sj_retry_task` VALUES (2678, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:30:16', '', '2025-10-19 23:30:16');
+INSERT INTO `sj_retry_task` VALUES (2679, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:31:16', '', '2025-10-19 23:31:16');
+INSERT INTO `sj_retry_task` VALUES (2680, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:31:16', '', '2025-10-19 23:31:16');
+INSERT INTO `sj_retry_task` VALUES (2681, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:32:16', '', '2025-10-19 23:32:16');
+INSERT INTO `sj_retry_task` VALUES (2682, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:32:16', '', '2025-10-19 23:32:16');
+INSERT INTO `sj_retry_task` VALUES (2683, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:33:16', '', '2025-10-19 23:33:16');
+INSERT INTO `sj_retry_task` VALUES (2684, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:33:16', '', '2025-10-19 23:33:16');
+INSERT INTO `sj_retry_task` VALUES (2685, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:34:16', '', '2025-10-19 23:34:16');
+INSERT INTO `sj_retry_task` VALUES (2686, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:34:16', '', '2025-10-19 23:34:16');
+INSERT INTO `sj_retry_task` VALUES (2687, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:35:16', '', '2025-10-19 23:35:16');
+INSERT INTO `sj_retry_task` VALUES (2688, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:35:16', '', '2025-10-19 23:35:16');
+INSERT INTO `sj_retry_task` VALUES (2689, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:36:16', '', '2025-10-19 23:36:16');
+INSERT INTO `sj_retry_task` VALUES (2690, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:36:16', '', '2025-10-19 23:36:16');
+INSERT INTO `sj_retry_task` VALUES (2691, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:37:16', '', '2025-10-19 23:37:16');
+INSERT INTO `sj_retry_task` VALUES (2692, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:37:16', '', '2025-10-19 23:37:16');
+INSERT INTO `sj_retry_task` VALUES (2693, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:38:16', '', '2025-10-19 23:38:16');
+INSERT INTO `sj_retry_task` VALUES (2694, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:38:16', '', '2025-10-19 23:38:16');
+INSERT INTO `sj_retry_task` VALUES (2695, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:39:16', '', '2025-10-19 23:39:16');
+INSERT INTO `sj_retry_task` VALUES (2696, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:39:16', '', '2025-10-19 23:39:16');
+INSERT INTO `sj_retry_task` VALUES (2697, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:40:16', '', '2025-10-19 23:40:16');
+INSERT INTO `sj_retry_task` VALUES (2698, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:40:16', '', '2025-10-19 23:40:16');
+INSERT INTO `sj_retry_task` VALUES (2699, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:41:16', '', '2025-10-19 23:41:16');
+INSERT INTO `sj_retry_task` VALUES (2700, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:41:16', '', '2025-10-19 23:41:16');
+INSERT INTO `sj_retry_task` VALUES (2701, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:42:16', '', '2025-10-19 23:42:16');
+INSERT INTO `sj_retry_task` VALUES (2702, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:42:16', '', '2025-10-19 23:42:16');
+INSERT INTO `sj_retry_task` VALUES (2703, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:43:16', '', '2025-10-19 23:43:16');
+INSERT INTO `sj_retry_task` VALUES (2704, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:43:16', '', '2025-10-19 23:43:16');
+INSERT INTO `sj_retry_task` VALUES (2705, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:44:16', '', '2025-10-19 23:44:16');
+INSERT INTO `sj_retry_task` VALUES (2706, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:44:16', '', '2025-10-19 23:44:16');
+INSERT INTO `sj_retry_task` VALUES (2707, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:45:16', '', '2025-10-19 23:45:16');
+INSERT INTO `sj_retry_task` VALUES (2708, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:45:16', '', '2025-10-19 23:45:16');
+INSERT INTO `sj_retry_task` VALUES (2709, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:46:16', '', '2025-10-19 23:46:16');
+INSERT INTO `sj_retry_task` VALUES (2710, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:46:16', '', '2025-10-19 23:46:16');
+INSERT INTO `sj_retry_task` VALUES (2711, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:47:16', '', '2025-10-19 23:47:16');
+INSERT INTO `sj_retry_task` VALUES (2712, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:47:16', '', '2025-10-19 23:47:16');
+INSERT INTO `sj_retry_task` VALUES (2713, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:48:16', '', '2025-10-19 23:48:16');
+INSERT INTO `sj_retry_task` VALUES (2714, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:48:16', '', '2025-10-19 23:48:16');
+INSERT INTO `sj_retry_task` VALUES (2715, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:49:16', '', '2025-10-19 23:49:16');
+INSERT INTO `sj_retry_task` VALUES (2716, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:49:16', '', '2025-10-19 23:49:16');
+INSERT INTO `sj_retry_task` VALUES (2717, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:50:16', '', '2025-10-19 23:50:16');
+INSERT INTO `sj_retry_task` VALUES (2718, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:50:16', '', '2025-10-19 23:50:16');
+INSERT INTO `sj_retry_task` VALUES (2719, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:51:16', '', '2025-10-19 23:51:16');
+INSERT INTO `sj_retry_task` VALUES (2720, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:51:16', '', '2025-10-19 23:51:16');
+INSERT INTO `sj_retry_task` VALUES (2721, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:52:16', '', '2025-10-19 23:52:16');
+INSERT INTO `sj_retry_task` VALUES (2722, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:52:16', '', '2025-10-19 23:52:16');
+INSERT INTO `sj_retry_task` VALUES (2723, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:53:16', '', '2025-10-19 23:53:16');
+INSERT INTO `sj_retry_task` VALUES (2724, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:53:16', '', '2025-10-19 23:53:16');
+INSERT INTO `sj_retry_task` VALUES (2725, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:54:16', '', '2025-10-19 23:54:16');
+INSERT INTO `sj_retry_task` VALUES (2726, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:54:16', '', '2025-10-19 23:54:16');
+INSERT INTO `sj_retry_task` VALUES (2727, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:55:16', '', '2025-10-19 23:55:16');
+INSERT INTO `sj_retry_task` VALUES (2728, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:55:16', '', '2025-10-19 23:55:16');
+INSERT INTO `sj_retry_task` VALUES (2729, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:56:16', '', '2025-10-19 23:56:16');
+INSERT INTO `sj_retry_task` VALUES (2730, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:56:16', '', '2025-10-19 23:56:16');
+INSERT INTO `sj_retry_task` VALUES (2731, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:57:16', '', '2025-10-19 23:57:16');
+INSERT INTO `sj_retry_task` VALUES (2732, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:57:16', '', '2025-10-19 23:57:16');
+INSERT INTO `sj_retry_task` VALUES (2733, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:58:16', '', '2025-10-19 23:58:16');
+INSERT INTO `sj_retry_task` VALUES (2734, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:58:16', '', '2025-10-19 23:58:16');
+INSERT INTO `sj_retry_task` VALUES (2735, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-19 23:59:16', '', '2025-10-19 23:59:16');
+INSERT INTO `sj_retry_task` VALUES (2736, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-19 23:59:16', '', '2025-10-19 23:59:16');
+INSERT INTO `sj_retry_task` VALUES (2737, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:00:16', '', '2025-10-20 00:00:16');
+INSERT INTO `sj_retry_task` VALUES (2738, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:00:16', '', '2025-10-20 00:00:16');
+INSERT INTO `sj_retry_task` VALUES (2739, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:01:16', '', '2025-10-20 00:01:16');
+INSERT INTO `sj_retry_task` VALUES (2740, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:01:16', '', '2025-10-20 00:01:16');
+INSERT INTO `sj_retry_task` VALUES (2741, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:02:16', '', '2025-10-20 00:02:16');
+INSERT INTO `sj_retry_task` VALUES (2742, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:02:16', '', '2025-10-20 00:02:16');
+INSERT INTO `sj_retry_task` VALUES (2743, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:03:16', '', '2025-10-20 00:03:16');
+INSERT INTO `sj_retry_task` VALUES (2744, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:03:16', '', '2025-10-20 00:03:16');
+INSERT INTO `sj_retry_task` VALUES (2745, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:04:16', '', '2025-10-20 00:04:16');
+INSERT INTO `sj_retry_task` VALUES (2746, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:04:16', '', '2025-10-20 00:04:16');
+INSERT INTO `sj_retry_task` VALUES (2747, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:05:16', '', '2025-10-20 00:05:16');
+INSERT INTO `sj_retry_task` VALUES (2748, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:05:16', '', '2025-10-20 00:05:16');
+INSERT INTO `sj_retry_task` VALUES (2749, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:06:16', '', '2025-10-20 00:06:16');
+INSERT INTO `sj_retry_task` VALUES (2750, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:06:16', '', '2025-10-20 00:06:16');
+INSERT INTO `sj_retry_task` VALUES (2751, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:07:16', '', '2025-10-20 00:07:16');
+INSERT INTO `sj_retry_task` VALUES (2752, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:07:16', '', '2025-10-20 00:07:16');
+INSERT INTO `sj_retry_task` VALUES (2753, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:08:16', '', '2025-10-20 00:08:16');
+INSERT INTO `sj_retry_task` VALUES (2754, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:08:16', '', '2025-10-20 00:08:16');
+INSERT INTO `sj_retry_task` VALUES (2755, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:09:16', '', '2025-10-20 00:09:16');
+INSERT INTO `sj_retry_task` VALUES (2756, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:09:16', '', '2025-10-20 00:09:16');
+INSERT INTO `sj_retry_task` VALUES (2757, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:10:16', '', '2025-10-20 00:10:16');
+INSERT INTO `sj_retry_task` VALUES (2758, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:10:16', '', '2025-10-20 00:10:16');
+INSERT INTO `sj_retry_task` VALUES (2759, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:11:16', '', '2025-10-20 00:11:16');
+INSERT INTO `sj_retry_task` VALUES (2760, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:11:16', '', '2025-10-20 00:11:16');
+INSERT INTO `sj_retry_task` VALUES (2761, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:12:16', '', '2025-10-20 00:12:16');
+INSERT INTO `sj_retry_task` VALUES (2762, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:12:16', '', '2025-10-20 00:12:16');
+INSERT INTO `sj_retry_task` VALUES (2763, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:13:16', '', '2025-10-20 00:13:16');
+INSERT INTO `sj_retry_task` VALUES (2764, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:13:16', '', '2025-10-20 00:13:16');
+INSERT INTO `sj_retry_task` VALUES (2765, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:14:16', '', '2025-10-20 00:14:16');
+INSERT INTO `sj_retry_task` VALUES (2766, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:14:16', '', '2025-10-20 00:14:16');
+INSERT INTO `sj_retry_task` VALUES (2767, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:15:16', '', '2025-10-20 00:15:16');
+INSERT INTO `sj_retry_task` VALUES (2768, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:15:16', '', '2025-10-20 00:15:16');
+INSERT INTO `sj_retry_task` VALUES (2769, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:16:16', '', '2025-10-20 00:16:16');
+INSERT INTO `sj_retry_task` VALUES (2770, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:16:16', '', '2025-10-20 00:16:16');
+INSERT INTO `sj_retry_task` VALUES (2771, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:17:16', '', '2025-10-20 00:17:16');
+INSERT INTO `sj_retry_task` VALUES (2772, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:17:16', '', '2025-10-20 00:17:16');
+INSERT INTO `sj_retry_task` VALUES (2773, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:18:16', '', '2025-10-20 00:18:16');
+INSERT INTO `sj_retry_task` VALUES (2774, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:18:16', '', '2025-10-20 00:18:16');
+INSERT INTO `sj_retry_task` VALUES (2775, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:19:16', '', '2025-10-20 00:19:16');
+INSERT INTO `sj_retry_task` VALUES (2776, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:19:16', '', '2025-10-20 00:19:16');
+INSERT INTO `sj_retry_task` VALUES (2777, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:20:16', '', '2025-10-20 00:20:16');
+INSERT INTO `sj_retry_task` VALUES (2778, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:20:16', '', '2025-10-20 00:20:16');
+INSERT INTO `sj_retry_task` VALUES (2779, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:21:16', '', '2025-10-20 00:21:16');
+INSERT INTO `sj_retry_task` VALUES (2780, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:21:16', '', '2025-10-20 00:21:16');
+INSERT INTO `sj_retry_task` VALUES (2781, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:22:16', '', '2025-10-20 00:22:16');
+INSERT INTO `sj_retry_task` VALUES (2782, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:22:16', '', '2025-10-20 00:22:16');
+INSERT INTO `sj_retry_task` VALUES (2783, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:23:16', '', '2025-10-20 00:23:16');
+INSERT INTO `sj_retry_task` VALUES (2784, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:23:16', '', '2025-10-20 00:23:16');
+INSERT INTO `sj_retry_task` VALUES (2785, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:24:16', '', '2025-10-20 00:24:16');
+INSERT INTO `sj_retry_task` VALUES (2786, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:24:16', '', '2025-10-20 00:24:16');
+INSERT INTO `sj_retry_task` VALUES (2787, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:25:16', '', '2025-10-20 00:25:16');
+INSERT INTO `sj_retry_task` VALUES (2788, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:25:16', '', '2025-10-20 00:25:16');
+INSERT INTO `sj_retry_task` VALUES (2789, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:26:16', '', '2025-10-20 00:26:16');
+INSERT INTO `sj_retry_task` VALUES (2790, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:26:16', '', '2025-10-20 00:26:16');
+INSERT INTO `sj_retry_task` VALUES (2791, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:27:16', '', '2025-10-20 00:27:16');
+INSERT INTO `sj_retry_task` VALUES (2792, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:27:16', '', '2025-10-20 00:27:16');
+INSERT INTO `sj_retry_task` VALUES (2793, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:28:16', '', '2025-10-20 00:28:16');
+INSERT INTO `sj_retry_task` VALUES (2794, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:28:16', '', '2025-10-20 00:28:16');
+INSERT INTO `sj_retry_task` VALUES (2795, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:29:16', '', '2025-10-20 00:29:16');
+INSERT INTO `sj_retry_task` VALUES (2796, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:29:16', '', '2025-10-20 00:29:16');
+INSERT INTO `sj_retry_task` VALUES (2797, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:30:16', '', '2025-10-20 00:30:16');
+INSERT INTO `sj_retry_task` VALUES (2798, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:30:16', '', '2025-10-20 00:30:16');
+INSERT INTO `sj_retry_task` VALUES (2799, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:31:16', '', '2025-10-20 00:31:16');
+INSERT INTO `sj_retry_task` VALUES (2800, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:31:16', '', '2025-10-20 00:31:16');
+INSERT INTO `sj_retry_task` VALUES (2801, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:32:16', '', '2025-10-20 00:32:16');
+INSERT INTO `sj_retry_task` VALUES (2802, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:32:16', '', '2025-10-20 00:32:16');
+INSERT INTO `sj_retry_task` VALUES (2803, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:33:16', '', '2025-10-20 00:33:16');
+INSERT INTO `sj_retry_task` VALUES (2804, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:33:16', '', '2025-10-20 00:33:16');
+INSERT INTO `sj_retry_task` VALUES (2805, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:34:16', '', '2025-10-20 00:34:16');
+INSERT INTO `sj_retry_task` VALUES (2806, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:34:16', '', '2025-10-20 00:34:16');
+INSERT INTO `sj_retry_task` VALUES (2807, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:35:16', '', '2025-10-20 00:35:16');
+INSERT INTO `sj_retry_task` VALUES (2808, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:35:16', '', '2025-10-20 00:35:16');
+INSERT INTO `sj_retry_task` VALUES (2809, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:36:16', '', '2025-10-20 00:36:16');
+INSERT INTO `sj_retry_task` VALUES (2810, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:36:16', '', '2025-10-20 00:36:16');
+INSERT INTO `sj_retry_task` VALUES (2811, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:37:16', '', '2025-10-20 00:37:16');
+INSERT INTO `sj_retry_task` VALUES (2812, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:37:16', '', '2025-10-20 00:37:16');
+INSERT INTO `sj_retry_task` VALUES (2813, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:38:16', '', '2025-10-20 00:38:16');
+INSERT INTO `sj_retry_task` VALUES (2814, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:38:16', '', '2025-10-20 00:38:16');
+INSERT INTO `sj_retry_task` VALUES (2815, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:39:16', '', '2025-10-20 00:39:16');
+INSERT INTO `sj_retry_task` VALUES (2816, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:39:16', '', '2025-10-20 00:39:16');
+INSERT INTO `sj_retry_task` VALUES (2817, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:40:16', '', '2025-10-20 00:40:16');
+INSERT INTO `sj_retry_task` VALUES (2818, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:40:16', '', '2025-10-20 00:40:16');
+INSERT INTO `sj_retry_task` VALUES (2819, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:41:16', '', '2025-10-20 00:41:16');
+INSERT INTO `sj_retry_task` VALUES (2820, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:41:16', '', '2025-10-20 00:41:16');
+INSERT INTO `sj_retry_task` VALUES (2821, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:42:16', '', '2025-10-20 00:42:16');
+INSERT INTO `sj_retry_task` VALUES (2822, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:42:16', '', '2025-10-20 00:42:16');
+INSERT INTO `sj_retry_task` VALUES (2823, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:43:16', '', '2025-10-20 00:43:16');
+INSERT INTO `sj_retry_task` VALUES (2824, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:43:16', '', '2025-10-20 00:43:16');
+INSERT INTO `sj_retry_task` VALUES (2825, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:44:16', '', '2025-10-20 00:44:16');
+INSERT INTO `sj_retry_task` VALUES (2826, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:44:16', '', '2025-10-20 00:44:16');
+INSERT INTO `sj_retry_task` VALUES (2827, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:45:16', '', '2025-10-20 00:45:16');
+INSERT INTO `sj_retry_task` VALUES (2828, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:45:16', '', '2025-10-20 00:45:16');
+INSERT INTO `sj_retry_task` VALUES (2829, 'namespaceId', 'das', 'sss666', 1, '', 6, 1, 2, NULL, '', '2025-10-20 00:46:16', '', '2025-10-20 00:46:16');
+INSERT INTO `sj_retry_task` VALUES (2830, 'namespaceId', 'das', 'sss666', 3, '', 6, 1, 2, NULL, '', '2025-10-20 00:46:16', '', '2025-10-20 00:46:16');
 
 -- ----------------------------
 -- Table structure for sj_retry_task_log_message
@@ -1649,7 +3563,7 @@ CREATE TABLE `sj_retry_task_log_message`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_namespace_id_group_name_retry_task_id`(`namespace_id` ASC, `group_name` ASC, `retry_task_id` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务调度日志信息记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '任务调度日志信息记录表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_retry_task_log_message
@@ -1671,7 +3585,7 @@ CREATE TABLE `sj_sequence_alloc`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '号段模式序号ID分配表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '号段模式序号ID分配表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_sequence_alloc
@@ -1699,12 +3613,12 @@ CREATE TABLE `sj_server_node`  (
   UNIQUE INDEX `uk_host_id_host_ip`(`host_id` ASC, `host_ip` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE,
   INDEX `idx_expire_at_node_type`(`expire_at` ASC, `node_type` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 402 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '服务器节点' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 408 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '服务器节点' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_server_node
 -- ----------------------------
-INSERT INTO `sj_server_node` VALUES (401, 'DEFAULT_SERVER_NAMESPACE_ID', 'DEFAULT_SERVER', '1977705578645954560', '192.168.50.57', 17888, '2025-10-14 00:13:05', 2, '{\"webPort\":8098}', '', '2025-10-13 19:58:55', '', '2025-10-13 19:58:55');
+INSERT INTO `sj_server_node` VALUES (407, 'DEFAULT_SERVER_NAMESPACE_ID', 'DEFAULT_SERVER', '1979929971357294592', '192.168.50.57', 17888, '2025-10-20 00:47:22', 2, '{\"webPort\":8098}', '', '2025-10-19 23:17:52', '', '2025-10-19 23:17:47');
 
 -- ----------------------------
 -- Table structure for sj_system_user
@@ -1721,7 +3635,7 @@ CREATE TABLE `sj_system_user`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_username`(`username` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统用户表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_system_user
@@ -1743,7 +3657,7 @@ CREATE TABLE `sj_system_user_permission`  (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_namespace_id_group_name_system_user_id`(`namespace_id` ASC, `group_name` ASC, `system_user_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统用户权限表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统用户权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_system_user_permission
@@ -1779,7 +3693,7 @@ CREATE TABLE `sj_workflow`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工作流' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工作流' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_workflow
@@ -1812,7 +3726,7 @@ CREATE TABLE `sj_workflow_node`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工作流节点' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工作流节点' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_workflow_node
@@ -1843,7 +3757,7 @@ CREATE TABLE `sj_workflow_task_batch`  (
   INDEX `idx_job_id_task_batch_status`(`workflow_id` ASC, `task_batch_status` ASC) USING BTREE,
   INDEX `idx_created_date`(`created_date` ASC) USING BTREE,
   INDEX `idx_namespace_id_group_name`(`namespace_id` ASC, `group_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工作流批次' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工作流批次' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sj_workflow_task_batch
@@ -1871,47 +3785,48 @@ CREATE TABLE `sys_menu`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人',
   `updated_date` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统菜单表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 87 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统菜单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', 'SYSTEM', 1, '/system', '', '', '{\"title\":\"系统管理\",\"icon\":\"DashboardOutlined\",\"permission\":\"system:dashboard:list\",\"show\":true}', 11, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:34');
-INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'SYSTEM', 2, '/user', '/system/user', NULL, '{\"title\":\"用户管理\",\"icon\":\"MenuOutlined\",\"permission\":\"\",\"show\":true}', 11, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (3, 2, '用户新增', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 1, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (4, 2, '用户编辑', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 2, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (5, 2, '用户删除', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 3, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (6, 2, '重置密码', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 4, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (7, 1, '角色管理', 'SYSTEM', 2, '/role', '/system/role', NULL, '{\"title\":\"角色管理\",\"icon\":\"MenuOutlined\",\"permission\":\"\",\"show\":true}', 11, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (8, 7, '角色新增', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 1, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (9, 7, '角色编辑', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 2, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (10, 7, '角色删除', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 3, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (11, 7, '分配权限', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 4, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (12, 1, '菜单管理', 'SYSTEM', 2, '/menu', '/system/menu', '', '{\"title\":\"菜单管理\",\"icon\":\"MenuOutlined\",\"permission\":\"\",\"show\":true}', 11, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (13, 12, '菜单新增', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 1, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (14, 12, '菜单编辑', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 2, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (15, 12, '菜单删除', 'SYSTEM', 3, NULL, NULL, NULL, NULL, 3, b'1', b'1', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 20:06:46');
-INSERT INTO `sys_menu` VALUES (21, 1, '通知管理', 'SYSTEM', 2, '/notice', '/system/notice', NULL, '{\"title\":\"通知\",\"icon\":\"NotificationOutlined\",\"permission\":\"system:notice:list\",\"show\":true}', 4, b'1', b'0', 'SYSTEM', '2025-04-29 21:09:27', 'SYSTEM', '2025-10-13 20:06:51');
-INSERT INTO `sys_menu` VALUES (22, 0, '配置中心', 'CONFIG', 1, '/cc-config', '', '', '{\"title\":\"配置中心\",\"icon\":\"ContainerOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-29 21:43:48', 'SYSTEM', '2025-10-13 20:06:59');
+INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', 'SYSTEM', 1, '/system', '', '', '{\"title\":\"系统管理\",\"icon\":\"SettingTwoTone\",\"show\":true,\"requiresAuth\":true}', 4, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:43:12');
+INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'SYSTEM', 2, '/user', '/system/user', '', '{\"title\":\"用户管理\",\"icon\":\"EyeFilled\",\"show\":true,\"requiresAuth\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:43:10');
+INSERT INTO `sys_menu` VALUES (3, 2, '用户新增', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"新增\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:user:add\"}', 1, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:35:51');
+INSERT INTO `sys_menu` VALUES (4, 2, '用户编辑', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"编辑\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:user:edit\"}', 2, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:35:35');
+INSERT INTO `sys_menu` VALUES (5, 2, '用户删除', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"删除\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:user:delete\"}', 3, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:35:21');
+INSERT INTO `sys_menu` VALUES (6, 2, '重置密码', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"重置密码\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:user:reset-password\"}', 4, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:34:55');
+INSERT INTO `sys_menu` VALUES (7, 1, '角色管理', 'SYSTEM', 2, '/role', '/system/role', '', '{\"title\":\"角色管理\",\"icon\":\"FilterTwoTone\",\"show\":true,\"requiresAuth\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:43:08');
+INSERT INTO `sys_menu` VALUES (8, 7, '角色新增', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"新增\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:role:add\"}', 1, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:36:15');
+INSERT INTO `sys_menu` VALUES (9, 7, '角色编辑', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"编辑\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:role:edit\"}', 2, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:36:35');
+INSERT INTO `sys_menu` VALUES (10, 7, '角色删除', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"删除\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:role:delete\"}', 3, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:36:50');
+INSERT INTO `sys_menu` VALUES (11, 7, '分配权限', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"分配角色\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:role:assign-permissions\"}', 4, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 15:28:02');
+INSERT INTO `sys_menu` VALUES (12, 1, '菜单管理', 'SYSTEM', 2, '/menu', '/system/menu', '', '{\"title\":\"菜单管理\",\"icon\":\"FolderTwoTone\",\"show\":true,\"requiresAuth\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:43:01');
+INSERT INTO `sys_menu` VALUES (13, 12, '菜单新增', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"新增\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:menu:add\"}', 1, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:37:39');
+INSERT INTO `sys_menu` VALUES (14, 12, '菜单编辑', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"编辑\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:menu:edit\"}', 2, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:37:54');
+INSERT INTO `sys_menu` VALUES (15, 12, '菜单删除', 'SYSTEM', 3, NULL, NULL, NULL, '{\"title\":\"删除\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:menu:delete\"}', 3, b'1', b'0', 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-19 14:38:07');
+INSERT INTO `sys_menu` VALUES (21, 1, '通知管理', 'SYSTEM', 2, '/notice', '/system/notice', '', '{\"title\":\"通知管理\",\"icon\":\"NotificationTwoTone\",\"show\":true,\"requiresAuth\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-29 21:09:27', 'SYSTEM', '2025-10-19 14:42:59');
+INSERT INTO `sys_menu` VALUES (22, 0, '配置中心', 'CONFIG', 1, '/cc-config', '', '', '{\"title\":\"配置中心\",\"icon\":\"GiftTwoTone\",\"show\":true,\"requiresAuth\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-29 21:43:48', 'SYSTEM', '2025-10-19 14:43:17');
 INSERT INTO `sys_menu` VALUES (23, 22, '配置管理', 'CONFIG', 2, '/center', '/cc-config/center', NULL, '{\"title\":\"配置管理\",\"icon\":\"ContainerOutlined\",\"permission\":\"system:config:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-29 21:58:19', 'SYSTEM', '2025-10-13 20:06:59');
 INSERT INTO `sys_menu` VALUES (24, 22, '子系统管理', 'CONFIG', 2, '/subsystem', '/cc-config/subsystem', NULL, '{\"title\":\"子系统管理\",\"icon\":\"SubnodeOutlined\",\"permission\":\"system:subsystem:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-04-29 22:00:42', 'SYSTEM', '2025-10-13 20:06:59');
-INSERT INTO `sys_menu` VALUES (25, 0, '消息队列', 'MQ', 1, '/mq', '', '', '{\"title\":\"消息队列\",\"icon\":\"MessageOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:44:38', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (26, 25, 'Mq仪表盘', 'MQ', 2, '/mq/dashboard', '/mq/dashboardView', '', '{\"title\":\"MQ仪表盘\",\"icon\":\"DashOutlined\",\"permission\":\"system:mm:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (27, 25, '集群', 'MQ', 2, '/mq/cluster', '/mq/clusterView', '', '{\"title\":\"集群\",\"icon\":\"DashOutlined\",\"permission\":\"system:cluster:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (28, 25, 'topic管理', 'MQ', 2, '/mq/topic', '/mq/topicView', '', '{\"title\":\"主题管理\",\"icon\":\"DashOutlined\",\"permission\":\"system:topic:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (29, 25, '生产者', 'MQ', 2, '/mq/producer', '/mq/producerView', '', '{\"title\":\"生产者\",\"icon\":\"DashOutlined\",\"permission\":\"system:producer:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (30, 25, '消费者', 'MQ', 2, '/mq/consumer', '/mq/consumerView', '', '{\"title\":\"消费者\",\"icon\":\"DashOutlined\",\"permission\":\"system:consumer:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (31, 25, '消息管理', 'MQ', 2, '/mq/message', '/mq/messageView', '', '{\"title\":\"消息管理\",\"icon\":\"DashOutlined\",\"permission\":\"system:message:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (32, 25, '消息轨迹', 'MQ', 2, '/mq/messageTrace', '/mq/messageTraceView', '', '{\"title\":\"消息轨迹\",\"icon\":\"DashOutlined\",\"permission\":\"system:messageTrace:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (33, 25, '死信消息', 'MQ', 2, '/mq/dlqMessage', '/mq/dlqMessageView', '', '{\"title\":\"死信消息\",\"icon\":\"DashOutlined\",\"permission\":\"system:dlqMessage:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (34, 25, '权限管理', 'MQ', 2, '/mq/acl', '/mq/aclView', '', '{\"title\":\"权限管理\",\"icon\":\"DashOutlined\",\"permission\":\"system:acl:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-13 20:07:06');
-INSERT INTO `sys_menu` VALUES (36, 0, '首页', 'JOB', 2, '/job/home', '/job/home/homeView', '', '{\"title\":\"首页\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (37, 0, '在线机器', 'JOB', 2, '/job/pods', '/job/pods/podsView', '', '{\"title\":\"在线机器\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 2, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (38, 0, '组管理', 'JOB', 2, '/job/group', '/job/group/groupView', '', '{\"title\":\"组管理\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 4, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (51, 0, '定时任务', 'JOB', 1, '/job/task', NULL, NULL, '{\"title\":\"定时任务\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 5, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (52, 0, '工作流', 'JOB', 1, '/job/workflow', NULL, NULL, '{\"title\":\"工作流\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 6, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (53, 0, '重试任务', 'JOB', 1, '/job/retry', NULL, NULL, '{\"title\":\"重试任务\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 7, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (54, 0, '告警配置', 'JOB', 1, '/job/notify', NULL, NULL, '{\"title\":\"告警配置\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 8, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-13 20:07:19');
+INSERT INTO `sys_menu` VALUES (25, 0, '消息队列', 'MQ', 1, '/mq', '', '', '{\"title\":\"消息队列\",\"icon\":\"RocketTwoTone\",\"show\":true,\"requiresAuth\":true}', 2, b'1', b'0', 'SYSTEM', '2025-05-02 02:44:38', 'SYSTEM', '2025-10-19 14:43:15');
+INSERT INTO `sys_menu` VALUES (26, 25, 'Mq仪表盘', 'MQ', 2, '/dashboard', '/mq/dashboardView', '', '{\"title\":\"MQ仪表盘\",\"icon\":\"DashOutlined\",\"permission\":\"system:mm:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:10');
+INSERT INTO `sys_menu` VALUES (27, 25, '集群', 'MQ', 2, 'cluster', '/mq/clusterView', '', '{\"title\":\"集群\",\"icon\":\"DashOutlined\",\"permission\":\"system:cluster:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:12');
+INSERT INTO `sys_menu` VALUES (28, 25, 'topic管理', 'MQ', 2, '/topic', '/mq/topicView', '', '{\"title\":\"主题管理\",\"icon\":\"DashOutlined\",\"permission\":\"system:topic:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:14');
+INSERT INTO `sys_menu` VALUES (29, 25, '生产者', 'MQ', 2, '/producer', '/mq/producerView', '', '{\"title\":\"生产者\",\"icon\":\"DashOutlined\",\"permission\":\"system:producer:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:16');
+INSERT INTO `sys_menu` VALUES (30, 25, '消费者', 'MQ', 2, '/consumer', '/mq/consumerView', '', '{\"title\":\"消费者\",\"icon\":\"DashOutlined\",\"permission\":\"system:consumer:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:18');
+INSERT INTO `sys_menu` VALUES (31, 25, '消息管理', 'MQ', 2, '/message', '/mq/messageView', '', '{\"title\":\"消息管理\",\"icon\":\"DashOutlined\",\"permission\":\"system:message:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:20');
+INSERT INTO `sys_menu` VALUES (32, 25, '消息轨迹', 'MQ', 2, '/messageTrace', '/mq/messageTraceView', '', '{\"title\":\"消息轨迹\",\"icon\":\"DashOutlined\",\"permission\":\"system:messageTrace:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:23');
+INSERT INTO `sys_menu` VALUES (33, 25, '死信消息', 'MQ', 2, '/dlqMessage', '/mq/dlqMessageView', '', '{\"title\":\"死信消息\",\"icon\":\"DashOutlined\",\"permission\":\"system:dlqMessage:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:26');
+INSERT INTO `sys_menu` VALUES (34, 25, '权限管理', 'MQ', 2, '/acl', '/mq/aclView', '', '{\"title\":\"权限管理\",\"icon\":\"DashOutlined\",\"permission\":\"system:acl:list\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-02 02:46:13', 'SYSTEM', '2025-10-19 12:34:28');
+INSERT INTO `sys_menu` VALUES (35, 0, '定时任务', 'JOB', 1, '/job', '', '', '{\"title\":\"定时任务\",\"icon\":\"CloudTwoTone\",\"show\":true,\"requiresAuth\":true}', 3, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-19 14:43:13');
+INSERT INTO `sys_menu` VALUES (36, 35, '首页', 'JOB', 2, '/job/home', '/job/home/homeView', '', '{\"title\":\"首页\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-19 11:54:20');
+INSERT INTO `sys_menu` VALUES (37, 35, '在线机器', 'JOB', 2, '/job/pods', '/job/pods/podsView', '', '{\"title\":\"在线机器\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 2, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-19 11:54:24');
+INSERT INTO `sys_menu` VALUES (38, 35, '组管理', 'JOB', 2, '/job/group', '/job/group/groupView', '', '{\"title\":\"组管理\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 4, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-19 11:54:26');
+INSERT INTO `sys_menu` VALUES (51, 35, '定时任务', 'JOB', 1, '/job/task', NULL, NULL, '{\"title\":\"定时任务\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 5, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-19 11:54:27');
+INSERT INTO `sys_menu` VALUES (52, 35, '工作流', 'JOB', 1, '/job/workflow', NULL, NULL, '{\"title\":\"工作流\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 6, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-19 11:54:30');
+INSERT INTO `sys_menu` VALUES (53, 35, '重试任务', 'JOB', 1, '/job/retry', NULL, NULL, '{\"title\":\"重试任务\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 7, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-19 11:54:34');
+INSERT INTO `sys_menu` VALUES (54, 35, '告警配置', 'JOB', 1, '/job/notify', NULL, NULL, '{\"title\":\"告警配置\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 8, b'1', b'0', 'SYSTEM', '2025-10-10 12:19:41', 'SYSTEM', '2025-10-19 11:54:38');
 INSERT INTO `sys_menu` VALUES (55, 51, '任务管理', 'JOB', 2, '/task-info', '/job/task/taskView', '', '{\"title\":\"任务管理\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
 INSERT INTO `sys_menu` VALUES (56, 51, '执行批次管理', 'JOB', 2, '/task-batch', '/job/batch/jobBatchView', '', '{\"title\":\"执行批次\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
 INSERT INTO `sys_menu` VALUES (57, 52, '任务管理', 'JOB', 2, '/workflow-task', '/job/workflow/task/workflowTaskView', '', '{\"title\":\"任务管理\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
@@ -1922,13 +3837,28 @@ INSERT INTO `sys_menu` VALUES (61, 53, '重试场景', 'JOB', 2, '/retry-scene',
 INSERT INTO `sys_menu` VALUES (62, 53, '死信任务', 'JOB', 2, '/retry-dead-letter', '/job/retry/retryDeadLetterView', '', '{\"title\":\"死信任务\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 4, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
 INSERT INTO `sys_menu` VALUES (63, 54, '通知配置', 'JOB', 2, '/notify-config', '/job/notify/config/configView', '', '{\"title\":\"通知配置\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
 INSERT INTO `sys_menu` VALUES (64, 54, '通知人', 'JOB', 2, '/notify-recipient', '/job/notify/recipient/recipientView', '', '{\"title\":\"通知人\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 1, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (65, 0, '命名空间管理', 'JOB', 1, '/job/namespace', '/job/namespace/namespaceView', '', '{\"title\":\"命名空间\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 3, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-13 20:07:19');
-INSERT INTO `sys_menu` VALUES (66, 0, '执行器', 'JOB', 1, '/job/executor', '/job/executor/executorView', '', '{\"title\":\"执行器管理\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 2, b'1', b'0', 'SYSTEM', '2025-09-26 15:49:23', 'SYSTEM', '2025-10-13 20:07:19');
+INSERT INTO `sys_menu` VALUES (65, 35, '命名空间管理', 'JOB', 1, '/job/namespace', '/job/namespace/namespaceView', '', '{\"title\":\"命名空间\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 3, b'1', b'0', 'SYSTEM', '2025-05-09 19:39:56', 'SYSTEM', '2025-10-19 11:54:41');
+INSERT INTO `sys_menu` VALUES (66, 35, '执行器', 'JOB', 1, '/job/executor', '/job/executor/executorView', '', '{\"title\":\"执行器管理\",\"icon\":\"SortAscendingOutlined\",\"show\":true}', 2, b'1', b'0', 'SYSTEM', '2025-09-26 15:49:23', 'SYSTEM', '2025-10-19 11:54:43');
 INSERT INTO `sys_menu` VALUES (67, 57, '添加', 'JOB', 2, '/workflow/form/add', '/job/workflow/form/add/index', '', '{\"title\":\"添加\",\"icon\":\"SortAscendingOutlined\",\"show\":false}', 2, b'1', b'0', 'SYSTEM', '2025-09-26 15:49:23', 'SYSTEM', '2025-10-13 20:07:19');
 INSERT INTO `sys_menu` VALUES (68, 57, '批次', 'JOB', 2, '/workflow/form/batch', '/job/workflow/form/batch/index', '', '{\"title\":\"批次\",\"icon\":\"SortAscendingOutlined\",\"show\":false}', 2, b'1', b'0', 'SYSTEM', '2025-09-26 15:49:23', 'SYSTEM', '2025-10-13 20:07:19');
 INSERT INTO `sys_menu` VALUES (69, 57, '复制', 'JOB', 2, '/workflow/form/copy', '/job/workflow/form/copy/index', '', '{\"title\":\"复制\",\"icon\":\"SortAscendingOutlined\",\"show\":false}', 2, b'1', b'0', 'SYSTEM', '2025-09-26 15:49:23', 'SYSTEM', '2025-10-13 20:07:20');
 INSERT INTO `sys_menu` VALUES (70, 57, '详情', 'JOB', 2, '/workflow/form/detail', '/job/workflow/form/detail/index', '', '{\"title\":\"详情\",\"icon\":\"SortAscendingOutlined\",\"show\":false}', 2, b'1', b'0', 'SYSTEM', '2025-09-26 15:49:23', 'SYSTEM', '2025-10-13 20:07:20');
 INSERT INTO `sys_menu` VALUES (71, 57, '编辑', 'JOB', 2, '/workflow/form/edit', '/job/workflow/form/edit/index', '', '{\"title\":\"编辑\",\"icon\":\"SortAscendingOutlined\",\"show\":false}', 2, b'1', b'0', 'SYSTEM', '2025-09-26 15:49:23', 'SYSTEM', '2025-10-13 20:07:20');
+INSERT INTO `sys_menu` VALUES (72, 2, '搜索', 'SYSTEM', 3, '', '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:user:page\"}', 1, b'1', b'0', 'SYSTEM', '2025-10-19 14:59:01', 'SYSTEM', '2025-10-19 15:02:16');
+INSERT INTO `sys_menu` VALUES (73, 2, '启用', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:user:enable\"}', 1, b'1', b'0', NULL, '2025-10-19 15:11:57', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (74, 2, '禁用', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:user:disable\"}', 1, b'1', b'0', NULL, '2025-10-19 15:12:29', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (75, 7, '搜索', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:role:page\"}', 1, b'1', b'0', NULL, '2025-10-19 15:32:09', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (76, 12, '列表', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:menu:list\"}', 1, b'1', b'0', NULL, '2025-10-19 15:45:41', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (77, 7, '列表', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:role:list\"}', 1, b'1', b'0', NULL, '2025-10-19 18:32:41', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (78, 7, '角色树', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:role:tree\"}', 1, b'1', b'0', NULL, '2025-10-19 18:49:46', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (79, 21, '搜索', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:page\"}', 1, b'1', b'0', NULL, '2025-10-19 18:50:43', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (80, 21, '列表', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:list\"}', 1, b'1', b'0', NULL, '2025-10-19 18:51:20', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (81, 21, '新增', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:add\"}', 1, b'1', b'0', NULL, '2025-10-19 18:51:39', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (82, 21, '编辑', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:edit\"}', 1, b'1', b'0', NULL, '2025-10-19 18:51:59', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (83, 21, '已读', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:read\"}', 1, b'1', b'0', NULL, '2025-10-19 18:52:21', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (84, 21, '全部已读', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:readAll\"}', 1, b'1', b'0', NULL, '2025-10-19 18:53:36', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (85, 21, '清除全部', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:clear\"}', 1, b'1', b'0', NULL, '2025-10-19 18:54:16', NULL, NULL);
+INSERT INTO `sys_menu` VALUES (86, 21, '删除', 'SYSTEM', 3, NULL, '', '', '{\"title\":\"\",\"icon\":\"\",\"show\":true,\"requiresAuth\":true,\"permission\":\"system:notice:delete\"}', 1, b'1', b'0', NULL, '2025-10-19 18:54:29', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -1948,7 +3878,7 @@ CREATE TABLE `sys_role`  (
   `updated_date` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_code`(`code` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统角色表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统角色表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role
@@ -1970,7 +3900,7 @@ CREATE TABLE `sys_role_menu`  (
   `updated_by` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新人',
   `updated_date` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '角色菜单关联表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 146 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '角色菜单关联表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -1990,16 +3920,37 @@ INSERT INTO `sys_role_menu` VALUES (12, 1, 12, 'SYSTEM', '2025-04-13 16:31:02', 
 INSERT INTO `sys_role_menu` VALUES (13, 1, 13, 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 23:29:08');
 INSERT INTO `sys_role_menu` VALUES (14, 1, 14, 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 23:29:08');
 INSERT INTO `sys_role_menu` VALUES (15, 1, 15, 'SYSTEM', '2025-04-13 16:31:02', 'SYSTEM', '2025-10-13 23:29:08');
-INSERT INTO `sys_role_menu` VALUES (31, 2, 2, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (32, 2, 7, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (33, 2, 3, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (34, 2, 4, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (35, 2, 5, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (36, 2, 6, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (37, 2, 8, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (38, 2, 9, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (39, 2, 10, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
-INSERT INTO `sys_role_menu` VALUES (40, 2, 11, 'SYSTEM', '2025-04-15 16:45:00', 'SYSTEM', '2025-04-15 16:45:00');
+INSERT INTO `sys_role_menu` VALUES (115, 2, 7, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (116, 2, 21, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (117, 2, 2, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (118, 2, 72, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (119, 2, 73, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (120, 2, 74, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (121, 2, 3, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (122, 2, 4, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (123, 2, 5, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (124, 2, 6, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (125, 2, 75, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (126, 2, 77, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (127, 2, 78, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (128, 2, 8, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (129, 2, 9, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (130, 2, 10, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (131, 2, 11, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (132, 2, 79, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (133, 2, 80, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (134, 2, 81, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (135, 2, 82, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (136, 2, 83, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (137, 2, 84, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (138, 2, 85, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (139, 2, 86, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (140, 2, 12, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (141, 2, 76, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (142, 2, 13, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (143, 2, 14, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (144, 2, 15, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
+INSERT INTO `sys_role_menu` VALUES (145, 2, 1, NULL, '2025-10-19 18:57:17', NULL, '2025-10-19 18:57:17');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -2021,15 +3972,15 @@ CREATE TABLE `sys_user`  (
   `updated_date` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_username`(`username` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统用户表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '系统用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$2a$10$ns24hvhbVrer2jzZaeHyJu4RsJZj7yItt7UxEED34ZM3C7TC1eW6u', '超级管理员', '/src/assets/images/bubble.png', '13611988536@163.com', '13856854188', b'1', b'0', 'SYSYTEM', '2025-04-13 16:30:34', 'SYSTEM', '2025-10-13 23:58:20');
+INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$DQoPpZke.gTvFkXSmgWY/uEA5JvcVnyoecR0Ah/qeNjYj3pLzwWYS', '超级管理员', '/src/assets/images/bubble.png', '13611988536@163.com', '13856854188', b'1', b'0', 'SYSYTEM', '2025-04-13 16:30:34', 'SYSTEM', '2025-10-19 13:12:14');
 INSERT INTO `sys_user` VALUES (2, 'hexian', '$2a$2a$10$ns24hvhbVrer2jzZaeHyJu4RsJZj7yItt7UxEED34ZM3C7TC1eW6u', '贺老板', '/src/assets/images/cute.png', '11111111111@163.com', '13856854188', b'1', b'0', 'SYSTEM', '2025-04-15 18:59:16', 'SYSTEM', '2025-10-13 23:58:17');
 INSERT INTO `sys_user` VALUES (3, 'wangbo', '$2a$2a$10$ns24hvhbVrer2jzZaeHyJu4RsJZj7yItt7UxEED34ZM3C7TC1eW6u', '王老板', '/src/assets/images/doraemon.png', '11111111111@163.com', '13856854188', b'1', b'0', 'SYSTEM', '2025-04-15 19:09:49', 'SYSTEM', '2025-10-13 23:58:16');
-INSERT INTO `sys_user` VALUES (4, 'tmx', '$2a$10$phdey1astSAjMzcvQTflUuNk9CIqWFMH3W7MnYWPzzzaO9n21lRtW', '老谭', '/src/assets/images/girl.png', '2634603838@qq.com', '13856854188', b'1', b'0', NULL, '2025-10-13 22:55:26', NULL, '2025-10-14 00:01:48');
+INSERT INTO `sys_user` VALUES (4, 'tmx', '$2a$10$qv1SWerAuBQ0ibuGqE.gVu0x1Mq2ea27Eo2EcFCT0DlPC3HIouAwq', '老谭', '/src/assets/images/girl.png', '2634603838@qq.com', '13856854188', b'1', b'0', NULL, '2025-10-13 22:55:26', NULL, '2025-10-19 13:19:26');
 INSERT INTO `sys_user` VALUES (5, 'tmx1', '$2a$10$1.Upe92eAlCui5LXnIe2/OiiDfmLkjb3AdDoJeihh2LbxaWCtoH.K', '老谭', '/src/assets/images/doraemon.png', '2634603838@qq.com', '13856854188', b'1', b'1', NULL, '2025-10-13 22:56:03', NULL, '2025-10-13 22:57:51');
 
 -- ----------------------------
@@ -2046,14 +3997,14 @@ CREATE TABLE `sys_user_role`  (
   `updated_date` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_user_role`(`user_id` ASC, `role_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '用户角色关联表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '用户角色关联表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES (4, 2, 2, 'SYSTEM', '2025-04-15 19:09:29', 'SYSTEM', '2025-04-15 19:09:29');
 INSERT INTO `sys_user_role` VALUES (5, 3, 1, 'SYSTEM', '2025-04-15 19:09:49', 'SYSTEM', '2025-04-15 19:09:49');
-INSERT INTO `sys_user_role` VALUES (6, 1, 1, 'SYSTEM', '2025-04-15 19:11:52', 'SYSTEM', '2025-04-15 19:11:52');
-INSERT INTO `sys_user_role` VALUES (17, 4, 4, NULL, '2025-10-13 23:44:55', NULL, NULL);
+INSERT INTO `sys_user_role` VALUES (18, 4, 2, NULL, '2025-10-19 13:17:57', NULL, NULL);
+INSERT INTO `sys_user_role` VALUES (19, 1, 1, NULL, '2025-10-19 14:31:09', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
