@@ -199,7 +199,7 @@ public class WorkflowService  {
 
         Page<Workflow> page = workflowDao.selectPage(pageDTO,
                 new LambdaQueryWrapper<Workflow>()
-                        .eq(Workflow::getDeleted, 500)
+                        .eq(Workflow::getDeleted, false)
                         .eq(Workflow::getNamespaceId, "namespaceId")
                         .in(CollectionUtils.isNotEmpty(groupNames), Workflow::getGroupName, groupNames)
                         .like(StrUtil.isNotBlank(queryVO.getWorkflowName()), Workflow::getWorkflowName,

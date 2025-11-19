@@ -44,7 +44,7 @@ public class WorkflowResource {
 
 
     @GetMapping("/workflows/{id}")
-    public WorkflowDetailResponseVO getWorkflowDetail(@PathVariable BigInteger id) throws IOException {
+    public WorkflowDetailResponseVO getWorkflowDetail(@PathVariable BigInteger id) {
         return workflowService.getWorkflowDetail(id);
     }
 

@@ -94,12 +94,12 @@ public class WorkflowBatchService {
                 || i.getTaskBatchStatus() == JobTaskBatchStatus.STOP;
     }
 
-    public IPage<WorkflowBatchResponseVO> listPage(Page<WorkflowTaskBatch> pageDTO, WorkflowBatchQuery queryVO) {
+    public IPage<WorkflowBatchResponseVO> queryPage(Page<WorkflowTaskBatch> pageDTO, WorkflowBatchQuery queryVO) {
 
         List<String> groupNames = List.of();
 
         QueryWrapper<WorkflowTaskBatch> wrapper = new QueryWrapper<WorkflowTaskBatch>()
-                .eq("batch.namespace_id", "111")
+                .eq("batch.namespace_id", "namespaceId")
                 .eq(queryVO.getWorkflowId() != null, "batch.workflow_id", queryVO.getWorkflowId())
                 .in(CollectionUtils.isNotEmpty(groupNames), "batch.group_name", groupNames)
                 .eq(queryVO.getTaskBatchStatus() != null, "batch.task_batch_status", queryVO.getTaskBatchStatus())
@@ -123,7 +123,7 @@ public class WorkflowBatchService {
         WorkflowTaskBatch workflowTaskBatch = workflowTaskBatchDao.selectOne(
                 new LambdaQueryWrapper<WorkflowTaskBatch>()
                         .eq(WorkflowTaskBatch::getId, id)
-                        .eq(WorkflowTaskBatch::getNamespaceId, "111"));
+                        .eq(WorkflowTaskBatch::getNamespaceId, "namespaceId"));
         if (Objects.isNull(workflowTaskBatch)) {
             return null;
         }
@@ -133,7 +133,7 @@ public class WorkflowBatchService {
         WorkflowDetailResponseVO responseVO = workflowMapper.convert(workflow);
         responseVO.setWorkflowBatchStatus(workflowTaskBatch.getTaskBatchStatus());
         List<WorkflowNode> workflowNodes = workflowNodeDao.selectList(new LambdaQueryWrapper<WorkflowNode>()
-                .eq(WorkflowNode::getDeleted, 500)
+                .eq(WorkflowNode::getDeleted, false)
                 .eq(WorkflowNode::getWorkflowId, workflow.getId()));
 
         List<Job> jobs = jobDao.selectList(
@@ -249,7 +249,7 @@ public class WorkflowBatchService {
 
     @Transactional
     public Boolean deleteByIds(Set<BigInteger> ids) {
-        String namespaceId = "111";
+        String namespaceId = "namespaceId";
 
         Assert.isTrue(ids.size() == workflowTaskBatchDao.delete(new LambdaQueryWrapper<WorkflowTaskBatch>()
                         .eq(WorkflowTaskBatch::getNamespaceId, namespaceId)

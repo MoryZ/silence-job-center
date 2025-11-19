@@ -31,10 +31,9 @@ public class WorkflowBatchResource {
         this.workflowBatchService = workflowBatchService;
     }
 
-
     @GetMapping(value = "/workflowBatches", params = {"pageNo", "pageSize"})
-    public IPage<WorkflowBatchResponseVO> listPage(Page<WorkflowTaskBatch> page, WorkflowBatchQuery queryVO) {
-        return workflowBatchService.listPage(page, queryVO);
+    public IPage<WorkflowBatchResponseVO> queryPage(Page<WorkflowTaskBatch> page, WorkflowBatchQuery queryVO) {
+        return workflowBatchService.queryPage(page, queryVO);
     }
 
     
