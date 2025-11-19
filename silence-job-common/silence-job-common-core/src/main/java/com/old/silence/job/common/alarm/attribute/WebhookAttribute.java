@@ -2,7 +2,7 @@ package com.old.silence.job.common.alarm.attribute;
 
 
 
-import com.old.silence.job.common.enums.ContentTypeEnum;
+import com.old.silence.job.common.enums.ContentType;
 
 
 public class WebhookAttribute {
@@ -15,7 +15,7 @@ public class WebhookAttribute {
     /**
      * 请求类型
      */
-    private ContentTypeEnum contentType;
+    private ContentType contentType;
 
     /**
      * 秘钥
@@ -30,11 +30,11 @@ public class WebhookAttribute {
         this.webhookUrl = webhookUrl;
     }
 
-    public ContentTypeEnum getContentType() {
+    public ContentType getContentType() {
         return contentType;
     }
 
-    public void setContentType(ContentTypeEnum contentType) {
+    public void setContentType(ContentType contentType) {
         this.contentType = contentType;
     }
 

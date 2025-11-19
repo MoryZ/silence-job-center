@@ -38,6 +38,7 @@ import com.old.silence.job.common.util.StreamUtils;
 
 
 import com.old.silence.job.server.api.assembler.GroupConfigResponseVOMapper;
+import com.old.silence.job.server.api.config.TenantContext;
 import com.old.silence.job.server.common.dto.PartitionTask;
 import com.old.silence.job.server.common.handler.ConfigVersionSyncHandler;
 import com.old.silence.job.server.common.util.PartitionTaskUtils;
@@ -99,15 +100,13 @@ public class GroupConfigService {
     @Transactional
     public Boolean create(GroupConfig groupConfig) {
 
-        String namespaceId =  "namespaceId";
 
         Assert.isTrue(groupConfigDao.selectCount(new LambdaQueryWrapper<GroupConfig>()
-                        .eq(GroupConfig::getNamespaceId, namespaceId)
                         .eq(GroupConfig::getGroupName, groupConfig.getGroupName())) == 0,
                 () -> new SilenceJobServerException("GroupName已经存在 {}", groupConfig.getGroupName()));
 
         // 保存组配置
-        return doSaveGroupConfig(namespaceId, groupConfig);
+        return doSaveGroupConfig(groupConfig);
     }
 
 
@@ -121,12 +120,10 @@ public class GroupConfigService {
         }
 
         String groupName = groupConfig.getGroupName();
-        String namespaceId = "namespaceId";
 
         
         long count = groupConfigDao.selectCount(
                 new LambdaQueryWrapper<GroupConfig>()
-                        .eq(GroupConfig::getNamespaceId, namespaceId)
                         .eq(GroupConfig::getGroupName, groupName));
         if (count <= 0) {
             return false;
@@ -135,23 +132,19 @@ public class GroupConfigService {
         groupConfig.setDescription(Optional.ofNullable(groupConfig.getDescription()).orElse(StrUtil.EMPTY));
         // 使用@TableField(value = "version", update= "%s+1") 进行更新version, 这里必须初始化一个值
         groupConfig.setVersion(1);
-        // 不允许更新token
-        groupConfig.setToken(null);
         Assert.isTrue(tablePartitionList.contains(groupConfig.getGroupPartition()),
                 () -> new SilenceJobServerException("分区不存在. [{}]", tablePartitionList));
         Assert.isTrue(groupConfig.getGroupPartition() >= 0,
                 () -> new SilenceJobServerException("分区不能是负数."));
 
-        // 不允许更新组
-        groupConfig.setGroupName(null);
         Assert.isTrue(1 == groupConfigDao.update(groupConfig,
                         new LambdaUpdateWrapper<GroupConfig>()
-                                .eq(GroupConfig::getNamespaceId, namespaceId)
                                 .eq(GroupConfig::getGroupName, groupName)),
                 () -> new SilenceJobServerException("exception occurred while adding group. groupConfigVO[{}]",
                         groupConfig));
 
         // 同步版本， 版本为0代表需要同步到客户端
+        var namespaceId = TenantContext.getTenantId();
         boolean add = configVersionSyncHandler.addSyncTask(groupName, namespaceId, 0);
         // 若添加失败则强制发起同步
         if (!add) {
@@ -166,7 +159,6 @@ public class GroupConfigService {
         
         return groupConfigDao.update(groupConfig,
                 new LambdaUpdateWrapper<GroupConfig>()
-                        .eq(GroupConfig::getNamespaceId,  "namespaceId")
                         .eq(GroupConfig::getGroupName, groupName)) == 1;
     }
 
@@ -178,11 +170,8 @@ public class GroupConfigService {
 
     }
 
-    private boolean doSaveGroupConfig(String namespaceId, GroupConfig groupConfig) {
-
-        groupConfig.setCreatedDate(Instant.now());
+    private boolean doSaveGroupConfig(GroupConfig groupConfig) {
         groupConfig.setVersion(1);
-        groupConfig.setNamespaceId(namespaceId);
         groupConfig.setGroupName(groupConfig.getGroupName());
         groupConfig.setToken(groupConfig.getToken());
         groupConfig.setDescription(Optional.ofNullable(groupConfig.getDescription()).orElse(StrUtil.EMPTY));
@@ -193,12 +182,10 @@ public class GroupConfigService {
         return Boolean.TRUE;
     }
 
-    
     public GroupConfigResponseVO getGroupConfigByGroupName(String groupName) {
 
         var groupConfig = groupConfigDao.selectOne(
                 new LambdaQueryWrapper<GroupConfig>()
-                        .eq(GroupConfig::getNamespaceId, "namespaceId")
                         .eq(GroupConfig::getGroupName, groupName));
         return groupConfigResponseVOMapper.convert(groupConfig);
     }
@@ -231,14 +218,12 @@ public class GroupConfigService {
 
     
     public List<GroupConfig> getAllGroupNameList() {
-        return groupConfigDao.selectList(new LambdaQueryWrapper<GroupConfig>()
-                .eq(GroupConfig::getNamespaceId, "namespaceId"));
+        return groupConfigDao.selectList(new LambdaQueryWrapper<>());
     }
 
     public List<String> getOnlinePods(String groupName) {
         List<ServerNode> serverNodes = serverNodeDao.selectList(
                 new LambdaQueryWrapper<ServerNode>()
-                        .eq(ServerNode::getNamespaceId, "namespaceId")
                         .eq(ServerNode::getGroupName, groupName));
         return StreamUtils.toList(serverNodes, serverNode -> serverNode.getHostIp() + ":" + serverNode.getHostPort());
     }
@@ -276,14 +261,12 @@ public class GroupConfigService {
     
     @Transactional
     public void importGroup(List<GroupConfig> requestList) {
-        String namespaceId = "namespaceId";
 
         Set<String> groupSet = StreamUtils.toSet(requestList, GroupConfig::getGroupName);
         
 
         List<GroupConfig> configs = groupConfigDao.selectList(new LambdaQueryWrapper<GroupConfig>()
                 .select(GroupConfig::getGroupName)
-                .eq(GroupConfig::getNamespaceId, namespaceId)
                 .in(GroupConfig::getGroupName, groupSet));
 
         Assert.isTrue(CollectionUtils.isEmpty(configs),
@@ -292,14 +275,13 @@ public class GroupConfigService {
         for (GroupConfig groupConfig : requestList) {
 
             // 保存组配置
-            doSaveGroupConfig(namespaceId, groupConfig);
+            doSaveGroupConfig(groupConfig);
 
         }
 
     }
 
     public String exportGroup(ExportGroupCommand exportGroupCommand) {
-        String namespaceId = "namespaceId";
         var groupIds = exportGroupCommand.getGroupIds();
         var groupStatus = exportGroupCommand.getGroupStatus();
         var groupName = exportGroupCommand.getGroupName();
@@ -309,7 +291,6 @@ public class GroupConfigService {
             List<GroupConfig> groupConfigs = groupConfigDao.selectPage(new PageDTO<>(0, 100),
                     new LambdaQueryWrapper<GroupConfig>()
                             .ge(GroupConfig::getId, startId)
-                            .eq(GroupConfig::getNamespaceId, namespaceId)
                             .eq(Objects.nonNull(groupStatus), GroupConfig::getGroupStatus, groupStatus)
                             .in(CollectionUtils.isNotEmpty(groupIds), GroupConfig::getId, groupIds)
                             .likeRight(StrUtil.isNotBlank(groupName), GroupConfig::getGroupName, StrUtil.trim(groupName))
@@ -327,37 +308,30 @@ public class GroupConfigService {
 
     
     public boolean deleteByGroupName(String groupName) {
-        String namespaceId = "111";
         // 前置检查
         // 1. 定时任务是否删除
         Assert.isTrue(CollectionUtils.isEmpty(jobDao.selectList(new LambdaQueryWrapper<Job>()
-                        .eq(Job::getNamespaceId, namespaceId)
                         .eq(Job::getGroupName, groupName).orderByAsc(Job::getId))),
                 () -> new SilenceJobServerException("存在未删除的定时任务. 请先删除当前组的定时任务后再重试删除"));
         // 2. 工作流是否删除
         Assert.isTrue(CollectionUtils.isEmpty(workflowDao.selectList(new LambdaQueryWrapper<Workflow>()
-                        .eq(Workflow::getNamespaceId, namespaceId)
                         .eq(Workflow::getGroupName, groupName).orderByAsc(Workflow::getId))),
                 () -> new SilenceJobServerException("存在未删除的工作流任务. 请先删除当前组的工作流任务后再重试删除"));
         // 3. 重试场景是否删除
         Assert.isTrue(CollectionUtils.isEmpty(retrySceneConfigDao.selectPage(new PageDTO<>(1, 1), new LambdaQueryWrapper<RetrySceneConfig>()
-                        .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                         .eq(RetrySceneConfig::getGroupName, groupName).orderByAsc(RetrySceneConfig::getId)).getRecords()),
                 () -> new SilenceJobServerException("存在未删除的重试场景. 请先删除当前组的重试场景后再重试删除"));
         // 4. 是否存在已分配的权限
         Assert.isTrue(CollectionUtils.isEmpty(systemUserPermissionDao.selectList(new LambdaQueryWrapper<SystemUserPermission>()
-                        .eq(SystemUserPermission::getNamespaceId, namespaceId)
                         .eq(SystemUserPermission::getGroupName, groupName).orderByAsc(SystemUserPermission::getId))),
                 () -> new SilenceJobServerException("存在已分配组权限. 请先删除已分配的组权限后再重试删除"));
         // 5. 检查是否存活的客户端节点
         Assert.isTrue(CollectionUtils.isEmpty(serverNodeDao.selectList(new LambdaQueryWrapper<ServerNode>()
-                        .eq(ServerNode::getNamespaceId, namespaceId)
                         .eq(ServerNode::getGroupName, groupName).orderByAsc(ServerNode::getId))),
                 () -> new SilenceJobServerException("存在存活中客户端节点."));
 
         Assert.isTrue(1 == groupConfigDao.delete(
                         new LambdaQueryWrapper<GroupConfig>()
-                                .eq(GroupConfig::getNamespaceId, namespaceId)
                                 .eq(GroupConfig::getGroupStatus, false)
                                 .eq(GroupConfig::getGroupName, groupName)),
                 () -> new SilenceJobServerException("删除组失败, 请检查状态是否关闭状态"));

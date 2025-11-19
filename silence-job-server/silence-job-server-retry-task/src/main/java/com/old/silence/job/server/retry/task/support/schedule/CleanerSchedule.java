@@ -120,7 +120,6 @@ public class CleanerSchedule extends AbstractSchedule implements Lifecycle {
                                 .ge(Retry::getId, startId)
                                 .le(Retry::getCreatedDate, endTime)
                                 .eq(Retry::getTaskType, SystemTaskType.RETRY.getValue())
-                                .ne(Retry::getDeleted, 500)
                                 .orderByAsc(Retry::getId))
                 .getRecords();
         return RetryTaskConverter.INSTANCE.toRetryTaskLogPartitionTasks(retryTaskList);
@@ -166,13 +165,18 @@ public class CleanerSchedule extends AbstractSchedule implements Lifecycle {
         List<BigInteger> finalCbRetryIds = cbRetryIds;
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
-            protected void doInTransactionWithoutResult(final TransactionStatus status) {
+            protected void doInTransactionWithoutResult(TransactionStatus status) {
 
-                // 删除回调数据
-                retryDao.deleteBatchIds(finalCbRetryIds);
+                if (CollectionUtils.isNotEmpty(finalCbRetryIds)) {
+                    // 删除回调数据
+                    retryDao.deleteBatchIds(finalCbRetryIds);
+                }
 
-                // 删除重试完成的数据
-                retryDao.deleteBatchIds(finishRetryIds);
+                if (CollectionUtils.isNotEmpty(finishRetryIds)) {
+                    // 删除重试完成的数据
+                    retryDao.deleteBatchIds(finishRetryIds);
+
+                }
 
                 // 删除重试任务
                 if (!CollectionUtils.isEmpty(retryTaskList)) {

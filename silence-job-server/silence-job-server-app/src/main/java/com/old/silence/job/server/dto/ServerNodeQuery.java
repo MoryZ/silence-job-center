@@ -5,7 +5,6 @@ public class ServerNodeQuery {
 
     private String groupName;
 
-
     public String getGroupName() {
         return groupName;
     }

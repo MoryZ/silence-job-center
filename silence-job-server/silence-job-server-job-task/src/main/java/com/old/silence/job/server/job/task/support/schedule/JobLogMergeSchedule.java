@@ -153,7 +153,7 @@ public class JobLogMergeSchedule extends AbstractSchedule implements Lifecycle {
             for (List<String> partitionMessage : partitionMessages) {
                 // 深拷贝
                 JobLogMessage jobLogMessage = JobTaskConverter.INSTANCE.toJobLogMessage(
-                        jobLogMessageMap.getValue().get(0));
+                        jobLogMessageMap.getValue().getFirst());
 
                 jobLogMessage.setLogNum(partitionMessage.size());
                 jobLogMessage.setMessage(JSON.toJSONString(partitionMessage));

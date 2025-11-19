@@ -3,7 +3,7 @@ package com.old.silence.job.common.enums;
 
 import com.old.silence.core.enums.EnumValue;
 
-public enum ContentTypeEnum implements EnumValue<Byte> {
+public enum ContentType implements EnumValue<Byte> {
 
     JSON(1, "application/json"),
     FORM(2, "application/x-www-form-urlencoded");
@@ -11,7 +11,7 @@ public enum ContentTypeEnum implements EnumValue<Byte> {
     private final Byte value;
     private final String mediaType;
 
-    ContentTypeEnum(int value, String mediaType) {
+    ContentType(int value, String mediaType) {
         this.value = (byte) value;
         this.mediaType = mediaType;
     }

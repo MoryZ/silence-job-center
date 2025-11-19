@@ -2,6 +2,7 @@ package com.old.silence.job.server.vo;
 
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class DashboardRetryLineResponseVO {
     /**
      * 任务列表
      */
-    private Page<Task> taskList;
+    private IPage<Task> taskList;
 
     /**
      * 排名列表
@@ -78,11 +79,11 @@ public class DashboardRetryLineResponseVO {
         }
     }
 
-    public Page<Task> getTaskList() {
+    public IPage<Task> getTaskList() {
         return taskList;
     }
 
-    public void setTaskList(Page<Task> taskList) {
+    public void setTaskList(IPage<Task> taskList) {
         this.taskList = taskList;
     }
 

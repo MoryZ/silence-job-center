@@ -76,7 +76,7 @@ public class JobSummarySchedule extends AbstractSchedule implements Lifecycle {
                 var endTime = Instant.now().atZone(zoneId)
                         .withHour(23).withMinute(59).withSecond(59).withNano(999999999).toInstant();
                 LambdaQueryWrapper<JobTaskBatch> wrapper = new LambdaQueryWrapper<JobTaskBatch>()
-                        .eq(JobTaskBatch::getSystemTaskType, SystemTaskType.JOB.getValue())
+                        .eq(JobTaskBatch::getSystemTaskType, SystemTaskType.JOB)
                         .between(JobTaskBatch::getCreatedDate, beginTime, endTime)
                         .groupBy(JobTaskBatch::getNamespaceId, JobTaskBatch::getGroupName,
                                 JobTaskBatch::getJobId, JobTaskBatch::getTaskBatchStatus, JobTaskBatch::getOperationReason);
@@ -90,7 +90,7 @@ public class JobSummarySchedule extends AbstractSchedule implements Lifecycle {
 
                 List<JobSummary> jobSummaries = jobSummaryDao.selectList(new LambdaQueryWrapper<JobSummary>()
                         .eq(JobSummary::getTriggerAt, beginTime)
-                        .eq(JobSummary::getSystemTaskType, SystemTaskType.JOB.getValue())
+                        .eq(JobSummary::getSystemTaskType, SystemTaskType.JOB)
                         .in(JobSummary::getBusinessId, StreamUtils.toSet(jobSummaryList, JobSummary::getBusinessId)));
 
                 Map<Pair<BigInteger, Instant>, JobSummary> summaryMap = StreamUtils.toIdentityMap(jobSummaries,

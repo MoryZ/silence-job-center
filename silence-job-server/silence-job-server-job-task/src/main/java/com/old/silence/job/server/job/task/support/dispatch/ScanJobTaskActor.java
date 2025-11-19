@@ -172,7 +172,6 @@ public class ScanJobTaskActor extends AbstractActor {
                                 Job::getTriggerInterval, Job::getExecutorTimeout, Job::getTaskType, Job::getResident,
                                 Job::getId, Job::getNamespaceId)
                         .eq(Job::getJobStatus, true)
-                        .eq(Job::getDeleted, 500)
                         .ne(Job::getTriggerType, SystemConstants.WORKFLOW_TRIGGER_TYPE)
                         .in(Job::getBucketIndex, scanTask.getBuckets())
                         .le(Job::getNextTriggerAt,

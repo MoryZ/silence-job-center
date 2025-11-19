@@ -47,7 +47,6 @@ public class SceneConfigResource {
         return sceneConfigService.queryPage(page, queryWrapper);
     }
 
-    
     @GetMapping(value = "/sceneConfig", params = { "groupName", "!pageNo", "!pageSize"})
     public List<SceneConfigResponseVO> getSceneConfigList(@RequestParam String groupName) {
         return sceneConfigService.getSceneConfigList(groupName);

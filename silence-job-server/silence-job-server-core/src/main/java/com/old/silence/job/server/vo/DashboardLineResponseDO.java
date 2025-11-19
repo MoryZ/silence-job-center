@@ -63,4 +63,99 @@ public class DashboardLineResponseDO {
      */
     private Long success;
 
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public Long getSuccessNum() {
+        return successNum;
+    }
+
+    public void setSuccessNum(Long successNum) {
+        this.successNum = successNum;
+    }
+
+    public Long getRunningNum() {
+        return runningNum;
+    }
+
+    public void setRunningNum(Long runningNum) {
+        this.runningNum = runningNum;
+    }
+
+    public Long getMaxCountNum() {
+        return maxCountNum;
+    }
+
+    public void setMaxCountNum(Long maxCountNum) {
+        this.maxCountNum = maxCountNum;
+    }
+
+    public Long getSuspendNum() {
+        return suspendNum;
+    }
+
+    public void setSuspendNum(Long suspendNum) {
+        this.suspendNum = suspendNum;
+    }
+
+    public Long getFail() {
+        return fail;
+    }
+
+    public void setFail(Long fail) {
+        this.fail = fail;
+    }
+
+    public Long getTotalNum() {
+        return totalNum;
+    }
+
+    public void setTotalNum(Long totalNum) {
+        this.totalNum = totalNum;
+    }
+
+    public Long getFailNum() {
+        return failNum;
+    }
+
+    public void setFailNum(Long failNum) {
+        this.failNum = failNum;
+    }
+
+    public Long getStop() {
+        return stop;
+    }
+
+    public void setStop(Long stop) {
+        this.stop = stop;
+    }
+
+    public Long getCancel() {
+        return cancel;
+    }
+
+    public void setCancel(Long cancel) {
+        this.cancel = cancel;
+    }
+
+    public Long getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Long success) {
+        this.success = success;
+    }
 }

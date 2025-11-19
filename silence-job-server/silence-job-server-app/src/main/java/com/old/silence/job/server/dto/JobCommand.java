@@ -131,6 +131,8 @@ public class JobCommand {
      */
     private BigInteger ownerId;
 
+    private String ownerName;
+
 
     public String getGroupName() {
         return groupName;
@@ -282,5 +284,13 @@ public class JobCommand {
 
     public void setOwnerId(BigInteger ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 }

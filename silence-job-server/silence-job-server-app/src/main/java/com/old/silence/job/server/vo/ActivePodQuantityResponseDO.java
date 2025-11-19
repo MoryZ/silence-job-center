@@ -4,7 +4,6 @@ package com.old.silence.job.server.vo;
 import com.old.silence.job.common.enums.NodeType;
 
 
-
 public class ActivePodQuantityResponseDO {
 
     private Long total;

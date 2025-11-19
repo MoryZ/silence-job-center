@@ -51,24 +51,19 @@ public class NotifyRecipientService {
     }
 
     public Boolean saveNotifyRecipient(NotifyRecipient notifyRecipient) {
-        String namespaceId = "namespaceId" ;
-        notifyRecipient.setNamespaceId(namespaceId);
         notifyRecipient.setId(null);
         return 1 == notifyRecipientDao.insert(notifyRecipient);
     }
 
     public Boolean updateNotifyRecipient(NotifyRecipient notifyRecipient) {
-        String namespaceId = "namespaceId" ;
-        notifyRecipient.setNamespaceId(namespaceId);
         return 1 == notifyRecipientDao.updateById(notifyRecipient);
     }
 
     public List<CommonLabelValueResponseVO> getNotifyRecipientList() {
-        String namespaceId = "namespaceId" ;
         List<NotifyRecipient> notifyRecipients = notifyRecipientDao.selectList(
                 new LambdaQueryWrapper<NotifyRecipient>()
                         .select(NotifyRecipient::getRecipientName, NotifyRecipient::getId)
-                        .eq(NotifyRecipient::getNamespaceId, namespaceId));
+        );
 
         return CollectionUtils.transformToList(notifyRecipients, notifyRecipient ->
                 new CommonLabelValueResponseVO(notifyRecipient.getRecipientName(), notifyRecipient.getId()));
@@ -88,11 +83,9 @@ public class NotifyRecipientService {
     public String exportNotifyRecipient(ExportNotifyRecipientCommand exportNotifyRecipientCommand) {
 
         List<NotifyRecipient> requestList = new ArrayList<>();
-        String namespaceId = "namespaceId";
         PartitionTaskUtils.process(startId -> {
             List<NotifyRecipient> recipients = notifyRecipientDao.selectPage(new PageDTO<>(0, 100),
                     new LambdaQueryWrapper<NotifyRecipient>()
-                            .eq(NotifyRecipient::getNamespaceId, namespaceId)
                             .eq(Objects.nonNull(exportNotifyRecipientCommand.getNotifyType()), NotifyRecipient::getNotifyType,
                                     exportNotifyRecipientCommand.getNotifyType())
                             .likeRight(StrUtil.isNotBlank(exportNotifyRecipientCommand.getRecipientName()), NotifyRecipient::getRecipientName,

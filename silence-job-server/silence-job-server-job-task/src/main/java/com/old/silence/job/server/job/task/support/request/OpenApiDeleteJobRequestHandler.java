@@ -69,7 +69,7 @@ public class OpenApiDeleteJobRequestHandler extends PostHttpRequestHandler {
                 .select(JobSummary::getId)
                 .in(JobSummary::getBusinessId, ids)
                 .eq(JobSummary::getNamespaceId, namespaceId)
-                .eq(JobSummary::getSystemTaskType, SystemTaskType.JOB.getValue())
+                .eq(JobSummary::getSystemTaskType, SystemTaskType.JOB)
         );
         if (CollectionUtils.isNotEmpty(jobSummaries)) {
             jobSummaryDao.deleteBatchIds(StreamUtils.toSet(jobSummaries, JobSummary::getId));

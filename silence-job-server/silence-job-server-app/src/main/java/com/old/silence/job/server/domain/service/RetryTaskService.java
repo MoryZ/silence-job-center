@@ -64,11 +64,6 @@ public class RetryTaskService {
     }
 
     public IPage<RetryTaskResponseVO> queryPage(Page<RetryTask> pageDTO, QueryWrapper<RetryTask> queryWrapper) {
-
-        String namespaceId = "namespaceId";
-
-        List<String> groupNames = List.of();
-
         Page<RetryTask> retryTaskPageDTO = retryTaskDao.selectPage(pageDTO, queryWrapper);
         return retryTaskPageDTO.convert(retryTaskLogResponseVOMapper::convert);
 
@@ -83,13 +78,11 @@ public class RetryTaskService {
             return jobLogResponseVO;
         }
 
-        String namespaceId = "111";
 
         Page<RetryTaskLogMessage> selectPage = retryTaskLogMessageDao.selectPage(pageDTO,
                 new LambdaQueryWrapper<RetryTaskLogMessage>()
                         .select(RetryTaskLogMessage::getId, RetryTaskLogMessage::getLogNum)
                         .ge(RetryTaskLogMessage::getId, queryVO.getStartId())
-                        .eq(RetryTaskLogMessage::getNamespaceId, namespaceId)
                         .eq(RetryTaskLogMessage::getRetryTaskId, queryVO.getRetryTaskId())
                         .eq(RetryTaskLogMessage::getGroupName, queryVO.getGroupName())
                         .orderByAsc(RetryTaskLogMessage::getId).orderByAsc(RetryTaskLogMessage::getRealTime)
@@ -173,17 +166,14 @@ public class RetryTaskService {
 
     @Transactional
     public boolean deleteById(BigInteger id) {
-        String namespaceId = "111";
 
         RetryTask retryTask = retryTaskDao.selectOne(
                 new LambdaQueryWrapper<RetryTask>()
                         .in(RetryTask::getTaskStatus, RetryTaskStatus.TERMINAL_STATUS_SET)
-                        .eq(RetryTask::getNamespaceId, namespaceId)
                         .eq(RetryTask::getId, id));
         Assert.notNull(retryTask, () -> new SilenceJobServerException("数据删除失败"));
 
         retryTaskLogMessageDao.delete(new LambdaQueryWrapper<RetryTaskLogMessage>()
-                .eq(RetryTaskLogMessage::getNamespaceId, namespaceId)
                 .eq(RetryTaskLogMessage::getGroupName, retryTask.getGroupName())
                 .eq(RetryTaskLogMessage::getRetryTaskId, id)
         );
@@ -193,12 +183,10 @@ public class RetryTaskService {
 
     @Transactional
     public boolean batchDelete(Set<BigInteger> ids) {
-        String namespaceId = "namespaceId";
 
         List<RetryTask> retryTasks = retryTaskDao.selectList(
                 new LambdaQueryWrapper<RetryTask>()
                         .in(RetryTask::getTaskStatus, RetryTaskStatus.TERMINAL_STATUS_SET)
-                        .eq(RetryTask::getNamespaceId, namespaceId)
                         .in(RetryTask::getId, ids));
         Assert.notEmpty(retryTasks, () -> new SilenceJobServerException("数据不存在"));
         Assert.isTrue(retryTasks.size() == ids.size(), () -> new SilenceJobServerException("数据不存在"));
@@ -206,7 +194,6 @@ public class RetryTaskService {
         for (RetryTask retryTask : retryTasks) {
             retryTaskLogMessageDao.delete(
                     new LambdaQueryWrapper<RetryTaskLogMessage>()
-                            .eq(RetryTaskLogMessage::getNamespaceId, namespaceId)
                             .eq(RetryTaskLogMessage::getGroupName, retryTask.getGroupName())
                             .eq(RetryTaskLogMessage::getRetryTaskId, retryTask.getId()));
         }

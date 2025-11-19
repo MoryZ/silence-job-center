@@ -16,6 +16,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.old.silence.job.common.enums.SystemTaskType;
 import com.old.silence.job.server.api.assembler.NotifyConfigResponseVOMapper;
+import com.old.silence.job.server.api.config.TenantContext;
 import com.old.silence.job.server.domain.model.NotifyConfig;
 import com.old.silence.job.server.exception.SilenceJobServerException;
 import com.old.silence.job.server.handler.SyncConfigHandler;
@@ -37,7 +38,6 @@ public class NotifyConfigService {
 
     public IPage<NotifyConfigResponseVO> getNotifyConfigList(Page<NotifyConfig> pageDTO, QueryWrapper<NotifyConfig> queryWrapper) {
         List<String> groupNames = List.of();
-        queryWrapper.lambda().eq(NotifyConfig::getNamespaceId, "namespaceId");
         queryWrapper.lambda().in(CollectionUtils.isNotEmpty(groupNames), NotifyConfig::getGroupName, groupNames);
 
         Page<NotifyConfig> notifyConfigPage = notifyConfigDao.selectPage(pageDTO, queryWrapper);
@@ -46,17 +46,14 @@ public class NotifyConfigService {
     }
 
     public List<NotifyConfig> getNotifyConfigBySystemTaskTypeList(SystemTaskType systemTaskType) {
-        String namespaceId = "namespaceId";
         return notifyConfigDao.selectList(new LambdaQueryWrapper<NotifyConfig>()
                 .select(NotifyConfig::getId, NotifyConfig::getNotifyName)
-                .eq(NotifyConfig::getNamespaceId, namespaceId)
                 .eq(NotifyConfig::getSystemTaskType, systemTaskType)
                 .orderByDesc(NotifyConfig::getId)
         );
     }
 
     public Boolean create(NotifyConfig notifyConfig) {
-        notifyConfig.setNamespaceId("namespaceId");
 
         Assert.isTrue(1 == notifyConfigDao.insert(notifyConfig),
                 () -> new SilenceJobServerException("failed to insert notify. sceneConfig:[{}]",
@@ -81,14 +78,13 @@ public class NotifyConfigService {
 
     public Boolean updateStatus(BigInteger id, Boolean status) {
 
-        String namespaceId = "namespaceId";
         NotifyConfig notifyConfig = notifyConfigDao.selectOne(
                 new LambdaQueryWrapper<NotifyConfig>()
                         .eq(NotifyConfig::getId, id)
-                        .eq(NotifyConfig::getNamespaceId, namespaceId)
         );
         Assert.notNull(notifyConfig, () -> new SilenceJobServerException("通知配置不存在"));
 
+        var namespaceId = TenantContext.getTenantId();
         // 同步配置到客户端
         SyncConfigHandler.addSyncTask(notifyConfig.getGroupName(), namespaceId);
 
@@ -96,7 +92,6 @@ public class NotifyConfigService {
         config.setNotifyStatus(status);
         config.setUpdatedDate(Instant.now());
         int update = notifyConfigDao.update(config, new LambdaUpdateWrapper<NotifyConfig>()
-                        .eq(NotifyConfig::getNamespaceId, namespaceId)
                         .eq(NotifyConfig::getId, id)
                 );
 

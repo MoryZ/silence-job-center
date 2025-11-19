@@ -13,7 +13,6 @@ import com.old.silence.job.common.enums.BackoffType;
 import com.old.silence.job.common.enums.DelayLevelEnum;
 import com.old.silence.job.common.enums.RetryStatus;
 import com.old.silence.job.common.enums.SystemTaskType;
-import com.old.silence.job.common.enums.TriggerType;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.WaitStrategy;
@@ -74,8 +73,8 @@ public abstract class AbstractGenerator implements TaskGenerator {
                         .eq(Retry::getNamespaceId, taskContext.getNamespaceId())
                         .eq(Retry::getGroupName, taskContext.getGroupName())
                         .eq(Retry::getSceneName, taskContext.getSceneName())
-                        .eq(Retry::getRetryStatus, RetryStatus.RUNNING.getValue())
-                        .eq(Retry::getTaskType, SystemTaskType.RETRY.getValue())
+                        .eq(Retry::getRetryStatus, RetryStatus.RUNNING)
+                        .eq(Retry::getTaskType, SystemTaskType.RETRY)
                         .in(Retry::getIdempotentId, idempotentIdSet));
 
         Map<String/*幂等ID*/, List<Retry>> retryTaskMap = StreamUtils.groupByKey(retries, Retry::getIdempotentId);

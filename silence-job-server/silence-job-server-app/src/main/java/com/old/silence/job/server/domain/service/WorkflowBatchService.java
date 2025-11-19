@@ -31,6 +31,7 @@ import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.server.api.assembler.JobBatchResponseVOConverter;
 import com.old.silence.job.server.api.assembler.JobResponseVOMapper;
 import com.old.silence.job.server.api.assembler.WorkflowMapper;
+import com.old.silence.job.server.api.config.TenantContext;
 import com.old.silence.job.server.domain.model.Job;
 import com.old.silence.job.server.domain.model.JobTaskBatch;
 import com.old.silence.job.server.domain.model.Workflow;
@@ -96,12 +97,11 @@ public class WorkflowBatchService {
 
     public IPage<WorkflowBatchResponseVO> queryPage(Page<WorkflowTaskBatch> pageDTO, WorkflowBatchQuery queryVO) {
 
-        List<String> groupNames = List.of();
+        //TODO 租户填充 表连接会生效吗
 
         QueryWrapper<WorkflowTaskBatch> wrapper = new QueryWrapper<WorkflowTaskBatch>()
-                .eq("batch.namespace_id", "namespaceId")
+                .eq("batch.namespace_id", TenantContext.getTenantId())
                 .eq(queryVO.getWorkflowId() != null, "batch.workflow_id", queryVO.getWorkflowId())
-                .in(CollectionUtils.isNotEmpty(groupNames), "batch.group_name", groupNames)
                 .eq(queryVO.getTaskBatchStatus() != null, "batch.task_batch_status", queryVO.getTaskBatchStatus())
                 .likeRight(StrUtil.isNotBlank(queryVO.getWorkflowName()), "flow.workflow_name", queryVO.getWorkflowName())
                 .eq("batch.deleted", 0)
@@ -123,7 +123,7 @@ public class WorkflowBatchService {
         WorkflowTaskBatch workflowTaskBatch = workflowTaskBatchDao.selectOne(
                 new LambdaQueryWrapper<WorkflowTaskBatch>()
                         .eq(WorkflowTaskBatch::getId, id)
-                        .eq(WorkflowTaskBatch::getNamespaceId, "namespaceId"));
+        );
         if (Objects.isNull(workflowTaskBatch)) {
             return null;
         }
@@ -249,15 +249,12 @@ public class WorkflowBatchService {
 
     @Transactional
     public Boolean deleteByIds(Set<BigInteger> ids) {
-        String namespaceId = "namespaceId";
 
         Assert.isTrue(ids.size() == workflowTaskBatchDao.delete(new LambdaQueryWrapper<WorkflowTaskBatch>()
-                        .eq(WorkflowTaskBatch::getNamespaceId, namespaceId)
                         .in(WorkflowTaskBatch::getId, ids)),
                 () -> new SilenceJobServerException("删除工作流任务失败, 请检查任务状态是否关闭状态"));
 
         List<JobTaskBatch> jobTaskBatches = jobTaskBatchDao.selectList(new LambdaQueryWrapper<JobTaskBatch>()
-                .eq(JobTaskBatch::getNamespaceId, namespaceId)
                 .in(JobTaskBatch::getWorkflowTaskBatchId, ids));
 
         if (CollectionUtils.isEmpty(jobTaskBatches)) {
@@ -265,7 +262,7 @@ public class WorkflowBatchService {
         }
 
         Set<BigInteger> jobTaskBatchIds = StreamUtils.toSet(jobTaskBatches, JobTaskBatch::getId);
-        jobHandler.deleteJobTaskBatchByIds(jobTaskBatchIds, namespaceId);
+        jobHandler.deleteJobTaskBatchByIds(jobTaskBatchIds);
 
         return Boolean.TRUE;
     }

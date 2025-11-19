@@ -45,8 +45,7 @@
 
         <dependency>
             <groupId>com.old.silence</groupId>
-            <artifactId>silence-auth-center-client</artifactId>
-            <version>2.0.1-SNAPSHOT</version>
+            <artifactId>platform-cloud-config</artifactId>
         </dependency>
 
         <dependency>
@@ -57,6 +56,10 @@
         <dependency>
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
     </dependencies>

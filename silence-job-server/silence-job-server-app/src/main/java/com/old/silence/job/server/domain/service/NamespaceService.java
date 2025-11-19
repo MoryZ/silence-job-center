@@ -51,7 +51,6 @@ public class NamespaceService {
         List<Namespace> namespaces = namespaceDao.selectList(
                 new LambdaQueryWrapper<Namespace>()
                         .select(Namespace::getName, Namespace::getUniqueId)
-                        .eq(Namespace::getDeleted, 500)
                         .orderByDesc(Namespace::getId)
         );
         return CollectionUtils.transformToList(namespaces, namespaceMapper::convert);

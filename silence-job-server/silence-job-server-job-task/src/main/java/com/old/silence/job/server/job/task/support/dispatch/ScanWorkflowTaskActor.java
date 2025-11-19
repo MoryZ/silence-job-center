@@ -135,7 +135,6 @@ public class ScanWorkflowTaskActor extends AbstractActor {
                                 Workflow::getTriggerInterval, Workflow::getExecutorTimeout, Workflow::getNamespaceId,
                                 Workflow::getFlowInfo, Workflow::getBlockStrategy, Workflow::getWfContext)
                         .eq(Workflow::getWorkflowStatus, true)
-                        .eq(Workflow::getDeleted, false)
                         .in(Workflow::getBucketIndex, scanTask.getBuckets())
                         .le(Workflow::getNextTriggerAt, DateUtils.toNowMilli() + DateUtils.toEpochMilli(SystemConstants.SCHEDULE_PERIOD))
                         .ge(Workflow::getId, startId)

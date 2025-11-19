@@ -52,8 +52,8 @@ public class PodsService {
 
     public IPage<ServerNodeResponseVO> pods(Page<ServerNode> pageDTO, ServerNodeQuery queryVO) {
 
+        // TODO 查询所有的？
         LambdaQueryWrapper<ServerNode> serverNodeLambdaQueryWrapper = new LambdaQueryWrapper<ServerNode>()
-                .in(ServerNode::getNamespaceId, List.of("namespaceId", ServerRegister.NAMESPACE_ID))
                 .eq(StrUtil.isNotBlank(queryVO.getGroupName()), ServerNode::getGroupName, queryVO.getGroupName())
                 .ge(ServerNode::getExpireAt, Instant.now().minusSeconds(ServerRegister.DELAY_TIME + (ServerRegister.DELAY_TIME / 3)))
                 .orderByDesc(ServerNode::getNodeType);

@@ -102,8 +102,7 @@ public class JobBatchService {
 
 
     public Boolean deleteJobBatchByIds(Set<BigInteger> ids) {
-        String namespaceId = "namespaceId";
-        jobHandler.deleteJobTaskBatchByIds(ids, namespaceId);
+        jobHandler.deleteJobTaskBatchByIds(ids);
         return Boolean.TRUE;
     }
 }

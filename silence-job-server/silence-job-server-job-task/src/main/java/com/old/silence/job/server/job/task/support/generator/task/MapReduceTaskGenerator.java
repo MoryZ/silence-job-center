@@ -94,7 +94,7 @@ public class MapReduceTaskGenerator extends AbstractJobTaskGenerator {
         List<JobTask> jobTasks = jobTaskDao.selectList(new LambdaQueryWrapper<JobTask>()
                 .select(JobTask::getResultMessage)
                 .eq(JobTask::getTaskBatchId, context.getTaskBatchId())
-                .eq(JobTask::getMrStage, MapReduceStage.REDUCE.getValue())
+                .eq(JobTask::getMrStage, MapReduceStage.REDUCE)
                 .eq(JobTask::getLeaf, true)
         );
 
@@ -127,7 +127,7 @@ public class MapReduceTaskGenerator extends AbstractJobTaskGenerator {
         List<JobTask> jobTasks = jobTaskDao.selectList(new LambdaQueryWrapper<JobTask>()
                 .select(JobTask::getResultMessage, JobTask::getId)
                 .eq(JobTask::getTaskBatchId, context.getTaskBatchId())
-                .eq(JobTask::getMrStage, MapReduceStage.MAP.getValue())
+                .eq(JobTask::getMrStage, MapReduceStage.MAP)
                 .eq(JobTask::getLeaf, true)
         );
 

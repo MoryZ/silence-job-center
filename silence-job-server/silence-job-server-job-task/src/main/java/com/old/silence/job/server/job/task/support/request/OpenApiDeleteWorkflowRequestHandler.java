@@ -69,7 +69,7 @@ public class OpenApiDeleteWorkflowRequestHandler extends PostHttpRequestHandler 
                 .select(JobSummary::getId)
                 .in(JobSummary::getBusinessId, ids)
                 .eq(JobSummary::getNamespaceId, namespaceId)
-                .eq(JobSummary::getSystemTaskType, SystemTaskType.WORKFLOW.getValue())
+                .eq(JobSummary::getSystemTaskType, SystemTaskType.WORKFLOW)
         );
         if (CollectionUtils.isNotEmpty(jobSummaries)) {
             Assert.isTrue(jobSummaries.size() ==
