@@ -13,7 +13,6 @@ import com.old.silence.job.server.common.Lifecycle;
 import com.old.silence.job.server.common.convert.RegisterNodeInfoConverter;
 import com.old.silence.job.server.common.dto.RegisterNodeInfo;
 import com.old.silence.job.server.common.register.ServerRegister;
-import com.old.silence.job.server.common.triple.Pair;
 import com.old.silence.job.server.domain.model.ServerNode;
 import com.old.silence.job.server.infrastructure.persistence.dao.ServerNodeDao;
 
@@ -33,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class CacheRegisterTable implements Lifecycle {
 
-    private static final Cache<Pair<String/*groupName*/, String/*namespaceId*/>, ConcurrentMap<String, RegisterNodeInfo>> CACHE;
+    private static final Cache<String, ConcurrentMap<String, RegisterNodeInfo>> CACHE;
 
     static {
         CACHE = CacheBuilder.newBuilder()
@@ -50,7 +49,7 @@ public class CacheRegisterTable implements Lifecycle {
      * @return 缓存对象
      */
     public static Set<RegisterNodeInfo> getAllPods() {
-        ConcurrentMap<Pair<String, String>, ConcurrentMap<String, RegisterNodeInfo>> concurrentMap = CACHE.asMap();
+        ConcurrentMap<String, ConcurrentMap<String, RegisterNodeInfo>> concurrentMap = CACHE.asMap();
         if (CollectionUtils.isEmpty(concurrentMap)) {
             return Sets.newHashSet();
         }
@@ -69,8 +68,8 @@ public class CacheRegisterTable implements Lifecycle {
      *
      * @return 缓存对象
      */
-    public static ConcurrentMap<String, RegisterNodeInfo> get(String groupName, String namespaceId) {
-        return CACHE.getIfPresent(getKey(groupName, namespaceId));
+    public static ConcurrentMap<String, RegisterNodeInfo> get(String groupName) {
+        return CACHE.getIfPresent(groupName);
     }
 
     /**
@@ -78,14 +77,13 @@ public class CacheRegisterTable implements Lifecycle {
      *
      * @return 缓存对象
      */
-    public static RegisterNodeInfo getServerNode(String groupName, String namespaceId, String hostId) {
-        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(getKey(groupName, namespaceId));
+    public static RegisterNodeInfo getServerNode(String groupName, String hostId) {
+        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(groupName);
         if (Objects.isNull(concurrentMap)) {
             // 此处为了降级，若缓存中没有则取DB中查询
             ServerNodeDao serverNodeDao = SilenceSpringContext.getBeanByType(ServerNodeDao.class);
             List<ServerNode> serverNodes = serverNodeDao.selectList(
                     new LambdaQueryWrapper<ServerNode>()
-                            .eq(ServerNode::getNamespaceId, namespaceId)
                             .eq(ServerNode::getGroupName, groupName)
                             .eq(ServerNode::getHostId, hostId)
                             .orderByDesc(ServerNode::getExpireAt));
@@ -93,9 +91,9 @@ public class CacheRegisterTable implements Lifecycle {
                 return null;
             }
 
-            CacheRegisterTable.addOrUpdate(serverNodes.get(0));
+            CacheRegisterTable.addOrUpdate(serverNodes.getFirst());
 
-            concurrentMap = CACHE.getIfPresent(getKey(groupName, namespaceId));
+            concurrentMap = CACHE.getIfPresent(groupName);
             if (CollectionUtils.isEmpty(concurrentMap)) {
                 return null;
             }
@@ -109,22 +107,21 @@ public class CacheRegisterTable implements Lifecycle {
      *
      * @return 缓存对象
      */
-    public static Set<RegisterNodeInfo> getServerNodeSet(String groupName, String namespaceId) {
-        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(getKey(groupName, namespaceId));
+    public static Set<RegisterNodeInfo> getServerNodeSet(String groupName) {
+        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(groupName);
         if (CollectionUtils.isEmpty(concurrentMap)) {
 
             // 此处为了降级，若缓存中没有则取DB中查询
             ServerNodeDao serverNodeDao = SilenceSpringContext.getBeanByType(ServerNodeDao.class);
             List<ServerNode> serverNodes = serverNodeDao.selectList(
                     new LambdaQueryWrapper<ServerNode>()
-                            .eq(ServerNode::getNamespaceId, namespaceId)
                             .eq(ServerNode::getGroupName, groupName));
             for (ServerNode node : serverNodes) {
                 // 刷新全量本地缓存
                 CacheRegisterTable.addOrUpdate(node);
             }
 
-            concurrentMap = CACHE.getIfPresent(getKey(groupName, namespaceId));
+            concurrentMap = CACHE.getIfPresent(groupName);
             if (CollectionUtils.isEmpty(serverNodes) || CollectionUtils.isEmpty(concurrentMap)) {
                 return Sets.newHashSet();
             }
@@ -133,17 +130,14 @@ public class CacheRegisterTable implements Lifecycle {
         return new TreeSet<>(concurrentMap.values());
     }
 
-    private static Pair<String, String> getKey(String groupName, String namespaceId) {
-        return Pair.of(groupName, namespaceId);
-    }
 
     /**
      * 获取排序的hostId
      *
      * @return 缓存对象
      */
-    public static Set<String> getPodIdSet(String groupName, String namespaceId) {
-        return StreamUtils.toSet(getServerNodeSet(groupName, namespaceId), RegisterNodeInfo::getHostId);
+    public static Set<String> getPodIdSet(String groupName) {
+        return StreamUtils.toSet(getServerNodeSet(groupName), RegisterNodeInfo::getHostId);
     }
 
 
@@ -153,7 +147,7 @@ public class CacheRegisterTable implements Lifecycle {
      * @param serverNode 服务节点
      */
     public static synchronized void refreshExpireAt(ServerNode serverNode) {
-        RegisterNodeInfo registerNodeInfo = getServerNode(serverNode.getGroupName(), serverNode.getNamespaceId(),
+        RegisterNodeInfo registerNodeInfo = getServerNode(serverNode.getGroupName(),
                 serverNode.getHostId());
         // 不存在则初始化
         if (Objects.isNull(registerNodeInfo)) {
@@ -170,8 +164,7 @@ public class CacheRegisterTable implements Lifecycle {
      *
      */
     public static synchronized void addOrUpdate(ServerNode serverNode) {
-        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(
-                getKey(serverNode.getGroupName(), serverNode.getNamespaceId()));
+        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(serverNode.getGroupName());
         RegisterNodeInfo registerNodeInfo;
         if (Objects.isNull(concurrentMap)) {
             SilenceJobLog.LOCAL.info("Add cache. groupName:[{}] namespaceId:[{}] hostId:[{}]", serverNode.getGroupName(),
@@ -191,7 +184,7 @@ public class CacheRegisterTable implements Lifecycle {
 
         concurrentMap.put(serverNode.getHostId(), registerNodeInfo);
         // 此缓存设置了60秒没有写入即过期，因此这次刷新缓存防止过期
-        CACHE.put(getKey(serverNode.getGroupName(), serverNode.getNamespaceId()), concurrentMap);
+        CACHE.put(serverNode.getGroupName(), concurrentMap);
     }
 
     /**
@@ -204,7 +197,7 @@ public class CacheRegisterTable implements Lifecycle {
                 .filter(registerNodeInfo -> registerNodeInfo.getExpireAt().isBefore(
                         Instant.now().minusSeconds(ServerRegister.DELAY_TIME + (ServerRegister.DELAY_TIME / 3))))
                 .forEach(registerNodeInfo -> remove(registerNodeInfo.getGroupName(),
-                        registerNodeInfo.getNamespaceId(), registerNodeInfo.getHostId()));
+                        registerNodeInfo.getHostId()));
     }
 
 
@@ -214,8 +207,8 @@ public class CacheRegisterTable implements Lifecycle {
      * @param groupName 组名称
      * @param hostId    机器id
      */
-    public static void remove(String groupName, String namespaceId, String hostId) {
-        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(getKey(groupName, namespaceId));
+    public static void remove(String groupName, String hostId) {
+        ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(groupName);
         if (Objects.isNull(concurrentMap)) {
             return;
         }

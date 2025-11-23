@@ -121,7 +121,6 @@ public class JobService {
         job.setBucketIndex(HashUtil.bkdrHash(job.getGroupName() + job.getJobName())
                 % systemProperties.getBucketTotal());
         job.setNextTriggerAt(calculateNextTriggerAt(job, DateUtils.toNowMilli()));
-        job.setNamespaceId("namespaceId");
         job.setId(null);
         return 1 == jobDao.insert(job);
     }
@@ -200,30 +199,25 @@ public class JobService {
 
     
     public List<JobResponseVO> getJobList(QueryWrapper<Job> queryWrapper) {
-        String namespaceId = "namespaceId";
-        queryWrapper.eq("namespace_id", namespaceId);
         List<Job> jobs = jobDao.selectList(queryWrapper);
         return  CollectionUtils.transformToList(jobs, jobResponseVOMapper::convert);
     }
 
     @Transactional(rollbackFor = Exception.class)
     public void importJobs(List<Job> jobs) {
-        String namespaceId = "namespaceId";
         groupHandler.validateGroupExistence(
-                StreamUtils.toSet(jobs, Job::getGroupName), namespaceId
+                StreamUtils.toSet(jobs, Job::getGroupName)
         );
         jobs.forEach(this::create);
     }
 
     
     public String exportJobs(ExportJobVO exportJobVO) {
-        String namespaceId = "namespaceId";
 
         List<Job> requestList = new ArrayList<>();
         PartitionTaskUtils.process(startId -> {
                     List<Job> jobList = jobDao.selectPage(new PageDTO<>(0, 100),
                             new LambdaQueryWrapper<Job>()
-                                    .eq(Job::getNamespaceId, namespaceId)
                                     .eq(StrUtil.isNotBlank(exportJobVO.getGroupName()), Job::getGroupName, exportJobVO.getGroupName())
                                     .likeRight(StrUtil.isNotBlank(exportJobVO.getJobName()), Job::getJobName, StrUtil.trim(exportJobVO.getJobName()))
                                     .eq(Objects.nonNull(exportJobVO.getJobStatus()), Job::getJobStatus, exportJobVO.getJobStatus())
@@ -246,11 +240,9 @@ public class JobService {
     
     @Transactional
     public Boolean deleteJobByIds(Set<BigInteger> ids) {
-        String namespaceId = "namespaceId";
 
         Assert.isTrue(ids.size() == jobDao.delete(
                 new LambdaQueryWrapper<Job>()
-                        .eq(Job::getNamespaceId, namespaceId)
                         .eq(Job::getJobStatus, 500)
                         .in(Job::getId, ids)
         ), () -> new SilenceJobServerException("删除定时任务失败, 请检查任务状态是否关闭状态"));
@@ -258,7 +250,6 @@ public class JobService {
         List<JobSummary> jobSummaries = jobSummaryDao.selectList(new LambdaQueryWrapper<JobSummary>()
                 .select(JobSummary::getId)
                 .in(JobSummary::getBusinessId, ids)
-                .eq(JobSummary::getNamespaceId, namespaceId)
                 .eq(JobSummary::getSystemTaskType, SystemTaskType.JOB.getValue())
         );
         if (CollectionUtils.isNotEmpty(jobSummaries)) {

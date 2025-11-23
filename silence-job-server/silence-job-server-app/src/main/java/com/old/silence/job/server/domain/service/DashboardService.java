@@ -73,14 +73,12 @@ public class DashboardService {
     public DashboardCardResponseVO taskRetryJob() {
 
         // 查询登录用户权限
-        String namespaceId = "namespaceId";
         List<String> groupNames = List.of();
         DashboardCardResponseVO responseVO = new DashboardCardResponseVO();
 
         // 重试任务
         DashboardCardResponseDO.RetryTask retryTaskDO = retrySummaryDao.selectRetryTask(
                 new LambdaQueryWrapper<RetrySummary>()
-                        .eq(RetrySummary::getNamespaceId, namespaceId)
                         .in(CollectionUtils.isNotEmpty(groupNames), RetrySummary::getGroupName, groupNames));
         DashboardCardResponseVO.RetryTask retryTaskVO = retrySummaryResponseVOMapper.convert(retryTaskDO);
         responseVO.setRetryTask(retryTaskVO);

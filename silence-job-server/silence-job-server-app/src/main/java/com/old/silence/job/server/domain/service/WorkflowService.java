@@ -149,7 +149,6 @@ public class WorkflowService  {
         workflow.setBucketIndex(
                 HashUtil.bkdrHash(workflow.getGroupName() + workflow.getWorkflowName())
                         % systemProperties.getBucketTotal());
-        workflow.setNamespaceId("namespaceId");
         workflow.setId(null);
         Assert.isTrue(1 == workflowDao.insert(workflow), () -> new SilenceJobServerException("新增工作流失败"));
 
@@ -183,7 +182,6 @@ public class WorkflowService  {
         Workflow workflow = workflowDao.selectOne(
                 new LambdaQueryWrapper<Workflow>()
                         .eq(Workflow::getId, id)
-                        .eq(Workflow::getNamespaceId, "namespaceId")
         );
         if (Objects.isNull(workflow)) {
             return null;
@@ -200,7 +198,6 @@ public class WorkflowService  {
         Page<Workflow> page = workflowDao.selectPage(pageDTO,
                 new LambdaQueryWrapper<Workflow>()
                         .eq(Workflow::getDeleted, false)
-                        .eq(Workflow::getNamespaceId, "namespaceId")
                         .in(CollectionUtils.isNotEmpty(groupNames), Workflow::getGroupName, groupNames)
                         .like(StrUtil.isNotBlank(queryVO.getWorkflowName()), Workflow::getWorkflowName,
                                 queryVO.getWorkflowName())
@@ -322,7 +319,7 @@ public class WorkflowService  {
     
     @Transactional(rollbackFor = Exception.class)
     public void importWorkflowTask(List<Workflow> requests) throws Exception {
-        batchSaveWorkflowTask(requests, "namespaceId");
+        batchSaveWorkflowTask(requests);
     }
 
     
@@ -332,8 +329,6 @@ public class WorkflowService  {
         PartitionTaskUtils.process(startId -> {
             List<Workflow> workflowList = workflowDao.selectPage(new PageDTO<>(0, 100),
                     new LambdaQueryWrapper<Workflow>()
-                            .eq(Workflow::getNamespaceId, "namespaceId")
-                            .eq(Workflow::getDeleted, 500)
                             .eq(StrUtil.isNotBlank(exportVO.getGroupName()), Workflow::getGroupName, exportVO.getGroupName())
                             .eq(Objects.nonNull(exportVO.getWorkflowStatus()), Workflow::getWorkflowStatus,
                                     exportVO.getWorkflowStatus())
@@ -382,10 +377,10 @@ public class WorkflowService  {
         return Boolean.TRUE;
     }
 
-    private void batchSaveWorkflowTask(List<Workflow> workflows, String namespaceId) throws Exception {
+    private void batchSaveWorkflowTask(List<Workflow> workflows) throws Exception {
 
         Set<String> groupNameSet = CollectionUtils.transformToSet(workflows, Workflow::getGroupName);
-        groupHandler.validateGroupExistence(groupNameSet, namespaceId);
+        groupHandler.validateGroupExistence(groupNameSet);
 
         for (Workflow workflow : workflows) {
             checkExecuteInterval(workflow);
@@ -432,9 +427,6 @@ public class WorkflowService  {
         return responseVO;
     }
 
-
-    
-    
     private static class WorkflowPartitionTask extends PartitionTask {
 
         private final WorkflowDetailResponseVO responseVO;

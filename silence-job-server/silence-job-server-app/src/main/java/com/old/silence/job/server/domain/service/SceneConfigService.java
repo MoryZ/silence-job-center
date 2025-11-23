@@ -33,7 +33,6 @@ import com.old.silence.job.server.domain.model.Retry;
 import com.old.silence.job.server.domain.model.RetryDeadLetter;
 import com.old.silence.job.server.domain.model.RetrySceneConfig;
 import com.old.silence.job.server.domain.model.RetrySummary;
-import com.old.silence.job.server.domain.service.config.ConfigAccess;
 import com.old.silence.job.server.dto.ExportSceneCommand;
 import com.old.silence.job.server.dto.SceneConfigCommand;
 import com.old.silence.job.server.exception.SilenceJobServerException;
@@ -74,8 +73,6 @@ public class SceneConfigService {
 
 
     public IPage<SceneConfigResponseVO> queryPage(Page<RetrySceneConfig> pageDTO, QueryWrapper<RetrySceneConfig> queryWrapper) {
-        List<String> groupNames = List.of();
-        queryWrapper.lambda().eq(RetrySceneConfig::getNamespaceId, "namespaceId");
         var retrySceneConfigPage = retrySceneConfigDao.selectPage(pageDTO, queryWrapper);
 
 
@@ -85,11 +82,8 @@ public class SceneConfigService {
     
     public List<SceneConfigResponseVO> getSceneConfigList(String groupName) {
 
-        String namespaceId = "namespaceId";
-
         List<RetrySceneConfig> retrySceneConfigs = retrySceneConfigDao
                 .selectList(new LambdaQueryWrapper<RetrySceneConfig>()
-                        .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                         .eq(RetrySceneConfig::getGroupName, groupName)
                         .select(RetrySceneConfig::getSceneName,
                                 RetrySceneConfig::getDescription, RetrySceneConfig::getMaxRetryCount)
@@ -102,16 +96,12 @@ public class SceneConfigService {
     public Boolean create(RetrySceneConfig retrySceneConfig) {
 
         checkExecuteInterval(retrySceneConfig.getBackOff().getValue(), retrySceneConfig.getTriggerInterval());
-        String namespaceId = "namespaceId";
         Assert.isTrue(0 == retrySceneConfigDao.selectCount(
                 new LambdaQueryWrapper<RetrySceneConfig>()
-                        .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                         .eq(RetrySceneConfig::getGroupName, retrySceneConfig.getGroupName())
                         .eq(RetrySceneConfig::getSceneName, retrySceneConfig.getSceneName())
 
         ), () -> new SilenceJobServerException("场景名称重复. {}", retrySceneConfig.getSceneName()));
-
-        retrySceneConfig.setNamespaceId(namespaceId);
 
         if (retrySceneConfig.getBackOff().getValue().intValue() == WaitStrategies.WaitStrategyEnum.DELAY_LEVEL.getValue()) {
             retrySceneConfig.setTriggerInterval(StrUtil.EMPTY);
@@ -129,7 +119,7 @@ public class SceneConfigService {
                         JSON.toJSONString(retrySceneConfig)));
 
         // 同步配置到客户端
-        SyncConfigHandler.addSyncTask(retrySceneConfig.getGroupName(), namespaceId);
+        SyncConfigHandler.addSyncTask(retrySceneConfig.getGroupName());
 
         return Boolean.TRUE;
     }
@@ -138,8 +128,6 @@ public class SceneConfigService {
     public Boolean update(RetrySceneConfig retrySceneConfig) {
         checkExecuteInterval(retrySceneConfig.getBackOff().getValue(), retrySceneConfig.getTriggerInterval());
         // 防止更新
-        String namespaceId = "namespaceId";
-
         if (retrySceneConfig.getCbStatus()) {
             checkExecuteInterval(retrySceneConfig.getCbTriggerType().getValue(), retrySceneConfig.getCbTriggerInterval());
             if (retrySceneConfig.getCbTriggerType().getValue().intValue() == WaitStrategies.WaitStrategyEnum.DELAY_LEVEL.getValue()) {
@@ -152,7 +140,6 @@ public class SceneConfigService {
         try {
             retrySceneConfigDao.update(retrySceneConfig,
                     new LambdaUpdateWrapper<RetrySceneConfig>()
-                            .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                             .eq(RetrySceneConfig::getGroupName, retrySceneConfig.getGroupName())
                             .eq(RetrySceneConfig::getSceneName, retrySceneConfig.getSceneName()));
         } catch (Exception e) {
@@ -161,7 +148,7 @@ public class SceneConfigService {
         }
 
         // 同步配置到客户端
-        SyncConfigHandler.addSyncTask(retrySceneConfig.getGroupName(), namespaceId);
+        SyncConfigHandler.addSyncTask(retrySceneConfig.getGroupName());
         return Boolean.TRUE;
     }
 
@@ -176,21 +163,19 @@ public class SceneConfigService {
     
     public boolean updateStatus(BigInteger id, Boolean status) {
 
-        String namespaceId = "namespaceId";
 
         RetrySceneConfig config = new RetrySceneConfig();
         config.setSceneStatus(status);
 
         return 1 == retrySceneConfigDao.update(config,
                 new LambdaUpdateWrapper<RetrySceneConfig>()
-                        .eq(RetrySceneConfig::getId, id)
-                        .eq(RetrySceneConfig::getNamespaceId, namespaceId));
+                        .eq(RetrySceneConfig::getId, id));
     }
 
     
     @Transactional
     public void importSceneConfig(List<SceneConfigCommand> requests) {
-        batchSaveSceneConfig(requests, "namespaceId");
+        batchSaveSceneConfig(requests);
     }
 
     
@@ -201,7 +186,6 @@ public class SceneConfigService {
         PartitionTaskUtils.process(startId -> {
             List<RetrySceneConfig> sceneConfigs = retrySceneConfigDao
                     .selectPage(new PageDTO<>(0, 500), new LambdaQueryWrapper<RetrySceneConfig>()
-                            .eq(RetrySceneConfig::getNamespaceId, "namespaceId")
                             .eq(Objects.nonNull(exportSceneVO.getSceneStatus()), RetrySceneConfig::getSceneStatus, exportSceneVO.getSceneStatus())
                             .eq(StrUtil.isNotBlank(exportSceneVO.getGroupName()),
                                     RetrySceneConfig::getGroupName, StrUtil.trim(exportSceneVO.getGroupName()))
@@ -226,10 +210,8 @@ public class SceneConfigService {
     
     @Transactional
     public boolean deleteByIds(Set<BigInteger> ids) {
-        String namespaceId = "namespaceId";
         LambdaQueryWrapper<RetrySceneConfig> queryWrapper = new LambdaQueryWrapper<RetrySceneConfig>()
                 .select(RetrySceneConfig::getSceneName, RetrySceneConfig::getGroupName)
-                .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                 .eq(RetrySceneConfig::getSceneStatus, 500)
                 .in(RetrySceneConfig::getId, ids);
 
@@ -276,7 +258,7 @@ public class SceneConfigService {
         return Boolean.TRUE;
     }
 
-    private void batchSaveSceneConfig(List<SceneConfigCommand> requests, String namespaceId) {
+    private void batchSaveSceneConfig(List<SceneConfigCommand> requests) {
 
         Set<String> groupNameSet = Sets.newHashSet();
         Set<String> sceneNameSet = Sets.newHashSet();
@@ -289,12 +271,11 @@ public class SceneConfigService {
             sceneNameSet.add(requestVO.getSceneName());
         }
 
-        groupHandler.validateGroupExistence(groupNameSet, namespaceId);
+        groupHandler.validateGroupExistence(groupNameSet);
 
         List<RetrySceneConfig> sceneConfigs = retrySceneConfigDao.selectList(
                 new LambdaQueryWrapper<RetrySceneConfig>()
                         .select(RetrySceneConfig::getSceneName)
-                        .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                         .in(RetrySceneConfig::getGroupName, groupNameSet)
                         .in(RetrySceneConfig::getSceneName, sceneNameSet));
 
@@ -305,7 +286,6 @@ public class SceneConfigService {
         List<RetrySceneConfig> retrySceneConfigs = CollectionUtils.transformToList(requests,sceneConfigMapper::convert);
         for (RetrySceneConfig retrySceneConfig : retrySceneConfigs) {
             retrySceneConfig.setCreatedDate(now);
-            retrySceneConfig.setNamespaceId(namespaceId);
             if (retrySceneConfig.getBackOff().getValue().intValue() == WaitStrategies.WaitStrategyEnum.DELAY_LEVEL.getValue()) {
                 retrySceneConfig.setTriggerInterval(StrUtil.EMPTY);
             }

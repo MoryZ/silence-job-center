@@ -64,11 +64,6 @@ public class RetryTaskService {
     }
 
     public IPage<RetryTaskResponseVO> queryPage(Page<RetryTask> pageDTO, QueryWrapper<RetryTask> queryWrapper) {
-
-        String namespaceId = "namespaceId";
-
-        List<String> groupNames = List.of();
-
         Page<RetryTask> retryTaskPageDTO = retryTaskDao.selectPage(pageDTO, queryWrapper);
         return retryTaskPageDTO.convert(retryTaskLogResponseVOMapper::convert);
 
@@ -193,12 +188,10 @@ public class RetryTaskService {
 
     @Transactional
     public boolean batchDelete(Set<BigInteger> ids) {
-        String namespaceId = "namespaceId";
 
         List<RetryTask> retryTasks = retryTaskDao.selectList(
                 new LambdaQueryWrapper<RetryTask>()
                         .in(RetryTask::getTaskStatus, RetryTaskStatus.TERMINAL_STATUS_SET)
-                        .eq(RetryTask::getNamespaceId, namespaceId)
                         .in(RetryTask::getId, ids));
         Assert.notEmpty(retryTasks, () -> new SilenceJobServerException("数据不存在"));
         Assert.isTrue(retryTasks.size() == ids.size(), () -> new SilenceJobServerException("数据不存在"));

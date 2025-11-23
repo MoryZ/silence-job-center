@@ -106,7 +106,6 @@ public interface RetryTaskConverter {
 
     DispatchRetryRequest toDispatchRetryRequest(RequestRetryExecutorDTO executorDTO);
 
-    @Mapping(target = "namespaceId", source = "retry.namespaceId")
     @Mapping(target = "groupName", source = "retry.groupName")
     @Mapping(target = "sceneName", source = "retry.sceneName")
     @Mapping(target = "retryId", source = "retry.id")
@@ -155,7 +154,6 @@ public interface RetryTaskConverter {
 
     RetryResultContext toRetryResultContext(RetryExecutorResultDTO resultDTO);
 
-    @Mapping(target = "namespaceId", source = "retry.namespaceId")
     @Mapping(target = "groupName", source = "retry.groupName")
     @Mapping(target = "sceneName", source = "retry.sceneName")
     @Mapping(target = "retryId", source = "retry.id")

@@ -194,22 +194,19 @@ public class JobHandler {
      * 批次删除定时任务批次
      *
      * @param ids         任务批次id
-     * @param namespaceId 命名空间
      */
     @Transactional
-    public void deleteJobTaskBatchByIds(Set<BigInteger> ids, String namespaceId) {
+    public void deleteJobTaskBatchByIds(Set<BigInteger> ids) {
         // 1. 删除任务批次 job_task_batch
         Assert.isTrue(ids.size() == jobTaskBatchDao.deleteBatchIds(ids),
                 () -> new SilenceJobServerException("删除任务批次失败"));
 
         // 2. 删除任务实例 job_task
         jobTaskDao.delete(new LambdaQueryWrapper<JobTask>()
-                .eq(JobTask::getNamespaceId, namespaceId)
                 .in(JobTask::getTaskBatchId, ids));
 
         // 3. 删除调度日志 job_log_message
         jobLogMessageDao.delete(new LambdaQueryWrapper<JobLogMessage>()
-                .eq(JobLogMessage::getNamespaceId, namespaceId)
                 .in(JobLogMessage::getTaskBatchId, ids)
         );
     }

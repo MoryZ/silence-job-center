@@ -115,11 +115,7 @@ public class RetryService {
     }
 
     public IPage<RetryResponseVO> getRetryPage(Page<Retry> pageDTO, QueryWrapper<Retry> queryWrapper) {
-
-        String namespaceId = "namespaceId";
-        List<String> groupNames = List.of("groupNames");
-
-        queryWrapper.eq("task_type", SystemTaskType.RETRY);
+        queryWrapper.lambda().eq(Retry::getTaskType, SystemTaskType.RETRY);
         pageDTO = retryDao.selectPage(pageDTO, queryWrapper);
 
         Set<BigInteger> ids = CollectionUtils.transformToSet(pageDTO.getRecords(), Retry::getId);
@@ -164,10 +160,8 @@ public class RetryService {
             throw new SilenceJobServerException("重试状态错误. [{}]", requestVO.getRetryStatus());
         }
 
-        String namespaceId = "namespaceId";
 
         Retry retry = retryDao.selectOne(new LambdaQueryWrapper<Retry>()
-                        .eq(Retry::getNamespaceId, namespaceId)
                         .eq(Retry::getId, requestVO.getId()));
         if (Objects.isNull(retry)) {
             throw new SilenceJobServerException("未查询到重试任务");
@@ -178,8 +172,7 @@ public class RetryService {
         // 若恢复重试则需要重新计算下次触发时间
         if (RetryStatus.RUNNING.equals(retryStatus)) {
 
-            RetrySceneConfig retrySceneConfig = retrySceneConfigDao
-                    .getSceneConfigByGroupNameAndSceneName(retry.getGroupName(), retry.getSceneName(), namespaceId);
+            RetrySceneConfig retrySceneConfig = findRetrySceneConfig(retry.getGroupName(), retry.getSceneName());
             WaitStrategies.WaitStrategyContext waitStrategyContext = new WaitStrategies.WaitStrategyContext();
             waitStrategyContext.setNextTriggerAt(DateUtils.toNowMilli());
             waitStrategyContext.setTriggerInterval(retrySceneConfig.getTriggerInterval());
@@ -208,13 +201,11 @@ public class RetryService {
         TaskGenerator taskGenerator = taskGenerators.stream()
                 .filter(t -> t.supports(TaskGeneratorSceneEnum.MANA_SINGLE.getScene()))
                 .findFirst().orElseThrow(() -> new SilenceJobServerException("没有匹配的任务生成器"));
-        String namespaceId = "namespaceId";
 
         TaskContext taskContext = new TaskContext();
         taskContext.setSceneName(retrySaveRequestCommand.getSceneName());
         taskContext.setGroupName(retrySaveRequestCommand.getGroupName());
         taskContext.setInitStatus(retrySaveRequestCommand.getRetryStatus());
-        taskContext.setNamespaceId(namespaceId);
         taskContext.setTaskInfos(
                 Collections.singletonList(TaskContextMapper.INSTANCE.convert(retrySaveRequestCommand)));
 
@@ -227,16 +218,13 @@ public class RetryService {
     
     public String idempotentIdGenerate(GenerateRetryIdempotentIdCommand generateRetryIdempotentIdCommand) {
 
-        String namespaceId = "namespaceId";
         Set<RegisterNodeInfo> serverNodes = CacheRegisterTable.getServerNodeSet(
-                generateRetryIdempotentIdCommand.getGroupName(),
-                namespaceId);
+                generateRetryIdempotentIdCommand.getGroupName());
         Assert.notEmpty(serverNodes,
                 () -> new SilenceJobServerException("生成idempotentId失败: 不存在活跃的客户端节点"));
 
-        RetrySceneConfig retrySceneConfig = retrySceneConfigDao
-                .getSceneConfigByGroupNameAndSceneName(generateRetryIdempotentIdCommand.getGroupName(),
-                        generateRetryIdempotentIdCommand.getSceneName(), namespaceId);
+        RetrySceneConfig retrySceneConfig = findRetrySceneConfig(generateRetryIdempotentIdCommand.getGroupName(),
+                        generateRetryIdempotentIdCommand.getSceneName());
 
         RegisterNodeInfo serverNode = clientNodeAllocateHandler.getServerNode(retrySceneConfig.getSceneName(),
                 retrySceneConfig.getGroupName(), retrySceneConfig.getNamespaceId(), retrySceneConfig.getRouteKey());
@@ -270,11 +258,9 @@ public class RetryService {
         retry.setRetryStatus(requestVO.getRetryStatus());
         retry.setUpdatedDate(Instant.now());
 
-        String namespaceId = "namespaceId";
         // 根据重试数据id，更新执行器名称
 
         return retryDao.update(retry, new LambdaUpdateWrapper<Retry>()
-                        .eq(Retry::getNamespaceId, namespaceId)
                         .eq(Retry::getGroupName, requestVO.getGroupName())
                         .in(Retry::getId, requestVO.getIds()));
     }
@@ -282,10 +268,7 @@ public class RetryService {
     
     @Transactional
     public boolean batchDeleteRetry(BatchDeleteRetryTaskVO requestVO) {
-       var namespaceId = "namespaceId";
-
         List<Retry> retries = retryDao.selectList(new LambdaQueryWrapper<Retry>()
-                        .eq(Retry::getNamespaceId, namespaceId)
                         .eq(Retry::getGroupName, requestVO.getGroupName())
                         .in(Retry::getRetryStatus, RetryStatus.ALLOW_DELETE_STATUS)
                         .in(Retry::getId, requestVO.getIds())
@@ -297,17 +280,14 @@ public class RetryService {
         Set<BigInteger> retryIds = StreamUtils.toSet(retries, Retry::getId);
         retryTaskDao.delete(new LambdaQueryWrapper<RetryTask>()
                 .eq(RetryTask::getGroupName, requestVO.getGroupName())
-                .eq(RetryTask::getNamespaceId, namespaceId)
                 .in(RetryTask::getRetryId, retryIds));
 
         retryTaskLogMessageDao.delete(
                 new LambdaQueryWrapper<RetryTaskLogMessage>()
-                        .eq(RetryTaskLogMessage::getNamespaceId, namespaceId)
                         .eq(RetryTaskLogMessage::getGroupName, requestVO.getGroupName())
                         .in(RetryTaskLogMessage::getRetryId, retryIds));
 
         Assert.isTrue(requestVO.getIds().size() == retryDao.delete(new LambdaQueryWrapper<Retry>()
-                                .eq(Retry::getNamespaceId, namespaceId)
                                 .eq(Retry::getGroupName, requestVO.getGroupName())
                                 .in(Retry::getRetryStatus, RetryStatus.ALLOW_DELETE_STATUS)
                                 .in(Retry::getId, requestVO.getIds()))
@@ -384,11 +364,9 @@ public class RetryService {
 
     
     public boolean manualTriggerRetryTask(ManualTriggerTaskRequestVO requestVO) {
-        String namespaceId = "namespaceId";
 
         long count = groupConfigDao.selectCount(new LambdaQueryWrapper<GroupConfig>()
                 .eq(GroupConfig::getGroupName, requestVO.getGroupName())
-                .eq(GroupConfig::getNamespaceId, namespaceId)
                 .eq(GroupConfig::getGroupStatus, true)
         );
 
@@ -397,7 +375,6 @@ public class RetryService {
         List<BigInteger> retryIds = requestVO.getRetryIds();
 
         List<Retry> list = retryDao.selectList(new LambdaQueryWrapper<Retry>()
-                        .eq(Retry::getNamespaceId, namespaceId)
                         .eq(Retry::getTaskType, SystemTaskType.RETRY.getValue())
                         .in(Retry::getId, retryIds)
         );
@@ -415,5 +392,13 @@ public class RetryService {
         }
 
         return true;
+    }
+
+    private RetrySceneConfig findRetrySceneConfig(String groupName, String sceneName) {
+        QueryWrapper<RetrySceneConfig> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda()
+                .eq(RetrySceneConfig::getGroupName, groupName)
+                .eq(RetrySceneConfig::getSceneName, sceneName);
+        return retrySceneConfigDao.selectOne(queryWrapper);
     }
 }

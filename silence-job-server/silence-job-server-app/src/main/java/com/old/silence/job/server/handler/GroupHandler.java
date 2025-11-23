@@ -29,14 +29,12 @@ public class GroupHandler {
      * 校验组是否存在
      *
      * @param groupNameSet 待校验的组
-     * @param namespaceId  空间
      */
-    public void validateGroupExistence(Set<String> groupNameSet, String namespaceId) {
+    public void validateGroupExistence(Set<String> groupNameSet) {
         Assert.notEmpty(groupNameSet, () -> new SilenceJobServerException("组不能为空"));
         List<GroupConfig> groupConfigs = accessTemplate.getGroupConfigAccess()
                 .list(new LambdaQueryWrapper<GroupConfig>()
                         .select(GroupConfig::getGroupName)
-                        .eq(GroupConfig::getNamespaceId, namespaceId)
                         .in(GroupConfig::getGroupName, groupNameSet)
                 );
 

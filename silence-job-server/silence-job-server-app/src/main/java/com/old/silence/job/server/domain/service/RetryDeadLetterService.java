@@ -61,10 +61,6 @@ public class RetryDeadLetterService {
 
    
     public IPage<RetryDeadLetterResponseVO> queryPage(Page<RetryDeadLetter> pageDTO, QueryWrapper<RetryDeadLetter> queryWrapper) {
-
-        List<String> groupNames = List.of();
-
-        String namespaceId = "namespaceId";
         Page<RetryDeadLetter> retryDeadLetterPage = retryDeadLetterDao
                 .selectPage(pageDTO, queryWrapper);
 
@@ -84,7 +80,6 @@ public class RetryDeadLetterService {
     @Transactional
     public int rollback(BatchRollBackRetryDeadLetterCommand rollBackRetryDeadLetterVO) {
 
-        String namespaceId = "namespaceId";
 
         List<BigInteger> ids = rollBackRetryDeadLetterVO.getIds();
         List<RetryDeadLetter> retryDeadLetterList = retryDeadLetterDao.selectList(
@@ -95,7 +90,6 @@ public class RetryDeadLetterService {
         Set<String> sceneNameSet = CollectionUtils.transformToSet(retryDeadLetterList, RetryDeadLetter::getSceneName);
         List<RetrySceneConfig> retrySceneConfigs = retrySceneConfigDao.selectList(
                 new LambdaQueryWrapper<RetrySceneConfig>()
-                        .eq(RetrySceneConfig::getNamespaceId, namespaceId)
                         .in(RetrySceneConfig::getSceneName, sceneNameSet));
 
         Map<String, RetrySceneConfig> sceneConfigMap = CollectionUtils.transformToMap(retrySceneConfigs,
@@ -139,11 +133,9 @@ public class RetryDeadLetterService {
 
    
     public boolean batchDelete(BatchDeleteRetryDeadLetterCommand deadLetterVO) {
-        String namespaceId = "namespaceId";
 
         Assert.isTrue(deadLetterVO.getIds().size() == retryDeadLetterDao.delete(
                         new LambdaQueryWrapper<RetryDeadLetter>()
-                                .eq(RetryDeadLetter::getNamespaceId, namespaceId)
                                 .in(RetryDeadLetter::getId, deadLetterVO.getIds())),
                 () -> new SilenceJobServerException("删除死信任务失败"));
 
