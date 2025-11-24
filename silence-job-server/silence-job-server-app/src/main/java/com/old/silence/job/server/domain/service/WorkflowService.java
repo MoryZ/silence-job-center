@@ -422,9 +422,6 @@ public class WorkflowService  {
         return responseVO;
     }
 
-
-    
-    
     private static class WorkflowPartitionTask extends PartitionTask {
 
         private final WorkflowDetailResponseVO responseVO;

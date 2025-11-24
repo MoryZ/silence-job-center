@@ -15,7 +15,6 @@ import com.old.silence.core.security.UserContextAware;
 @Configuration(proxyBeanMethods = false)
 public class AuditorAwareConfiguration {
 
-    // 获取当前用户（需结合安全框架）
     private String getCurrentAuditor() {
         return SilenceAuthCenterContextHolder.getAuthenticatedUserName()
                 .orElse("SYSTEM");

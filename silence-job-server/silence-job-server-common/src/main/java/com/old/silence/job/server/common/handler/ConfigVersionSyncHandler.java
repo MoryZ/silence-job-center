@@ -39,11 +39,10 @@ public class ConfigVersionSyncHandler implements Lifecycle, Runnable {
      * @param currentVersion 当前版本号
      * @return false-队列容量已满， true-添加成功
      */
-    public boolean addSyncTask(String groupName, String namespaceId, Integer currentVersion) {
+    public boolean addSyncTask(String groupName, Integer currentVersion) {
 
         ConfigSyncTask configSyncTask = new ConfigSyncTask();
         configSyncTask.setCurrentVersion(currentVersion);
-        configSyncTask.setNamespaceId(namespaceId);
         configSyncTask.setGroupName(groupName);
         return QUEUE.offer(configSyncTask);
     }
@@ -52,15 +51,14 @@ public class ConfigVersionSyncHandler implements Lifecycle, Runnable {
      * 同步版本
      *
      * @param groupName   组
-     * @param namespaceId 空间id
      */
-    public void syncVersion(String groupName, String namespaceId) {
+    public void syncVersion(String groupName) {
 
         try {
-            Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName, namespaceId);
+            Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName);
             // 同步版本到每个客户端节点
             for (RegisterNodeInfo registerNodeInfo : serverNodeSet) {
-                ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName, namespaceId);
+                ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName);
                 CommonRpcClient rpcClient = RequestBuilder.<CommonRpcClient, ApiResult>newBuilder()
                         .nodeInfo(registerNodeInfo)
                         .client(CommonRpcClient.class)

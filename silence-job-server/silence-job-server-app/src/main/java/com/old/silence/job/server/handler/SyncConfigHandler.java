@@ -38,10 +38,9 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
      * @param groupName 组
      * @return false-队列容量已满， true-添加成功
      */
-    public static boolean addSyncTask(String groupName, String namespaceId) {
+    public static boolean addSyncTask(String groupName) {
 
         ConfigSyncTask configSyncTask = new ConfigSyncTask();
-        configSyncTask.setNamespaceId(namespaceId);
         configSyncTask.setGroupName(groupName);
         return QUEUE.offer(configSyncTask);
     }
@@ -50,15 +49,14 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
      * 同步版本
      *
      * @param groupName   组
-     * @param namespaceId 空间id
      */
-    public void syncVersion(String groupName, final String namespaceId) {
+    public void syncVersion(String groupName) {
 
         try {
-            Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName, namespaceId);
+            Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName);
             // 同步版本到每个客户端节点
             for (RegisterNodeInfo registerNodeInfo : serverNodeSet) {
-                ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName, namespaceId);
+                ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName);
                 CommonRpcClient rpcClient = RequestBuilder.<CommonRpcClient, ApiResult>newBuilder()
                         .nodeInfo(registerNodeInfo)
                         .client(CommonRpcClient.class)
@@ -88,7 +86,7 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
         while (!Thread.currentThread().isInterrupted()) {
             try {
                 ConfigSyncTask task = QUEUE.take();
-                syncVersion(task.getGroupName(), task.getNamespaceId());
+                syncVersion(task.getGroupName());
             } catch (InterruptedException e) {
                 SilenceJobLog.LOCAL.info("[{}] thread stop.", Thread.currentThread().getName());
             } catch (Exception e) {

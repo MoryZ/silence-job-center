@@ -40,7 +40,6 @@ public interface JobTaskConverter {
     JobTaskPrepareDTO toJobTaskPrepare(Job job);
 
     @Mapping(source = "job.id", target = "jobId")
-    @Mapping(source = "job.namespaceId", target = "namespaceId")
     @Mapping(source = "job.groupName", target = "groupName")
     JobTaskPrepareDTO toJobTaskPrepare(Job job, WorkflowExecutorContext context);
 
@@ -98,7 +97,6 @@ public interface JobTaskConverter {
     @Mapping(source = "jobTask.argsStr", target = "argsStr")
     @Mapping(source = "jobTask.argsType", target = "argsType")
     @Mapping(source = "jobTask.extAttrs", target = "extAttrs")
-    @Mapping(source = "jobTask.namespaceId", target = "namespaceId")
     @Mapping(source = "jobTask.taskName", target = "taskName")
     @Mapping(source = "jobTask.mrStage", target = "mrStage")
     @Mapping(source = "context.wfContext", target = "wfContext")

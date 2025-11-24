@@ -2,8 +2,6 @@ package com.old.silence.job.server.retry.task.dto;
 
 
 
-
-
 public class RequestRetryExecutorDTO extends BaseDTO {
 
     private String clientId;

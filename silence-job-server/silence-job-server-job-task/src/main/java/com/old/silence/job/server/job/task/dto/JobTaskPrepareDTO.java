@@ -11,7 +11,6 @@ public class JobTaskPrepareDTO {
 
     private BigInteger jobId;
 
-    private String namespaceId;
 
     /**
      * 组名称
@@ -82,13 +81,6 @@ public class JobTaskPrepareDTO {
         this.jobId = jobId;
     }
 
-    public String getNamespaceId() {
-        return namespaceId;
-    }
-
-    public void setNamespaceId(String namespaceId) {
-        this.namespaceId = namespaceId;
-    }
 
     public String getGroupName() {
         return groupName;

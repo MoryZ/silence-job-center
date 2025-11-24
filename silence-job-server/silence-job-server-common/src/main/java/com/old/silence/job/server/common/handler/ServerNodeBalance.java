@@ -53,7 +53,7 @@ public class ServerNodeBalance implements Lifecycle, Runnable {
         try {
 
             // 为了保证客户端分配算法的一致性,serverNodes 从数据库从数据获取
-            Set<String> podIpSet = CacheRegisterTable.getPodIdSet(ServerRegister.GROUP_NAME, ServerRegister.NAMESPACE_ID);
+            Set<String> podIpSet = CacheRegisterTable.getPodIdSet(ServerRegister.GROUP_NAME);
 
             if (CollectionUtils.isEmpty(podIpSet)) {
                 SilenceJobLog.LOCAL.error("server node is empty");
@@ -100,7 +100,7 @@ public class ServerNodeBalance implements Lifecycle, Runnable {
         for (String localHostId : localHostIds) {
             RegisterNodeInfo registerNodeInfo = concurrentMap.get(localHostId);
             // 删除过期的节点信息
-            CacheRegisterTable.remove(registerNodeInfo.getGroupName(), registerNodeInfo.getNamespaceId(), registerNodeInfo.getHostId());
+            CacheRegisterTable.remove(registerNodeInfo.getGroupName(), registerNodeInfo.getHostId());
         }
     }
 
@@ -195,7 +195,7 @@ public class ServerNodeBalance implements Lifecycle, Runnable {
                             .collect(Collectors.toSet());
                     for (RegisterNodeInfo registerNodeInfo : expireNodeSet) {
                         // 删除过期的节点信息
-                        CacheRegisterTable.remove(registerNodeInfo.getGroupName(), registerNodeInfo.getNamespaceId(), registerNodeInfo.getHostId());
+                        CacheRegisterTable.remove(registerNodeInfo.getGroupName(), registerNodeInfo.getHostId());
                     }
 
                 }

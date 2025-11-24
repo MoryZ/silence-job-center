@@ -177,7 +177,7 @@ public class RpcClientInvokeHandler implements InvocationHandler {
                         hostId, hostIp, hostPort, NetUtil.getLocalIpStr(), ex);
 
                 // 进行路由剔除处理
-                CacheRegisterTable.remove(groupName, namespaceId, hostId);
+                CacheRegisterTable.remove(groupName, hostId);
                 // 重新选一个可用的客户端节点
                 ClientNodeAllocateHandler clientNodeAllocateHandler = SilenceSpringContext.getBean(
                         ClientNodeAllocateHandler.class);
@@ -208,7 +208,7 @@ public class RpcClientInvokeHandler implements InvocationHandler {
                 throwable = re.getLastFailedAttempt().getExceptionCause();
                 if (throwable.getCause() instanceof SilenceJobRemotingTimeOutException) {
                     // 若重试之后该接口仍然有问题，进行路由剔除处理
-                    CacheRegisterTable.remove(groupName, namespaceId, hostId);
+                    CacheRegisterTable.remove(groupName, hostId);
                 }
             }
 
