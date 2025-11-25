@@ -107,7 +107,8 @@ public class CacheRegisterTable implements Lifecycle {
      *
      * @return 缓存对象
      */
-    public static Set<RegisterNodeInfo> getServerNodeSet(String groupName) {
+    public static Set<RegisterNodeInfo> getServerNodeSet(String groupName, String namespaceId) {
+        //TODO 并没有使用到namespaceId 后续结合语境修改
         ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(groupName);
         if (CollectionUtils.isEmpty(concurrentMap)) {
 
@@ -137,7 +138,8 @@ public class CacheRegisterTable implements Lifecycle {
      * @return 缓存对象
      */
     public static Set<String> getPodIdSet(String groupName) {
-        return StreamUtils.toSet(getServerNodeSet(groupName), RegisterNodeInfo::getHostId);
+        //TODO 并没有使用到namespaceId
+        return StreamUtils.toSet(getServerNodeSet(groupName, null), RegisterNodeInfo::getHostId);
     }
 
 

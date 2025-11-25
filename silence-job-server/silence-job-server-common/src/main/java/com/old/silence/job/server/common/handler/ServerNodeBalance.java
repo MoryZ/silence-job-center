@@ -152,7 +152,7 @@ public class ServerNodeBalance implements Lifecycle, Runnable {
 
                 // 获取缓存中的节点
                 ConcurrentMap<String/*hostId*/, RegisterNodeInfo> concurrentMap = Optional.ofNullable(CacheRegisterTable
-                        .get(ServerRegister.GROUP_NAME, ServerRegister.NAMESPACE_ID)).orElse(new ConcurrentHashMap<>());
+                        .get(ServerRegister.GROUP_NAME)).orElse(new ConcurrentHashMap<>());
 
                 Set<String> remoteHostIds = StreamUtils.toSet(remotePods, ServerNode::getHostId);
 
@@ -187,7 +187,7 @@ public class ServerNodeBalance implements Lifecycle, Runnable {
 
                     // 再次获取最新的节点信息
                     concurrentMap = CacheRegisterTable
-                            .get(ServerRegister.GROUP_NAME, ServerRegister.NAMESPACE_ID);
+                            .get(ServerRegister.GROUP_NAME);
 
                     // 找出过期的节点
                     Set<RegisterNodeInfo> expireNodeSet = concurrentMap.values().stream()

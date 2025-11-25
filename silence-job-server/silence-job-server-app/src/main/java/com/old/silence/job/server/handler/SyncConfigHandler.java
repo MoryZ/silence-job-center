@@ -38,10 +38,11 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
      * @param groupName 组
      * @return false-队列容量已满， true-添加成功
      */
-    public static boolean addSyncTask(String groupName) {
+    public static boolean addSyncTask(String groupName, String namespaceId) {
 
         ConfigSyncTask configSyncTask = new ConfigSyncTask();
         configSyncTask.setGroupName(groupName);
+        configSyncTask.setNamespaceId(namespaceId);
         return QUEUE.offer(configSyncTask);
     }
 
@@ -56,7 +57,7 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
             Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName);
             // 同步版本到每个客户端节点
             for (RegisterNodeInfo registerNodeInfo : serverNodeSet) {
-                ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName);
+                ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName, registerNodeInfo.getNamespaceId());
                 CommonRpcClient rpcClient = RequestBuilder.<CommonRpcClient, ApiResult>newBuilder()
                         .nodeInfo(registerNodeInfo)
                         .client(CommonRpcClient.class)

@@ -99,9 +99,10 @@ public interface ConfigAccess<T> extends Access {
      * 同步客户端配置
      *
      * @param groupName   组名称
+     * @param namespaceId   命名空间
      * @return ConfigDTO
      */
-    ConfigDTO getConfigInfo(String groupName);
+    ConfigDTO getConfigInfo(String groupName, String namespaceId);
 
     List<T> list(LambdaQueryWrapper<T> query);
 

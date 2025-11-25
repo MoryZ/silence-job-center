@@ -56,7 +56,8 @@ public abstract class AbstractConfigAccess<T> implements ConfigAccess<T> {
                 .eq(RetrySceneConfig::getGroupName, groupName));
     }
 
-    protected GroupConfig getByGroupName(String groupName, final String namespaceId) {
+    protected GroupConfig getByGroupName(String groupName, String namespaceId) {
+        //TODO 不知道namespaceId 是否会自动填充
         return groupConfigDao.selectOne(new LambdaQueryWrapper<GroupConfig>()
                 .eq(GroupConfig::getNamespaceId, namespaceId)
                 .eq(GroupConfig::getGroupName, groupName));
@@ -156,6 +157,7 @@ public abstract class AbstractConfigAccess<T> implements ConfigAccess<T> {
 
     @Override
     public ConfigDTO getConfigInfo(String groupName, String namespaceId) {
+
 
         ConfigDTO configDTO = new ConfigDTO();
         configDTO.setVersion(getConfigVersion(groupName, namespaceId));
