@@ -77,7 +77,8 @@ public class CacheRegisterTable implements Lifecycle {
      *
      * @return 缓存对象
      */
-    public static RegisterNodeInfo getServerNode(String groupName, String hostId) {
+    public static RegisterNodeInfo getServerNode(String groupName, String namespaceId, String hostId) {
+        // TODO 这里namespaceId 也没有用到
         ConcurrentMap<String, RegisterNodeInfo> concurrentMap = CACHE.getIfPresent(groupName);
         if (Objects.isNull(concurrentMap)) {
             // 此处为了降级，若缓存中没有则取DB中查询
@@ -149,7 +150,7 @@ public class CacheRegisterTable implements Lifecycle {
      * @param serverNode 服务节点
      */
     public static synchronized void refreshExpireAt(ServerNode serverNode) {
-        RegisterNodeInfo registerNodeInfo = getServerNode(serverNode.getGroupName(),
+        RegisterNodeInfo registerNodeInfo = getServerNode(serverNode.getGroupName(), serverNode.getNamespaceId(),
                 serverNode.getHostId());
         // 不存在则初始化
         if (Objects.isNull(registerNodeInfo)) {

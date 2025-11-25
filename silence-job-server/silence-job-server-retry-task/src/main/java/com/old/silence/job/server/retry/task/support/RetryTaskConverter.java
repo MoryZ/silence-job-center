@@ -110,6 +110,7 @@ public interface RetryTaskConverter {
     @Mapping(target = "sceneName", source = "retry.sceneName")
     @Mapping(target = "retryId", source = "retry.id")
     @Mapping(target = "taskType", source = "retry.taskType")
+    @Mapping(target = "namespaceId", source = "retry.namespaceId")
     RequestRetryExecutorDTO toRealRetryExecutorDTO(RetrySceneConfig execute, Retry retry);
 
     RequestRetryExecutorDTO toRealRetryExecutorDTO(TaskStopJobDTO stopJobDTO);
@@ -158,6 +159,7 @@ public interface RetryTaskConverter {
     @Mapping(target = "sceneName", source = "retry.sceneName")
     @Mapping(target = "retryId", source = "retry.id")
     @Mapping(target = "taskType", source = "retry.taskType")
+    @Mapping(target = "namespaceId", source = "retry.namespaceId")
     RequestCallbackExecutorDTO toRequestCallbackExecutorDTO(RetrySceneConfig retrySceneConfig, Retry retry);
 
     RetryCallbackRequest toRetryCallbackDTO(RequestCallbackExecutorDTO executorDTO);

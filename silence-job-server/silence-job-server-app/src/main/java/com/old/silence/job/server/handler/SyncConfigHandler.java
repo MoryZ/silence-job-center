@@ -51,10 +51,10 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
      *
      * @param groupName   组
      */
-    public void syncVersion(String groupName) {
+    public void syncVersion(String groupName, String namespaceId) {
 
         try {
-            Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName);
+            Set<RegisterNodeInfo> serverNodeSet = CacheRegisterTable.getServerNodeSet(groupName, namespaceId);
             // 同步版本到每个客户端节点
             for (RegisterNodeInfo registerNodeInfo : serverNodeSet) {
                 ConfigDTO configDTO = accessTemplate.getGroupConfigAccess().getConfigInfo(groupName, registerNodeInfo.getNamespaceId());
@@ -87,7 +87,7 @@ public class SyncConfigHandler implements Lifecycle, Runnable {
         while (!Thread.currentThread().isInterrupted()) {
             try {
                 ConfigSyncTask task = QUEUE.take();
-                syncVersion(task.getGroupName());
+                syncVersion(task.getGroupName(), task.getNamespaceId());
             } catch (InterruptedException e) {
                 SilenceJobLog.LOCAL.info("[{}] thread stop.", Thread.currentThread().getName());
             } catch (Exception e) {

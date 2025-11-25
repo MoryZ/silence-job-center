@@ -13,6 +13,7 @@ import java.math.BigInteger;
 
 public class WorkflowExecutorContext {
 
+    private String namespaceId;
 
     /**
      * 组名称
@@ -119,6 +120,14 @@ public class WorkflowExecutorContext {
      */
     private String wfContext;
 
+
+    public String getNamespaceId() {
+        return namespaceId;
+    }
+
+    public void setNamespaceId(String namespaceId) {
+        this.namespaceId = namespaceId;
+    }
 
     public String getGroupName() {
         return groupName;

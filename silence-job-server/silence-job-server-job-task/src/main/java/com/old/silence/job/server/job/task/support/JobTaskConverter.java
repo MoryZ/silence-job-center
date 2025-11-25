@@ -100,6 +100,7 @@ public interface JobTaskConverter {
     @Mapping(source = "jobTask.taskName", target = "taskName")
     @Mapping(source = "jobTask.mrStage", target = "mrStage")
     @Mapping(source = "context.wfContext", target = "wfContext")
+    @Mapping(source = "jobTask.namespaceId", target = "namespaceId")
     RealJobExecutorDTO toRealJobExecutorDTO(JobExecutorContext context, JobTask jobTask);
 
     @Mapping(source = "id", target = "jobId")
