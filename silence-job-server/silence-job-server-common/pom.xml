@@ -131,9 +131,21 @@
             <groupId>com.old.silence</groupId>
             <artifactId>silence-job-common-server-api</artifactId>
         </dependency>
+
+        <!-- Server Core Dependencies (Refactored) -->
         <dependency>
-            <groupId>com.old.silence</groupId>
-            <artifactId>silence-job-server-core</artifactId>
+            <groupId>com.old.silence.job</groupId>
+            <artifactId>silence-job-server-core-model</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.old.silence.job</groupId>
+            <artifactId>silence-job-server-core-repository</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.old.silence.job</groupId>
+            <artifactId>silence-job-server-core-service</artifactId>
         </dependency>
 
     </dependencies>

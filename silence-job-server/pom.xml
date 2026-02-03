@@ -21,6 +21,9 @@
     </properties>
 
     <modules>
+        <module>silence-job-server-core-model</module>
+        <module>silence-job-server-core-repository</module>
+        <module>silence-job-server-core-service</module>
         <module>silence-job-server-app</module>
         <module>silence-job-server-core</module>
         <module>silence-job-server-common</module>
@@ -30,6 +33,24 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.old.silence.job</groupId>
+                <artifactId>silence-job-server-core-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.old.silence.job</groupId>
+                <artifactId>silence-job-server-core-repository</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.old.silence.job</groupId>
+                <artifactId>silence-job-server-core-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-server-common</artifactId>
