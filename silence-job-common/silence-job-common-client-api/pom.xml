@@ -20,6 +20,25 @@
     </properties>
 
     <dependencies>
+        <!-- New split modules -->
+        <dependency>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-job-common-enum</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-job-common-constant</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-job-common-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.old.silence</groupId>
+            <artifactId>silence-job-common-util</artifactId>
+        </dependency>
+
+        <!-- Original core (for gRPC support) -->
         <dependency>
             <groupId>com.old.silence</groupId>
             <artifactId>silence-job-common-core</artifactId>

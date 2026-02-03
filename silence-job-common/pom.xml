@@ -19,6 +19,13 @@
     </properties>
 
     <modules>
+        <!-- Phase 1: New modules for refactoring -->
+        <module>silence-job-common-enum</module>
+        <module>silence-job-common-constant</module>
+        <module>silence-job-common-model</module>
+        <module>silence-job-common-util</module>
+        
+        <!-- Original modules -->
         <module>silence-job-common-client-api</module>
         <module>silence-job-common-core</module>
         <module>silence-job-common-log</module>
