@@ -18,25 +18,40 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <revision>1.0.0-SNAPSHOT</revision>
 
+        <!--    core dependencies    -->
         <netty-all.version>4.1.114.Final</netty-all.version>
         <hutool.version>5.8.32</hutool.version>
         <mybatis-spring.version>3.0.3</mybatis-spring.version>
         <mybatis-plus.version>3.5.9</mybatis-plus.version>
+        <guava.version>33.3.0-jre</guava.version>
+        <guava-retrying.version>2.0.0</guava-retrying.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+
+        <!--    json & serialization    -->
+        <fastjson2.version>2.0.52</fastjson2.version>
+        <hessian.version>4.0.66</hessian.version>
+
+        <!--    database    -->
+        <mysql-connector-j.version>8.4.0</mysql-connector-j.version>
+
+        <!--    actor & async    -->
+        <pekko.version>1.2.0-M1</pekko.version>
+        <scala.version>2.13.9</scala.version>
+
+        <!--    expression engines    -->
+        <aviator.version>5.3.3</aviator.version>
+        <QLExpress.version>3.3.4</QLExpress.version>
+
+        <!--    security & auth    -->
+        <java-jwt.version>4.4.0</java-jwt.version>
+
+        <!--    monitoring & logging    -->
+        <perf4j.version>0.9.16</perf4j.version>
         <tinylog.version>1.3.6</tinylog.version>
         <tinylog2.version>2.6.2</tinylog2.version>
         <logtube.version>0.45.0</logtube.version>
         <log4j.version>1.2.17</log4j.version>
         <commons-logging.version>1.3.4</commons-logging.version>
-        <guava.version>33.3.0-jre</guava.version>
-        <guava-retrying.version>2.0.0</guava-retrying.version>
-
-        <pekko.version>1.2.0-M1</pekko.version>
-        <scala.version>2.13.9</scala.version>
-        <java-jwt.version>4.4.0</java-jwt.version>
-        <perf4j.version>0.9.16</perf4j.version>
-        <aviator.version>5.3.3</aviator.version>
-        <hessian.version>4.0.66</hessian.version>
-        <QLExpress.version>3.3.4</QLExpress.version>
 
         <!--    grpc & protobuf    -->
         <grpc-java.version>1.66.0</grpc-java.version>
@@ -52,76 +67,79 @@
     <dependencyManagement>
 
         <dependencies>
-            <!--      SilenceJob common      -->
+            <!--      SilenceJob common modules      -->
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-common-core</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-common-log</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-common-client-api</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
+            
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-common-server-api</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
+            <!--      SilenceJob server modules      -->
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-server-core</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-server-app</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
-            </dependency>
-
-            <!--      SilenceJob client      -->
-            <dependency>
-                <groupId>com.old.silence</groupId>
-                <artifactId>silence-job-client-retry-core</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.old.silence</groupId>
-                <artifactId>silence-job-client-job-core</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.old.silence</groupId>
-                <artifactId>silence-job-server-job-task</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.old.silence</groupId>
-                <artifactId>silence-job-server-retry-task</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-server-common</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.old.silence</groupId>
+                <artifactId>silence-job-server-job-task</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.old.silence</groupId>
+                <artifactId>silence-job-server-retry-task</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--      SilenceJob client modules      -->
+            <dependency>
+                <groupId>com.old.silence</groupId>
                 <artifactId>silence-job-client-common</artifactId>
-                <version>1.8.0-SNAPSHOT</version>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.old.silence</groupId>
+                <artifactId>silence-job-client-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.old.silence</groupId>
+                <artifactId>silence-job-client-retry-core</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <!--    utils        -->
@@ -147,10 +165,29 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+
+            <!--    json & serialization    -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.caucho</groupId>
                 <artifactId>hessian</artifactId>
                 <version>${hessian.version}</version>
+            </dependency>
+
+            <!--    database    -->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql-connector-j.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.googlecode.aviator</groupId>

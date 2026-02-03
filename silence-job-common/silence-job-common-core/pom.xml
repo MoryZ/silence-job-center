@@ -80,23 +80,22 @@
             <artifactId>proto-google-common-protos</artifactId>
         </dependency>
 
-        <!--    SilenceJob    -->
         <dependency>
             <groupId>com.old.silence</groupId>
             <artifactId>silence-job-common-log</artifactId>
         </dependency>
 
+        <!--    json & serialization    -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.13.5</version>
         </dependency>
 
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2-extension</artifactId>
-            <version>2.0.52</version>
         </dependency>
+        
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>

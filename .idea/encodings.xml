@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/silence-job-client-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-client/silence-job-client-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-client/silence-job-client-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-client/silence-job-client-retry-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-common/silence-job-common-client-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-common/silence-job-common-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-common/silence-job-common-log/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-common/silence-job-common-server-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server/silence-job-server-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server/silence-job-server-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server/silence-job-server-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server/silence-job-server-job-task/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server/silence-job-server-retry-task/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/silence-job-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

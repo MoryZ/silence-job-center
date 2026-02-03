@@ -1,39 +1,298 @@
-# silence-job-center
+# SilenceJob - 分布式任务调度与重试平台
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+## 📖 简介
 
-#### 软件架构
-软件架构说明
+**SilenceJob** 是一个基于 DDD（领域驱动设计）架构的**开源分布式任务调度和重试平台**，提供高可用、可扩展的任务管理解决方案。
 
+### 核心特性
 
-#### 安装教程
+- ✅ **分布式任务调度** - 支持跨多个客户端的统一任务分配和执行
+- ✅ **智能重试机制** - 内置指数退避、自定义重试策略
+- ✅ **工作流编排** - 支持DAG图表示的复杂业务流程
+- ✅ **多租户隔离** - 天然的多租户支持，支持租户级数据隔离
+- ✅ **实时监控告警** - 钉钉、邮件等多渠道告警通知
+- ✅ **高可用部署** - 支持集群部署，自动故障转移
+- ✅ **表达式引擎** - 支持 SpEL、Aviator、QL 多种表达式
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+---
 
-#### 使用说明
+## 🏗️ 架构设计
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 模块划分
 
-#### 参与贡献
+```
+silence-job-center/
+├── silence-job-common/              # 公共模块
+│   ├── silence-job-common-core/     # 核心工具类、常量定义
+│   ├── silence-job-common-log/      # 统一日志门面
+│   ├── silence-job-common-client-api/ # 客户端 API 定义
+│   └── silence-job-common-server-api/ # 服务端 API 定义
+├── silence-job-client/              # 客户端模块
+│   ├── silence-job-client-common/   # 客户端公共组件
+│   ├── silence-job-client-core/     # 客户端核心逻辑
+│   ├── silence-job-client-retry-core/ # 重试核心引擎
+│   └── silence-job-client-starter/  # Spring Boot Starter
+├── silence-job-server/              # 服务端模块
+│   ├── silence-job-server-app/      # 应用层（API、Service）
+│   ├── silence-job-server-core/     # 核心领域模型
+│   ├── silence-job-server-common/   # 服务端公共组件
+│   ├── silence-job-server-job-task/ # 任务执行引擎
+│   ├── silence-job-server-retry-task/ # 重试任务执行器
+│   └── silence-job-server-starter/  # Spring Boot Starter
+└── LICENSE, pom.xml                 # 项目配置
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+### 分层架构
 
+采用 **DDD + 微服务** 的分层设计：
 
-#### 特技
+| 层级 | 职责 | 示例 |
+|-----|------|------|
+| **API 层** | HTTP 接口、参数校验、响应封装 | `*Resource.java` |
+| **Application 层** | 业务编排、事务控制 | `*Service.java` |
+| **Domain 层** | 领域模型、核心业务逻辑 | `domain/model/*.java` |
+| **Infrastructure 层** | 数据访问、外部服务集成 | `dao/*.java` |
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+---
+
+## 🛠️ 技术栈
+
+### 核心依赖
+
+| 技术 | 版本 | 用途 |
+|------|------|------|
+| Java | 17+ | 编程语言 |
+| Spring Boot | 3.x | 应用框架 |
+| MyBatis-Plus | 3.5+ | ORM 框架 |
+| Hutool | 5.8+ | 工具库 |
+| Fastjson2 | 2.0+ | JSON 处理 |
+| Pekko | 1.0+ | Actor 模型（异步调度） |
+| MapStruct | 1.5+ | 对象映射 |
+| Guava | 32+ | 图结构、缓存 |
+
+### 数据库
+
+- **MySQL** 8.0+ - 主数据存储
+- **H2** - 单元测试内存数据库
+
+---
+
+## 📚 快速开始
+
+### 前置要求
+
+```bash
+- Java 17 或更高版本
+- Maven 3.8.1 或更高版本
+- MySQL 8.0 或更高版本
+```
+
+### 安装步骤
+
+1. **克隆项目**
+
+```bash
+git clone https://gitee.com/yourusername/silence-job-center.git
+cd silence-job-center
+```
+
+2. **构建项目**
+
+```bash
+mvn clean package -DskipTests
+```
+
+3. **数据库初始化**
+
+```bash
+# 执行 SQL 脚本初始化数据库
+mysql -u root -p < sql/silence-job.sql
+```
+
+4. **启动服务端**
+
+```bash
+cd silence-job-server-starter
+mvn spring-boot:run
+```
+
+5. **集成客户端**
+
+```xml
+<dependency>
+    <groupId>com.old.silence</groupId>
+    <artifactId>silence-job-client-starter</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+```yaml
+# application.yml
+silence-job:
+  client:
+    namespace: your-namespace
+    token: your-token
+    server-url: http://localhost:8080
+```
+
+---
+
+## 📖 开发指南
+
+### 开发规范
+
+详见 [CLAUDE.md](CLAUDE.md)，包含：
+
+- ✅ 架构模式和分层职责
+- ✅ 数据库设计规范（表名前缀 `sj_`、必需字段）
+- ✅ 常用工具类和依赖使用
+- ✅ **开发红线**（禁止事项和必需规范）
+- ✅ 常用代码模板
+- ✅ 提交和分支管理规范
+
+### 关键概念
+
+#### 任务（Job）
+- 基本执行单元
+- 支持定时触发、API 触发、事件触发
+- 自动重试机制
+
+#### 工作流（Workflow）
+- DAG 图表示的复杂业务流程
+- 支持条件分支、并行执行
+- 支持多种表达式引擎（SpEL、Aviator、QL）
+
+#### 重试任务（RetryTask）
+- 失败任务的自动重试
+- 支持指数退避策略
+- 可配置最大重试次数
+
+#### 组配置（GroupConfig）
+- 租户级别的配置管理
+- 支持通知配置、执行器配置等
+
+---
+
+## 🔐 开发红线
+
+### 禁止事项
+
+❌ **禁止在循环中查询数据库** - 使用批量查询替代
+```java
+// ❌ 错误
+for (BigInteger id : ids) {
+    Job job = jobDao.selectById(id);
+}
+// ✅ 正确
+List<Job> jobs = jobDao.selectBatchIds(ids);
+```
+
+❌ **禁止吞掉异常堆栈** - 必须记录完整堆栈
+```java
+// ❌ 错误
+log.error("error occurred");
+// ✅ 正确
+log.error("error occurred", e);
+throw new SilenceJobServerException("...", e);
+```
+
+❌ **禁止在事务方法中捕获异常不抛出** - 否则事务不会回滚
+
+❌ **禁止直接修改集合参数** - 避免并发问题
+
+### 必需规范
+
+✅ **前置校验使用 Assert** - 使用 Hutool 的 Assert
+✅ **使用 Optional 处理可空值** - 避免空指针异常
+✅ **枚举定义在 `com.old.silence.job.common.enums`** 包
+✅ **DTO 命名：Command（写）/ Query（查询）/ ResponseVO（响应）**
+✅ **日志脱敏敏感信息，关键节点必须记录日志**
+
+---
+
+## 📋 数据库规范
+
+### 表命名
+
+- 所有表以 `sj_` 开头（silence-job 缩写）
+- 示例：`sj_job`、`sj_workflow`、`sj_retry_task`、`sj_group_config`
+
+### 必需字段
+
+所有实体类继承 `AbstractAutoGeneratedIdAuditableTenantable<BigInteger, String>`，自动包含：
+
+```
+id (BigInteger)           # 主键，自增
+created_at (Instant)      # 创建时间，自动填充
+updated_at (Instant)      # 更新时间，自动填充
+created_by (String)       # 创建人
+updated_by (String)       # 更新人
+tenant_id (String)        # 租户ID，用于隔离
+deleted (Boolean)         # 逻辑删除标记（@TableLogic）
+version (Integer)         # 乐观锁版本号
+```
+
+### JSON 处理
+
+使用 `JsonUtils` 工具类进行序列化/反序列化：
+
+```java
+// 序列化
+String json = JsonUtils.toJsonString(object);
+
+// 反序列化
+MyClass obj = JsonUtils.parseObject(json, MyClass.class);
+
+// 校验 JSON 格式
+if (!JsonUtils.isValidJson(jsonString)) {
+    throw new SilenceJobServerException("非法的 JSON 格式");
+}
+```
+
+---
+
+## 🤝 参与贡献
+
+### 分支管理
+
+- `main` - 主分支（生产环境）
+- `develop` - 开发分支
+- `feature/*` - 功能分支
+- `hotfix/*` - 紧急修复分支
+
+### 提交规范
+
+遵循 [Conventional Commits](https://www.conventionalcommits.org/)：
+
+```
+feat: 新增工作流决策节点功能
+fix: 修复任务重试次数统计错误
+docs: 更新 API 文档
+refactor: 重构任务调度逻辑
+```
+
+### 贡献流程
+
+1. Fork 本仓库
+2. 新建 `feature/xxx` 分支
+3. 提交代码并遵循提交规范
+4. 新建 Pull Request
+
+---
+
+## 📄 许可证
+
+本项目采用 MIT 许可证，详见 [LICENSE](LICENSE)
+
+---
+
+## 📞 支持
+
+- 📖 [开发指南](CLAUDE.md)
+- 🐛 [提交 Issue](https://gitee.com/yourusername/silence-job-center/issues)
+- 💬 [讨论区](https://gitee.com/yourusername/silence-job-center/discussions)
+
+---
+
+**最后更新**: 2026-02-03  
+**维护者**: SilenceJob Team
