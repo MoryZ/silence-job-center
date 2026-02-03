@@ -12,7 +12,7 @@ import com.old.silence.job.common.alarm.AlarmContext;
 import com.old.silence.job.common.alarm.SilenceJobAlarmFactory;
 import com.old.silence.job.common.enums.RetryNotifyScene;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 import com.old.silence.job.common.server.dto.RetryTaskDTO;
 import com.old.silence.job.common.util.EnvironmentUtils;
 import com.old.silence.job.common.util.NetUtil;

@@ -14,7 +14,7 @@ import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.enums.JobNotifyScene;
 import com.old.silence.job.common.enums.NodeType;
 import com.old.silence.job.common.enums.RetryNotifyScene;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 import com.old.silence.job.server.domain.model.GroupConfig;
 import com.old.silence.job.server.domain.model.NotifyConfig;
 import com.old.silence.job.server.domain.model.NotifyRecipient;

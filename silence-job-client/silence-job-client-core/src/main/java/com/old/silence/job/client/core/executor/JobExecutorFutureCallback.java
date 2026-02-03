@@ -24,7 +24,7 @@ import com.old.silence.job.client.core.client.JobNettyClient;
 import com.old.silence.job.client.core.log.JobLogMeta;
 import com.old.silence.job.common.client.dto.ExecuteResult;
 import com.old.silence.job.common.client.dto.request.DispatchJobResultRequest;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.log.enums.LogTypeEnum;
 import com.old.silence.job.common.alarm.AlarmContext;

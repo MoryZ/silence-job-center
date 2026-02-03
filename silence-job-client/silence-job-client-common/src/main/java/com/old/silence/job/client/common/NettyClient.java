@@ -5,7 +5,7 @@ import com.old.silence.job.client.common.rpc.client.RequestMethod;
 import com.old.silence.job.common.constant.SystemConstants.HTTP_PATH;
 import com.old.silence.job.common.model.ApiResult;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
-import com.old.silence.job.common.server.dto.LogTaskDTO;
+import com.old.silence.job.common.dto.LogTaskDTO;
 import com.old.silence.job.common.server.dto.RetryTaskDTO;
 
 import java.util.List;

@@ -4,7 +4,7 @@ import com.old.silence.job.client.common.annotation.Mapping;
 import com.old.silence.job.client.common.annotation.SilenceEndPoint;
 import com.old.silence.job.client.common.cache.GroupVersionCache;
 import com.old.silence.job.client.common.rpc.client.RequestMethod;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 
 import static com.old.silence.job.common.constant.SystemConstants.HTTP_PATH.SYNC_CONFIG;
 

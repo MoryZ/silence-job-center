@@ -39,7 +39,6 @@ com.old.silence:silence-job-server-app:jar:1.8.0-SNAPSHOT
 |  \- org.apache.commons:commons-lang3:jar:3.17.0:compile
 +- com.old.silence:silence-job-server-core:jar:1.8.0-SNAPSHOT:compile
 |  +- com.old.silence:platform-data-mybatis-plus:jar:2.0.1-SNAPSHOT:compile
-|  |  +- com.old.silence:platform-data-commons:jar:2.0.1-SNAPSHOT:compile
 |  |  \- com.baomidou:mybatis-plus-spring-boot3-starter:jar:3.5.6:compile
 |  |     +- com.baomidou:mybatis-plus:jar:3.5.6:compile
 |  |     |  +- com.baomidou:mybatis-plus-core:jar:3.5.6:compile
@@ -140,4 +139,8 @@ com.old.silence:silence-job-server-app:jar:1.8.0-SNAPSHOT
 +- org.springframework.security:spring-security-web:jar:6.3.6:compile
 |  \- org.springframework:spring-web:jar:6.1.16:compile
 +- org.springframework.security:spring-security-config:jar:6.3.6:compile
-\- com.old.silence:silence-auth-center-client:jar:2.0.1-SNAPSHOT:compile
+\- com.old.silence:silence-auth-center-client:jar:2.0.1-SNAPSHOT:provided
+   +- com.old.silence:silence-auth-center-security:jar:2.0.1-SNAPSHOT:provided
+   |  +- org.springframework.boot:spring-boot-starter-security:jar:3.3.8:provided
+   |  \- com.auth0:java-jwt:jar:4.4.0:provided
+   \- com.old.silence:platform-data-commons:jar:2.0.1-SNAPSHOT:compile

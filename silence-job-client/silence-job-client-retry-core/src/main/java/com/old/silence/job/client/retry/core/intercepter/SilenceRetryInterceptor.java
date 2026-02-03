@@ -23,7 +23,7 @@ import com.old.silence.job.common.context.SilenceSpringContext;
 import com.old.silence.job.common.enums.RetryNotifyScene;
 import com.old.silence.job.common.enums.RetryResultStatus;
 import com.old.silence.job.common.model.SilenceJobHeaders;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 import com.old.silence.job.common.util.EnvironmentUtils;
 import com.old.silence.job.common.util.NetUtil;
 import com.old.silence.job.log.SilenceJobLog;

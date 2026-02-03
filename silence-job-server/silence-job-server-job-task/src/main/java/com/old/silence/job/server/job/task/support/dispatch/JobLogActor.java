@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.alibaba.fastjson2.JSON;
 import com.old.silence.core.util.CollectionUtils;
-import com.old.silence.job.common.server.dto.JobLogTaskDTO;
+import com.old.silence.job.common.dto.JobLogTaskDTO;
 import com.old.silence.job.common.util.StreamUtils;
 import com.old.silence.job.log.dto.TaskLogFieldDTO;
 import com.old.silence.job.server.domain.model.JobLogMessage;

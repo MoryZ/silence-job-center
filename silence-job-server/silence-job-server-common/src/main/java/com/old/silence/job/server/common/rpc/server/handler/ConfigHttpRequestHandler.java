@@ -9,7 +9,7 @@ import com.old.silence.job.common.constant.SystemConstants.HTTP_PATH;
 import com.old.silence.job.common.enums.HeadersEnum;
 import com.old.silence.job.common.model.SilenceJobRequest;
 import com.old.silence.job.common.model.SilenceJobRpcResult;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 import com.old.silence.job.server.common.handler.GetHttpRequestHandler;
 import com.old.silence.job.server.domain.service.AccessTemplate;
 

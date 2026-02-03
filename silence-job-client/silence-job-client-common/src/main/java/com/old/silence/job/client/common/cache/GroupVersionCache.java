@@ -5,7 +5,7 @@ import com.old.silence.core.util.CollectionUtils;
 import com.old.silence.job.common.constant.SystemConstants;
 import com.old.silence.job.common.enums.JobNotifyScene;
 import com.old.silence.job.common.enums.RetryNotifyScene;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 
 import java.util.List;
 import java.util.Objects;

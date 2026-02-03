@@ -8,7 +8,8 @@ import com.old.silence.job.common.client.dto.request.DispatchJobRequest;
 import com.old.silence.job.common.client.dto.request.DispatchJobResultRequest;
 import com.old.silence.job.common.client.dto.request.MapTaskRequest;
 import com.old.silence.job.common.enums.JobTaskStatus;
-import com.old.silence.job.common.server.dto.LogTaskDTO;
+import com.old.silence.job.common.dto.JobLogTaskDTO;
+import com.old.silence.job.common.dto.LogTaskDTO;
 import com.old.silence.job.server.common.dto.JobAlarmInfo;
 import com.old.silence.job.server.common.dto.JobLogMetaDTO;
 import com.old.silence.job.server.domain.model.Job;
@@ -68,6 +69,10 @@ public interface JobTaskConverter {
     JobLogMessage toJobLogMessage(JobLogDTO jobLogDTO);
 
     JobLogMessage toJobLogMessage(LogTaskDTO logTaskDTO);
+
+    default JobLogMessage toJobLogMessage(JobLogTaskDTO jobLogTaskDTO) {
+        return toJobLogMessage((LogTaskDTO) jobLogTaskDTO);
+    }
 
     JobLogMetaDTO toJobLogDTO(BaseDTO baseDTO);
 

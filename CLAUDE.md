@@ -718,6 +718,271 @@ mvn help:effective-pom
 
 ---
 
+## 附录 C：namespaceId 使用规范
+
+### 问题分析
+
+`namespaceId` 在项目中的使用存在以下混乱：
+
+1. **语义不清晰** - 有时表示全局命名空间（DEFAULT_NAMESPACE），有时表示具体的租户隔离空间
+2. **获取方式不一致** - 有时从 HTTP 请求头获取，有时从 Job 对象中获取
+3. **应用场景差异大** - 一些操作需要指定 namespaceId，一些不需要
+
+### namespaceId 的两种使用模式
+
+#### 模式 1：全局默认命名空间（Global Namespace）
+
+**定义**：系统默认的全局命名空间，所有微服务共享
+```java
+String DEFAULT_NAMESPACE = "764d604ec6fc45f68cd92514c40e9e1a";
+```
+
+**使用场景**：
+- 客户端和服务端通信建立连接时
+- 注册中心（CacheRegisterTable）的服务发现
+- 跨租户的全局系统操作
+
+**典型代码**：
+```java
+// 服务端发送请求给客户端，使用全局命名空间
+headersMap.put(HeadersEnum.NAMESPACE.getKey(), SystemConstants.DEFAULT_NAMESPACE);
+
+// 查询客户端集群信息，使用全局命名空间
+Set<RegisterNodeInfo> nodes = CacheRegisterTable.getServerNodeSet(
+    context.getGroupName(), 
+    context.getNamespaceId()  // 此时应使用 DEFAULT_NAMESPACE
+);
+```
+
+#### 模式 2：租户隔离命名空间（Tenant Namespace）
+
+**定义**：与 Job/Workflow 关联的租户隔离标识，用于数据隔离查询
+```java
+// 从 HTTP 请求头中获取，由客户端指定
+String namespaceId = HttpHeaderUtil.getNamespace(headers);
+
+// 或从 Job 对象中获取
+String namespaceId = job.getNamespaceId();
+```
+
+**使用场景**：
+- 数据库查询条件（WHERE namespaceId = ?）
+- API 请求头中标识租户身份
+- 跨租户的数据隔离验证
+
+**典型代码**：
+```java
+// 删除任务时，按租户和任务ID过滤
+String namespaceId = HttpHeaderUtil.getNamespace(headers);
+jobDao.delete(
+    new LambdaQueryWrapper<Job>()
+        .eq(Job::getNamespaceId, namespaceId)  // 租户隔离
+        .in(Job::getId, ids)
+);
+
+// 查询任务配置信息，按租户隔离
+GroupConfig groupConfig = groupConfigDao.selectOne(
+    new LambdaQueryWrapper<GroupConfig>()
+        .eq(GroupConfig::getNamespaceId, job.getNamespaceId())  // 使用 job 的租户
+        .eq(GroupConfig::getGroupName, job.getGroupName())
+);
+```
+
+### 使用规范
+
+#### ✅ 正确的使用方式
+
+**Rule 1：RPC 通信使用 DEFAULT_NAMESPACE**
+
+```java
+// ✅ 正确 - 客户端集群查询使用全局命名空间
+Set<RegisterNodeInfo> nodes = CacheRegisterTable.getServerNodeSet(
+    context.getGroupName(), 
+    SystemConstants.DEFAULT_NAMESPACE  // 显式指定全局命名空间
+);
+
+// ✅ 正确 - 服务端向客户端发送请求
+headersMap.put(
+    HeadersEnum.NAMESPACE.getKey(), 
+    SystemConstants.DEFAULT_NAMESPACE
+);
+```
+
+**Rule 2：数据库查询使用租户 namespaceId**
+
+```java
+// ✅ 正确 - 按租户查询任务
+String tenantNamespaceId = HttpHeaderUtil.getNamespace(headers);  // 从请求头获取
+jobDao.delete(
+    new LambdaQueryWrapper<Job>()
+        .eq(Job::getNamespaceId, tenantNamespaceId)  // 用租户 ID 隔离数据
+        .in(Job::getId, ids)
+);
+
+// ✅ 正确 - 使用 Job 对象的租户信息
+GroupConfig config = groupConfigDao.selectOne(
+    new LambdaQueryWrapper<GroupConfig>()
+        .eq(GroupConfig::getNamespaceId, job.getNamespaceId())
+        .eq(GroupConfig::getGroupName, job.getGroupName())
+);
+```
+
+**Rule 3：Context 对象中的 namespaceId 含义需要明确注释**
+
+```java
+public class ClientCallbackContext {
+    // namespaceId 在此上下文中表示：租户标识，用于数据隔离
+    // 来源：从 HTTP 请求头 (HeadersEnum.NAMESPACE) 中提取
+    // 与 DEFAULT_NAMESPACE 的区别：
+    //   - DEFAULT_NAMESPACE: 全局通信命名空间
+    //   - 此 namespaceId: 租户隔离标识
+    private String namespaceId;
+}
+
+public class JobTaskGenerateContext {
+    // namespaceId 在此上下文中表示：全局命名空间
+    // 来源：系统常量 DEFAULT_NAMESPACE
+    // 用途：用于注册中心查询客户端集群
+    private String namespaceId;
+}
+```
+
+#### ❌ 常见错误
+
+**错误 1：混淆两种 namespaceId**
+```java
+// ❌ 错误 - 直接从 context 获取的全局 namespaceId 用于数据库查询
+List<Job> jobs = jobDao.selectList(
+    new LambdaQueryWrapper<Job>()
+        .eq(Job::getNamespaceId, context.getNamespaceId())  // 可能是全局的！
+);
+```
+
+**错误 2：从不同来源混合使用**
+```java
+// ❌ 错误 - 既从 Job 获取，又从请求头获取，容易混乱
+String jobNamespaceId = job.getNamespaceId();
+String headerNamespaceId = HttpHeaderUtil.getNamespace(headers);
+if (!jobNamespaceId.equals(headerNamespaceId)) {
+    // 这里的判断逻辑可能不清晰
+}
+```
+
+**错误 3：缺少文档和注释**
+```java
+// ❌ 错误 - 无法看出这个 namespaceId 是哪种类型
+public void processJob(String namespaceId, Job job) {
+    Set<RegisterNodeInfo> nodes = CacheRegisterTable.getServerNodeSet(
+        job.getGroupName(), 
+        namespaceId  // 这里传入的是全局还是租户？
+    );
+}
+```
+
+### 重构建议
+
+#### 第一步：为 Context 类添加清晰的 JavaDoc
+
+```java
+/**
+ * 全局任务执行上下文
+ * 
+ * namespaceId 的含义：全局命名空间，用于 RPC 通信和客户端服务发现
+ * 来源：系统常量 {@link SystemConstants#DEFAULT_NAMESPACE}
+ * 与租户隔离的区别：此值是全局固定的，不随租户变化
+ */
+public class JobTaskGenerateContext {
+    /**
+     * 全局命名空间 ID
+     * 用途：
+     * - 注册中心查询：用于查询特定客户端集群的所有节点
+     * - RPC 通信：作为 HTTP 请求头的命名空间标识
+     * 
+     * @see SystemConstants#DEFAULT_NAMESPACE
+     */
+    private String namespaceId;
+}
+
+/**
+ * 客户端回调上下文
+ * 
+ * namespaceId 的含义：租户隔离标识，用于数据库查询和租户隔离
+ * 来源：HTTP 请求头 {@link HeadersEnum#NAMESPACE}
+ * 与全局命名空间的区别：此值来自客户端请求，表示具体的租户
+ */
+public class ClientCallbackContext {
+    /**
+     * 租户命名空间 ID
+     * 用途：
+     * - 数据库查询：过滤条件，确保数据隔离
+     * - 任务处理：记录任务所属租户
+     * 
+     * @see HeadersEnum#NAMESPACE
+     */
+    private String namespaceId;
+}
+```
+
+#### 第二步：创建语义明确的常量或方法
+
+```java
+public interface SystemConstants {
+    // 明确命名：这是全局通信命名空间
+    String GLOBAL_COMMUNICATION_NAMESPACE = "764d604ec6fc45f68cd92514c40e9e1a";
+    
+    // 保留向后兼容性
+    @Deprecated(since = "1.0", forRemoval = false)
+    String DEFAULT_NAMESPACE = GLOBAL_COMMUNICATION_NAMESPACE;
+}
+
+// 或者使用方法来区分语义
+public class NamespaceUtil {
+    /**
+     * 获取全局通信命名空间，用于 RPC 和客户端发现
+     */
+    public static String getGlobalNamespace() {
+        return SystemConstants.GLOBAL_COMMUNICATION_NAMESPACE;
+    }
+    
+    /**
+     * 获取租户隔离命名空间，用于数据查询隔离
+     */
+    public static String getTenantNamespace(HttpHeaders headers) {
+        return headers.getAsString(HeadersEnum.NAMESPACE.getKey());
+    }
+}
+```
+
+#### 第三步：统一查询方法的参数命名
+
+```java
+// ❌ 旧方式 - 参数名不清晰
+public Set<RegisterNodeInfo> getServerNodeSet(String groupName, String namespaceId) {
+    // ???
+}
+
+// ✅ 新方式 - 参数名表达意图
+public Set<RegisterNodeInfo> getServerNodeSetByGlobalNamespace(String groupName) {
+    return getServerNodeSet(groupName, SystemConstants.DEFAULT_NAMESPACE);
+}
+
+public Set<RegisterNodeInfo> getServerNodeSet(String groupName, String globalNamespace) {
+    // 显式的参数类型标注
+}
+```
+
+### 验证清单
+
+在使用 `namespaceId` 时，检查以下问题：
+
+- [ ] 我清楚这个 `namespaceId` 是全局还是租户隔离的吗？
+- [ ] 我是否有注释说明这个 `namespaceId` 的来源（DEFAULT_NAMESPACE 还是请求头）？
+- [ ] 这个变量用在 RPC 通信中吗？应该使用 DEFAULT_NAMESPACE
+- [ ] 这个变量用在数据库查询中吗？应该使用请求头中的租户 namespaceId
+- [ ] 我是否混淆了两种 namespaceId 的使用场景？
+
+---
+
 **文档版本**: v1.0  
 **最后更新**: 2026-02-03  
 **维护者**: SilenceJob Team

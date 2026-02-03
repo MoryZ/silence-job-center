@@ -102,8 +102,7 @@ com.old.silence:silence-job-server-starter:jar:1.8.0-SNAPSHOT
 |  |  +- org.springframework:spring-context:jar:6.1.16:compile
 |  |  \- org.springframework:spring-expression:jar:6.1.16:compile
 |  +- org.springframework.security:spring-security-web:jar:6.3.6:compile
-|  +- org.springframework.security:spring-security-config:jar:6.3.6:compile
-|  \- com.old.silence:silence-auth-center-client:jar:2.0.1-SNAPSHOT:compile
+|  \- org.springframework.security:spring-security-config:jar:6.3.6:compile
 +- com.old.silence:silence-job-server-retry-task:jar:1.8.0-SNAPSHOT:compile
 |  \- com.old.silence:silence-job-common-client-api:jar:1.8.0-SNAPSHOT:compile
 +- com.old.silence:silence-job-server-job-task:jar:1.8.0-SNAPSHOT:compile

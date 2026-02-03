@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4722109e-98dc-44cb-bae6-b7dc660b13e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.en.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.en.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silence-job-client-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/silence-job-client-starter/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silence-job-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/silence-job-client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silence-job-common/silence-job-common-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/silence-job-common/silence-job-common-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silence-job-server-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/silence-job-server-starter/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silence-job-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/silence-job-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silence-job-server/silence-job-server-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/silence-job-server/silence-job-server-app/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4722109e-98dc-44cb-bae6-b7dc660b13e9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,19 +74,21 @@
     <option name="flattenModules" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="SilenceJobCenterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="silence-job-server-starter" />
@@ -122,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1765507421616</updated>
       <workItem from="1770106132631" duration="3149000" />
-      <workItem from="1770113902491" duration="91000" />
+      <workItem from="1770113902491" duration="1587000" />
     </task>
     <servers />
   </component>

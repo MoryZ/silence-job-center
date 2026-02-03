@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.springframework.stereotype.Component;
 import com.old.silence.job.common.model.ApiResult;
-import com.old.silence.job.common.server.dto.ConfigDTO;
+import com.old.silence.job.common.dto.ConfigDTO;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.server.common.Lifecycle;
 import com.old.silence.job.server.common.cache.CacheRegisterTable;

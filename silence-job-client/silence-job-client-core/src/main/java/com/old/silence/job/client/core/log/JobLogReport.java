@@ -2,7 +2,7 @@ package com.old.silence.job.client.core.log;
 
 import com.old.silence.job.client.common.log.report.AbstractLogReport;
 import com.old.silence.job.client.common.log.support.SilenceJobLogManager;
-import com.old.silence.job.common.server.dto.JobLogTaskDTO;
+import com.old.silence.job.common.dto.JobLogTaskDTO;
 import com.old.silence.job.log.dto.LogContentDTO;
 import com.old.silence.job.log.enums.LogTypeEnum;
 import org.springframework.stereotype.Component;

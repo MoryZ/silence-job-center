@@ -7,7 +7,7 @@ import com.old.silence.job.client.common.Lifecycle;
 import com.old.silence.job.client.common.LogReport;
 import com.old.silence.job.client.common.config.SilenceJobProperties;
 import com.old.silence.job.client.common.window.SlidingWindow;
-import com.old.silence.job.common.server.dto.LogTaskDTO;
+import com.old.silence.job.common.dto.LogTaskDTO;
 import com.old.silence.job.common.window.Listener;
 import com.old.silence.job.log.SilenceJobLog;
 import com.old.silence.job.log.dto.LogContentDTO;
